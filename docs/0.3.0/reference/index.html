@@ -1,0 +1,201 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<ul class="results-priority" style="display:none">
+					</ul>
+					<a href="index.html" class="title"></a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+			</ul>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-3 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/Anim.html">Anim</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/Config.html">Config</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/Data.html">Data</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/Styles.html">Styles</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="col-7 offset-3 col-content">
+			<h1>Project</h1>
+			<div class="tsd-panel tsd-typography">
+				<a href="#about-the-project" id="about-the-project" style="color: inherit; text-decoration: none;">
+					<h1>About The Project</h1>
+				</a>
+				<p>Vizzu is a free, open-source Javascript/C++ library utilizing a generic dataviz engine
+					that generates many types of charts and seamlessly animates between them.
+					It is designed for building animated data stories and interactive explorers
+					as Vizzu enables showing different perspectives of the data that the viewers can
+				easily follow due to the animation.</p>
+				<p>Main features:</p>
+				<ul>
+					<li>Designed with animation in focus; </li>
+					<li>Defaults based on data visualization guidelines;</li>
+					<li>Automatic data aggregation, data filtering;</li>
+					<li>HTML5 canvas rendering;</li>
+					<li>Written in C++ compiled to WebAssembly;</li>
+					<li>Dependency-free.</li>
+				</ul>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h1>Usage</h1>
+				</a>
+				<p>Create a placeholder element that will contain the rendered chart:</p>
+				<pre><code class="language-html"><span style="color: #800000">&lt;div</span><span style="color: #000000"> </span><span style="color: #FF0000">id</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;myVizzu&quot;</span><span style="color: #000000"> </span><span style="color: #FF0000">style</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;width:800px; height:480px;&quot;</span><span style="color: #800000">&gt;&lt;/div&gt;</span>
+</code></pre>
+				<p>Create a simple bar chart:</p>
+				<pre><code class="language-javascript"><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">Vizzu</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">data</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">  </span><span style="color: #001080">series:</span><span style="color: #000000"> [</span>
+<span style="color: #000000">    { </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Foo&#039;</span><span style="color: #000000">, </span><span style="color: #001080">values:</span><span style="color: #000000"> [</span><span style="color: #A31515">&#039;Alice&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;Bob&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;Ted&#039;</span><span style="color: #000000">] },</span>
+<span style="color: #000000">    { </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Bar&#039;</span><span style="color: #000000">, </span><span style="color: #001080">values:</span><span style="color: #000000"> [</span><span style="color: #098658">15</span><span style="color: #000000">, </span><span style="color: #098658">32</span><span style="color: #000000">, </span><span style="color: #098658">12</span><span style="color: #000000">] },</span>
+<span style="color: #000000">    { </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Baz&#039;</span><span style="color: #000000">, </span><span style="color: #001080">values:</span><span style="color: #000000"> [</span><span style="color: #098658">5</span><span style="color: #000000">, </span><span style="color: #098658">3</span><span style="color: #000000">, </span><span style="color: #098658">2</span><span style="color: #000000">] }</span>
+<span style="color: #000000">  ]</span>
+<span style="color: #000000">};</span>
+
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">chart</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Vizzu</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;myVizzu&quot;</span><span style="color: #000000">);</span>
+
+</code></pre>
+				<pre><code class="language-javascript"><span style="color: #001080">chart</span><span style="color: #000000">.</span><span style="color: #795E26">animate</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">data</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">config:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #001080">channels:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">      </span><span style="color: #001080">x:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Foo&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">y:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Bar&#039;</span>
+<span style="color: #000000">    }</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">});</span>
+</code></pre>
+				<p>Then turn it into a scatter plot:</p>
+				<pre><code class="language-javascript"><span style="color: #001080">chart</span><span style="color: #000000">.</span><span style="color: #795E26">animate</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">channels:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #001080">color:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Foo&#039;</span><span style="color: #000000">, </span>
+<span style="color: #000000">    </span><span style="color: #001080">x:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Baz&#039;</span>
+<span style="color: #000000">  },</span>
+<span style="color: #000000">  </span><span style="color: #001080">geometry:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;circle&#039;</span>
+<span style="color: #000000">});</span>
+</code></pre>
+				<p><a href="https://jsfiddle.net/VizzuHQ/dk7b86vc/9/">Try it!</a></p>
+				<a href="#releases" id="releases" style="color: inherit; text-decoration: none;">
+					<h1>Releases</h1>
+				</a>
+				<a href="#nightly-builds" id="nightly-builds" style="color: inherit; text-decoration: none;">
+					<h2>Nightly builds</h2>
+				</a>
+				<p>URL of the build from the HEAD commit of the Main branch:</p>
+				<ul>
+					<li><a href="https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js">https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js</a></li>
+				</ul>
+				<p>URLs of all builds on Main branch of the past 30 days:</p>
+				<ul>
+					<li><a href="https://vizzu-lib-main-sha.storage.googleapis.com/lib-HASH/vizzu.js">https://vizzu-lib-main-sha.storage.googleapis.com/lib-HASH/vizzu.js</a></li>
+				</ul>
+				<p>where HASH is the first 7 character of the commit&#39;s git hash.</p>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h1>License</h1>
+				</a>
+				<p>Copyright © 2021 <a href="https://vizzuhq.com">Vizzu Kft.</a>.</p>
+				<p>Released under the <a href="LICENSE">Apache 2.0 License</a>.</p>
+			</div>
+		</div>
+		<div class="col-2 col-menu secondary-menu">
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class root">
+						<a href="classes/default.html" class="tsd-kind-icon">default</a>
+					</li>
+					<li class=" tsd-kind-interface root">
+						<a href="interfaces/AnimTarget.html" class="tsd-kind-icon">Anim<wbr>Target</a>
+					</li>
+					<li class=" tsd-kind-interface root">
+						<a href="interfaces/Event.html" class="tsd-kind-icon">Event</a>
+					</li>
+					<li class=" tsd-kind-type-alias root">
+						<a href="modules.html#EventName" class="tsd-kind-icon">Event<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-type-alias root">
+						<a href="modules.html#Feature" class="tsd-kind-icon">Feature</a>
+					</li>
+					<li class=" tsd-kind-type-alias root">
+						<a href="modules.html#Snapshot" class="tsd-kind-icon">Snapshot</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
