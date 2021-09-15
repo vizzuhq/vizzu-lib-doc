@@ -1,28 +1,34 @@
+
 export default class SubSection
 {
-	constructor(parent)
+	constructor(element)
 	{
-		this.parent = parent;
-		this.elements = [];
+		this.element = element;
 	}
 
-	p(text)
+	setSnippet(snippet)
 	{
-		this.elements.push({ type: 'paragraph', text });
-		return this;
+		this.snippetElement = snippet;
+
+		this.snippetElement.onclick = () => {
+			this.element.scrollIntoView();
+		};
 	}
 
-	code(title, func)
+	select(selected)
 	{
-		this.elements.push({ type: 'code', title, func });
-		return this;
+		if (selected) 
+		{
+			this.element.classList.add('subsection-selected');
+			if (this.snippetElement !== undefined)
+				this.snippetElement.classList.add('snippet-selected');
+		}
+		else 
+		{
+			this.element.classList.remove('subsection-selected');
+			if (this.snippetElement !== undefined)
+				this.snippetElement.classList.remove('snippet-selected');
+		}
 	}
 
-	h() {
-		return this.parent.h();
-	}
-
-	getOrdinal() {
-		return this.parent.getOrdinal() + '.' + this.ordinal;
-	}
 }
