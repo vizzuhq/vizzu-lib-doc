@@ -6,28 +6,31 @@ body {
 	margin: 0px;
 	height: 100vh;
 	overflow: hidden;
+	color: #666;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 1.5em;
 }
 
 #toc-view {
+	overflow-y: auto;
 	background-color: #333;
 	padding: 15px 30px 15px;
+	padding-left: 50px;
 	z-index: 1;
 }
-
-#example-view {
-	background-color: #fff;
-/*	filter: drop-shadow(0px 0px 6px #eee);
-	z-index: -1;
-*/}
 
 .menuitem, 
 .submenuitem {
 	list-style-type: none;
 	color: #aaa;
-	padding-top: .25em;
-	padding-bottom: .25em;
+	line-height: 1.5em;
 	padding-left: 15px;
 	cursor: pointer;
+}
+
+.menuitem {
+	padding-top: 1em;
 }
 
 .submenuitem:hover {
@@ -43,41 +46,48 @@ body {
 }
 
 .subtitle {
-	padding-top: 1.2em;
-	padding-left: 0.5em;
+	padding-top: 2em;
+	padding-left: 1.2em;
 	color: #666;
 	font-weight: 100;
 	font-size: 25px;
 }
 
-.subsection {
-	padding-left: 0px;
-	padding-right: 0px;
-	margin-bottom: 5px;
-	scroll-snap-align: start;
-	border-right: 6px solid #e0e0e0;
+h3 {
+	padding-top: 2em;
+	padding-left: 1.5em;
+	color: #666;
+	font-weight: 100;
+	font-size: 20px;
 }
 
 .snippet {
 	background-color: #fafafa;
+	line-height: 1.35em;
 	color: #666;
-	cursor: pointer;
+	font-weight: normal;
+	font-size: 13px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	margin-left: .5em;
-	padding-left: 1em;
+	padding-left: 3em;
 	padding-right: 1em;
 }
 
-.snippet-selected {
-	background-color: #fafaff !important;
-	transition: 0.3s;
-	cursor: default;
+.runable {
+	cursor: pointer;
+	border-right: 6px solid #e0e0e0;
 }
 
-.subsection-selected {
+.runable:hover {
+	border-right-color: #d0d0e0 !important;
+	background-color: #fafaff !important;
+	transition: 0.1s;
+}
+
+.runable:focus {
+	outline: 0px;
 	border-right-color: #4171cd !important;
-	background-color: #fafaff;
+	background-color: #f1f1fb !important;
 	transition: 0.2s;
 }
 
@@ -87,7 +97,7 @@ body {
 	font-size: 15px;
 	line-height: 1.5em;
 	padding-top: .8em;
-	padding-left: 1em;
+	padding-left: 2em;
 	padding-right: 1em;
 }
 
@@ -96,18 +106,34 @@ body {
 	padding-inline-start: 0px;
 }
 
+#example-view {
+	width: 0px;
+	height: 0px;
+	overflow: none;
+	display: block;
+	position: relative;
+	left: 660px;
+}
+
 #example-canvas {
 	width: 480px;
 	height: 240px;
+	background-color: #fff;
+	z-index: 100;
+	filter: drop-shadow(0 5px 5px #eee);
+}
+
+.example-canvas-rewind {
+	filter: drop-shadow(0 5px 5px #eee) grayscale(80%) opacity(50%) !important;
+	transition: 200ms;
 }
 
 #content {
-	padding: 0px 1px 500px 1px;
+	padding: 0px 1px 50px 1px;
 	width: 650px;
 }
 
 #content-view {
 	outline: none !important;
-	scroll-snap-type: y mandatory;
 	scroll-behavior: smooth;
 }

@@ -1,6 +1,5 @@
 import DomHelper from "./dom-helper.js";
 import Section from "./section.js";
-import SubSection from "./subsection.js";
 import DocId from "./documentid.js";
 import VizzuView from './vizzu-view.js';
 
@@ -9,20 +8,14 @@ export default class Main
 	constructor(snippetRegistry)
 	{
 		this.sections = new Map();
-		this.subsections = new Map();
 
 		this.discover();
 
 		this.setupVizzu(snippetRegistry);
 
-		this.navigation = {
-			lastId: null,
-			nextId: null,
-			currentMove: 0
-		};
+		this.lastSection = null;
 
 		this.contentView = document.getElementById('content-view');
-		this.contentView.focus();
 		this.contentView.onscroll = event => this.scrolled(event);
 	}
 
@@ -51,57 +44,46 @@ export default class Main
 			if (section) section.setMenu(submenu);
 		}
 
-		let subsections = document.getElementsByClassName('subsection');
-		for (let subsection of subsections)
-		{
-			const id = DomHelper.parseId(subsection).id;
-			this.subsections.set(id, new SubSection(subsection));
-		}
-
-		let snippets = document.getElementsByClassName('snippet');
+		let snippets = document.getElementsByClassName('runable');
 		for (let snippet of snippets)
 		{
-			const id = DomHelper.parseId(snippet).id;
-			this.subsections.get(id).setSnippet(snippet);
+			snippet.onclick = () => { this.activateSnippet(snippet); };
+			snippet.onfocus = () => { this.activateSnippet(snippet); };
 		}
 	}
 
 	scrolled(event)
 	{
-		const topSectionId = this.firstVisibleSectionId();
-		if (topSectionId != this.navigation.lastId) {
-			this.navigation.nextId = topSectionId;
-			this.navigation.currentMove++;
-			let move = this.navigation.currentMove;
-			setTimeout(() => {
-				if (this.navigation.currentMove === move) this.activate()
-			}, 300);
-		}
+		const topSectionId = this.firstVisibleSubtitle();
+		if (topSectionId != this.lastSection)
+			this.activateSection(topSectionId)
 	}
 
-	activate()
+	activateSection(id)
 	{
-		if (this.navigation.nextId == null) return;
+		if (this.lastSection !== null)
+			this.getSection(this.lastSection).select(false);
 
-		if (this.navigation.lastId !== null)
-		{
-			this.getSection(this.navigation.lastId).select(false);
+		this.getSection(id).select(true);
 
-			let subsection = this.subsections.get(this.navigation.lastId);
-			if (subsection) subsection.select(false);
+		this.lastSection = id;
+	}
 
-			this.navigation.lastId = null;
-		}
+	activateSnippet(snippet)
+	{
+		let canvas = document.getElementById('example-canvas');
 
-		this.getSection(this.navigation.nextId).select(true);
+		let targetTop = snippet.offsetTop 
+			+ snippet.getBoundingClientRect().height / 2
+			- canvas.getBoundingClientRect().height / 2;
 
-		let subsection = this.subsections.get(this.navigation.nextId);
-		if (subsection) subsection.select(true);
+		let view = document.getElementById('example-view');
+		
+		view.style.top = targetTop + 'px';
+		view.style.transition = 'top .2s';
 
-		this.vizzuView.step(this.navigation.nextId);
-
-		this.navigation.lastId = this.navigation.nextId;
-		this.navigation.nextId = null;
+		const id = DomHelper.parseId(snippet).id;
+		this.vizzuView.step(id);
 	}
 
 	getSection(id)
@@ -110,12 +92,24 @@ export default class Main
 		return this.sections.get(sectionId);
 	}
 
-	firstVisibleSectionId()
+	firstVisibleSubtitle()
 	{
-		for (let [ id, subsection ] of this.subsections)
-			if (DomHelper.isInView(subsection.element, this.contentView))
-				return DomHelper.parseId(subsection.element).id;
+		let last = '0.0';
+		for (let [ id, section ] of this.sections)
+		{
+			if (this.isAboveViewCenter(section.element))
+				return last;
+			last = id;
+		}
 
-		return null;
+		return last;
 	}
+
+	isAboveViewCenter(child)
+	{
+		const childRect = child.getBoundingClientRect();
+		const parentRect = this.contentView.getBoundingClientRect();
+		return childRect.top > parentRect.top + parentRect.height/2;
+	}
+
 }
