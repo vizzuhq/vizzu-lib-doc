@@ -1,7 +1,7 @@
 import DomHelper from "./dom-helper.js";
 import Section from "./section.js";
 import DocId from "./documentid.js";
-import VizzuView from './vizzu-view.js';
+import Tutorial from './tutorial/tutorial.js';
 
 export default class Main
 {
@@ -11,25 +11,24 @@ export default class Main
 
 		this.discover();
 
-		this.setupVizzu(snippetRegistry);
+		this.tutorial = new Tutorial(snippetRegistry);
 
 		this.lastSection = null;
 
 		this.contentView = document.getElementById('content-view');
 		this.contentView.onscroll = event => this.scrolled(event);
-	}
 
-	setupVizzu(snippetRegistry)
-	{
-		this.vizzuView = new VizzuView('example-canvas');
-
-		for (let [id, snippet] of snippetRegistry.snippets)
-			this.vizzuView.register(id, snippet); 
+		window.onpopstate = (event) => {
+			console.log(event.state.id, this.sections.get(event.state.id).element);
+			this.sections.get(event.state.id).element.scrollIntoView();
+		};
+		if ('scrollRestoration' in history) {
+			history.scrollRestoration = 'manual';
+		}
 	}
 
 	discover()
 	{
-
 		let subtitles = document.getElementsByClassName('subtitle');
 		for (let subtitle of subtitles) {
 			const id = DomHelper.parseId(subtitle).id;
@@ -42,13 +41,6 @@ export default class Main
 			const id = DomHelper.parseId(submenu).id;
 			let section = this.sections.get(id);
 			if (section) section.setMenu(submenu);
-		}
-
-		let snippets = document.getElementsByClassName('runable');
-		for (let snippet of snippets)
-		{
-			snippet.onclick = () => { this.activateSnippet(snippet); };
-			snippet.onfocus = () => { this.activateSnippet(snippet); };
 		}
 	}
 
@@ -67,23 +59,6 @@ export default class Main
 		this.getSection(id).select(true);
 
 		this.lastSection = id;
-	}
-
-	activateSnippet(snippet)
-	{
-		let canvas = document.getElementById('example-canvas');
-
-		let targetTop = snippet.offsetTop 
-			+ snippet.getBoundingClientRect().height / 2
-			- canvas.getBoundingClientRect().height / 2;
-
-		let view = document.getElementById('example-view');
-		
-		view.style.top = targetTop + 'px';
-		view.style.transition = 'top .2s';
-
-		const id = DomHelper.parseId(snippet).id;
-		this.vizzuView.step(id);
 	}
 
 	getSection(id)
@@ -111,5 +86,4 @@ export default class Main
 		const parentRect = this.contentView.getBoundingClientRect();
 		return childRect.top > parentRect.top + parentRect.height/2;
 	}
-
 }

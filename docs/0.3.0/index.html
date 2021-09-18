@@ -16,23 +16,24 @@
 			<ul id="table-of-contents" class="menu">
 				<li class="menuitem" id="menuitem-0">TUTORIAL
 					<ul id="toc-tutorial" class="submenu">
-						<li id="submenuitem-0.0" class="submenuitem">Intro</li>
-						<li id="submenuitem-0.1" class="submenuitem">Axes, title, tooltip</li>
-						<li id="submenuitem-0.2" class="submenuitem">Geometry</li>
-						<li id="submenuitem-0.3" class="submenuitem">Channels &amp; legend</li>
-						<li id="submenuitem-0.4" class="submenuitem">Group/stack</li>
-						<li id="submenuitem-0.5" class="submenuitem">Sorting</li>
-						<li id="submenuitem-0.6" class="submenuitem">Align &amp; range</li>
-						<li id="submenuitem-0.7" class="submenuitem">Aggregate/drill-down</li>
-						<li id="submenuitem-0.8" class="submenuitem">Orientation, split &amp; polar</li>
-						<li id="submenuitem-0.9" class="submenuitem">Filtering</li>
-						<li id="submenuitem-0.10" class="submenuitem">Without coordinates &amp; noop channel</li>
-						<li id="submenuitem-0.11" class="submenuitem">Color palette &amp; fonts</li>
-						<li id="submenuitem-0.12" class="submenuitem">Chart layout</li>
-						<li id="submenuitem-0.13" class="submenuitem">Animation settings</li>
-						<li id="submenuitem-0.14" class="submenuitem">Animation control</li>
-						<li id="submenuitem-0.15" class="submenuitem">Events</li>
-						<li id="submenuitem-0.16" class="submenuitem">Shorthands &amp; Store</li></ul>
+				<li id="submenuitem-0.0" class="submenuitem">Intro</li>
+				<li id="submenuitem-0.1" class="submenuitem">Data types</li>
+				<li id="submenuitem-0.2" class="submenuitem">Axes, title, tooltip</li>
+				<li id="submenuitem-0.3" class="submenuitem">Geometry</li>
+				<li id="submenuitem-0.4" class="submenuitem">Channels &amp; legend</li>
+				<li id="submenuitem-0.5" class="submenuitem">Group/stack</li>
+				<li id="submenuitem-0.6" class="submenuitem">Sorting</li>
+				<li id="submenuitem-0.7" class="submenuitem">Align &amp; range</li>
+				<li id="submenuitem-0.8" class="submenuitem">Aggregate/drill-down</li>
+				<li id="submenuitem-0.9" class="submenuitem">Orientation, split &amp; polar</li>
+				<li id="submenuitem-0.10" class="submenuitem">Filtering</li>
+				<li id="submenuitem-0.11" class="submenuitem">Without coordinates &amp; noop channel</li>
+				<li id="submenuitem-0.12" class="submenuitem">Color palette &amp; fonts</li>
+				<li id="submenuitem-0.13" class="submenuitem">Chart layout</li>
+				<li id="submenuitem-0.14" class="submenuitem">Animation settings</li>
+				<li id="submenuitem-0.15" class="submenuitem">Animation control</li>
+				<li id="submenuitem-0.16" class="submenuitem">Events</li>
+				<li id="submenuitem-0.17" class="submenuitem">Shorthands &amp; Store</li></ul>
 				</li>
 				<li class="menuitem" id="menuitem-0">EXAMPLES
 					<ul id="toc-tutorial" class="submenu">
@@ -51,96 +52,150 @@
 				</li>
 			</ul>
 		</div>
-		<div id="content-view" tabindex="0">
+		<div id="content-view">
 			<div id="example-view">
 				<div id="example-canvas"></div>
 			</div>
 			<div id="content">
-					<h2 id="subtitle-0.0" class="subtitle">Intro</h2>
-					
-				<p class="paragraph">This is the tutorial of Vizzu - a free, open-source Javascript library for 
+			<h2 id="subtitle-0.0" class="subtitle">Intro</h2>
+			<p class="paragraph">This is the tutorial of Vizzu - a free, open-source Javascript library for 
 building animated charts, data stories, and interactive explorers. 
 It is an excellent place to start using Vizzu, as it walks you through the 
 installation and initialization of the library, introduces the logic it employs 
 and the different settings to control how your charts look and behave. 
 By scrolling through the tutorial, you can see code snippets, and when you 
 click on them, you can see how they affect the chart on the top of the screen.</p><h3 id="installation">Installation</h3>
-
-				<p class="paragraph">To show a Vizzu chart create a placeholder element that will contain the 
+<p class="paragraph">To show a Vizzu chart create a placeholder element that will contain the 
 rendered chart and import the library into a JavaScript file or script tag 
 in your web page:</p>
-				<div id="snippet-0.0.1" class="snippet">
-					<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myVizzu"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width:800px; height:480px;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+		<div class="snippet">
+			<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myVizzu"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width:800px; height:480px;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">Vizzu</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/vizzu.js'</span>;
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 
-					
-				</div>
-				
-				<p class="paragraph">Alternatively, you can use npm (npm install vizzu) or load files from your own domain. </p><h3 id="initialization">Initialization</h3>
-
-				<p class="paragraph">Create a new object instance of the Vizzu class, add it to a variable, 
+			
+		</div>
+		<p class="paragraph">Alternatively, you can use npm (npm install vizzu) or load files from your own domain. </p><h3 id="initialization">Initialization</h3>
+<p class="paragraph">Create a new object instance of the Vizzu class, add it to a variable, 
 initialize the library, and then you can start setting up the first chart by 
 calling the animate method.</p>
-				<div id="snippet-0.0.2" class="snippet">
-					<pre><code class="language-javascript"><span class="hljs-keyword">let</span> chart = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vizzu</span>(<span class="hljs-string">'myVizzu'</span>)
+		<div class="snippet">
+			<pre><code class="language-javascript"><span class="hljs-keyword">let</span> chart = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vizzu</span>(<span class="hljs-string">'myVizzu'</span>)
 
 chart.<span class="hljs-property">initializing</span>.<span class="hljs-title function_">then</span>(
   <span class="hljs-function"><span class="hljs-params">chart</span> =&gt;</span> chart.<span class="hljs-title function_">animate</span>({ <span class="hljs-comment">/* ... */</span> }) 
 )
 </code></pre>
 
-					
-				</div>
-				<h3 id="the-basic-logic-of-vizzu">The basic logic of Vizzu</h3>
-
-				<p class="paragraph">In Vizzu the animated charts are created via a promise chain where the chain 
+			
+		</div>
+		<h3 id="the-basic-logic-of-vizzu">The basic logic of Vizzu</h3>
+<p class="paragraph">In Vizzu the animated charts are created via a promise chain where the chain 
 elements are the states of the charts - described by the animate method - and 
 Vizzu animates between these states. By each call, the animate method will 
 modify the previously set state.</p><img src="images/api-overview.svg" width="100%" alt="Illustration of Vizzu's promise chain">
 
-
-				<p class="paragraph">The animate method has two parameters in total. The first parameter sets the 
-chart, and the second determines how Vizzu should animate to that state. </p>
-				<p class="paragraph">The first parameter has the following three properties:</p><ul>
+<p class="paragraph">The animate method has two parameters in total. The first parameter sets the 
+chart, and the second determines how Vizzu should animate to that state. </p><p class="paragraph">The first parameter has the following three properties:</p><ul>
 <li><em>data</em> - this is where you add the data that you want to put on the charts.</li>
 <li><em>config</em> - this is where you can add or remove series on the channels and 
 set the general settings of the chart like the chart title, the geometry, the alignment etc.</li>
 <li><em>style</em> - this is where you can set how your chart looks.</li>
 </ul>
-<h3 id="data-types">Data types</h3>
 
-				<p class="paragraph">Vizzu currently supports two types of data series: dimensions and measures. 
-Dimensions slice the data cube Vizzu uses, whereas measures are values within the cube.</p>
-				<p class="paragraph">Dimensions are categorical series that can contain strings and numbers, but 
+			<h2 id="subtitle-0.1" class="subtitle">Data types</h2>
+			<p class="paragraph">Vizzu currently supports two types of data series: dimensions and measures. 
+Dimensions slice the data cube Vizzu uses, whereas measures are values within the cube.</p><p class="paragraph">Dimensions are categorical series that can contain strings and numbers, but 
 both will be treated as strings. Temporal data such as dates or timestamps 
 should also be added as dimensions. Vizzu will draw the elements on the chart 
 in the order they are provided in the data set by default. Thus we suggest 
-adding temporal data in a sorted format from oldest to newest.</p>
-				<p class="paragraph">Measure in the current beta phase can only be numerical.</p><h3 id="adding-data">Adding data</h3>
-
-				<p class="paragraph">There are multiple ways you can add data to Vizzu:</p><ul>
+adding temporal data in a sorted format from oldest to newest.</p><p class="paragraph">Measure in the current beta phase can only be numerical.</p><h3 id="adding-data">Adding data</h3>
+<p class="paragraph">There are multiple ways you can add data to Vizzu:</p><ul>
 <li>Specified by series - column after column if you think of a spreadsheet</li>
 <li>Specified by records - row after row.</li>
 <li>Data cube form</li>
 </ul>
-
-				<p class="paragraph">Elements with a missing value should contain the number zero. ‘null’, 
+<p class="paragraph">Elements with a missing value should contain the number zero. ‘null’, 
 ‘undefined’ and empty cells will result in an error. In case of dimensions, 
-add ‘’ as a value to have a category without a name. </p>
-				<p class="paragraph">In all cases, data has to be in first normal form. Here is an example of it:
-<strong>Ide kéne táblázat?</strong></p>
-				<p class="paragraph">In the type parameter, you can set if a series is a dimension or a measure. 
+add ‘’ as a value to have a category without a name. </p><p class="paragraph">In all cases, data has to be in first normal form. Here is an example of it:</p><table>
+<thead>
+<tr>
+<th>Genres</th>
+<th>Types</th>
+<th>Popularity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pop</td>
+<td>Hard</td>
+<td>78</td>
+</tr>
+<tr>
+<td>Rock</td>
+<td>Hard</td>
+<td>96</td>
+</tr>
+<tr>
+<td>Jazz</td>
+<td>Hard</td>
+<td>114</td>
+</tr>
+<tr>
+<td>Metal</td>
+<td>Hard</td>
+<td>52</td>
+</tr>
+<tr>
+<td>Pop</td>
+<td>Smooth</td>
+<td>174</td>
+</tr>
+<tr>
+<td>Rock</td>
+<td>Smooth</td>
+<td>36</td>
+</tr>
+<tr>
+<td>Jazz</td>
+<td>Smooth</td>
+<td>56</td>
+</tr>
+<tr>
+<td>Metal</td>
+<td>Smooth</td>
+<td>121</td>
+</tr>
+<tr>
+<td>Pop</td>
+<td>Experimental</td>
+<td>94</td>
+</tr>
+<tr>
+<td>Rock</td>
+<td>Experimental</td>
+<td>83</td>
+</tr>
+<tr>
+<td>Jazz</td>
+<td>Experimental</td>
+<td>127</td>
+</tr>
+<tr>
+<td>Metal</td>
+<td>Experimental</td>
+<td>58</td>
+</tr>
+</tbody></table>
+<p class="paragraph">In the type parameter, you can set if a series is a dimension or a measure. 
 Adding the type parameter is optional. If omitted, Vizzu will automatically 
 select the type depending on the contents of the values array using the typeof 
 operator. If all items are numbers, it will be declared as a measure, in any 
-other case, a dimension.</p>
-				<p class="paragraph">Data specified by series:</p>
-				<div id="snippet-0.0.3" class="snippet">
-					<pre><code class="language-javascript"><span class="hljs-attr">data</span>: {
+other case, a dimension.</p><p class="paragraph">Data specified by series:</p>
+		<div class="snippet">
+			<pre><code class="language-javascript"><span class="hljs-attr">data</span>: {
   <span class="hljs-attr">series</span>: [
     {
       <span class="hljs-attr">name</span>: <span class="hljs-string">'Genres'</span>, 
@@ -161,12 +216,11 @@ other case, a dimension.</p>
 }
 </code></pre>
 
-					
-				</div>
-				
-				<p class="paragraph">Data specified by records:</p>
-				<div id="snippet-0.0.4" class="snippet">
-					<pre><code class="language-javascript"><span class="hljs-attr">data</span>: {
+			
+		</div>
+		<p class="paragraph">Data specified by records:</p>
+		<div class="snippet">
+			<pre><code class="language-javascript"><span class="hljs-attr">data</span>: {
   <span class="hljs-attr">series</span>: [
     { <span class="hljs-attr">name</span>: <span class="hljs-string">'Genres'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'dimension'</span> },
     { <span class="hljs-attr">name</span>: <span class="hljs-string">'Types'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'dimension'</span> },
@@ -189,12 +243,20 @@ other case, a dimension.</p>
 }
 </code></pre>
 
-					
-				</div>
-				
-				<p class="paragraph">Data cube:</p>
-				<div id="snippet-0.0.5" class="snippet">
-					<pre><code class="language-javascript"><span class="hljs-attr">data</span>: {
+			
+		</div>
+		<p class="paragraph">Data cube:</p><table>
+  <tbody><tr><th colspan="2" rowspan="2"></th>               <th colspan="4">Genres</th></tr>
+  <tr>                                                <td>Pop</td> <td>Rock</td> <td>Jazz</td> <td>Metal</td></tr>
+  <tr><th rowspan="3">Types</th><td>Hard</td>         <td>78</td>  <td>96</td>   <td>114</td>  <td>52</td></tr>
+  <tr>                          <td>Smooth</td>       <td>74</td>  <td>36</td>   <td>56</td>   <td>121</td></tr>
+  <tr>                          <td>Experimental</td> <td>94</td>  <td>83</td>   <td>127</td>  <td>58</td></tr>
+  <tr><td colspan="2"></td>                           <th colspan="4">Popularity</th></tr>
+</tbody></table>
+
+
+		<div class="snippet">
+			<pre><code class="language-javascript"><span class="hljs-attr">data</span>: {
     <span class="hljs-attr">dimensions</span>: [ 
         { <span class="hljs-attr">name</span>: <span class="hljs-string">'Genres'</span>, <span class="hljs-attr">values</span>: [ <span class="hljs-string">'Pop'</span>, <span class="hljs-string">'Rock'</span>, <span class="hljs-string">'Jazz'</span>, <span class="hljs-string">'Metal'</span> ] },
         { <span class="hljs-attr">name</span>: <span class="hljs-string">'Types'</span>, <span class="hljs-attr">values</span>: [ <span class="hljs-string">'Hard'</span>, <span class="hljs-string">'Smooth'</span>, <span class="hljs-string">'Experimental'</span> ] }
@@ -212,17 +274,15 @@ other case, a dimension.</p>
 }
 </code></pre>
 
-					
-				</div>
-				
-					<h2 id="subtitle-0.1" class="subtitle">Axes, title, tooltip</h2>
-					
-				<p class="paragraph">To build a chart with Vizzu, you have to add data series to the channels.</p>
-				<p class="paragraph">The first step is to create a simple column chart, adding one of the dimensions 
+			
+		</div>
+		
+			<h2 id="subtitle-0.2" class="subtitle">Axes, title, tooltip</h2>
+			<p class="paragraph">To build a chart with Vizzu, you have to add data series to the channels.</p><p class="paragraph">The first step is to create a simple column chart, adding one of the dimensions 
 (Genre) to the x-axis and the measure (Popularity) to the y-axis using the set 
 property.</p>
-				<div id="snippet-0.1.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.2.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Popularity'</span>] },
@@ -232,10 +292,9 @@ property.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.1.1", 
+						"0.2.1", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -244,16 +303,14 @@ property.</p>
         }
     }
 }) },
-						undefined);
+						{"run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">In the next step, the chart is rearranged by putting both series on the y-axis 
+		</div>
+		<p class="paragraph">In the next step, the chart is rearranged by putting both series on the y-axis 
 using once again the set property, resulting in a single column chart. Vizzu 
 automatically animates between the initial state and this one.</p>
-				<div id="snippet-0.1.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.2.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
                 <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> },
@@ -263,10 +320,9 @@ automatically animates between the initial state and this one.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.1.2", 
+						"0.2.2", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -275,17 +331,15 @@ automatically animates between the initial state and this one.</p>
         }
     }
 }) },
-						undefined);
+						{"run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Instead of set, you can use attach and detach to add or remove series to/from 
+		</div>
+		<p class="paragraph">Instead of set, you can use attach and detach to add or remove series to/from 
 the channels. Using these commands makes it easier to build your animated charts 
 step-by-step, however you have to keep in mind what you had on which channel in 
 the previous step.</p>
-				<div id="snippet-0.1.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.2.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Popularity'</span>] },
@@ -295,10 +349,9 @@ the previous step.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.1.3", 
+						"0.2.3", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -307,154 +360,132 @@ the previous step.</p>
         }
     }
 }) },
-						undefined);
+						{"run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Setting the chart title with the title command.</p>
-				<div id="snippet-0.1.4" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({ <span class="hljs-attr">title</span>:<span class="hljs-string">'My first chart'</span> })
+		</div>
+		<p class="paragraph">Setting the chart title with the title command.</p>
+		<div id="snippet-0.2.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({ <span class="hljs-attr">title</span>:<span class="hljs-string">'My first chart'</span> })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.1.4", 
+						"0.2.4", 
 						chart => { chart.animate({ title:'My first chart' }) },
-						undefined);
+						{"run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Switching on the tooltips that appear on the chart elements when the user hovers 
+		</div>
+		<p class="paragraph">Switching on the tooltips that appear on the chart elements when the user hovers 
 over them with their mouse by adding the (tooltip, true) parameters to the 
 chart.feature method. Please note that this time we call the chart.feature method 
 instead of the chart.animate method used in the previous steps.</p>
-				<div id="snippet-0.1.5" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">feature</span>(<span class="hljs-string">'tooltip'</span>,<span class="hljs-literal">true</span>)
+		<div id="snippet-0.2.5" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">feature</span>(<span class="hljs-string">'tooltip'</span>,<span class="hljs-literal">true</span>)
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.1.5", 
+						"0.2.5", 
 						chart => { chart.feature('tooltip',true) },
-						undefined);
+						{"title":"My first chart","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.2" class="subtitle">Geometry</h2>
-					
-				<p class="paragraph">In Vizzu you can set the geometric elements used to represent your data by the 
-geometry property within the config object. </p>
-				<p class="paragraph">Switching the geometry to area.</p>
-				<div id="snippet-0.2.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		
+			<h2 id="subtitle-0.3" class="subtitle">Geometry</h2>
+			<p class="paragraph">In Vizzu you can set the geometric elements used to represent your data by the 
+geometry property within the config object. </p><p class="paragraph">Switching the geometry to area.</p>
+		<div id="snippet-0.3.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'area'</span>
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.2.1", 
+						"0.3.1", 
 						chart => { chart.animate({
     config: {
         geometry: 'area'
     }
 }) },
-						{"title":"Geometry: area"});
+						{"title":"Geometry: area","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Drawing a line chart.</p>
-				<div id="snippet-0.2.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">Drawing a line chart.</p>
+		<div id="snippet-0.3.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'line'</span>
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.2.2", 
+						"0.3.2", 
 						chart => { chart.animate({
     config: {
         geometry: 'line'
     }
 }) },
-						{"title":"Geometry: line"});
+						{"title":"Geometry: line","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Switching the geometry to circle. This setting is the most useful when used 
+		</div>
+		<p class="paragraph">Switching the geometry to circle. This setting is the most useful when used 
 together with the size channel, as shown in the next chapter of the tutorial.</p>
-				<div id="snippet-0.2.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.3.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'circle'</span>
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.2.3", 
+						"0.3.3", 
 						chart => { chart.animate({
     config: {
         geometry: 'circle'
     }
 }) },
-						{"title":"Geometry: circle"});
+						{"title":"Geometry: circle","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Rectangle geometry is the default setting in Vizzu, used for most common charts 
+		</div>
+		<p class="paragraph">Rectangle geometry is the default setting in Vizzu, used for most common charts 
 like bar and column charts.</p>
-				<div id="snippet-0.2.4" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.3.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'rectangle'</span>
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.2.4", 
+						"0.3.4", 
 						chart => { chart.animate({
     config: {
         geometry: 'rectangle'
     }
 }) },
-						{"title":"Geometry: rectangle - default"});
+						{"title":"Geometry: rectangle - default","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.3" class="subtitle">Channels &amp; legend</h2>
-					
-				<p class="paragraph">Besides the x-axis and the y-axis, there are five more channels in Vizzu you can 
+		</div>
+		
+			<h2 id="subtitle-0.4" class="subtitle">Channels &amp; legend</h2>
+			<p class="paragraph">Besides the x-axis and the y-axis, there are five more channels in Vizzu you can 
 use to visualize your data. Similarly to the axes you can put any number of 
 dimensions and/or one measure to a channel. In the following example the four 
 most commonly used channels are shown. The fifth, noop channel is introduced 
-in Chapter 10.</p>
-				<p class="paragraph">Data on the label channel will be written on the markers on the chart. Vizzu 
+later in the "Without coordinates &amp; noop channel" chapter.</p><p class="paragraph">Data on the label channel will be written on the markers on the chart. Vizzu 
 automatically determines the best way to position these labels, but you can set 
-them differently with the style object introduced in Chapter 11.</p>
-				<div id="snippet-0.3.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+them differently with the style object introduced in the "Color palette &amp; fonts" chapter.</p>
+		<div id="snippet-0.4.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">label</span>: { <span class="hljs-attr">attach</span>: [<span class="hljs-string">'Popularity'</span>] }
@@ -463,10 +494,9 @@ them differently with the style object introduced in Chapter 11.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.3.1", 
+						"0.4.1", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -474,17 +504,15 @@ them differently with the style object introduced in Chapter 11.</p>
         }
     }
 }) },
-						{"title":"Label"});
+						{"title":"Label","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">The lightness channel sets the lightness of the markers. In this case the same 
+		</div>
+		<p class="paragraph">The lightness channel sets the lightness of the markers. In this case the same 
 measure (Popularity) is added to it that is on the y-axis, meaning that columns’ 
 height and lightness represent the same values. The legend for the lightness 
-channel is turned on using the legend property. </p>
-				<div id="snippet-0.3.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+channel is turned on using the legend property. </p><p class="paragraph">Note: This is an example when we explicitly instruct Vizzu to show the legend. By default Vizzu automatically shows/hides the legend when it's necessary. You can also turn it off with the legend : null command or set back to automatic mode with legend : 'auto'.</p>
+		<div id="snippet-0.4.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">lightness</span>: { <span class="hljs-attr">attach</span>: [<span class="hljs-string">'Popularity'</span>] }
@@ -494,10 +522,9 @@ channel is turned on using the legend property. </p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.3.2", 
+						"0.4.2", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -506,18 +533,15 @@ channel is turned on using the legend property. </p>
         legend: 'lightness'
     }
 }) },
-						{"title":"Lightness - legend on"});
+						{"title":"Lightness - legend on","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">The color channel sets the color of the markers. The same dimension (Genres) is 
+		</div>
+		<p class="paragraph">The color channel sets the color of the markers. The same dimension (Genres) is 
 put on it that is on the x-axis resulting in each bar having a different color. 
-If a measure is put on the color channel, a color range will be used.</p>
-				<p class="paragraph">Note: The value on the lightness channel is removed in this step as it doesn’t 
+If a measure is put on the color channel, a color range will be used.</p><p class="paragraph">Note: The value on the lightness channel is removed in this step as it doesn’t 
 make sense to use it together with the color channel in this case.</p>
-				<div id="snippet-0.3.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.4.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">lightness</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> },
@@ -528,10 +552,9 @@ make sense to use it together with the color channel in this case.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.3.3", 
+						"0.4.3", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -541,17 +564,15 @@ make sense to use it together with the color channel in this case.</p>
         legend: 'color'
     }
 }) },
-						{"title":"Color "});
+						{"title":"Color ","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">The size channel sets the size of the markers if the geometry is circle - where 
+		</div>
+		<p class="paragraph">The size channel sets the size of the markers if the geometry is circle - where 
 size sets the radius of the circles - or line - where size determines line 
 width. It is ignored when using rectangle or area geometry. This is why we 
 change the geometry to circle in the example.</p>
-				<div id="snippet-0.3.4" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.4.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Popularity'</span>] }
@@ -561,10 +582,9 @@ change the geometry to circle in the example.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.3.4", 
+						"0.4.4", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -573,22 +593,19 @@ change the geometry to circle in the example.</p>
         geometry: 'circle'
     }
 }) },
-						{"title":"Size - change of geometry required "});
+						{"title":"Size - change of geometry required ","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.4" class="subtitle">Group/stack</h2>
-					
-				<p class="paragraph">When you add dimensions to the channels, there is a simple rule to keep in mind 
+		</div>
+		
+			<h2 id="subtitle-0.5" class="subtitle">Group/stack</h2>
+			<p class="paragraph">When you add dimensions to the channels, there is a simple rule to keep in mind 
 in the current beta phase of Vizzu. The following example also shows how to 
-group and stack elements of a bar chart.</p>
-				<p class="paragraph">When you add a dimension (Type) to a channel (x-axis) with only dimensions on 
+group and stack elements of a bar chart.</p><p class="paragraph">When you add a dimension (Type) to a channel (x-axis) with only dimensions on 
 it, Vizzu will fade between the states, as shown here. Thus, you get a grouped 
 bar chart, but the connection between the original state and this one will be 
 unclear for the viewer because of the fading.</p>
-				<div id="snippet-0.4.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.5.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Genres'</span>, <span class="hljs-string">'Types'</span>] },
@@ -598,10 +615,9 @@ unclear for the viewer because of the fading.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.4.1", 
+						"0.5.1", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -610,15 +626,13 @@ unclear for the viewer because of the fading.</p>
         }
     }
 }) },
-						{"title":"The wrong way means no animation "});
+						{"title":"The wrong way means no animation ","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Let’s get back to the original state by removing the extra dimension - Vizzu 
+		</div>
+		<p class="paragraph">Let’s get back to the original state by removing the extra dimension - Vizzu 
 will also simply fade between these states.</p>
-				<div id="snippet-0.4.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.5.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Types'</span>] },
@@ -628,10 +642,9 @@ will also simply fade between these states.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.4.2", 
+						"0.5.2", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -640,17 +653,15 @@ will also simply fade between these states.</p>
         }
     }
 }) },
-						{"title":"Let's get back to where we were "});
+						{"title":"Let's get back to where we were ","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">The right way is to add the new dimension to the same channel where the measure 
+		</div>
+		<p class="paragraph">The right way is to add the new dimension to the same channel where the measure 
 is: the y-axis. However, since doing only this would result in multiple column 
 chart elements with the same color stacked on top of each other, we also add the 
 same dimension (Type) to the color channel.</p>
-				<div id="snippet-0.4.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.5.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">attach</span>: [<span class="hljs-string">'Types'</span>] },
@@ -660,10 +671,9 @@ same dimension (Type) to the color channel.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.4.3", 
+						"0.5.3", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -672,16 +682,14 @@ same dimension (Type) to the color channel.</p>
         }
     }
 }) },
-						{"title":"The right way: add to the same channel where the measure is "});
+						{"title":"The right way: add to the same channel where the measure is ","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">By detaching this newly added dimension from the y-axis and attaching it to the 
+		</div>
+		<p class="paragraph">By detaching this newly added dimension from the y-axis and attaching it to the 
 x-axis, you get to the same grouped bar chart as in the first step but in a way 
 that is easy to follow for the viewer.</p>
-				<div id="snippet-0.4.4" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.5.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Types'</span>] },
@@ -691,10 +699,9 @@ that is easy to follow for the viewer.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.4.4", 
+						"0.5.4", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -703,15 +710,13 @@ that is easy to follow for the viewer.</p>
         }
     }
 }) },
-						{"title":"...then you can add it to another channel = group elements..."});
+						{"title":"...then you can add it to another channel = group elements...","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">To stack a grouped chart, you just have to do the same thing the other way 
+		</div>
+		<p class="paragraph">To stack a grouped chart, you just have to do the same thing the other way 
 around: detach the dimension from the x-axis and attach it to the y-axis.</p>
-				<div id="snippet-0.4.5" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.5.5" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Types'</span>] },
@@ -721,10 +726,9 @@ around: detach the dimension from the x-axis and attach it to the y-axis.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.4.5", 
+						"0.5.5", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -733,68 +737,59 @@ around: detach the dimension from the x-axis and attach it to the y-axis.</p>
         }
     }
 }) },
-						{"title":"...doing it the other way is how you stack your chart "});
+						{"title":"...doing it the other way is how you stack your chart ","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.5" class="subtitle">Sorting</h2>
-					
-				<p class="paragraph">Vizzu provides multiple options to sort data. By default, the data is sorted by 
+		</div>
+		
+			<h2 id="subtitle-0.6" class="subtitle">Sorting</h2>
+			<p class="paragraph">Vizzu provides multiple options to sort data. By default, the data is sorted by 
 the order it is added to Vizzu. This is why we suggest to add temporal data such 
-as dates in chronological order - from oldest to newest.</p>
-				<p class="paragraph">You can also sort the elements by value, which will provide you with an 
+as dates in chronological order - from oldest to newest.</p><p class="paragraph">You can also sort the elements by value, which will provide you with an 
 ascending order.</p>
-				<div id="snippet-0.5.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.6.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">sort</span>: <span class="hljs-string">'byValue'</span>
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.5.1", 
+						"0.6.1", 
 						chart => { chart.animate({
     config: {
         sort: 'byValue'
     }
 }) },
-						{"title":"Switch to ascending order..."});
+						{"title":"Switch to ascending order...","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">If you want descending order instead, you have to set the reverse parameter to 
+		</div>
+		<p class="paragraph">If you want descending order instead, you have to set the reverse parameter to 
 true. When used without setting the sorting to byValue, the elements will be in 
 the opposite order than they are in the data set added to Vizzu.</p>
-				<div id="snippet-0.5.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.6.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">reverse</span>: <span class="hljs-literal">true</span>
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.5.2", 
+						"0.6.2", 
 						chart => { chart.animate({
     config: {
         reverse: true
     }
 }) },
-						{"title":"...or descending order."});
+						{"title":"...or descending order.","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">This is how to switch back to the default sorting</p>
-				<div id="snippet-0.5.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">This is how to switch back to the default sorting</p>
+		<div id="snippet-0.6.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">sort</span>: <span class="hljs-string">'none'</span>,
         <span class="hljs-attr">reverse</span>: <span class="hljs-literal">false</span>
@@ -802,25 +797,22 @@ the opposite order than they are in the data set added to Vizzu.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.5.3", 
+						"0.6.3", 
 						chart => { chart.animate({
     config: {
         sort: 'none',
         reverse: false
     }
 }) },
-						{"title":"Let's get back to where we were"});
+						{"title":"Let's get back to where we were","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">When you have more than one dimension on a channel, their order determines how 
+		</div>
+		<p class="paragraph">When you have more than one dimension on a channel, their order determines how 
 the elements are grouped. </p>
-				<div id="snippet-0.5.4" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.6.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Types'</span>] },
@@ -830,10 +822,9 @@ the elements are grouped. </p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.5.4", 
+						"0.6.4", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -842,128 +833,111 @@ the elements are grouped. </p>
         }
     }
 }) },
-						{"title":"With two discretes on one axis... "});
+						{"title":"With two discretes on one axis... ","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">When switching the order of dimensions on the x-axis Vizzu will rearrange the 
+		</div>
+		<p class="paragraph">When switching the order of dimensions on the x-axis Vizzu will rearrange the 
 elements according to this new logic.</p>
-				<div id="snippet-0.5.5" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.6.5" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Types'</span>, <span class="hljs-string">'Genres'</span>] },
-        },
-        <span class="hljs-attr">legend</span>: <span class="hljs-string">'color'</span>
+        }
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.5.5", 
+						"0.6.5", 
 						chart => { chart.animate({
     config: {
         channels: {
             x: { set: ['Types', 'Genres'] },
-        },
-        legend: 'color'
+        }
     }
 }) },
-						{"title":"...grouping is determined by their order. "});
+						{"title":"...grouping is determined by their order. ","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.6" class="subtitle">Align &amp; range</h2>
-					
-				<p class="paragraph">Vizzu offers different options to align your chart elements and to set the range 
+		</div>
+		
+			<h2 id="subtitle-0.7" class="subtitle">Align &amp; range</h2>
+			<p class="paragraph">Vizzu offers different options to align your chart elements and to set the range 
 of values shown on the axes. Alignment can be used to create charts like a 
 stream chart where the elements are vertically centered . A good example for 
 using range is when you fix the y-axis so that it would not adapt to the data 
-being shown.</p>
-				<p class="paragraph">Centered alignment. The effect of this parameter depends on the orientation of 
+being shown.</p><p class="paragraph">Centered alignment. The effect of this parameter depends on the orientation of 
 the chart. For example, on a column chart, elements will be vertically centered, 
 whereas on a bar chart, horizontally.</p>
-				<div id="snippet-0.6.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.7.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">align</span>:<span class="hljs-string">'center'</span>
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.6.1", 
+						"0.7.1", 
 						chart => { chart.animate({
     config: {
         align:'center'
     }
 }) },
-						{"title":"Align: center"});
+						{"title":"Align: center","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Stretched alignment. This way the elements will proportionally fill the entire 
+		</div>
+		<p class="paragraph">Stretched alignment. This way the elements will proportionally fill the entire 
 plot area, effectively showing proportions in stacked charts. This is why the 
 scale will also switch from values to percentages when used. </p>
-				<div id="snippet-0.6.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.7.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">align</span>:<span class="hljs-string">'stretch'</span>
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.6.2", 
+						"0.7.2", 
 						chart => { chart.animate({
     config: {
         align:'stretch'
     }
 }) },
-						{"title":"Align: stretch = % view"});
+						{"title":"Align: stretch = % view","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Getting back to the default alignment</p>
-				<div id="snippet-0.6.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">Getting back to the default alignment</p>
+		<div id="snippet-0.7.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">align</span>:<span class="hljs-string">'none'</span>
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.6.3", 
+						"0.7.3", 
 						chart => { chart.animate({
     config: {
         align:'none'
     }
 }) },
-						{"title":"Align: none - default"});
+						{"title":"Align: none - default","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">You can set the range of an axis by setting the minimum and maximum values of 
+		</div>
+		<p class="paragraph">You can set the range of an axis by setting the minimum and maximum values of 
 it. Both parameters are optional so that you can set only one of those, and you 
 either set specific values or a relative value by adding the % sign. In this 
 example, we set the range of the y-axis in a way that the max value is 150% of 
 the biggest element’s value.</p>
-				<div id="snippet-0.6.4" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.7.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">range</span>: { <span class="hljs-attr">max</span>: <span class="hljs-string">'150%'</span> } }
@@ -972,10 +946,9 @@ the biggest element’s value.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.6.4", 
+						"0.7.4", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -983,15 +956,13 @@ the biggest element’s value.</p>
         }
     }
 }) },
-						{"title":"Axis range set proportionally to shown values"});
+						{"title":"Axis range set proportionally to shown values","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">You can also set the range for an axis with a dimension on it. You can even use 
+		</div>
+		<p class="paragraph">You can also set the range for an axis with a dimension on it. You can even use 
 this feature to filter certain elements, just like in the following example.</p>
-				<div id="snippet-0.6.5" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.7.5" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">range</span>: { <span class="hljs-attr">min</span>: -<span class="hljs-number">2</span>, <span class="hljs-attr">max</span>: <span class="hljs-number">3</span> } }
@@ -1000,10 +971,9 @@ this feature to filter certain elements, just like in the following example.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.6.5", 
+						"0.7.5", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1011,22 +981,19 @@ this feature to filter certain elements, just like in the following example.</p>
         }
     }
 }) },
-						{"title":"Axis range set explicitly on an axis with discrete series"});
+						{"title":"Axis range set explicitly on an axis with discrete series","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.7" class="subtitle">Aggregate/drill-down</h2>
-					
-				<p class="paragraph">These features basically mean that you add or remove an additional dimension 
+		</div>
+		
+			<h2 id="subtitle-0.8" class="subtitle">Aggregate/drill-down</h2>
+			<p class="paragraph">These features basically mean that you add or remove an additional dimension 
 to/from an axis or another channel. As you can see below, there are some 
-important things to keep in mind when you use them.</p>
-				<p class="paragraph">Let’s stack together the elements by putting the Genres dimension from the 
+important things to keep in mind when you use them.</p><p class="paragraph">Let’s stack together the elements by putting the Genres dimension from the 
 x-axis to the y-axis. At the end of this phase, there are chart elements with 
 the same color stacked on top of each other, which is something you would want 
 to avoid. </p>
-				<div id="snippet-0.7.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.8.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">attach</span>: [<span class="hljs-string">'Genres'</span>] },
@@ -1036,10 +1003,9 @@ to avoid. </p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.7.1", 
+						"0.8.1", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1048,18 +1014,15 @@ to avoid. </p>
         }
     }
 }) },
-						{"title":"Stack"});
+						{"title":"Stack","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">By taking the Genres off of the y-axis, only one chart element remains for every 
+		</div>
+		<p class="paragraph">By taking the Genres off of the y-axis, only one chart element remains for every 
 color, and Vizzu automatically calculates and shows the aggregate value of the 
-elements. </p>
-				<p class="paragraph">Note: Instead of taking the unwanted dimension down from the chart, Genres could 
+elements. </p><p class="paragraph">Note: Instead of taking the unwanted dimension down from the chart, Genres could 
 have been added to the lightness channel to differentiate the chart elements.</p>
-				<div id="snippet-0.7.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.8.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Genres'</span>] }
@@ -1068,10 +1031,9 @@ have been added to the lightness channel to differentiate the chart elements.</p
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.7.2", 
+						"0.8.2", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1079,15 +1041,13 @@ have been added to the lightness channel to differentiate the chart elements.</p
         }
     }
 }) },
-						{"title":"Aggregate elements"});
+						{"title":"Aggregate elements","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">To drill-down, the same dimension is put back on the y-axis, which results in a 
+		</div>
+		<p class="paragraph">To drill-down, the same dimension is put back on the y-axis, which results in a 
 state that we suggest you to only use temporarily when in transition.</p>
-				<div id="snippet-0.7.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.8.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">attach</span>: [<span class="hljs-string">'Genres'</span>] }
@@ -1096,10 +1056,9 @@ state that we suggest you to only use temporarily when in transition.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.7.3", 
+						"0.8.3", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1107,14 +1066,12 @@ state that we suggest you to only use temporarily when in transition.</p>
         }
     }
 }) },
-						{"title":"Drill-down"});
+						{"title":"Drill-down","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">We group the elements by putting once again the Genres dimension on the x-axis.</p>
-				<div id="snippet-0.7.4" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">We group the elements by putting once again the Genres dimension on the x-axis.</p>
+		<div id="snippet-0.8.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Genres'</span>] },
@@ -1124,10 +1081,9 @@ state that we suggest you to only use temporarily when in transition.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.7.4", 
+						"0.8.4", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1136,21 +1092,18 @@ state that we suggest you to only use temporarily when in transition.</p>
         }
     }
 }) },
-						{"title":"Group"});
+						{"title":"Group","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.8" class="subtitle">Orientation, split &amp; polar</h2>
-					
-				<p class="paragraph">Now that you are familiar with the basic logic and operators of Vizzu,
+		</div>
+		
+			<h2 id="subtitle-0.9" class="subtitle">Orientation, split &amp; polar</h2>
+			<p class="paragraph">Now that you are familiar with the basic logic and operators of Vizzu,
 let's dive in with some more advanced features that you can use to create
-animated data stories and show the data from different perspectives.</p>
-				<p class="paragraph">Switching orientation means that you put a measure from one axis to the other to 
+animated data stories and show the data from different perspectives.</p><p class="paragraph">Switching orientation means that you put a measure from one axis to the other to 
 see the data from a different perspective. This is once again a state you should 
 only use temporarily.</p>
-				<div id="snippet-0.8.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.9.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Popularity'</span>] },
@@ -1160,10 +1113,9 @@ only use temporarily.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.8.1", 
+						"0.9.1", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1172,61 +1124,53 @@ only use temporarily.</p>
         }
     }
 }) },
-						{"title":"Switch the orienation = arrange by other axis"});
+						{"title":"Switch the orienation = arrange by other axis","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">By turning the split parameter on, you can see stacked elements side-by-side, 
+		</div>
+		<p class="paragraph">By turning the split parameter on, you can see stacked elements side-by-side, 
 which enables the comparison of the components.</p>
-				<div id="snippet-0.8.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.9.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">split</span>: <span class="hljs-literal">true</span>
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.8.2", 
+						"0.9.2", 
 						chart => { chart.animate({
     config: {
         split: true
     }
 }) },
-						{"title":"Split stacked values = show side-by-side"});
+						{"title":"Split stacked values = show side-by-side","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Merging the components by turning the split parameter off</p>
-				<div id="snippet-0.8.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">Merging the components by turning the split parameter off</p>
+		<div id="snippet-0.9.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">split</span>: <span class="hljs-literal">false</span>
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.8.3", 
+						"0.9.3", 
 						chart => { chart.animate({
     config: {
         split: false
     }
 }) },
-						{"title":"Merge"});
+						{"title":"Merge","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">We aggregate the data by removing the Genres dimension from the x-axis</p>
-				<div id="snippet-0.8.4" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">We aggregate the data by removing the Genres dimension from the x-axis</p>
+		<div id="snippet-0.9.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Genres'</span>] }
@@ -1235,10 +1179,9 @@ which enables the comparison of the components.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.8.4", 
+						"0.9.4", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1246,17 +1189,15 @@ which enables the comparison of the components.</p>
         }
     }
 }) },
-						{"title":"Aggregate"});
+						{"title":"Aggregate","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Switching from cartesian coordinates to polar. When doing so, it is worth 
+		</div>
+		<p class="paragraph">Switching from cartesian coordinates to polar. When doing so, it is worth 
 setting the axes’ ranges so that the viewers can easily compare the values being 
 shown. If you want to get back to the default, cartesian coordinates, just set 
 the coordSystem parameter to ‘cartesian’.</p>
-				<div id="snippet-0.8.5" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.9.5" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">range</span>: { <span class="hljs-attr">max</span>: <span class="hljs-string">'133%'</span> } },
@@ -1267,10 +1208,9 @@ the coordSystem parameter to ‘cartesian’.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.8.5", 
+						"0.9.5", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1280,20 +1220,17 @@ the coordSystem parameter to ‘cartesian’.</p>
         coordSystem: 'polar'
     }
 }) },
-						{"title":"Polar coordinates"});
+						{"title":"Polar coordinates","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.9" class="subtitle">Filtering</h2>
-					
-				<p class="paragraph">Filtering enables you to zoom in or out within a chart, allowing the viewer to 
-focus on certain selected elements, or add new ones to provide more context. </p>
-				<p class="paragraph">We add two items from the Genres dimension - separated by the || operator - to 
+		</div>
+		
+			<h2 id="subtitle-0.10" class="subtitle">Filtering</h2>
+			<p class="paragraph">Filtering enables you to zoom in or out within a chart, allowing the viewer to 
+focus on certain selected elements, or add new ones to provide more context. </p><p class="paragraph">We add two items from the Genres dimension - separated by the || operator - to 
 the filter, so the chart elements that belong to the other two items will vanish 
 from the chart.</p>
-				<div id="snippet-0.9.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.10.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">data</span>: {
         <span class="hljs-attr">filter</span>: <span class="hljs-function"><span class="hljs-params">record</span> =&gt;</span> 
             record[<span class="hljs-string">"Genres"</span>] == <span class="hljs-string">'Pop'</span> 
@@ -1302,10 +1239,9 @@ from the chart.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.9.1", 
+						"0.10.1", 
 						chart => { chart.animate({
     data: {
         filter: record => 
@@ -1313,18 +1249,16 @@ from the chart.</p>
             || record["Genres"] == 'Metal',
     }
 }) },
-						{"title":"Filter by one dimension"});
+						{"title":"Filter by one dimension","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Now we add a cross-filter that includes items from both the Genres and the Types 
+		</div>
+		<p class="paragraph">Now we add a cross-filter that includes items from both the Genres and the Types 
 dimensions. Check out the operators in the filter we used to achieve this 
 result. Once again, we had to add the items to the filter that we added in the 
 previous step since Vizzu will only include elements in a filter that are 
 explicitly described in that step.</p>
-				<div id="snippet-0.9.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.10.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">data</span>: {
         <span class="hljs-attr">filter</span>: <span class="hljs-function"><span class="hljs-params">record</span> =&gt;</span> 
             (record[<span class="hljs-string">"Genres"</span>] == <span class="hljs-string">'Pop'</span> || record[<span class="hljs-string">"Genres"</span>] == <span class="hljs-string">'Metal'</span>) 
@@ -1333,10 +1267,9 @@ explicitly described in that step.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.9.2", 
+						"0.10.2", 
 						chart => { chart.animate({
     data: {
         filter: record => 
@@ -1344,45 +1277,39 @@ explicitly described in that step.</p>
             && record["Types"] == 'Smooth'
     }
 }) },
-						{"title":"Filter by two dimensions"});
+						{"title":"Filter by two dimensions","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Switching the filter off to get back to the original view.</p>
-				<div id="snippet-0.9.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">Switching the filter off to get back to the original view.</p>
+		<div id="snippet-0.10.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">data</span>: {
         <span class="hljs-attr">filter</span>: <span class="hljs-literal">null</span>,
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.9.3", 
+						"0.10.3", 
 						chart => { chart.animate({
     data: {
         filter: null,
     }
 }) },
-						{"title":"Filter off "});
+						{"title":"Filter off ","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.10" class="subtitle">Without coordinates &amp; noop channel</h2>
-					
-				<p class="paragraph">Certain chart types have neither measures nor dimensions on the axes such as 
+		</div>
+		
+			<h2 id="subtitle-0.11" class="subtitle">Without coordinates &amp; noop channel</h2>
+			<p class="paragraph">Certain chart types have neither measures nor dimensions on the axes such as 
 treemaps and bubble charts. This is a case when the noop channel comes in handy 
-for grouping and stacking elements in these kinds of charts</p>
-				<p class="paragraph">To get to a treemap, we have to detach all dimensions and the measure from the 
+for grouping and stacking elements in these kinds of charts</p><p class="paragraph">To get to a treemap, we have to detach all dimensions and the measure from the 
 axes and put two of them on the size channel, whereas the other dimension is 
 still on the color channel. Since the same dimensions are used in both cases 
 Vizzu will be able to animate between these states.</p>
-				<div id="snippet-0.10.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.11.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> },
@@ -1393,10 +1320,9 @@ Vizzu will be able to animate between these states.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.10.1", 
+						"0.11.1", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1406,42 +1332,37 @@ Vizzu will be able to animate between these states.</p>
         }
     }
 }) },
-						{"title":"Treemap"});
+						{"title":"Treemap","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Getting from a treemap to a bubble chart is simply by changing the geometry to 
+		</div>
+		<p class="paragraph">Getting from a treemap to a bubble chart is simply by changing the geometry to 
 circle. This bubble chart is stacked by the Type dimension that is on the size 
 channel - this is why the bubbles are in separate, small groups.</p>
-				<div id="snippet-0.10.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.11.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'circle'</span>
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.10.2", 
+						"0.11.2", 
 						chart => { chart.animate({
     config: {
         geometry: 'circle'
     }
 }) },
-						{"title":"Bubble chart - stacked"});
+						{"title":"Bubble chart - stacked","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">In order to show all bubbles as one group, we use the noop (no operations) 
+		</div>
+		<p class="paragraph">In order to show all bubbles as one group, we use the noop (no operations) 
 channel where we put the Type dimension from the size channel. The noop channel 
 enables that even though we have a dimension on the chart, that dimension 
 doesn’t change any parameter of the chart elements.</p>
-				<div id="snippet-0.10.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.11.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">size</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Genres'</span>] },
@@ -1451,10 +1372,9 @@ doesn’t change any parameter of the chart elements.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.10.3", 
+						"0.11.3", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1463,20 +1383,17 @@ doesn’t change any parameter of the chart elements.</p>
         }
     }
 }) },
-						{"title":"Bubble chart - grouped - using the noop channel"});
+						{"title":"Bubble chart - grouped - using the noop channel","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.11" class="subtitle">Color palette &amp; fonts</h2>
-					
-				<p class="paragraph">This and the next chapter provide a quick intro to the styling of the charts using the style object. 
+		</div>
+		
+			<h2 id="subtitle-0.12" class="subtitle">Color palette &amp; fonts</h2>
+			<p class="paragraph">This and the next chapter provide a quick intro to the styling of the charts using the style object. 
 The style settings are similar to CSS. The font sizes automatically adjust to the chart size to help 
-readability, but they can also be set separately or for specific groups.</p>
-				<p class="paragraph">The color palette is changed to the colors we add here. The order of the dimension’s 
+readability, but they can also be set separately or for specific groups.</p><p class="paragraph">The color palette is changed to the colors we add here. The order of the dimension’s 
 items in the data set determine which color &gt; belongs to which item as the colors are added one-by-one. </p>
-				<div id="snippet-0.11.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.12.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">plot</span>: {
             <span class="hljs-attr">marker</span>: {
@@ -1487,10 +1404,9 @@ items in the data set determine which color &gt; belongs to which item as the co
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.11.1", 
+						"0.12.1", 
 						chart => { chart.animate({
     style: {
         plot: {
@@ -1500,14 +1416,12 @@ items in the data set determine which color &gt; belongs to which item as the co
         }
     }
 }) },
-						{"title":"Color palette"});
+						{"title":"Color palette","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Changing the title font size will only affect the title; all other font sizes remain the same.</p>
-				<div id="snippet-0.11.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">Changing the title font size will only affect the title; all other font sizes remain the same.</p>
+		<div id="snippet-0.12.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">title</span>: {
             <span class="hljs-attr">fontSize</span>: <span class="hljs-number">50</span>
@@ -1516,10 +1430,9 @@ items in the data set determine which color &gt; belongs to which item as the co
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.11.2", 
+						"0.12.2", 
 						chart => { chart.animate({
     style: {
         title: {
@@ -1527,14 +1440,12 @@ items in the data set determine which color &gt; belongs to which item as the co
         }
     }
 }) },
-						{"title":"Title font size"});
+						{"title":"Title font size","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">This is how to set the font size back to its default value</p>
-				<div id="snippet-0.11.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">This is how to set the font size back to its default value</p>
+		<div id="snippet-0.12.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">title</span>: {
             <span class="hljs-attr">fontSize</span>: <span class="hljs-literal">null</span>
@@ -1543,10 +1454,9 @@ items in the data set determine which color &gt; belongs to which item as the co
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.11.3", 
+						"0.12.3", 
 						chart => { chart.animate({
     style: {
         title: {
@@ -1554,68 +1464,59 @@ items in the data set determine which color &gt; belongs to which item as the co
         }
     }
 }) },
-						{"title":"Title font size - back to default"});
+						{"title":"Title font size - back to default","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">In case you change the font size of the whole chart with the top-level fontSize 
+		</div>
+		<p class="paragraph">In case you change the font size of the whole chart with the top-level fontSize 
 parameter then every font on the chart will grow/&gt; shrink proportionally. 
 The size refers to the font size of the axis labels by default.</p>
-				<div id="snippet-0.11.4" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.12.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">fontSize</span>: <span class="hljs-number">20</span>
     }
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.11.4", 
+						"0.12.4", 
 						chart => { chart.animate({
     style: {
         fontSize: 20
     }
 }) },
-						{"title":"Setting all font sizes in one step"});
+						{"title":"Setting all font sizes in one step","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">You can reset styles to default on any levels by setting them to null. </p>
-				<div id="snippet-0.11.5" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">You can reset styles to default on any levels by setting them to null. </p>
+		<div id="snippet-0.12.5" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: <span class="hljs-literal">null</span>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.11.5", 
+						"0.12.5", 
 						chart => { chart.animate({
     style: null
 }) },
-						{"title":"Setting all style settings back to default"});
+						{"title":"Setting all style settings back to default","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.12" class="subtitle">Chart layout</h2>
-					
-				<p class="paragraph">Vizzu has three separate parts of the chart layout: the plot area that contains 
+		</div>
+		
+			<h2 id="subtitle-0.13" class="subtitle">Chart layout</h2>
+			<p class="paragraph">Vizzu has three separate parts of the chart layout: the plot area that contains 
 the chart, the title containing the chart title on the top, and the legend on 
 the left. Vizzu automatically hides the legend when it’s unnecessary to show it. 
 When the title is not in use, Vizzu hides that part automatically as well. Each 
 of these parts have their own paddings on all four sides that adjusts to the 
 chart size by default, but can also be set with the appropriate settings in the 
-style object. All size parameters can be set in pixel, percentage and em.</p>
-				<p class="paragraph">We add different background colors to the parts of the layout to show how they 
+style object. All size parameters can be set in pixel, percentage and em.</p><p class="paragraph">We add different background colors to the parts of the layout to show how they 
 are aligned.</p>
-				<div id="snippet-0.12.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.13.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">title</span>: { <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">'#A0A0A0'</span> },
         <span class="hljs-attr">plot</span>: { <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">'#C0C0C0'</span> },
@@ -1624,10 +1525,9 @@ are aligned.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.12.1", 
+						"0.13.1", 
 						chart => { chart.animate({
     style: {
         title: { backgroundColor: '#A0A0A0' },
@@ -1635,14 +1535,12 @@ are aligned.</p>
         legend: { backgroundColor: '#808080' },
     }
 }) },
-						{"title":"Plot, title and legend background"});
+						{"title":"Plot, title and legend background","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Setting the width of the legend.</p>
-				<div id="snippet-0.12.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">Setting the width of the legend.</p>
+		<div id="snippet-0.13.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">legend</span>: {
             <span class="hljs-attr">width</span>: <span class="hljs-number">50</span>
@@ -1651,10 +1549,9 @@ are aligned.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.12.2", 
+						"0.13.2", 
 						chart => { chart.animate({
     style: {
         legend: {
@@ -1662,14 +1559,12 @@ are aligned.</p>
         }
     }
 }) },
-						{"title":"Legend width"});
+						{"title":"Legend width","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Setting the legend width back to its default value.</p>
-				<div id="snippet-0.12.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">Setting the legend width back to its default value.</p>
+		<div id="snippet-0.13.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">legend</span>: {
             <span class="hljs-attr">width</span>: <span class="hljs-literal">null</span>
@@ -1678,10 +1573,9 @@ are aligned.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.12.3", 
+						"0.13.3", 
 						chart => { chart.animate({
     style: {
         legend: {
@@ -1689,16 +1583,14 @@ are aligned.</p>
         }
     }
 }) },
-						{"title":"Legend width "});
+						{"title":"Legend width ","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Changing the title paddings. By default, the title is horizontally centered 
+		</div>
+		<p class="paragraph">Changing the title paddings. By default, the title is horizontally centered 
 above the plot area - separated from the legend. In this example, we set the 
 title’s left padding, resulting in the text moving to the right.</p>
-				<div id="snippet-0.12.4" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.13.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">title</span>: {
             <span class="hljs-attr">paddingTop</span>: <span class="hljs-number">20</span>,
@@ -1709,10 +1601,9 @@ title’s left padding, resulting in the text moving to the right.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.12.4", 
+						"0.13.4", 
 						chart => { chart.animate({
     style: {
         title: {
@@ -1722,14 +1613,12 @@ title’s left padding, resulting in the text moving to the right.</p>
         }
     }
 }) },
-						{"title":"Title padding"});
+						{"title":"Title padding","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Setting the title paddings back to their default values.</p>
-				<div id="snippet-0.12.5" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">Setting the title paddings back to their default values.</p>
+		<div id="snippet-0.13.5" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">title</span>: {
             <span class="hljs-attr">paddingTop</span>: <span class="hljs-literal">null</span>,
@@ -1740,10 +1629,9 @@ title’s left padding, resulting in the text moving to the right.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.12.5", 
+						"0.13.5", 
 						chart => { chart.animate({
     style: {
         title: {
@@ -1753,15 +1641,13 @@ title’s left padding, resulting in the text moving to the right.</p>
         }
     }
 }) },
-						{"title":"Title padding"});
+						{"title":"Title padding","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Changing the paddings of the plot area to position the plot. The texts on the 
+		</div>
+		<p class="paragraph">Changing the paddings of the plot area to position the plot. The texts on the 
 axes are drawn on the padding of the plot and not the plot itself.</p>
-				<div id="snippet-0.12.6" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.13.6" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">plot</span>: {
             <span class="hljs-attr">paddingLeft</span>: <span class="hljs-number">100</span>,
@@ -1771,10 +1657,9 @@ axes are drawn on the padding of the plot and not the plot itself.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.12.6", 
+						"0.13.6", 
 						chart => { chart.animate({
     style: {
         plot: {
@@ -1783,14 +1668,12 @@ axes are drawn on the padding of the plot and not the plot itself.</p>
         }
     }
 }) },
-						{"title":"Plot padding"});
+						{"title":"Plot padding","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Setting the plot paddings back to their default values.</p>
-				<div id="snippet-0.12.7" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">Setting the plot paddings back to their default values.</p>
+		<div id="snippet-0.13.7" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">plot</span>: {
             <span class="hljs-attr">paddingLeft</span>: <span class="hljs-literal">null</span>,
@@ -1800,10 +1683,9 @@ axes are drawn on the padding of the plot and not the plot itself.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.12.7", 
+						"0.13.7", 
 						chart => { chart.animate({
     style: {
         plot: {
@@ -1812,21 +1694,18 @@ axes are drawn on the padding of the plot and not the plot itself.</p>
         }
     }
 }) },
-						{"title":"Plot padding"});
+						{"title":"Plot padding","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.13" class="subtitle">Animation settings</h2>
-					
-				<p class="paragraph">In Vizzu you can set the timing and duration of the animation. You can do this 
+		</div>
+		
+			<h2 id="subtitle-0.14" class="subtitle">Animation settings</h2>
+			<p class="paragraph">In Vizzu you can set the timing and duration of the animation. You can do this 
 either for the whole animation, or for animation groups such as the elements 
 moving along the x-axis or the y-axis, appearing or disappearing or when the 
-coordinate system is changed.</p>
-				<p class="paragraph">Let’s see first a simple example when a stacked column chart is grouped using 
+coordinate system is changed.</p><p class="paragraph">Let’s see first a simple example when a stacked column chart is grouped using 
 the default animation settings.</p>
-				<div id="snippet-0.13.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.14.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Types'</span>] },
@@ -1836,10 +1715,9 @@ the default animation settings.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.13.1", 
+						"0.14.1", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1848,14 +1726,12 @@ the default animation settings.</p>
         }
     }
 }) },
-						{"title":"Default settings - step 1"});
+						{"title":"Default settings - step 1","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">We stack the columns, still with the default settings.</p>
-				<div id="snippet-0.13.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">We stack the columns, still with the default settings.</p>
+		<div id="snippet-0.14.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Types'</span>] },
@@ -1865,10 +1741,9 @@ the default animation settings.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.13.2", 
+						"0.14.2", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1877,16 +1752,14 @@ the default animation settings.</p>
         }
     }
 }) },
-						{"title":"Default settings - step 2"});
+						{"title":"Default settings - step 2","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Now we change the animation settings, for the elements moving along the y-axis 
+		</div>
+		<p class="paragraph">Now we change the animation settings, for the elements moving along the y-axis 
 and also the change in styles, more specifically when the labels on the markers 
 move from the center of the chart elements to the top of them.</p>
-				<div id="snippet-0.13.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.14.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Types'</span>] },
@@ -1906,10 +1779,9 @@ move from the center of the chart elements to the top of them.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.13.3", 
+						"0.14.3", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1928,14 +1800,12 @@ move from the center of the chart elements to the top of them.</p>
         delay: 4 
     }
 }) },
-						{"title":"Custom animation settings for specific groups"});
+						{"title":"Custom animation settings for specific groups","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">This is an example of changing the settings for the whole animation at once.</p>
-				<div id="snippet-0.13.4" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">This is an example of changing the settings for the whole animation at once.</p>
+		<div id="snippet-0.14.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Types'</span>] },
@@ -1949,10 +1819,9 @@ move from the center of the chart elements to the top of them.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.13.4", 
+						"0.14.4", 
 						chart => { chart.animate({
     config: {
         channels: {
@@ -1965,17 +1834,15 @@ move from the center of the chart elements to the top of them.</p>
     duration: 1, 
     easing: 'linear'
 }) },
-						{"title":"Custom settings for the whole animation"});
+						{"title":"Custom settings for the whole animation","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">When the two settings are combined, Vizzu will use the general animation 
+		</div>
+		<p class="paragraph">When the two settings are combined, Vizzu will use the general animation 
 settings and spread the unique settings for specific groups proportionally. 
 This is why you can see the same animation as two steps before but happening 
 much quicker since the duration of the whole animation is set to 1 second. </p>
-				<div id="snippet-0.13.5" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>(
+		<div id="snippet-0.14.5" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>(
 {
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
@@ -1998,10 +1865,9 @@ much quicker since the duration of the whole animation is set to 1 second. </p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.13.5", 
+						"0.14.5", 
 						chart => { chart.animate(
 {
     config: {
@@ -2023,15 +1889,13 @@ much quicker since the duration of the whole animation is set to 1 second. </p>
         delay: 4 
     }
 }) },
-						{"title":"Custom settings for both"});
+						{"title":"Custom settings for both","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">In case you only want to change the duration of the animation, you can use 
+		</div>
+		<p class="paragraph">In case you only want to change the duration of the animation, you can use 
 the following, simplified format to do that. </p>
-				<div id="snippet-0.13.6" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>(
+		<div id="snippet-0.14.6" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>(
 {
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
@@ -2042,10 +1906,9 @@ the following, simplified format to do that. </p>
 }, <span class="hljs-string">'500ms'</span>)
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.13.6", 
+						"0.14.6", 
 						chart => { chart.animate(
 {
     config: {
@@ -2055,19 +1918,16 @@ the following, simplified format to do that. </p>
         }
     }
 }, '500ms') },
-						{"title":"Shorthand for duration"});
+						{"title":"Shorthand for duration","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.14" class="subtitle">Animation control</h2>
-					
-				<p class="paragraph">With these options, you can play, pause, stop, seek or reverse the animations.</p>
-				<p class="paragraph">In this step, we set an event that pauses the animation when it reaches 75% of 
+		</div>
+		
+			<h2 id="subtitle-0.15" class="subtitle">Animation control</h2>
+			<p class="paragraph">With these options, you can play, pause, stop, seek or reverse the animations.</p><p class="paragraph">In this step, we set an event that pauses the animation when it reaches 75% of 
 progress and seeks back to 25% of progress, then restarts the animation from 
 there.</p>
-				<div id="snippet-0.14.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">onUpdate</span>(<span class="hljs-params">event</span>) {
+		<div id="snippet-0.15.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">onUpdate</span>(<span class="hljs-params">event</span>) {
     <span class="hljs-keyword">if</span> (event.<span class="hljs-property">data</span>.<span class="hljs-property">progress</span> &gt; <span class="hljs-number">0.75</span>) {
         chart.<span class="hljs-property">animation</span>.<span class="hljs-title function_">pause</span>();
         chart.<span class="hljs-title function_">off</span>(<span class="hljs-string">'update'</span>, onUpdate);
@@ -2090,10 +1950,9 @@ chart.<span class="hljs-title function_">animate</span>({
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.14.1", 
+						"0.15.1", 
 						chart => { function onUpdate(event) {
     if (event.data.progress > 0.75) {
         chart.animation.pause();
@@ -2115,172 +1974,166 @@ chart.animate({
         }
     }
 }) },
-						{"title":"Jumping from 75% to 25% progress during the animation"});
+						{"title":"Jumping from 75% to 25% progress during the animation","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.15" class="subtitle">Events</h2>
-					
-				<p class="paragraph">You can register handlers for various events.
+		</div>
+		
+			<h2 id="subtitle-0.16" class="subtitle">Events</h2>
+			<p class="paragraph">You can register handlers for various events.
 There are mouse events (click, mouseon), animation events (begin, update, complete),
 and rendering events that are called before rendering the chart elements.
-Handlers can be registered/unregistered with the on(), off() method pair.</p>
-				<p class="paragraph">We are registering a handler for the click event which will 
+Handlers can be registered/unregistered with the on(), off() method pair.</p><p class="paragraph">We are registering a handler for the click event which will 
 show an alert block with information about the clicked marker.</p>
-				<div id="snippet-0.15.1" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">clickHandler = <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> { <span class="hljs-title function_">alert</span>(<span class="hljs-variable constant_">JSON</span>.<span class="hljs-title function_">stringify</span>(event.<span class="hljs-property">data</span>)); };
-
-chart.<span class="hljs-title function_">on</span>(<span class="hljs-string">'click'</span>, clickHandler);
+		<div class="snippet">
+			<pre><code class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">clickHandler</span>(<span class="hljs-params">event</span>) 
+{
+    <span class="hljs-title function_">alert</span>(<span class="hljs-variable constant_">JSON</span>.<span class="hljs-title function_">stringify</span>(event.<span class="hljs-property">data</span>)); 
+}
 </code></pre>
 
-					
-				<script>
-					registry.addSnippet(
-						"0.15.1", 
-						chart => { clickHandler = event => { alert(JSON.stringify(event.data)); };
+			<script>function clickHandler(event) 
+{
+    alert(JSON.stringify(event.data)); 
+}</script>
+		</div>
+		
+		<div id="snippet-0.16.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">on</span>(<span class="hljs-string">'click'</span>, clickHandler);
+</code></pre>
 
-chart.on('click', clickHandler); },
-						{"title":"Click event added to markers"});
+			<script>
+					registry.addSnippet(
+						"0.16.1", 
+						chart => { chart.on('click', clickHandler); },
+						{"title":"Click event added to markers","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Unregistering the previously registered handler.</p>
-				<div id="snippet-0.15.2" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">off</span>(<span class="hljs-string">'click'</span>, clickHandler);
+		</div>
+		<p class="paragraph">Unregistering the previously registered handler.</p>
+		<div id="snippet-0.16.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">off</span>(<span class="hljs-string">'click'</span>, clickHandler);
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.15.2", 
+						"0.16.2", 
 						chart => { chart.off('click', clickHandler); },
-						{"title":"Click event handler removed"});
+						{"title":"Click event handler removed","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Here we override the axis label color for 'Jazz' to red and all others to gray.</p>
-				<div id="snippet-0.15.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">labelDrawHandler = <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> {
+		</div>
+		<p class="paragraph">Here we override the axis label color for 'Jazz' to red and all others to gray.</p>
+		<div class="snippet">
+			<pre><code class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">labelDrawHandler</span>(<span class="hljs-params">event</span>) 
+{
     event.<span class="hljs-property">renderingContext</span>.<span class="hljs-property">fillStyle</span> = 
         (event.<span class="hljs-property">data</span>.<span class="hljs-property">text</span> === <span class="hljs-string">'Jazz'</span>) ? <span class="hljs-string">'red'</span> : <span class="hljs-string">'gray'</span>;
-};
-
-chart.<span class="hljs-title function_">on</span>(<span class="hljs-string">'plot-axis-label-draw'</span>, labelDrawHandler);
+}
 </code></pre>
 
-					
-				<script>
-					registry.addSnippet(
-						"0.15.3", 
-						chart => { labelDrawHandler = event => {
+			<script>function labelDrawHandler(event) 
+{
     event.renderingContext.fillStyle = 
         (event.data.text === 'Jazz') ? 'red' : 'gray';
-};
-
-chart.on('plot-axis-label-draw', labelDrawHandler); },
-						{"title":"Changing the canvas context before label draw"});
-				</script>
-					
-				</div>
-				
-				<p class="paragraph">Unregistering the previously registered handler.</p>
-				<div id="snippet-0.15.4" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">off</span>(<span class="hljs-string">'plot-axis-label-draw'</span>, labelDrawHandler);
+}</script>
+		</div>
+		
+		<div id="snippet-0.16.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">on</span>(<span class="hljs-string">'plot-axis-label-draw'</span>, labelDrawHandler);
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.15.4", 
+						"0.16.3", 
+						chart => { chart.on('plot-axis-label-draw', labelDrawHandler); },
+						{"title":"Changing the canvas context before label draw","run":true,"pure":false});
+				</script>
+		</div>
+		<p class="paragraph">Unregistering the previously registered handler.</p>
+		<div id="snippet-0.16.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">off</span>(<span class="hljs-string">'plot-axis-label-draw'</span>, labelDrawHandler);
+</code></pre>
+
+			<script>
+					registry.addSnippet(
+						"0.16.4", 
 						chart => { chart.off('plot-axis-label-draw', labelDrawHandler); },
-						{"title":"Restore default behavior"});
+						{"title":"Restore default behavior","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">The default behaviour of all events can be blocked by calling the event's
+		</div>
+		<p class="paragraph">The default behaviour of all events can be blocked by calling the event's
 preventDefault() method. For example we block the drawing of the Vizzu Logo.</p>
-				<div id="snippet-0.15.5" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">logoDrawHandler = <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> { event.<span class="hljs-title function_">preventDefault</span>() };
-
-chart.<span class="hljs-title function_">on</span>(<span class="hljs-string">'logo-draw'</span>, logoDrawHandler);
+		<div class="snippet">
+			<pre><code class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">logoDrawHandler</span>(<span class="hljs-params">event</span>) 
+{
+    event.<span class="hljs-title function_">preventDefault</span>();
+}
 </code></pre>
 
-					
-				<script>
-					registry.addSnippet(
-						"0.15.5", 
-						chart => { logoDrawHandler = event => { event.preventDefault() };
+			<script>function logoDrawHandler(event) 
+{
+    event.preventDefault();
+}</script>
+		</div>
+		
+		<div id="snippet-0.16.5" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">on</span>(<span class="hljs-string">'logo-draw'</span>, logoDrawHandler);
+</code></pre>
 
-chart.on('logo-draw', logoDrawHandler); },
-						{"title":"Prevent default behavior"});
+			<script>
+					registry.addSnippet(
+						"0.16.5", 
+						chart => { chart.on('logo-draw', logoDrawHandler); },
+						{"title":"Prevent default behavior","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Unregistering the previously registered handler.</p>
-				<div id="snippet-0.15.6" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">off</span>(<span class="hljs-string">'logo-draw'</span>, logoDrawHandler);
+		</div>
+		<p class="paragraph">Unregistering the previously registered handler.</p>
+		<div id="snippet-0.16.6" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">off</span>(<span class="hljs-string">'logo-draw'</span>, logoDrawHandler);
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.15.6", 
+						"0.16.6", 
 						chart => { chart.off('logo-draw', logoDrawHandler); },
-						{"title":"Restore default behavior"});
+						{"title":"Restore default behavior","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-					<h2 id="subtitle-0.16" class="subtitle">Shorthands &amp; Store</h2>
-					
-				<p class="paragraph">To assist you with the development we added various shorthands that will make 
+		</div>
+		
+			<h2 id="subtitle-0.17" class="subtitle">Shorthands &amp; Store</h2>
+			<p class="paragraph">To assist you with the development we added various shorthands that will make 
 your code more compact. And we also added the store function, which enables you
 to save a chart state into a variable that you can later call without setting up 
-that state once again.</p>
-				<p class="paragraph">You can save the current state by calling the store function. </p>
-				<div id="snippet-0.16.1" class="snippet">
-					<pre><code class="language-javascript"><span class="hljs-keyword">let</span> snapshot = chart.<span class="hljs-title function_">store</span>();
-</code></pre>
-
-					
-				</div>
-				
-				<p class="paragraph">Then can get back to the state that you previously stored any time.</p>
-				<div id="snippet-0.16.2" class="snippet">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>(snapshot)
-</code></pre>
-
-					
-				</div>
-				
-				<p class="paragraph">If you don't use the data and style properties in the first parameter of the 
+that state once again.</p><p class="paragraph">If you don't use the data and style properties in the first parameter of the 
 animate method, you can use the function without expressing the config property.</p>
-				<div id="snippet-0.16.3" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.17.1" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">align</span>:<span class="hljs-string">'stretch'</span>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.16.3", 
+						"0.17.1", 
 						chart => { chart.animate({
     align:'stretch'
 }) },
-						{"title":"When only the config property is used"});
+						{"title":"When only the config property is used","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">If you set/attach/detach just one series on a channel, you don't have to put that into an array.</p>
-				<div id="snippet-0.16.4" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">Let's save this state by calling the store function. </p>
+		<div id="snippet-0.17.2" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">snapshot = chart.<span class="hljs-title function_">store</span>();
+</code></pre>
+
+			<script>
+					registry.addSnippet(
+						"0.17.2", 
+						chart => { snapshot = chart.store(); },
+						{"title":"Store function","run":true,"pure":false});
+				</script>
+		</div>
+		<p class="paragraph">If you set/attach/detach just one series on a channel, you don't have to put that into an array.</p>
+		<div id="snippet-0.17.3" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">channels</span>: {
         <span class="hljs-attr">x</span>: { <span class="hljs-attr">attach</span>: <span class="hljs-string">'Types'</span> },
         <span class="hljs-attr">y</span>: { <span class="hljs-attr">detach</span>: <span class="hljs-string">'Types'</span> }
@@ -2289,10 +2142,9 @@ animate method, you can use the function without expressing the config property.
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.16.4", 
+						"0.17.3", 
 						chart => { chart.animate({
     channels: {
         x: { attach: 'Types' },
@@ -2300,16 +2152,14 @@ animate method, you can use the function without expressing the config property.
     },
     align: 'none'
 }) },
-						{"title":"When just one series is used"});
+						{"title":"When just one series is used","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">If you use set on a channel and no other options like range, you don't have to 
+		</div>
+		<p class="paragraph">If you use set on a channel and no other options like range, you don't have to 
 use the channel object. If you only set one series on the channel you don't 
 even have to put that into an object.</p>
-				<div id="snippet-0.16.5" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		<div id="snippet-0.17.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">channels</span>: {
         <span class="hljs-attr">y</span>: [ <span class="hljs-string">'Types'</span>, <span class="hljs-string">'Popularity'</span> ],
         <span class="hljs-attr">x</span>: <span class="hljs-string">'Genres'</span>
@@ -2317,24 +2167,21 @@ even have to put that into an object.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.16.5", 
+						"0.17.4", 
 						chart => { chart.animate({
     channels: {
         y: [ 'Types', 'Popularity' ],
         x: 'Genres'
     }
 }) },
-						{"title":"When you use set and no other channel options"});
+						{"title":"When you use set and no other channel options","run":true,"pure":false});
 				</script>
-					
-				</div>
-				
-				<p class="paragraph">Instead of creating nested objects, you can set the styles like this.</p>
-				<div id="snippet-0.16.6" class="snippet runable" tabindex="0">
-					<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+		</div>
+		<p class="paragraph">Instead of creating nested objects, you can set the styles like this.</p>
+		<div id="snippet-0.17.5" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: { 
         <span class="hljs-string">'plot.xAxis.label.fontSize'</span>: <span class="hljs-string">'150%'</span>,
         <span class="hljs-string">'title.backgroundColor'</span>: <span class="hljs-string">'#A0A0A0'</span>  
@@ -2342,21 +2189,31 @@ even have to put that into an object.</p>
 })
 </code></pre>
 
-					
-				<script>
+			<script>
 					registry.addSnippet(
-						"0.16.6", 
+						"0.17.5", 
 						chart => { chart.animate({
     style: { 
         'plot.xAxis.label.fontSize': '150%',
         'title.backgroundColor': '#A0A0A0'  
     }
 }) },
-						{"title":"Shorthand for styles"});
+						{"title":"Shorthand for styles","run":true,"pure":false});
 				</script>
-					
-				</div>
-				</div>
+		</div>
+		<p class="paragraph">This is how you can get back to a state that you previously stored.</p>
+		<div id="snippet-0.17.6" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>(snapshot)
+</code></pre>
+
+			<script>
+					registry.addSnippet(
+						"0.17.6", 
+						chart => { chart.animate(snapshot) },
+						{"title":"Restoring a previously stored state","run":true,"pure":false});
+				</script>
+		</div>
+		</div>
 		</div>
 	</div>
 	<script type="module">
