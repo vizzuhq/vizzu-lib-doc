@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for ">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<script async src="assets/js/search.js" id="search-script"></script>
@@ -22,8 +22,6 @@
 					<ul class="results">
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
-					</ul>
-					<ul class="results-priority" style="display:none">
 					</ul>
 					<a href="index.html" class="title"></a>
 				</div>
@@ -43,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -54,36 +50,13 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<ul class="tsd-breadcrumb">
-			</ul>
+			<h1></h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
-		<div class="col-3 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Exports</a>
-					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="modules/Anim.html">Anim</a>
-					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="modules/Config.html">Config</a>
-					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="modules/Data.html">Data</a>
-					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="modules/Styles.html">Styles</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-		<div class="col-7 offset-3 col-content">
-			<h1>Project</h1>
+		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<p align="center">
 					<a href="https://github.com/vizzuhq/vizzu-lib">
@@ -91,9 +64,8 @@
 					</a>
 					<p align="center">Library for animated data visualizations and data stories.</p>
 					<p align="center">
-						Tutorial
-						· How-tos
-						· <a href="https://vizzuhq.github.io/vizzu-lib-doc/0.3.0/reference/">Reference</a>
+						<a href="https://lib.vizzuhq.com/0.3.0/">Tutorial, Examples, Reference</a>
+						· <a href="https://github.com/vizzuhq/vizzu-lib">Repository</a>
 					</p>
 				</p>
 				<a href="#about-the-project" id="about-the-project" style="color: inherit; text-decoration: none;">
@@ -113,6 +85,17 @@
 					<li>Written in C++ compiled to WebAssembly;</li>
 					<li>Dependency-free.</li>
 				</ul>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h1>Installation</h1>
+				</a>
+				<p>Install via <a href="https://www.npmjs.com/package/vizzu">npm</a>:</p>
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> </span><span style="color: #001080">vizzu</span>
+</code></pre>
+				<p>Or use it from CDN:</p>
+				<pre><code class="language-html"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">type</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;module&quot;</span><span style="color: #800000">&gt;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000FF"> </span><span style="color: #001080">Vizzu</span><span style="color: #000000FF"> </span><span style="color: #AF00DB">from</span><span style="color: #000000FF"> </span><span style="color: #A31515">&#039;https://cdn.jsdelivr.net/npm/vizzu@0.3.0/vizzu.js&#039;</span><span style="color: #000000FF">;</span>
+<span style="color: #800000">&lt;/script&gt;</span>
+</code></pre>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h1>Usage</h1>
 				</a>
@@ -130,80 +113,68 @@
 <span style="color: #000000">  ]</span>
 <span style="color: #000000">};</span>
 
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">chart</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Vizzu</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;myVizzu&quot;</span><span style="color: #000000">);</span>
-
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">chart</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Vizzu</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;myVizzu&#039;</span><span style="color: #000000">, { </span><span style="color: #001080">data</span><span style="color: #000000"> });</span>
 </code></pre>
-				<img src="https://vizzuhq.github.io/vizzu-lib-doc/readme/example.gif" alt="Example" align="right" />
 				<pre><code class="language-javascript"><span style="color: #001080">chart</span><span style="color: #000000">.</span><span style="color: #795E26">animate</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">data</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">config:</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #001080">channels:</span><span style="color: #000000"> {</span>
-<span style="color: #000000">      </span><span style="color: #001080">x:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Foo&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">      </span><span style="color: #001080">y:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Bar&#039;</span>
-<span style="color: #000000">    }</span>
-<span style="color: #000000">  }</span>
+<span style="color: #000000">  </span><span style="color: #001080">x:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Foo&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">y:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Bar&#039;</span>
 <span style="color: #000000">});</span>
 </code></pre>
 				<p>Then turn it into a scatter plot:</p>
 				<pre><code class="language-javascript"><span style="color: #001080">chart</span><span style="color: #000000">.</span><span style="color: #795E26">animate</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">channels:</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #001080">color:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Foo&#039;</span><span style="color: #000000">, </span>
-<span style="color: #000000">    </span><span style="color: #001080">x:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Baz&#039;</span>
-<span style="color: #000000">  },</span>
-<span style="color: #000000">  </span><span style="color: #001080">geometry:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;circle&#039;</span>
+<span style="color: #000000">  </span><span style="color: #001080">color:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Foo&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">x:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Baz&#039;</span><span style="color: #000000">, </span>
+<span style="color: #000000">  </span><span style="color: #001080">geometry:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;circle&#039;</span><span style="color: #000000"> </span>
 <span style="color: #000000">});</span>
 </code></pre>
-				<p><a href="https://jsfiddle.net/VizzuHQ/dk7b86vc/9/">Try it!</a></p>
-				<a href="#releases" id="releases" style="color: inherit; text-decoration: none;">
-					<h1>Releases</h1>
+				<p><a href="https://jsfiddle.net/VizzuHQ/dk7b86vc/19/">Try it!</a></p>
+				<p><img src="https://vizzuhq.github.io/vizzu-lib-doc/readme/example.gif" alt="Example chart"></p>
+				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
+					<h1>Contributing</h1>
 				</a>
-				<a href="#nightly-builds" id="nightly-builds" style="color: inherit; text-decoration: none;">
-					<h2>Nightly builds</h2>
-				</a>
-				<p>URL of the build from the HEAD commit of the Main branch:</p>
-				<ul>
-					<li><a href="https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js">https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js</a></li>
-				</ul>
-				<p>URLs of all builds on Main branch of the past 30 days:</p>
-				<ul>
-					<li><a href="https://vizzu-lib-main-sha.storage.googleapis.com/lib-HASH/vizzu.js">https://vizzu-lib-main-sha.storage.googleapis.com/lib-HASH/vizzu.js</a></li>
-				</ul>
-				<p>where HASH is the first 7 character of the commit&#39;s git hash.</p>
+				<p>We welcome contributions to the project, visit our <a href="CONTRIBUTING.md">Contributing</a> page for further info.</p>
 				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
 					<h1>License</h1>
 				</a>
 				<p>Copyright © 2021 <a href="https://vizzuhq.com">Vizzu Kft.</a>.</p>
 				<p>Released under the <a href="LICENSE">Apache 2.0 License</a>.</p>
-				<a href="#building" id="building" style="color: inherit; text-decoration: none;">
-					<h1>Building</h1>
-				</a>
-				<p><a href="project/build.md">Building</a></p>
-				<a href="#testing" id="testing" style="color: inherit; text-decoration: none;">
-					<h1>Testing</h1>
-				</a>
-				<p><a href="test/test.md">Testing</a></p>
 			</div>
-			<!--{&quot;options&quot;:&quot;/home/simon/Desktop/vizzu/vizzu-lib/tools/refgen&quot;,&quot;tsconfig&quot;:&quot;/home/simon/Desktop/vizzu/vizzu-lib/tools/refgen&quot;,&quot;packages&quot;:[],&quot;entryPoints&quot;:[&quot;/home/simon/Desktop/vizzu/vizzu-lib/src/apps/weblib/js-api/vizzu.d.ts&quot;],&quot;exclude&quot;:[],&quot;externalPattern&quot;:[&quot;**/node_modules/**&quot;],&quot;excludeExternals&quot;:false,&quot;excludeNotDocumented&quot;:false,&quot;excludeInternal&quot;:false,&quot;excludePrivate&quot;:false,&quot;excludeProtected&quot;:false,&quot;disableSources&quot;:false,&quot;includes&quot;:&quot;&quot;,&quot;media&quot;:&quot;&quot;,&quot;watch&quot;:false,&quot;preserveWatchOutput&quot;:false,&quot;emit&quot;:false,&quot;out&quot;:&quot;/home/simon/Desktop/vizzu/vizzu-lib/docs/reference&quot;,&quot;json&quot;:&quot;&quot;,&quot;pretty&quot;:true,&quot;theme&quot;:&quot;./node_modules/typedoc-neo-theme/bin/default&quot;,&quot;highlightTheme&quot;:&quot;light-plus&quot;,&quot;name&quot;:&quot;&quot;,&quot;includeVersion&quot;:false,&quot;excludeTags&quot;:[],&quot;readme&quot;:&quot;&quot;,&quot;defaultCategory&quot;:&quot;Other&quot;,&quot;categoryOrder&quot;:[],&quot;categorizeByGroup&quot;:true,&quot;sort&quot;:[&quot;kind&quot;,&quot;instance-first&quot;,&quot;alphabetical&quot;],&quot;gitRevision&quot;:&quot;&quot;,&quot;gitRemote&quot;:&quot;origin&quot;,&quot;gaID&quot;:&quot;&quot;,&quot;gaSite&quot;:&quot;auto&quot;,&quot;hideGenerator&quot;:false,&quot;toc&quot;:[],&quot;disableOutputCheck&quot;:false,&quot;help&quot;:false,&quot;version&quot;:false,&quot;showConfig&quot;:false,&quot;plugin&quot;:[],&quot;logger&quot;:&quot;console&quot;,&quot;logLevel&quot;:1,&quot;treatWarningsAsErrors&quot;:false,&quot;listInvalidSymbolLinks&quot;:false}-->
 		</div>
-		<div class="col-2 col-menu secondary-menu">
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/Anim.html">Anim</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/Config.html">Config</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/Data.html">Data</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/Event.html">Event</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/Styles.html">Styles</a>
+					</li>
+				</ul>
+			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class root">
+					<li class=" tsd-kind-class">
 						<a href="classes/default.html" class="tsd-kind-icon">default</a>
 					</li>
-					<li class=" tsd-kind-interface root">
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/AnimTarget.html" class="tsd-kind-icon">Anim<wbr>Target</a>
 					</li>
-					<li class=" tsd-kind-interface root">
-						<a href="interfaces/Event.html" class="tsd-kind-icon">Event</a>
-					</li>
-					<li class=" tsd-kind-type-alias root">
-						<a href="modules.html#EventName" class="tsd-kind-icon">Event<wbr>Name</a>
-					</li>
-					<li class=" tsd-kind-type-alias root">
+					<li class=" tsd-kind-type-alias">
 						<a href="modules.html#Feature" class="tsd-kind-icon">Feature</a>
 					</li>
-					<li class=" tsd-kind-type-alias root">
+					<li class=" tsd-kind-type-alias">
 						<a href="modules.html#Snapshot" class="tsd-kind-icon">Snapshot</a>
 					</li>
 				</ul>
@@ -212,9 +183,22 @@
 	</div>
 </div>
 <footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+		</div>
+	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>

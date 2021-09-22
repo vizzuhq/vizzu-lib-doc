@@ -1,0 +1,154 @@
+<!DOCTYPE html><html><head>
+		<title>Vizzu library example</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/highlight.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/example.css">
+	</head>
+<body>
+	<noscript>
+		<p class="noscript">To use Vizzu, please enable Javascript.</p>
+	</noscript>
+	<div id="vizzuCanvas"></div>
+	<div id="navigation">
+		<button id="example-replay-btn" class="button" type="button" onclick="location.reload()">▶ replay</button>
+	</div>
+	<div id="script">
+<script type="module">
+import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import { data } from '/test/integration/test_data/chart_types_eu.js';
+
+
+let chart = new Vizzu('vizzuCanvas');
+
+
+
+chart.animate({
+    data: data,
+    config: {
+        channels: {
+            x: { set: ['Value 5 (+/-)'] },
+            y: { set: ['Value 6 (+/-)'] },
+            noop: { set: ['Joy factors'] }, // noop (no operation) channel ...???
+            lightness: { set: ['Year'] } // Lightness channel helps to fallow during the animation how spreading categories of the 'Year' data series.
+        },
+        title: 'Relationship by X, Y',
+        geometry: 'circle'
+    }
+});
+
+
+chart.animate({
+    config: {
+        channels: {
+            x: { set: ['Year'] },
+            y: { set: ['Value 6 (+/-)'] }
+        },
+        title: 'Distribution by X',
+        legend: 'lightness'
+    }
+});
+
+
+chart.animate({
+    config: {
+        channels: {
+            x: { set: ['Value 5 (+/-)'] },
+            y: { set: ['Value 6 (+/-)'] }
+        },
+        title: 'Relationship by X, Y'
+    }
+});
+
+
+chart.animate({
+    config: {
+        channels: {
+            x: { set: ['Value 5 (+/-)'] },
+            y: { set: ['Joy factors'] },
+            noop: { set: null }
+        },
+        title: 'Distribution by Y'
+    }
+});
+
+
+chart.animate({
+    config: {
+        channels: {
+            x: { set: ['Value 5 (+/-)'] },
+            y: { set: ['Value 6 (+/-)'] },
+            noop: { set: ['Joy factors'] },
+        },
+        title: 'Relationship by X, Y'
+    }
+});
+
+
+</script>
+		</div>
+	<div id="code"><pre>
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">data</span>: data,
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 5 (+/-)'</span>] },
+            <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 6 (+/-)'</span>] },
+            <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] }, <span class="hljs-comment">// noop (no operation) channel ...???</span>
+            <span class="hljs-attr">lightness</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] } <span class="hljs-comment">// Lightness channel helps to fallow during the animation how spreading categories of the 'Year' data series.</span>
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Relationship by X, Y'</span>,
+        <span class="hljs-attr">geometry</span>: <span class="hljs-string">'circle'</span>
+    }
+});
+
+
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] },
+            <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 6 (+/-)'</span>] }
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Distribution by X'</span>,
+        <span class="hljs-attr">legend</span>: <span class="hljs-string">'lightness'</span>
+    }
+});
+
+
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 5 (+/-)'</span>] },
+            <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 6 (+/-)'</span>] }
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Relationship by X, Y'</span>
+    }
+});
+
+
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 5 (+/-)'</span>] },
+            <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
+            <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> }
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Distribution by Y'</span>
+    }
+});
+
+
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 5 (+/-)'</span>] },
+            <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 6 (+/-)'</span>] },
+            <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Relationship by X, Y'</span>
+    }
+});
+
+</pre></div>
+
+</body></html>

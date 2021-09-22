@@ -1,0 +1,92 @@
+<!DOCTYPE html><html><head>
+		<title>Vizzu library example</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/highlight.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/example.css">
+	</head>
+<body>
+	<noscript>
+		<p class="noscript">To use Vizzu, please enable Javascript.</p>
+	</noscript>
+	<div id="vizzuCanvas"></div>
+	<div id="navigation">
+		<button id="example-replay-btn" class="button" type="button" onclick="location.reload()">▶ replay</button>
+	</div>
+	<div id="script">
+<script type="module">
+import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import { data } from '/test/integration/test_data/chart_types_eu.js';
+
+
+let chart = new Vizzu('vizzuCanvas');
+
+
+
+chart.animate({
+    data: data,
+    config: {
+        channels: {
+            color: { set: ['Joy factors'] },
+            size: { set: ['Value 2 (+)'] },
+            label: { set: ['Country_code'] }
+        },
+        title: 'Comparison',
+        geometry: 'circle'
+    }
+});
+
+
+chart.animate({
+    config: {
+        channels: {
+            size: { set: ['Value 2 (+)', 'Country_code'] }
+        },
+        title: 'Stacked Comparison'
+    },
+    style: {
+        plot: {
+            marker: {
+                label: { fontSize: 10 } // Not necessary but easier to read on smaller circles.
+            }
+        }
+    }
+});
+
+
+</script>
+		</div>
+	<div id="code"><pre>
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">data</span>: data,
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
+            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>] },
+            <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>] }
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Comparison'</span>,
+        <span class="hljs-attr">geometry</span>: <span class="hljs-string">'circle'</span>
+    }
+});
+
+
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>, <span class="hljs-string">'Country_code'</span>] }
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Comparison'</span>
+    },
+    <span class="hljs-attr">style</span>: {
+        <span class="hljs-attr">plot</span>: {
+            <span class="hljs-attr">marker</span>: {
+                <span class="hljs-attr">label</span>: { <span class="hljs-attr">fontSize</span>: <span class="hljs-number">10</span> } <span class="hljs-comment">// Not necessary but easier to read on smaller circles.</span>
+            }
+        }
+    }
+});
+
+</pre></div>
+
+</body></html>

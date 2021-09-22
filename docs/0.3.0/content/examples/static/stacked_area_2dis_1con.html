@@ -1,0 +1,58 @@
+<!DOCTYPE html><html><head>
+		<title>Vizzu library example</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/highlight.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/example.css">
+	</head>
+<body>
+	<noscript>
+		<p class="noscript">To use Vizzu, please enable Javascript.</p>
+	</noscript>
+	<div id="vizzuCanvas"></div>
+	<div id="navigation">
+		<button id="example-replay-btn" class="button" type="button" onclick="location.reload()">▶ replay</button>
+	</div>
+	<div id="script">
+<script type="module">
+import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import { data } from '/test/integration/test_data/chart_types_eu.js';
+
+
+let chart = new Vizzu('vizzuCanvas');
+
+
+
+chart.animate({
+    data: data,
+    config: {
+        channels: {
+            x: { set: ['Year'] },
+            y: { set: ['Country', 'Value 2 (+)'] },
+            color: { set: ['Country'] }
+        },
+        title: 'Stacked Area Chart',
+        geometry: 'area'
+    }
+});
+
+
+</script>
+		</div>
+	<div id="code"><pre>
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">data</span>: data,
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] },
+            <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>, <span class="hljs-string">'Value 2 (+)'</span>] },
+            <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>] }
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Area Chart'</span>,
+        <span class="hljs-attr">geometry</span>: <span class="hljs-string">'area'</span>
+    }
+});
+
+</pre></div>
+
+</body></html>

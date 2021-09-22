@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>default | </title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for ">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 	<script async src="../assets/js/search.js" id="search-script"></script>
@@ -22,8 +22,6 @@
 					<ul class="results">
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
-					</ul>
-					<ul class="results-priority" style="display:none">
 					</ul>
 					<a href="../index.html" class="title"></a>
 				</div>
@@ -43,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -56,30 +52,26 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
+					<a href="../modules.html"></a>
+				</li>
+				<li>
 					<a href="default.html">default</a>
 				</li>
 			</ul>
+			<h1>Class default</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
-		<div class="col-3 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="../modules.html">Exports</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-		<div class="col-7 offset-3 col-content">
-			<h1>Class default</h1>
-			<section class="tsd-panel tsd-comment"><div class="tsd-comment tsd-typography tsd-comment-shorttext">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
 					<div class="lead">
 						<p>Class representing a single chart in Vizzu.</p>
 					</div>
-			</div></section>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -89,6 +81,7 @@
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
@@ -131,19 +124,21 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new default<span class="tsd-signature-symbol">(</span>container<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="default.html" class="tsd-signature-type">default</a></li>
+						<li class="tsd-signature tsd-kind-icon">new default<span class="tsd-signature-symbol">(</span>container<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLElement</span>, initState<span class="tsd-signature-symbol">?: </span><a href="../interfaces/Config.Chart.html" class="tsd-signature-type" data-tsd-kind="Interface">Chart</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/AnimTarget.html" class="tsd-signature-type" data-tsd-kind="Interface">AnimTarget</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in vizzu.d.ts:621</li>
+									<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L648">vizzu.d.ts:648</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Creates a new empty chart and connects it to the div or canvas HTML
-									element specified by its ID or DOM object.</p>
+									<p>Creates a new chart and connects it to the div or canvas HTML
+										element specified by its ID or DOM object. The new chart is empty by
+										default, but can be set to an initial state in the second optional
+									parameter.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -151,8 +146,11 @@
 								<li>
 									<h5>container: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLElement</span></h5>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> initState: <a href="../interfaces/Config.Chart.html" class="tsd-signature-type" data-tsd-kind="Interface">Chart</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/AnimTarget.html" class="tsd-signature-type" data-tsd-kind="Interface">AnimTarget</a></h5>
+								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="default.html" class="tsd-signature-type">default</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -162,13 +160,13 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="config" class="tsd-anchor"></a>
 					<h3>config</h3>
-					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/Config.Chart.html" class="tsd-signature-type">Chart</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/Config.Chart.html" class="tsd-signature-type" data-tsd-kind="Interface">Chart</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in vizzu.d.ts:660</li>
+							<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L691">vizzu.d.ts:691</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Property for read-only access to chart parameter object.</p>
 						</div>
@@ -177,13 +175,13 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="initializing" class="tsd-anchor"></a>
 					<h3>initializing</h3>
-					<div class="tsd-signature tsd-kind-icon">initializing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="default.html" class="tsd-signature-type">default</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">initializing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in vizzu.d.ts:625</li>
+							<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L652">vizzu.d.ts:652</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Promise representing the initialization will resolve when
 								initialization is finished. Any API call will potentially cause
@@ -194,13 +192,13 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="styles" class="tsd-anchor"></a>
 					<h3>styles</h3>
-					<div class="tsd-signature tsd-kind-icon">styles<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/Styles.Chart.html" class="tsd-signature-type">Chart</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">styles<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/Styles.Chart.html" class="tsd-signature-type" data-tsd-kind="Interface">Chart</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in vizzu.d.ts:658</li>
+							<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L689">vizzu.d.ts:689</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Property for read-only access to style object.</p>
 						</div>
@@ -213,21 +211,21 @@
 					<a name="animation" class="tsd-anchor"></a>
 					<h3>animation</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> animation<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/Anim.Control.html" class="tsd-signature-type">Control</a></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> animation<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/Anim.Control.html" class="tsd-signature-type" data-tsd-kind="Interface">Control</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in vizzu.d.ts:654</li>
+									<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L685">vizzu.d.ts:685</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Returns controls for the ongoing animation, if any.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/Anim.Control.html" class="tsd-signature-type">Control</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/Anim.Control.html" class="tsd-signature-type" data-tsd-kind="Interface">Control</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -238,29 +236,28 @@
 					<a name="animate" class="tsd-anchor"></a>
 					<h3>animate</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">animate<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/Config.Chart.html" class="tsd-signature-type">Chart</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/AnimTarget.html" class="tsd-signature-type">AnimTarget</a>, opt<span class="tsd-signature-symbol">?: </span><a href="../modules/Anim.html#Duration" class="tsd-signature-type">Duration</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/Anim.Options.html" class="tsd-signature-type">Options</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="default.html" class="tsd-signature-type">default</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">animate<span class="tsd-signature-symbol">(</span>animTarget<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/Config.Chart.html" class="tsd-signature-type" data-tsd-kind="Interface">Chart</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/AnimTarget.html" class="tsd-signature-type" data-tsd-kind="Interface">AnimTarget</a>, animOptions<span class="tsd-signature-symbol">?: </span><a href="../modules/Anim.html#Duration" class="tsd-signature-type" data-tsd-kind="Type alias">Duration</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/Anim.Options.html" class="tsd-signature-type" data-tsd-kind="Interface">Options</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in vizzu.d.ts:647</li>
+									<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L675">vizzu.d.ts:675</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Initiates an animation to the new chart states passed as the first
+									<p>Initiates the animation to the new chart state passed as the first
 										argument. If there is a currently running animation, all subsequent
 										calls will schedule the corresponding animation after the end of the
 									previous one.</p>
 								</div>
-								</div><div class="tsd-comment tsd-typography tsd-comment-text">
 								<p>The new chart state can be a full state specifier object with
 									data, config and style, or a single chart config object.
 									It accepts also a chart snapshot acquired from a previous state using
 								the store() method.</p>
 								<p>The optional second parameter specifies the animation
-									options. Second option can be a scalar value too, setting the overall
+									options. This second option can be a scalar value, setting the overall
 								animation duration.</p>
 								<p>The animation will be initiated in the next cycle of the JS event loop.
 									The method returns a promise, which will resolve when the animation is
@@ -269,13 +266,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>obj: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/Config.Chart.html" class="tsd-signature-type">Chart</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/AnimTarget.html" class="tsd-signature-type">AnimTarget</a></h5>
+									<h5>animTarget: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/Config.Chart.html" class="tsd-signature-type" data-tsd-kind="Interface">Chart</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/AnimTarget.html" class="tsd-signature-type" data-tsd-kind="Interface">AnimTarget</a></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> opt: <a href="../modules/Anim.html#Duration" class="tsd-signature-type">Duration</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/Anim.Options.html" class="tsd-signature-type">Options</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> animOptions: <a href="../modules/Anim.html#Duration" class="tsd-signature-type" data-tsd-kind="Type alias">Duration</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/Anim.Options.html" class="tsd-signature-type" data-tsd-kind="Interface">Options</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="default.html" class="tsd-signature-type">default</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="default.html" class="tsd-signature-type" data-tsd-kind="Class">default</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -283,16 +280,16 @@
 					<a name="feature" class="tsd-anchor"></a>
 					<h3>feature</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">feature<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"tooltip"</span>, enabled<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">feature<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">&quot;tooltip&quot;</span>, enabled<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in vizzu.d.ts:662</li>
+									<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L693">vizzu.d.ts:693</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Enable/disable additional features.</p>
 								</div>
@@ -300,7 +297,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>name: <span class="tsd-signature-type">"tooltip"</span></h5>
+									<h5>name: <span class="tsd-signature-type">&quot;tooltip&quot;</span></h5>
 								</li>
 								<li>
 									<h5>enabled: <span class="tsd-signature-type">boolean</span></h5>
@@ -314,38 +311,38 @@
 					<a name="off" class="tsd-anchor"></a>
 					<h3>off</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">off<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../modules.html#EventName" class="tsd-signature-type">EventName</a>, handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">off<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../modules/Event.html#Type" class="tsd-signature-type" data-tsd-kind="Type alias">Type</a>, handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="../interfaces/Event.Object.html" class="tsd-signature-type" data-tsd-kind="Interface">Object</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in vizzu.d.ts:629</li>
+									<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L657">vizzu.d.ts:657</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Uninstalls the provided event handler from the event specified by name</p>
+									<p>Uninstalls the provided event handler from the event specified by name.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>eventName: <a href="../modules.html#EventName" class="tsd-signature-type">EventName</a></h5>
+									<h5>eventName: <a href="../modules/Event.html#Type" class="tsd-signature-type" data-tsd-kind="Type alias">Type</a></h5>
 								</li>
 								<li>
-									<h5>handler: <span class="tsd-signature-type">function</span></h5>
+									<h5>handler: <span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="../interfaces/Event.Object.html" class="tsd-signature-type" data-tsd-kind="Interface">Object</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
 									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
+										<li class="tsd-parameter-signature">
 											<ul class="tsd-signatures tsd-kind-type-literal">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="../interfaces/Event.html" class="tsd-signature-type">Event</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="../interfaces/Event.Object.html" class="tsd-signature-type" data-tsd-kind="Interface">Object</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
 													<h4 class="tsd-parameters-title">Parameters</h4>
 													<ul class="tsd-parameters">
 														<li>
-															<h5>event: <a href="../interfaces/Event.html" class="tsd-signature-type">Event</a></h5>
+															<h5>event: <a href="../interfaces/Event.Object.html" class="tsd-signature-type" data-tsd-kind="Interface">Object</a></h5>
 														</li>
 													</ul>
 													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -363,38 +360,38 @@
 					<a name="on" class="tsd-anchor"></a>
 					<h3>on</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../modules.html#EventName" class="tsd-signature-type">EventName</a>, handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><a href="../modules/Event.html#Type" class="tsd-signature-type" data-tsd-kind="Type alias">Type</a>, handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="../interfaces/Event.Object.html" class="tsd-signature-type" data-tsd-kind="Interface">Object</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in vizzu.d.ts:627</li>
+									<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L654">vizzu.d.ts:654</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Installs the provided event handler to the event specified by name</p>
+									<p>Installs the provided event handler to the event specified by name.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>eventName: <a href="../modules.html#EventName" class="tsd-signature-type">EventName</a></h5>
+									<h5>eventName: <a href="../modules/Event.html#Type" class="tsd-signature-type" data-tsd-kind="Type alias">Type</a></h5>
 								</li>
 								<li>
-									<h5>handler: <span class="tsd-signature-type">function</span></h5>
+									<h5>handler: <span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="../interfaces/Event.Object.html" class="tsd-signature-type" data-tsd-kind="Interface">Object</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
 									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
+										<li class="tsd-parameter-signature">
 											<ul class="tsd-signatures tsd-kind-type-literal">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="../interfaces/Event.html" class="tsd-signature-type">Event</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="../interfaces/Event.Object.html" class="tsd-signature-type" data-tsd-kind="Interface">Object</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
 												<li class="tsd-description">
 													<h4 class="tsd-parameters-title">Parameters</h4>
 													<ul class="tsd-parameters">
 														<li>
-															<h5>event: <a href="../interfaces/Event.html" class="tsd-signature-type">Event</a></h5>
+															<h5>event: <a href="../interfaces/Event.Object.html" class="tsd-signature-type" data-tsd-kind="Interface">Object</a></h5>
 														</li>
 													</ul>
 													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -418,12 +415,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in vizzu.d.ts:652</li>
+									<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L683">vizzu.d.ts:683</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a reference to the actual chart state for further reuse.</p>
+									<p>Returns a reference to the actual chart state for further reuse.
+										This reference includes the chart config and style parameters but
+									does not include the data parameter and the animation options.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -440,10 +439,10 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in vizzu.d.ts:656</li>
+									<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L687">vizzu.d.ts:687</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Returns the version number of the library.</p>
 								</div>
@@ -453,14 +452,20 @@
 					</ul>
 				</section>
 			</section>
-			<!--{&quot;options&quot;:&quot;/home/simon/Desktop/vizzu/vizzu-lib/tools/refgen&quot;,&quot;tsconfig&quot;:&quot;/home/simon/Desktop/vizzu/vizzu-lib/tools/refgen&quot;,&quot;packages&quot;:[],&quot;entryPoints&quot;:[&quot;/home/simon/Desktop/vizzu/vizzu-lib/src/apps/weblib/js-api/vizzu.d.ts&quot;],&quot;exclude&quot;:[],&quot;externalPattern&quot;:[&quot;**/node_modules/**&quot;],&quot;excludeExternals&quot;:false,&quot;excludeNotDocumented&quot;:false,&quot;excludeInternal&quot;:false,&quot;excludePrivate&quot;:false,&quot;excludeProtected&quot;:false,&quot;disableSources&quot;:false,&quot;includes&quot;:&quot;&quot;,&quot;media&quot;:&quot;&quot;,&quot;watch&quot;:false,&quot;preserveWatchOutput&quot;:false,&quot;emit&quot;:false,&quot;out&quot;:&quot;/home/simon/Desktop/vizzu/vizzu-lib/docs/reference&quot;,&quot;json&quot;:&quot;&quot;,&quot;pretty&quot;:true,&quot;theme&quot;:&quot;./node_modules/typedoc-neo-theme/bin/default&quot;,&quot;highlightTheme&quot;:&quot;light-plus&quot;,&quot;name&quot;:&quot;&quot;,&quot;includeVersion&quot;:false,&quot;excludeTags&quot;:[],&quot;readme&quot;:&quot;&quot;,&quot;defaultCategory&quot;:&quot;Other&quot;,&quot;categoryOrder&quot;:[],&quot;categorizeByGroup&quot;:true,&quot;sort&quot;:[&quot;kind&quot;,&quot;instance-first&quot;,&quot;alphabetical&quot;],&quot;gitRevision&quot;:&quot;&quot;,&quot;gitRemote&quot;:&quot;origin&quot;,&quot;gaID&quot;:&quot;&quot;,&quot;gaSite&quot;:&quot;auto&quot;,&quot;hideGenerator&quot;:false,&quot;toc&quot;:[],&quot;disableOutputCheck&quot;:false,&quot;help&quot;:false,&quot;version&quot;:false,&quot;showConfig&quot;:false,&quot;plugin&quot;:[],&quot;logger&quot;:&quot;console&quot;,&quot;logLevel&quot;:1,&quot;treatWarningsAsErrors&quot;:false,&quot;listInvalidSymbolLinks&quot;:false}-->
 		</div>
-		<div class="col-2 col-menu secondary-menu">
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class root">
+					<li class="current tsd-kind-class">
 						<a href="default.html" class="tsd-kind-icon">default</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
@@ -500,19 +505,13 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface root">
+					<li class=" tsd-kind-interface">
 						<a href="../interfaces/AnimTarget.html" class="tsd-kind-icon">Anim<wbr>Target</a>
 					</li>
-					<li class=" tsd-kind-interface root">
-						<a href="../interfaces/Event.html" class="tsd-kind-icon">Event</a>
-					</li>
-					<li class=" tsd-kind-type-alias root">
-						<a href="../modules.html#EventName" class="tsd-kind-icon">Event<wbr>Name</a>
-					</li>
-					<li class=" tsd-kind-type-alias root">
+					<li class=" tsd-kind-type-alias">
 						<a href="../modules.html#Feature" class="tsd-kind-icon">Feature</a>
 					</li>
-					<li class=" tsd-kind-type-alias root">
+					<li class=" tsd-kind-type-alias">
 						<a href="../modules.html#Snapshot" class="tsd-kind-icon">Snapshot</a>
 					</li>
 				</ul>
@@ -521,9 +520,22 @@
 	</div>
 </div>
 <footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+		</div>
+	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>

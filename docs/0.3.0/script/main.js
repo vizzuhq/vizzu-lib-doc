@@ -1,103 +1,90 @@
-import DomHelper from "./dom-helper.js";
-import Section from "./section.js";
-import DocId from "./documentid.js";
 import Tutorial from './tutorial/tutorial.js';
+import Examples from './examples/examples.js';
+import DomHelper from "./dom-helper.js";
+import DocId from './documentid.js';
 
 export default class Main
 {
 	constructor(snippetRegistry)
 	{
-		this.sections = new Map();
+		this.pages = new Map();
+		this.menus = new Map();
 
 		this.discover();
 
 		this.tutorial = new Tutorial(snippetRegistry);
+		this.tutorial.sectionScrolledIn = id => {
+			this.activateSubMenu(id);
+		};
+		this.tutorial.onMenu = id => {
+			this.setActivePage('0');
+		};
 
-		this.lastSection = null;
+		this.examples = new Examples();
+		this.examples.onMenu = id => { 
+			this.setActivePage('1');
+			this.activateSubMenu(id);
+		};
 
-		this.contentView = document.getElementById('content-view');
-		this.contentView.onscroll = event => this.scrolled(event);
+		document.getElementById('menuitem-2').onclick = () =>
+		{
+			window.open("reference/index.html");
+		}
 
 		window.onpopstate = (event) => {
-			console.log(event.state.id, this.sections.get(event.state.id).element);
-			this.sections.get(event.state.id).element
-				.scrollIntoView({ behavior: 'auto' });
+			this.navigateToId(event.state.id);
 		};
 		if ('scrollRestoration' in history) {
 			history.scrollRestoration = 'manual';
 		}
 
-		this.gotoInitSection();
+		let initId = '0.0.0';
+		let hash = window.location.hash;
+		if (hash) initId = DomHelper.parseIdString(hash).id;
+		this.navigateToId(initId);
 	}
 
-	gotoInitSection()
+	navigateToId(id)
 	{
-		let queryString = window.location.search;
-		let urlParams = new URLSearchParams(queryString);
-		let sectionId = urlParams.get('section');
-		if (sectionId === undefined) sectionId = '0.0';
-
-		this.getSection(sectionId).element
-			.scrollIntoView({ behavior: 'auto' });
+		let documentId = (new DocId(id)).document;
+		this.setActivePage(documentId);
+		if (documentId === 0) this.tutorial.navigateToId(id);
+		else if (documentId === 1) this.examples.navigateToId(id, false);
 	}
 
 	discover()
 	{
-		let subtitles = document.getElementsByClassName('subtitle');
-		for (let subtitle of subtitles) {
-			const id = DomHelper.parseId(subtitle).id;
-			this.sections.set(id, new Section(subtitle));
+		let pages = document.getElementsByClassName('page');
+		for (let page of pages)
+		{
+			let id = DomHelper.parseId(page).id;
+			this.pages.set(id, page);
 		}
 
 		let submenus = document.getElementsByClassName('submenuitem');
 		for (let submenu of submenus)
 		{
 			const id = DomHelper.parseId(submenu).id;
-			let section = this.sections.get(id);
-			if (section) section.setMenu(submenu);
+			this.menus.set(id, submenu);
 		}
 	}
 
-	scrolled(event)
+	setActivePage(pageId)
 	{
-		const topSectionId = this.firstVisibleSubtitle();
-		if (topSectionId != this.lastSection)
-			this.activateSection(topSectionId)
-	}
-
-	activateSection(id)
-	{
-		if (this.lastSection !== null)
-			this.getSection(this.lastSection).select(false);
-
-		this.getSection(id).select(true);
-
-		this.lastSection = id;
-	}
-
-	getSection(id)
-	{
-		let sectionId = (new DocId(id)).getSectionId();
-		return this.sections.get(sectionId);
-	}
-
-	firstVisibleSubtitle()
-	{
-		let last = '0.0';
-		for (let [ id, section ] of this.sections)
+		for (let [id, page] of this.pages)
 		{
-			if (this.isAboveViewCenter(section.element))
-				return last;
-			last = id;
+			if (id == pageId) page.style.display = 'block';
+			else page.style.display = 'none';
 		}
-
-		return last;
 	}
 
-	isAboveViewCenter(child)
+	activateSubMenu(activeId)
 	{
-		const childRect = child.getBoundingClientRect();
-		const parentRect = this.contentView.getBoundingClientRect();
-		return childRect.top > parentRect.top + parentRect.height/2;
+		for (let [id, menu] of this.menus)
+		{
+			let list = menu.classList;
+			if (id == activeId) list.add('submenuitem-selected');
+			else list.remove('submenuitem-selected');
+		}
 	}
 }

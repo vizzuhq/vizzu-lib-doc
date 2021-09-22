@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>AnimTarget | </title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for ">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 	<script async src="../assets/js/search.js" id="search-script"></script>
@@ -22,8 +22,6 @@
 					<ul class="results">
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
-					</ul>
-					<ul class="results-priority" style="display:none">
 					</ul>
 					<a href="../index.html" class="title"></a>
 				</div>
@@ -43,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -56,32 +52,28 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
+					<a href="../modules.html"></a>
+				</li>
+				<li>
 					<a href="AnimTarget.html">AnimTarget</a>
 				</li>
 			</ul>
+			<h1>Interface AnimTarget</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
-		<div class="col-3 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="../modules.html">Exports</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-		<div class="col-7 offset-3 col-content">
-			<h1>Interface AnimTarget</h1>
-			<section class="tsd-panel tsd-comment"><div class="tsd-comment tsd-typography tsd-comment-shorttext">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
 					<div class="lead">
 						<p>Represents a state in the animation describing the data, the chart, and
 							the style parameters to be changed from the actual state.
-						Passing null as style will reset every style parameter ti default.</p>
+						Passing null as style will reset every style parameter to default.</p>
 					</div>
-			</div></section>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -91,6 +83,7 @@
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
@@ -109,28 +102,28 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="config" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> config</h3>
-					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <a href="Config.Chart.html" class="tsd-signature-type">Chart</a></div>
+					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <a href="Config.Chart.html" class="tsd-signature-type" data-tsd-kind="Interface">Chart</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in vizzu.d.ts:489</li>
+							<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L510">vizzu.d.ts:510</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Chart parameter changes.</p>
+							<p>Chart configuration changes.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="data" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> data</h3>
-					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <a href="../modules/Data.html#Set" class="tsd-signature-type">Set</a></div>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <a href="../modules/Data.html#Set" class="tsd-signature-type" data-tsd-kind="Type alias">Set</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in vizzu.d.ts:487</li>
+							<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L508">vizzu.d.ts:508</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Data set.</p>
 						</div>
@@ -139,30 +132,36 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="style" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> style</h3>
-					<div class="tsd-signature tsd-kind-icon">style<span class="tsd-signature-symbol">:</span> <a href="Styles.Chart.html" class="tsd-signature-type">Chart</a></div>
+					<div class="tsd-signature tsd-kind-icon">style<span class="tsd-signature-symbol">:</span> <a href="Styles.Chart.html" class="tsd-signature-type" data-tsd-kind="Interface">Chart</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in vizzu.d.ts:491</li>
+							<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L512">vizzu.d.ts:512</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Style changes.</p>
 						</div>
 					</div>
 				</section>
 			</section>
-			<!--{&quot;options&quot;:&quot;/home/simon/Desktop/vizzu/vizzu-lib/tools/refgen&quot;,&quot;tsconfig&quot;:&quot;/home/simon/Desktop/vizzu/vizzu-lib/tools/refgen&quot;,&quot;packages&quot;:[],&quot;entryPoints&quot;:[&quot;/home/simon/Desktop/vizzu/vizzu-lib/src/apps/weblib/js-api/vizzu.d.ts&quot;],&quot;exclude&quot;:[],&quot;externalPattern&quot;:[&quot;**/node_modules/**&quot;],&quot;excludeExternals&quot;:false,&quot;excludeNotDocumented&quot;:false,&quot;excludeInternal&quot;:false,&quot;excludePrivate&quot;:false,&quot;excludeProtected&quot;:false,&quot;disableSources&quot;:false,&quot;includes&quot;:&quot;&quot;,&quot;media&quot;:&quot;&quot;,&quot;watch&quot;:false,&quot;preserveWatchOutput&quot;:false,&quot;emit&quot;:false,&quot;out&quot;:&quot;/home/simon/Desktop/vizzu/vizzu-lib/docs/reference&quot;,&quot;json&quot;:&quot;&quot;,&quot;pretty&quot;:true,&quot;theme&quot;:&quot;./node_modules/typedoc-neo-theme/bin/default&quot;,&quot;highlightTheme&quot;:&quot;light-plus&quot;,&quot;name&quot;:&quot;&quot;,&quot;includeVersion&quot;:false,&quot;excludeTags&quot;:[],&quot;readme&quot;:&quot;&quot;,&quot;defaultCategory&quot;:&quot;Other&quot;,&quot;categoryOrder&quot;:[],&quot;categorizeByGroup&quot;:true,&quot;sort&quot;:[&quot;kind&quot;,&quot;instance-first&quot;,&quot;alphabetical&quot;],&quot;gitRevision&quot;:&quot;&quot;,&quot;gitRemote&quot;:&quot;origin&quot;,&quot;gaID&quot;:&quot;&quot;,&quot;gaSite&quot;:&quot;auto&quot;,&quot;hideGenerator&quot;:false,&quot;toc&quot;:[],&quot;disableOutputCheck&quot;:false,&quot;help&quot;:false,&quot;version&quot;:false,&quot;showConfig&quot;:false,&quot;plugin&quot;:[],&quot;logger&quot;:&quot;console&quot;,&quot;logLevel&quot;:1,&quot;treatWarningsAsErrors&quot;:false,&quot;listInvalidSymbolLinks&quot;:false}-->
 		</div>
-		<div class="col-2 col-menu secondary-menu">
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class root">
+					<li class=" tsd-kind-class">
 						<a href="../classes/default.html" class="tsd-kind-icon">default</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface root">
+					<li class="current tsd-kind-interface">
 						<a href="AnimTarget.html" class="tsd-kind-icon">Anim<wbr>Target</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -178,16 +177,10 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface root">
-						<a href="Event.html" class="tsd-kind-icon">Event</a>
-					</li>
-					<li class=" tsd-kind-type-alias root">
-						<a href="../modules.html#EventName" class="tsd-kind-icon">Event<wbr>Name</a>
-					</li>
-					<li class=" tsd-kind-type-alias root">
+					<li class=" tsd-kind-type-alias">
 						<a href="../modules.html#Feature" class="tsd-kind-icon">Feature</a>
 					</li>
-					<li class=" tsd-kind-type-alias root">
+					<li class=" tsd-kind-type-alias">
 						<a href="../modules.html#Snapshot" class="tsd-kind-icon">Snapshot</a>
 					</li>
 				</ul>
@@ -196,9 +189,22 @@
 	</div>
 </div>
 <footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+		</div>
+	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>

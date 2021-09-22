@@ -6,18 +6,30 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="style/highlight.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="style/layout.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="style/main.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="style/tutorial.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="style/menu.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="style/examples.css">
 	<script src="script/main.js" type="module"></script>
 	<script src="script/registry.js"></script>
 </head>
 <body>
 	<div class="container">
+
 		<div id="toc-view">
-			<img src="images/logo-white.svg" width="110">
+			<div>
+				<img class="logo" id="logo-vizzu" src="images/logo-white.svg" width="110">
+				<a href="https://github.com/vizzuhq/vizzu-lib">
+					<img class="logo" id="logo-github" src="images/github-logo.svg" width="30" height="30">
+				</a>
+				<a href="https://join.slack.com/t/vizzu-community/signup">
+					<img class="logo" id="logo-slack" src="images/slack-logo.svg" width="30" height="30">
+				</a>
+			</div>
 			<ul id="table-of-contents" class="menu">
 				<li class="menuitem" id="menuitem-0">TUTORIAL
 					<ul id="toc-tutorial" class="submenu">
 				<li id="submenuitem-0.0" class="submenuitem">Intro</li>
-				<li id="submenuitem-0.1" class="submenuitem">Data types</li>
+				<li id="submenuitem-0.1" class="submenuitem">Data</li>
 				<li id="submenuitem-0.2" class="submenuitem">Axes, title, tooltip</li>
 				<li id="submenuitem-0.3" class="submenuitem">Geometry</li>
 				<li id="submenuitem-0.4" class="submenuitem">Channels &amp; legend</li>
@@ -30,56 +42,64 @@
 				<li id="submenuitem-0.11" class="submenuitem">Without coordinates &amp; noop channel</li>
 				<li id="submenuitem-0.12" class="submenuitem">Color palette &amp; fonts</li>
 				<li id="submenuitem-0.13" class="submenuitem">Chart layout</li>
-				<li id="submenuitem-0.14" class="submenuitem">Animation settings</li>
+				<li id="submenuitem-0.14" class="submenuitem">Animation options</li>
 				<li id="submenuitem-0.15" class="submenuitem">Animation control</li>
 				<li id="submenuitem-0.16" class="submenuitem">Events</li>
 				<li id="submenuitem-0.17" class="submenuitem">Shorthands &amp; Store</li></ul>
 				</li>
-				<li class="menuitem" id="menuitem-0">EXAMPLES
+				<li class="menuitem" id="menuitem-1">EXAMPLES
 					<ul id="toc-tutorial" class="submenu">
 						<li id="submenuitem-1.0" class="submenuitem">Static Charts</li>
-						<li id="submenuitem-1.1" class="submenuitem">Animations</li>
+						<li id="submenuitem-1.1" class="submenuitem">Animated Charts</li>
 					</ul>
 				</li>
-				<li class="menuitem" id="menuitem-0">REFERENCE
-					<ul id="toc-tutorial" class="submenu">
-						<li id="submenuitem-2.0" class="submenuitem">Vizzu</li>
-						<li id="submenuitem-2.1" class="submenuitem">Data</li>
-						<li id="submenuitem-2.2" class="submenuitem">Config</li>
-						<li id="submenuitem-2.3" class="submenuitem">Style</li>
-						<li id="submenuitem-2.3" class="submenuitem">Anim</li>
-					</ul>
+				<li class="menuitem" id="menuitem-2">
+					REFERENCE ⬈
 				</li>
 			</ul>
 		</div>
+
 		<div id="content-view">
-			<div id="example-view">
-				<div id="example-canvas"></div>
-			</div>
-			<div id="content">
-			<h2 id="subtitle-0.0" class="subtitle">Intro</h2>
+
+			<div id="page-0" class="page">
+				<div id="vizzu-view">
+					<div id="vizzu-canvas"></div>
+				</div>
+				<div id="content">
+			<h2 id="chapter-0.0" class="subtitle">Intro</h2>
 			<p class="paragraph">This is the tutorial of Vizzu - a free, open-source Javascript library for 
 building animated charts, data stories, and interactive explorers. 
 It is an excellent place to start using Vizzu, as it walks you through the 
 installation and initialization of the library, introduces the logic it employs 
-and the different settings to control how your charts look and behave. 
-By scrolling through the tutorial, you can see code snippets, and when you 
-click on them, you can see how they affect the chart on the top of the screen.</p><h3 id="installation">Installation</h3>
-<p class="paragraph">To show a Vizzu chart create a placeholder element that will contain the 
-rendered chart and import the library into a JavaScript file or script tag 
-in your web page:</p>
+and the different settings to control how your charts look and behave. </p><p class="paragraph">Starting from the <a href="#chapter-0.2">Axes, title, tooltip</a> chapter, you can see code 
+snippets, and when you click on them, you can see how the code affects the chart 
+on the right side of the screen.</p><h3 id="installation">Installation</h3>
+<p class="paragraph">Import the library into a JavaScript file or script tag in your web page</p>
 		<div class="snippet">
-			<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myVizzu"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width:800px; height:480px;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span>&gt;</span><span class="language-javascript">
+			<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">Vizzu</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/vizzu.js'</span>;
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 
 			
 		</div>
-		<p class="paragraph">Alternatively, you can use npm (npm install vizzu) or load files from your own domain. </p><h3 id="initialization">Initialization</h3>
-<p class="paragraph">Create a new object instance of the Vizzu class, add it to a variable, 
+		<p class="paragraph">Alternatively, you can install Vizzu from <a href="https://www.npmjs.com/package/vizzu">npm</a></p>
+		<div class="snippet">
+			<pre><code class="language-shell">npm install vizzu
+</code></pre>
+
+			
+		</div>
+		<h3 id="initialization">Initialization</h3>
+<p class="paragraph">To show a Vizzu chart create a placeholder element that will contain the 
+rendered chart.</p>
+		<div class="snippet">
+			<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myVizzu"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width:800px; height:480px;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+
+			
+		</div>
+		<p class="paragraph">Create a new object instance of the Vizzu class, add it to a variable, 
 initialize the library, and then you can start setting up the first chart by 
 calling the animate method.</p>
 		<div class="snippet">
@@ -93,21 +113,19 @@ chart.<span class="hljs-property">initializing</span>.<span class="hljs-title fu
 			
 		</div>
 		<h3 id="the-basic-logic-of-vizzu">The basic logic of Vizzu</h3>
-<p class="paragraph">In Vizzu the animated charts are created via a promise chain where the chain 
-elements are the states of the charts - described by the animate method - and 
-Vizzu animates between these states. By each call, the animate method will 
-modify the previously set state.</p><img src="images/api-overview.svg" width="100%" alt="Illustration of Vizzu's promise chain">
+<p class="paragraph">The foundation of a Vizzu chart is the animation. The animation contains states describing the chart's configuration, such as the data series, coordinate system, labels, titles, etc. A static chart is the result of a single animation state. When there are more states, Vizzu automatically transitions between these. The animate method initiates the animation into a new state by describing the new chart and how Vizzu should transition to it. The return value of the animate method is a promise that will be resolved after the animation is completed. Using this logic you can create a promise chain of animation from state to state.</p><img src="images/api-overview.svg" width="100%" alt="Illustration of Vizzu's promise chain">
 
 <p class="paragraph">The animate method has two parameters in total. The first parameter sets the 
-chart, and the second determines how Vizzu should animate to that state. </p><p class="paragraph">The first parameter has the following three properties:</p><ul>
+chart, and the (optional) second determines how Vizzu should animate to that state. </p><p class="paragraph">The first parameter has the following three properties:</p><ul>
 <li><em>data</em> - this is where you add the data that you want to put on the charts.</li>
 <li><em>config</em> - this is where you can add or remove series on the channels and 
 set the general settings of the chart like the chart title, the geometry, the alignment etc.</li>
 <li><em>style</em> - this is where you can set how your chart looks.</li>
 </ul>
 
-			<h2 id="subtitle-0.1" class="subtitle">Data types</h2>
-			<p class="paragraph">Vizzu currently supports two types of data series: dimensions and measures. 
+			<h2 id="chapter-0.1" class="subtitle">Data</h2>
+			<h3 id="data-types">Data types</h3>
+<p class="paragraph">Vizzu currently supports two types of data series: dimensions and measures. 
 Dimensions slice the data cube Vizzu uses, whereas measures are values within the cube.</p><p class="paragraph">Dimensions are categorical series that can contain strings and numbers, but 
 both will be treated as strings. Temporal data such as dates or timestamps 
 should also be added as dimensions. Vizzu will draw the elements on the chart 
@@ -118,9 +136,9 @@ adding temporal data in a sorted format from oldest to newest.</p><p class="para
 <li>Specified by records - row after row.</li>
 <li>Data cube form</li>
 </ul>
-<p class="paragraph">Elements with a missing value should contain the number zero. ‘null’, 
-‘undefined’ and empty cells will result in an error. In case of dimensions, 
-add ‘’ as a value to have a category without a name. </p><p class="paragraph">In all cases, data has to be in first normal form. Here is an example of it:</p><table>
+<p class="paragraph">Elements with a missing value should contain the number zero. 'null', 
+'undefined' and empty cells will result in an error. In case of dimensions, 
+add '' as a value to have a category without a name. </p><p class="paragraph">In the first two cases, data has to be in first normal form. Here is an example of that:</p><table>
 <thead>
 <tr>
 <th>Genres</th>
@@ -131,7 +149,7 @@ add ‘’ as a value to have a category without a name. </p><p class="paragraph
 <tbody><tr>
 <td>Pop</td>
 <td>Hard</td>
-<td>78</td>
+<td>114</td>
 </tr>
 <tr>
 <td>Rock</td>
@@ -141,7 +159,7 @@ add ‘’ as a value to have a category without a name. </p><p class="paragraph
 <tr>
 <td>Jazz</td>
 <td>Hard</td>
-<td>114</td>
+<td>78</td>
 </tr>
 <tr>
 <td>Metal</td>
@@ -151,7 +169,7 @@ add ‘’ as a value to have a category without a name. </p><p class="paragraph
 <tr>
 <td>Pop</td>
 <td>Smooth</td>
-<td>174</td>
+<td>56</td>
 </tr>
 <tr>
 <td>Rock</td>
@@ -161,7 +179,7 @@ add ‘’ as a value to have a category without a name. </p><p class="paragraph
 <tr>
 <td>Jazz</td>
 <td>Smooth</td>
-<td>56</td>
+<td>174</td>
 </tr>
 <tr>
 <td>Metal</td>
@@ -171,7 +189,7 @@ add ‘’ as a value to have a category without a name. </p><p class="paragraph
 <tr>
 <td>Pop</td>
 <td>Experimental</td>
-<td>94</td>
+<td>127</td>
 </tr>
 <tr>
 <td>Rock</td>
@@ -181,7 +199,7 @@ add ‘’ as a value to have a category without a name. </p><p class="paragraph
 <tr>
 <td>Jazz</td>
 <td>Experimental</td>
-<td>127</td>
+<td>94</td>
 </tr>
 <tr>
 <td>Metal</td>
@@ -191,7 +209,7 @@ add ‘’ as a value to have a category without a name. </p><p class="paragraph
 </tbody></table>
 <p class="paragraph">In the type parameter, you can set if a series is a dimension or a measure. 
 Adding the type parameter is optional. If omitted, Vizzu will automatically 
-select the type depending on the contents of the values array using the typeof 
+select the type depending on the first element of the values array using the typeof 
 operator. If all items are numbers, it will be declared as a measure, in any 
 other case, a dimension.</p><p class="paragraph">Data specified by series:</p>
 		<div class="snippet">
@@ -210,7 +228,7 @@ other case, a dimension.</p><p class="paragraph">Data specified by series:</p>
     {
       <span class="hljs-attr">name</span>: <span class="hljs-string">'Popularity'</span>, 
       <span class="hljs-attr">type</span>: <span class="hljs-string">'measure'</span>, 
-      <span class="hljs-attr">values</span>: [ <span class="hljs-number">78</span>, <span class="hljs-number">96</span>, <span class="hljs-number">114</span>, <span class="hljs-number">52</span>, <span class="hljs-number">174</span>, <span class="hljs-number">36</span>, <span class="hljs-number">56</span>, <span class="hljs-number">121</span>, <span class="hljs-number">94</span>, <span class="hljs-number">83</span>, <span class="hljs-number">127</span>, <span class="hljs-number">58</span> ]
+      <span class="hljs-attr">values</span>: [ <span class="hljs-number">114</span>, <span class="hljs-number">96</span>, <span class="hljs-number">78</span>, <span class="hljs-number">52</span>, <span class="hljs-number">56</span>, <span class="hljs-number">36</span>, <span class="hljs-number">174</span>, <span class="hljs-number">121</span>, <span class="hljs-number">127</span>, <span class="hljs-number">83</span>, <span class="hljs-number">94</span>, <span class="hljs-number">58</span> ]
     }
   ]
 }
@@ -227,17 +245,17 @@ other case, a dimension.</p><p class="paragraph">Data specified by series:</p>
     { <span class="hljs-attr">name</span>: <span class="hljs-string">'Popularity'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'measure'</span> }
   ],
   <span class="hljs-attr">records</span>: [
-    [<span class="hljs-string">'Pop'</span>, <span class="hljs-string">'Hard'</span>, <span class="hljs-number">78</span>],
+    [<span class="hljs-string">'Pop'</span>, <span class="hljs-string">'Hard'</span>, <span class="hljs-number">114</span>],
     [<span class="hljs-string">'Rock'</span>, <span class="hljs-string">'Hard'</span>, <span class="hljs-number">96</span>],
-    [<span class="hljs-string">'Jazz'</span>, <span class="hljs-string">'Hard'</span>, <span class="hljs-number">114</span>],
+    [<span class="hljs-string">'Jazz'</span>, <span class="hljs-string">'Hard'</span>, <span class="hljs-number">78</span>],
     [<span class="hljs-string">'Metal'</span>, <span class="hljs-string">'Hard'</span>, <span class="hljs-number">52</span>],
-    [<span class="hljs-string">'Pop'</span>, <span class="hljs-string">'Smooth'</span>, <span class="hljs-number">174</span>],
+    [<span class="hljs-string">'Pop'</span>, <span class="hljs-string">'Smooth'</span>, <span class="hljs-number">56</span>],
     [<span class="hljs-string">'Rock'</span>, <span class="hljs-string">'Smooth'</span>, <span class="hljs-number">36</span>],
-    [<span class="hljs-string">'Jazz'</span>, <span class="hljs-string">'Smooth'</span>, <span class="hljs-number">56</span>],
+    [<span class="hljs-string">'Jazz'</span>, <span class="hljs-string">'Smooth'</span>, <span class="hljs-number">174</span>],
     [<span class="hljs-string">'Metal'</span>, <span class="hljs-string">'Smooth'</span>, <span class="hljs-number">121</span>],
-    [<span class="hljs-string">'Pop'</span>, <span class="hljs-string">'Experimental'</span>, <span class="hljs-number">94</span>],
+    [<span class="hljs-string">'Pop'</span>, <span class="hljs-string">'Experimental'</span>, <span class="hljs-number">127</span>],
     [<span class="hljs-string">'Rock'</span>, <span class="hljs-string">'Experimental'</span>, <span class="hljs-number">83</span>],
-    [<span class="hljs-string">'Jazz'</span>, <span class="hljs-string">'Experimental'</span>, <span class="hljs-number">127</span>],
+    [<span class="hljs-string">'Jazz'</span>, <span class="hljs-string">'Experimental'</span>, <span class="hljs-number">94</span>],
     [<span class="hljs-string">'Metal'</span>, <span class="hljs-string">'Experimental'</span>, <span class="hljs-number">58</span>],
   ]
 }
@@ -248,9 +266,9 @@ other case, a dimension.</p><p class="paragraph">Data specified by series:</p>
 		<p class="paragraph">Data cube:</p><table>
   <tbody><tr><th colspan="2" rowspan="2"></th>               <th colspan="4">Genres</th></tr>
   <tr>                                                <td>Pop</td> <td>Rock</td> <td>Jazz</td> <td>Metal</td></tr>
-  <tr><th rowspan="3">Types</th><td>Hard</td>         <td>78</td>  <td>96</td>   <td>114</td>  <td>52</td></tr>
-  <tr>                          <td>Smooth</td>       <td>74</td>  <td>36</td>   <td>56</td>   <td>121</td></tr>
-  <tr>                          <td>Experimental</td> <td>94</td>  <td>83</td>   <td>127</td>  <td>58</td></tr>
+  <tr><th rowspan="3">Types</th><td>Hard</td>         <td>114</td>  <td>96</td>   <td>78</td>  <td>52</td></tr>
+  <tr>                          <td>Smooth</td>       <td>56</td>  <td>36</td>   <td>74</td>   <td>121</td></tr>
+  <tr>                          <td>Experimental</td> <td>127</td>  <td>83</td>   <td>94</td>  <td>58</td></tr>
   <tr><td colspan="2"></td>                           <th colspan="4">Popularity</th></tr>
 </tbody></table>
 
@@ -265,9 +283,9 @@ other case, a dimension.</p><p class="paragraph">Data specified by series:</p>
         {
             <span class="hljs-attr">name</span>: <span class="hljs-string">'Popularity'</span>,
             <span class="hljs-attr">values</span>: [
-                [ <span class="hljs-number">78</span>, <span class="hljs-number">96</span>, <span class="hljs-number">114</span>, <span class="hljs-number">52</span> ],
-                [ <span class="hljs-number">174</span>, <span class="hljs-number">36</span>, <span class="hljs-number">56</span>, <span class="hljs-number">121</span> ],
-                [ <span class="hljs-number">94</span>, <span class="hljs-number">83</span>, <span class="hljs-number">127</span>, <span class="hljs-number">58</span> ]
+                [ <span class="hljs-number">114</span>, <span class="hljs-number">96</span>, <span class="hljs-number">78</span>, <span class="hljs-number">52</span> ],
+                [ <span class="hljs-number">56</span>, <span class="hljs-number">36</span>, <span class="hljs-number">174</span>, <span class="hljs-number">121</span> ],
+                [ <span class="hljs-number">127</span>, <span class="hljs-number">83</span>, <span class="hljs-number">94</span>, <span class="hljs-number">58</span> ]
             ]
         }
     ]
@@ -277,7 +295,7 @@ other case, a dimension.</p><p class="paragraph">Data specified by series:</p>
 			
 		</div>
 		
-			<h2 id="subtitle-0.2" class="subtitle">Axes, title, tooltip</h2>
+			<h2 id="chapter-0.2" class="subtitle">Axes, title, tooltip</h2>
 			<p class="paragraph">To build a chart with Vizzu, you have to add data series to the channels.</p><p class="paragraph">The first step is to create a simple column chart, adding one of the dimensions 
 (Genre) to the x-axis and the measure (Popularity) to the y-axis using the set 
 property.</p>
@@ -334,10 +352,7 @@ automatically animates between the initial state and this one.</p>
 						{"run":true,"pure":false});
 				</script>
 		</div>
-		<p class="paragraph">Instead of set, you can use attach and detach to add or remove series to/from 
-the channels. Using these commands makes it easier to build your animated charts 
-step-by-step, however you have to keep in mind what you had on which channel in 
-the previous step.</p>
+		<p class="paragraph">Instead of set, you can use attach and detach to add or remove series to/from the channels. </p>
 		<div id="snippet-0.2.3" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
@@ -363,6 +378,14 @@ the previous step.</p>
 						{"run":true,"pure":false});
 				</script>
 		</div>
+		<p class="paragraph">Using attach &amp; detach makes it easier to build your animated charts step-by-step, however you either have to keep in mind what you had on which channel in 
+the previous step or add the following code to access the actual configuration of the chart.</p>
+		<div class="snippet">
+			<pre><code class="language-javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chart.<span class="hljs-property">config</span>); 
+</code></pre>
+
+			
+		</div>
 		<p class="paragraph">Setting the chart title with the title command.</p>
 		<div id="snippet-0.2.4" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({ <span class="hljs-attr">title</span>:<span class="hljs-string">'My first chart'</span> })
@@ -377,8 +400,7 @@ the previous step.</p>
 		</div>
 		<p class="paragraph">Switching on the tooltips that appear on the chart elements when the user hovers 
 over them with their mouse by adding the (tooltip, true) parameters to the 
-chart.feature method. Please note that this time we call the chart.feature method 
-instead of the chart.animate method used in the previous steps.</p>
+chart.feature method. </p>
 		<div id="snippet-0.2.5" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">feature</span>(<span class="hljs-string">'tooltip'</span>,<span class="hljs-literal">true</span>)
 </code></pre>
@@ -391,7 +413,7 @@ instead of the chart.animate method used in the previous steps.</p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.3" class="subtitle">Geometry</h2>
+			<h2 id="chapter-0.3" class="subtitle">Geometry</h2>
 			<p class="paragraph">In Vizzu you can set the geometric elements used to represent your data by the 
 geometry property within the config object. </p><p class="paragraph">Switching the geometry to area.</p>
 		<div id="snippet-0.3.1" class="snippet runable" tabindex="0">
@@ -476,14 +498,15 @@ like bar and column charts.</p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.4" class="subtitle">Channels &amp; legend</h2>
+			<h2 id="chapter-0.4" class="subtitle">Channels &amp; legend</h2>
 			<p class="paragraph">Besides the x-axis and the y-axis, there are five more channels in Vizzu you can 
 use to visualize your data. Similarly to the axes you can put any number of 
 dimensions and/or one measure to a channel. In the following example the four 
 most commonly used channels are shown. The fifth, noop channel is introduced 
-later in the "Without coordinates &amp; noop channel" chapter.</p><p class="paragraph">Data on the label channel will be written on the markers on the chart. Vizzu 
+later in the <a href="#chapter-0.11">Without coordinates &amp; noop channel</a> chapter.</p><p class="paragraph">Data on the label channel will be written on the markers on the chart. Vizzu 
 automatically determines the best way to position these labels, but you can set 
-them differently with the style object introduced in the "Color palette &amp; fonts" chapter.</p>
+them differently with the style object introduced in the 
+<a href="#chapter-0.12">Color palette &amp; fonts</a> chapter.</p>
 		<div id="snippet-0.4.1" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
@@ -510,7 +533,10 @@ them differently with the style object introduced in the "Color palette &amp; fo
 		<p class="paragraph">The lightness channel sets the lightness of the markers. In this case the same 
 measure (Popularity) is added to it that is on the y-axis, meaning that columns’ 
 height and lightness represent the same values. The legend for the lightness 
-channel is turned on using the legend property. </p><p class="paragraph">Note: This is an example when we explicitly instruct Vizzu to show the legend. By default Vizzu automatically shows/hides the legend when it's necessary. You can also turn it off with the legend : null command or set back to automatic mode with legend : 'auto'.</p>
+channel is turned on using the legend property. </p><p class="paragraph">Note: This is an example when we explicitly instruct Vizzu to show the legend. 
+By default Vizzu automatically shows/hides the legend when it's necessary. 
+You can also turn it off with the legend : null command or set back to automatic 
+mode with legend : 'auto'.</p>
 		<div id="snippet-0.4.2" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
@@ -597,10 +623,10 @@ change the geometry to circle in the example.</p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.5" class="subtitle">Group/stack</h2>
+			<h2 id="chapter-0.5" class="subtitle">Group/stack</h2>
 			<p class="paragraph">When you add dimensions to the channels, there is a simple rule to keep in mind 
 in the current beta phase of Vizzu. The following example also shows how to 
-group and stack elements of a bar chart.</p><p class="paragraph">When you add a dimension (Type) to a channel (x-axis) with only dimensions on 
+group and stack elements of a bar chart.</p><p class="paragraph">The rule: When you add a dimension (Type) to a channel (x-axis) with only dimensions on 
 it, Vizzu will fade between the states, as shown here. Thus, you get a grouped 
 bar chart, but the connection between the original state and this one will be 
 unclear for the viewer because of the fading.</p>
@@ -741,7 +767,7 @@ around: detach the dimension from the x-axis and attach it to the y-axis.</p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.6" class="subtitle">Sorting</h2>
+			<h2 id="chapter-0.6" class="subtitle">Sorting</h2>
 			<p class="paragraph">Vizzu provides multiple options to sort data. By default, the data is sorted by 
 the order it is added to Vizzu. This is why we suggest to add temporal data such 
 as dates in chronological order - from oldest to newest.</p><p class="paragraph">You can also sort the elements by value, which will provide you with an 
@@ -862,7 +888,7 @@ elements according to this new logic.</p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.7" class="subtitle">Align &amp; range</h2>
+			<h2 id="chapter-0.7" class="subtitle">Align &amp; range</h2>
 			<p class="paragraph">Vizzu offers different options to align your chart elements and to set the range 
 of values shown on the axes. Alignment can be used to create charts like a 
 stream chart where the elements are vertically centered . A good example for 
@@ -965,7 +991,12 @@ this feature to filter certain elements, just like in the following example.</p>
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
-            <span class="hljs-attr">x</span>: { <span class="hljs-attr">range</span>: { <span class="hljs-attr">min</span>: -<span class="hljs-number">2</span>, <span class="hljs-attr">max</span>: <span class="hljs-number">3</span> } }
+            <span class="hljs-attr">x</span>: { 
+                <span class="hljs-attr">range</span>: { 
+                    <span class="hljs-attr">min</span>: -<span class="hljs-number">2</span>, 
+                    <span class="hljs-attr">max</span>: <span class="hljs-number">3</span> 
+                } 
+            }
         }
     }
 })
@@ -977,7 +1008,56 @@ this feature to filter certain elements, just like in the following example.</p>
 						chart => { chart.animate({
     config: {
         channels: {
-            x: { range: { min: -2, max: 3 } }
+            x: { 
+                range: { 
+                    min: -2, 
+                    max: 3 
+                } 
+            }
+        }
+    }
+}) },
+						{"title":"Axis range set explicitly on an axis with discrete series","run":true,"pure":false});
+				</script>
+		</div>
+		<p class="paragraph">Ranges have certain defaults depending on the chart's configuration, based on common data viz guidelines because we wanted to make it easy for you to create sleek charts. For example, in the cartesian coordinate system, the range will be automatically set to the max:110% for an axis with a measure on it. Polar coordinates work differently, as you can see for yourself in the <a href="#chapter-0.9">Orientation, split &amp; polar</a> chapter. </p><p class="paragraph">Whenever you want to set your ranges back to the default value, just set them to ‘auto’.</p>
+		<div id="snippet-0.7.6" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { 
+                <span class="hljs-attr">range</span>: { 
+                    <span class="hljs-attr">min</span>: <span class="hljs-string">'auto'</span>,
+                    <span class="hljs-attr">max</span>: <span class="hljs-string">'auto'</span> 
+                }
+            },
+            <span class="hljs-attr">y</span>: { 
+                <span class="hljs-attr">range</span>: { 
+                    <span class="hljs-attr">max</span>: <span class="hljs-string">'auto'</span> 
+                } 
+            }
+        }
+    }
+})
+</code></pre>
+
+			<script>
+					registry.addSnippet(
+						"0.7.6", 
+						chart => { chart.animate({
+    config: {
+        channels: {
+            x: { 
+                range: { 
+                    min: 'auto',
+                    max: 'auto' 
+                }
+            },
+            y: { 
+                range: { 
+                    max: 'auto' 
+                } 
+            }
         }
     }
 }) },
@@ -985,7 +1065,7 @@ this feature to filter certain elements, just like in the following example.</p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.8" class="subtitle">Aggregate/drill-down</h2>
+			<h2 id="chapter-0.8" class="subtitle">Aggregate/drill-down</h2>
 			<p class="paragraph">These features basically mean that you add or remove an additional dimension 
 to/from an axis or another channel. As you can see below, there are some 
 important things to keep in mind when you use them.</p><p class="paragraph">Let’s stack together the elements by putting the Genres dimension from the 
@@ -1096,8 +1176,8 @@ state that we suggest you to only use temporarily when in transition.</p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.9" class="subtitle">Orientation, split &amp; polar</h2>
-			<p class="paragraph">Now that you are familiar with the basic logic and operators of Vizzu,
+			<h2 id="chapter-0.9" class="subtitle">Orientation, split &amp; polar</h2>
+			<p class="paragraph">Now that you are familiar with the basic logic and operation of Vizzu,
 let's dive in with some more advanced features that you can use to create
 animated data stories and show the data from different perspectives.</p><p class="paragraph">Switching orientation means that you put a measure from one axis to the other to 
 see the data from a different perspective. This is once again a state you should 
@@ -1193,16 +1273,11 @@ which enables the comparison of the components.</p>
 				</script>
 		</div>
 		<p class="paragraph">Switching from cartesian coordinates to polar. When doing so, it is worth 
-setting the axes’ ranges so that the viewers can easily compare the values being 
-shown. If you want to get back to the default, cartesian coordinates, just set 
-the coordSystem parameter to ‘cartesian’.</p>
+setting the axis range on the axis with the dimension so that the viewers can easily compare the values shown. If you want to return to the default cartesian coordinates, just set the coordSystem parameter to ‘cartesian’.</p><p class="paragraph">Note: The range of the x-axis is automatically set to max:133% as this is the standard way to show radial charts.</p>
 		<div id="snippet-0.9.5" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
-        <span class="hljs-attr">channels</span>: {
-            <span class="hljs-attr">x</span>: { <span class="hljs-attr">range</span>: { <span class="hljs-attr">max</span>: <span class="hljs-string">'133%'</span> } },
-            <span class="hljs-attr">y</span>: { <span class="hljs-attr">range</span>: { <span class="hljs-attr">min</span>: <span class="hljs-string">'-100%'</span> } }
-        },
+        <span class="hljs-attr">channels</span>: { <span class="hljs-attr">y</span>: { <span class="hljs-attr">range</span>: { <span class="hljs-attr">min</span>: <span class="hljs-string">'-30%'</span> } } },
         <span class="hljs-attr">coordSystem</span>: <span class="hljs-string">'polar'</span>
     }
 })
@@ -1213,10 +1288,7 @@ the coordSystem parameter to ‘cartesian’.</p>
 						"0.9.5", 
 						chart => { chart.animate({
     config: {
-        channels: {
-            x: { range: { max: '133%' } },
-            y: { range: { min: '-100%' } }
-        },
+        channels: { y: { range: { min: '-30%' } } },
         coordSystem: 'polar'
     }
 }) },
@@ -1224,9 +1296,9 @@ the coordSystem parameter to ‘cartesian’.</p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.10" class="subtitle">Filtering</h2>
+			<h2 id="chapter-0.10" class="subtitle">Filtering</h2>
 			<p class="paragraph">Filtering enables you to zoom in or out within a chart, allowing the viewer to 
-focus on certain selected elements, or add new ones to provide more context. </p><p class="paragraph">We add two items from the Genres dimension - separated by the || operator - to 
+focus on certain selected elements, or add new ones to provide more context. </p><p class="paragraph">We add two items from the Genres dimension - using the || operator - to 
 the filter, so the chart elements that belong to the other two items will vanish 
 from the chart.</p>
 		<div id="snippet-0.10.1" class="snippet runable" tabindex="0">
@@ -1252,11 +1324,7 @@ from the chart.</p>
 						{"title":"Filter by one dimension","run":true,"pure":false});
 				</script>
 		</div>
-		<p class="paragraph">Now we add a cross-filter that includes items from both the Genres and the Types 
-dimensions. Check out the operators in the filter we used to achieve this 
-result. Once again, we had to add the items to the filter that we added in the 
-previous step since Vizzu will only include elements in a filter that are 
-explicitly described in that step.</p>
+		<p class="paragraph">Now we add a cross-filter that includes items from both the Genres and the Types dimensions. This way we override the filter from the previous state. If we weren't update the filter, Vizzu would use it in subsequent states.</p>
 		<div id="snippet-0.10.2" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">data</span>: {
@@ -1301,7 +1369,7 @@ explicitly described in that step.</p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.11" class="subtitle">Without coordinates &amp; noop channel</h2>
+			<h2 id="chapter-0.11" class="subtitle">Without coordinates &amp; noop channel</h2>
 			<p class="paragraph">Certain chart types have neither measures nor dimensions on the axes such as 
 treemaps and bubble charts. This is a case when the noop channel comes in handy 
 for grouping and stacking elements in these kinds of charts</p><p class="paragraph">To get to a treemap, we have to detach all dimensions and the measure from the 
@@ -1357,10 +1425,7 @@ channel - this is why the bubbles are in separate, small groups.</p>
 						{"title":"Bubble chart - stacked","run":true,"pure":false});
 				</script>
 		</div>
-		<p class="paragraph">In order to show all bubbles as one group, we use the noop (no operations) 
-channel where we put the Type dimension from the size channel. The noop channel 
-enables that even though we have a dimension on the chart, that dimension 
-doesn’t change any parameter of the chart elements.</p>
+		<p class="paragraph">In order to show all bubbles as one group, we use the noop (no operations) channel for the Genres dimension. The noop channel enables us to have a dimension on the chart, that doesn’t affect any parameter of the elements, only their count.</p>
 		<div id="snippet-0.11.3" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
@@ -1387,11 +1452,18 @@ doesn’t change any parameter of the chart elements.</p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.12" class="subtitle">Color palette &amp; fonts</h2>
+			<h2 id="chapter-0.12" class="subtitle">Color palette &amp; fonts</h2>
 			<p class="paragraph">This and the next chapter provide a quick intro to the styling of the charts using the style object. 
 The style settings are similar to CSS. The font sizes automatically adjust to the chart size to help 
-readability, but they can also be set separately or for specific groups.</p><p class="paragraph">The color palette is changed to the colors we add here. The order of the dimension’s 
-items in the data set determine which color &gt; belongs to which item as the colors are added one-by-one. </p>
+readability, but they can also be set separately or for specific groups.</p><p class="paragraph">The actual style settings of the chart can be accessed via the style property.</p>
+		<div class="snippet">
+			<pre><code class="language-javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chart.<span class="hljs-property">style</span>); 
+</code></pre>
+
+			
+		</div>
+		<p class="paragraph">The color palette is changed to the colors we add here. The order of the dimension’s 
+items in the data set determine which color belongs to which item as the colors are added one-by-one. </p>
 		<div id="snippet-0.12.1" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
@@ -1468,7 +1540,7 @@ items in the data set determine which color &gt; belongs to which item as the co
 				</script>
 		</div>
 		<p class="paragraph">In case you change the font size of the whole chart with the top-level fontSize 
-parameter then every font on the chart will grow/&gt; shrink proportionally. 
+parameter then every font on the chart will grow/shrink proportionally. 
 The size refers to the font size of the axis labels by default.</p>
 		<div id="snippet-0.12.4" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
@@ -1506,12 +1578,12 @@ The size refers to the font size of the axis labels by default.</p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.13" class="subtitle">Chart layout</h2>
+			<h2 id="chapter-0.13" class="subtitle">Chart layout</h2>
 			<p class="paragraph">Vizzu has three separate parts of the chart layout: the plot area that contains 
 the chart, the title containing the chart title on the top, and the legend on 
 the left. Vizzu automatically hides the legend when it’s unnecessary to show it. 
 When the title is not in use, Vizzu hides that part automatically as well. Each 
-of these parts have their own paddings on all four sides that adjusts to the 
+of these parts have their own paddings on all four sides that adjust to the 
 chart size by default, but can also be set with the appropriate settings in the 
 style object. All size parameters can be set in pixel, percentage and em.</p><p class="paragraph">We add different background colors to the parts of the layout to show how they 
 are aligned.</p>
@@ -1519,7 +1591,7 @@ are aligned.</p>
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">title</span>: { <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">'#A0A0A0'</span> },
-        <span class="hljs-attr">plot</span>: { <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">'#C0C0C0'</span> },
+        <span class="hljs-attr">plot</span>: { <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">'#D2D2D2'</span> },
         <span class="hljs-attr">legend</span>: { <span class="hljs-attr">backgroundColor</span>: <span class="hljs-string">'#808080'</span> },
     }
 })
@@ -1531,7 +1603,7 @@ are aligned.</p>
 						chart => { chart.animate({
     style: {
         title: { backgroundColor: '#A0A0A0' },
-        plot: { backgroundColor: '#C0C0C0' },
+        plot: { backgroundColor: '#D2D2D2' },
         legend: { backgroundColor: '#808080' },
     }
 }) },
@@ -1586,9 +1658,7 @@ are aligned.</p>
 						{"title":"Legend width ","run":true,"pure":false});
 				</script>
 		</div>
-		<p class="paragraph">Changing the title paddings. By default, the title is horizontally centered 
-above the plot area - separated from the legend. In this example, we set the 
-title’s left padding, resulting in the text moving to the right.</p>
+		<p class="paragraph">Changing the title paddings. By default, the title is horizontally centered above the chart. In this example, we set the title’s left padding, resulting in the text moving to the right.</p>
 		<div id="snippet-0.13.4" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
@@ -1698,12 +1768,12 @@ axes are drawn on the padding of the plot and not the plot itself.</p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.14" class="subtitle">Animation settings</h2>
+			<h2 id="chapter-0.14" class="subtitle">Animation options</h2>
 			<p class="paragraph">In Vizzu you can set the timing and duration of the animation. You can do this 
 either for the whole animation, or for animation groups such as the elements 
 moving along the x-axis or the y-axis, appearing or disappearing or when the 
 coordinate system is changed.</p><p class="paragraph">Let’s see first a simple example when a stacked column chart is grouped using 
-the default animation settings.</p>
+the default animation options.</p>
 		<div id="snippet-0.14.1" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
@@ -1726,10 +1796,10 @@ the default animation settings.</p>
         }
     }
 }) },
-						{"title":"Default settings - step 1","run":true,"pure":false});
+						{"title":"Default options - step 1","run":true,"pure":false});
 				</script>
 		</div>
-		<p class="paragraph">We stack the columns, still with the default settings.</p>
+		<p class="paragraph">We stack the columns, still with the default options.</p>
 		<div id="snippet-0.14.2" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
@@ -1752,10 +1822,10 @@ the default animation settings.</p>
         }
     }
 }) },
-						{"title":"Default settings - step 2","run":true,"pure":false});
+						{"title":"Default options - step 2","run":true,"pure":false});
 				</script>
 		</div>
-		<p class="paragraph">Now we change the animation settings, for the elements moving along the y-axis 
+		<p class="paragraph">Now we change the animation settings for the elements moving along the y-axis 
 and also the change in styles, more specifically when the labels on the markers 
 move from the center of the chart elements to the top of them.</p>
 		<div id="snippet-0.14.3" class="snippet runable" tabindex="0">
@@ -1834,11 +1904,11 @@ move from the center of the chart elements to the top of them.</p>
     duration: 1, 
     easing: 'linear'
 }) },
-						{"title":"Custom settings for the whole animation","run":true,"pure":false});
+						{"title":"Custom options for the whole animation","run":true,"pure":false});
 				</script>
 		</div>
 		<p class="paragraph">When the two settings are combined, Vizzu will use the general animation 
-settings and spread the unique settings for specific groups proportionally. 
+options and spread the unique settings for specific groups proportionally. 
 This is why you can see the same animation as two steps before but happening 
 much quicker since the duration of the whole animation is set to 1 second. </p>
 		<div id="snippet-0.14.5" class="snippet runable" tabindex="0">
@@ -1922,8 +1992,8 @@ the following, simplified format to do that. </p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.15" class="subtitle">Animation control</h2>
-			<p class="paragraph">With these options, you can play, pause, stop, seek or reverse the animations.</p><p class="paragraph">In this step, we set an event that pauses the animation when it reaches 75% of 
+			<h2 id="chapter-0.15" class="subtitle">Animation control</h2>
+			<p class="paragraph">Using the methods of the chart's animation object, you can play, pause, stop, seek or reverse the animations.</p><p class="paragraph">In this step, we set an event that pauses the animation when it reaches 75% of 
 progress and seeks back to 25% of progress, then restarts the animation from 
 there.</p>
 		<div id="snippet-0.15.1" class="snippet runable" tabindex="0">
@@ -1978,7 +2048,7 @@ chart.animate({
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.16" class="subtitle">Events</h2>
+			<h2 id="chapter-0.16" class="subtitle">Events</h2>
 			<p class="paragraph">You can register handlers for various events.
 There are mouse events (click, mouseon), animation events (begin, update, complete),
 and rendering events that are called before rendering the chart elements.
@@ -2060,7 +2130,7 @@ show an alert block with information about the clicked marker.</p>
 				</script>
 		</div>
 		<p class="paragraph">The default behaviour of all events can be blocked by calling the event's
-preventDefault() method. For example we block the drawing of the Vizzu Logo.</p>
+preventDefault() method. Here we block the drawing of the Vizzu Logo in the bottom right corner of the chart.</p>
 		<div class="snippet">
 			<pre><code class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">logoDrawHandler</span>(<span class="hljs-params">event</span>) 
 {
@@ -2098,15 +2168,16 @@ preventDefault() method. For example we block the drawing of the Vizzu Logo.</p>
 				</script>
 		</div>
 		
-			<h2 id="subtitle-0.17" class="subtitle">Shorthands &amp; Store</h2>
+			<h2 id="chapter-0.17" class="subtitle">Shorthands &amp; Store</h2>
 			<p class="paragraph">To assist you with the development we added various shorthands that will make 
 your code more compact. And we also added the store function, which enables you
-to save a chart state into a variable that you can later call without setting up 
-that state once again.</p><p class="paragraph">If you don't use the data and style properties in the first parameter of the 
-animate method, you can use the function without expressing the config property.</p>
+to save a chart state into a variable that you can reuse later instead of setting up 
+that state once again.</p><p class="paragraph">If you don't use the data and style properties in the first parameter of the animate method, you can simplify your code by using only the object of the config property.</p>
 		<div id="snippet-0.17.1" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+<span class="hljs-comment">// config: {</span>
     <span class="hljs-attr">align</span>:<span class="hljs-string">'stretch'</span>
+<span class="hljs-comment">// }</span>
 })
 </code></pre>
 
@@ -2114,7 +2185,9 @@ animate method, you can use the function without expressing the config property.
 					registry.addSnippet(
 						"0.17.1", 
 						chart => { chart.animate({
+// config: {
     align:'stretch'
+// }
 }) },
 						{"title":"When only the config property is used","run":true,"pure":false});
 				</script>
@@ -2131,10 +2204,11 @@ animate method, you can use the function without expressing the config property.
 						{"title":"Store function","run":true,"pure":false});
 				</script>
 		</div>
-		<p class="paragraph">If you set/attach/detach just one series on a channel, you don't have to put that into an array.</p>
+		<p class="paragraph">If you set/attach/detach just one series on a channel, you don't have to put that series into an array.</p>
 		<div id="snippet-0.17.3" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">channels</span>: {
+        <span class="hljs-comment">// x: { attach: [ 'Types' ] },</span>
         <span class="hljs-attr">x</span>: { <span class="hljs-attr">attach</span>: <span class="hljs-string">'Types'</span> },
         <span class="hljs-attr">y</span>: { <span class="hljs-attr">detach</span>: <span class="hljs-string">'Types'</span> }
     },
@@ -2147,6 +2221,7 @@ animate method, you can use the function without expressing the config property.
 						"0.17.3", 
 						chart => { chart.animate({
     channels: {
+        // x: { attach: [ 'Types' ] },
         x: { attach: 'Types' },
         y: { detach: 'Types' }
     },
@@ -2155,12 +2230,11 @@ animate method, you can use the function without expressing the config property.
 						{"title":"When just one series is used","run":true,"pure":false});
 				</script>
 		</div>
-		<p class="paragraph">If you use set on a channel and no other options like range, you don't have to 
-use the channel object. If you only set one series on the channel you don't 
-even have to put that into an object.</p>
+		<p class="paragraph">If you use set on a channel and no other options like range, you don't have to express that channel as an object. If you only set one series on a channel you can simply write the series' name after the channel name.</p>
 		<div id="snippet-0.17.4" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">channels</span>: {
+        <span class="hljs-comment">// y: { set: [ 'Types', 'Popularity' ] },</span>
         <span class="hljs-attr">y</span>: [ <span class="hljs-string">'Types'</span>, <span class="hljs-string">'Popularity'</span> ],
         <span class="hljs-attr">x</span>: <span class="hljs-string">'Genres'</span>
     }
@@ -2172,6 +2246,7 @@ even have to put that into an object.</p>
 						"0.17.4", 
 						chart => { chart.animate({
     channels: {
+        // y: { set: [ 'Types', 'Popularity' ] },
         y: [ 'Types', 'Popularity' ],
         x: 'Genres'
     }
@@ -2179,10 +2254,33 @@ even have to put that into an object.</p>
 						{"title":"When you use set and no other channel options","run":true,"pure":false});
 				</script>
 		</div>
-		<p class="paragraph">Instead of creating nested objects, you can set the styles like this.</p>
+		<p class="paragraph">In any case, you can simply omit the the channel object, Vizzu will automatically recognize the channels by their names.</p>
 		<div id="snippet-0.17.5" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+<span class="hljs-comment">// channels: {</span>
+    <span class="hljs-attr">y</span>: <span class="hljs-string">'Types'</span>,
+    <span class="hljs-attr">x</span>: [<span class="hljs-string">'Genres'</span>,<span class="hljs-string">'Popularity'</span>]
+<span class="hljs-comment">// }</span>
+})
+</code></pre>
+
+			<script>
+					registry.addSnippet(
+						"0.17.5", 
+						chart => { chart.animate({
+// channels: {
+    y: 'Types',
+    x: ['Genres','Popularity']
+// }
+}) },
+						{"title":"You don't have to use the channel object","run":true,"pure":false});
+				</script>
+		</div>
+		<p class="paragraph">Instead of creating nested objects, you can set the styles like this.</p>
+		<div id="snippet-0.17.6" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: { 
+        <span class="hljs-comment">// plot: { xAxis: { label: { fontSize: '150%' } } }</span>
         <span class="hljs-string">'plot.xAxis.label.fontSize'</span>: <span class="hljs-string">'150%'</span>,
         <span class="hljs-string">'title.backgroundColor'</span>: <span class="hljs-string">'#A0A0A0'</span>  
     }
@@ -2191,9 +2289,10 @@ even have to put that into an object.</p>
 
 			<script>
 					registry.addSnippet(
-						"0.17.5", 
+						"0.17.6", 
 						chart => { chart.animate({
     style: { 
+        // plot: { xAxis: { label: { fontSize: '150%' } } }
         'plot.xAxis.label.fontSize': '150%',
         'title.backgroundColor': '#A0A0A0'  
     }
@@ -2202,19 +2301,311 @@ even have to put that into an object.</p>
 				</script>
 		</div>
 		<p class="paragraph">This is how you can get back to a state that you previously stored.</p>
-		<div id="snippet-0.17.6" class="snippet runable" tabindex="0">
+		<div id="snippet-0.17.7" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>(snapshot)
 </code></pre>
 
 			<script>
 					registry.addSnippet(
-						"0.17.6", 
+						"0.17.7", 
 						chart => { chart.animate(snapshot) },
 						{"title":"Restoring a previously stored state","run":true,"pure":false});
 				</script>
 		</div>
 		</div>
+			</div>
+
+			<div id="page-1" class="page">
+				<div id="examples-header">
+					<div id="examples-title"></div>
+					<button id="example-back-btn" class="button" type="button">Back</button>
+				</div>
+				<div id="example-view">
+					<iframe id="example-frame"></iframe>
+				</div>
+				<div id="examples-1.0" class="examples">
+					<div class="example" id="example-1.0.0" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.0" src="content/examples/static/marimekko_rectangle_2dis_2con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.1" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.1" src="content/examples/static/stacked_mekko_rectangle_2dis_2con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.2" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.2" src="content/examples/static/scatterplot_circle_negative_2dis_3con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.3" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.3" src="content/examples/static/area_negative_1dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.4" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.4" src="content/examples/static/stacked_area_2dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.5" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.5" src="content/examples/static/column_grouped_rectangle_negative_2dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.6" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.6" src="content/examples/static/bar_rectangle_negative_1dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.7" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.7" src="content/examples/static/line_negative_1dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.8" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.8" src="content/examples/static/scatterplot_circle_negative_1dis_2con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.9" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.9" src="content/examples/static/dotplot_circle_negative_1dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.10" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.10" src="content/examples/static/column_stacked_rectangle_1dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.11" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.11" src="content/examples/static/line_negative_2dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.12" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.12" src="content/examples/static/column_stacked_rectangle_negative_2dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.13" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.13" src="content/examples/static/histogram_rectangle_negative_1dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.14" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.14" src="content/examples/static/donut_rectangle_1dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.15" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.15" src="content/examples/static/radial_stacked_rectangle_2dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.16" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.16" src="content/examples/static/radial_rectangle_1dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.17" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.17" src="content/examples/static/coxcomb_stacked_rectangle_2dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.18" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.18" src="content/examples/static/pie_rectangle_1dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.19" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.19" src="content/examples/static/treemap_rectangle_1dis_1con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.20" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.20" src="content/examples/static/bubble_circle_2dis_2con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.21" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.21" src="content/examples/static/bubble_circle_1dis_2con.png">
+					</div>
+				
+					<div class="example" id="example-1.0.22" tabindex="0">
+						<img class="thumbnail" id="thumbnail-1.0.22" src="content/examples/static/treemap_rectangle_2dis_2con.png">
+					</div>
+				</div>
+				<div id="examples-1.1" class="examples">
+					<div class="example" id="example-1.1.0" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.0" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/composition_comparison_pie_coxcomb_column_2dis_2con.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.1" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.1" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/composition_comparison_waterfall_column_2dis_1con.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.2" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.2" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/composition_percentage_area_stream_3dis_1con.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.3" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.3" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/composition_percentage_column_stream_3dis_1con.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.4" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.4" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/distribution_relationship_dotplot_dotplot.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.5" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.5" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/drilldown_aggregate_line.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.6" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.6" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/merge_split_area_stream_3dis_1con.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.7" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.7" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/merge_split_bar.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.8" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.8" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/merge_split_radial_stacked_rectangle_2dis_1con.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.9" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.9" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/orientation_dot_circle.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.10" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.10" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/orientation_circle.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.11" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.11" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/orientation_marimekko_rectangle_2dis_2con.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.12" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.12" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/orientation_rectangle.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.13" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.13" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/pie_donut2_rectangle_1dis_1con.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.14" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.14" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/relationship_comparison_circle_2_bubble_plot.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.15" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.15" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/relationship_total_bubble_plot_column.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.16" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.16" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/stack_group_area_line.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.17" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.17" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/stack_group_circle.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.18" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.18" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/stack_group_treemap.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.19" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.19" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/total_element_bubble_2_bar.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.20" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.20" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/total_element_bubble_column.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.21" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.21" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/total_time_area_bar.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.22" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.22" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/total_time_area_column.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.23" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.23" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/treemap_radial.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.24" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.24" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/zoom_area.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				
+					<div class="example" id="example-1.1.25" tabindex="0">
+						<video class="thumbnail" id="thumbnail-1.1.25" width="320" height="180" nocontrols="" autoplay="" muted="" loop="">
+							<source src="content/examples/animated/zoom_line.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+				</div>
+			</div>
+
+			<div id="page-2" class="page">
+			</div>
+
 		</div>
+
 	</div>
 	<script type="module">
 	import Main from './script/main.js';

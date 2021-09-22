@@ -1,0 +1,92 @@
+<!DOCTYPE html><html><head>
+		<title>Vizzu library example</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/highlight.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/example.css">
+	</head>
+<body>
+	<noscript>
+		<p class="noscript">To use Vizzu, please enable Javascript.</p>
+	</noscript>
+	<div id="vizzuCanvas"></div>
+	<div id="navigation">
+		<button id="example-replay-btn" class="button" type="button" onclick="location.reload()">▶ replay</button>
+	</div>
+	<div id="script">
+<script type="module">
+import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import { data } from '/test/integration/test_data/chart_types_eu.js';
+
+
+let chart = new Vizzu('vizzuCanvas');
+
+
+
+chart.animate({
+    data: data,
+    config: {
+        channels: {
+            x: { set: ['Country'] },
+            y: { set: ['Joy factors', 'Value 2 (+)'] },
+            color: { set: ['Joy factors'] },
+            label: { set: ['Value 2 (+)'] }
+        },
+        title: 'Stacked Column Chart'
+    },
+    style: { // This chart type needs special angle for small labels.
+        plot: {
+            xAxis: {
+                label: {
+                    angle: 2.3,
+                    fontSize: 11
+                }
+            },
+            marker: {
+                label: {
+                    fontSize: 7,
+                    orientation: 'vertical',
+                    angle: 3.14 * -1
+                }
+            }
+        }
+    }
+});
+
+
+</script>
+		</div>
+	<div id="code"><pre>
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">data</span>: data,
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>] },
+            <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>, <span class="hljs-string">'Value 2 (+)'</span>] },
+            <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
+            <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>] }
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Column Chart'</span>
+    },
+    <span class="hljs-attr">style</span>: { <span class="hljs-comment">// This chart type needs special angle for small labels.</span>
+        <span class="hljs-attr">plot</span>: {
+            <span class="hljs-attr">xAxis</span>: {
+                <span class="hljs-attr">label</span>: {
+                    <span class="hljs-attr">angle</span>: <span class="hljs-number">2.3</span>,
+                    <span class="hljs-attr">fontSize</span>: <span class="hljs-number">11</span>
+                }
+            },
+            <span class="hljs-attr">marker</span>: {
+                <span class="hljs-attr">label</span>: {
+                    <span class="hljs-attr">fontSize</span>: <span class="hljs-number">7</span>,
+                    <span class="hljs-attr">orientation</span>: <span class="hljs-string">'vertical'</span>,
+                    <span class="hljs-attr">angle</span>: <span class="hljs-number">3.14</span> * -<span class="hljs-number">1</span>
+                }
+            }
+        }
+    }
+});
+
+</pre></div>
+
+</body></html>

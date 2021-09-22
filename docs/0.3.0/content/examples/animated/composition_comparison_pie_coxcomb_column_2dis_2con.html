@@ -1,0 +1,170 @@
+<!DOCTYPE html><html><head>
+		<title>Vizzu library example</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/highlight.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/example.css">
+	</head>
+<body>
+	<noscript>
+		<p class="noscript">To use Vizzu, please enable Javascript.</p>
+	</noscript>
+	<div id="vizzuCanvas"></div>
+	<div id="navigation">
+		<button id="example-replay-btn" class="button" type="button" onclick="location.reload()">▶ replay</button>
+	</div>
+	<div id="script">
+<script type="module">
+import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import { data } from '/test/integration/test_cases/web_content/infinite_chart/infinite_data.js';
+
+
+let chart = new Vizzu('vizzuCanvas');
+
+
+
+chart.animate({
+    data: data,
+    config: {
+        channels: {
+            x: { set: ['Value 1', 'Joy factors'] },
+            color: { set: ['Joy factors'] },
+            label: { set: ['Value 1'] }
+        },
+        title: 'Composition',
+        coordSystem: 'polar'
+    },
+    style: { // These chart-types no need axles and axis labels, except bigger size marker-labels on special positions. 
+        plot: {
+            marker: {       
+                label: {
+                    fontSize: 13,
+                    orientation: 'tangential',
+                    angle: 4.7
+                }
+            },
+            xAxis: {  
+                title: { color: '#ffffff00' },
+                label: { color: '#ffffff00' },
+                ticks: { color: '#ffffff00' },
+                interlacing: { color: '#ffffff00' }
+            },
+            yAxis: {
+                color: '#ffffff00',
+                title: { color: '#ffffff00' },
+                label: { color: '#ffffff00' },
+                ticks: { color: '#ffffff00' }
+            }
+        }
+    }
+});
+
+
+chart.animate({
+    config: {
+        channels: {
+            x: { set: ['Value 1', 'Joy factors', 'Region', 'Country code'], },
+            label: { set: null }
+        }
+    }
+}
+, '500ms');
+
+
+chart.animate({
+    config: {
+        channels: {
+            x: { set: ['Value 1', 'Joy factors', 'Region', 'Country code'] },
+            y: { 
+                set: ['Value 3'], 
+                range: { min: '-60%' } // Set the radius of the empty center-circle.
+            },
+        },
+        title: 'Comparison'
+    },
+    style: {
+        plot: {
+            marker: {
+                borderWidth: 0,
+       borderOpacity: 1
+            }
+        }
+    }
+});
+
+
+</script>
+		</div>
+	<div id="code"><pre>
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">data</span>: data,
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 1'</span>, <span class="hljs-string">'Joy factors'</span>] },
+            <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
+            <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 1'</span>] }
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Composition'</span>,
+        <span class="hljs-attr">coordSystem</span>: <span class="hljs-string">'polar'</span>
+    },
+    <span class="hljs-attr">style</span>: { <span class="hljs-comment">// These chart-types no need axles and axis labels, except bigger size marker-labels on special positions. </span>
+        <span class="hljs-attr">plot</span>: {
+            <span class="hljs-attr">marker</span>: {       
+                <span class="hljs-attr">label</span>: {
+                    <span class="hljs-attr">fontSize</span>: <span class="hljs-number">13</span>,
+                    <span class="hljs-attr">orientation</span>: <span class="hljs-string">'tangential'</span>,
+                    <span class="hljs-attr">angle</span>: <span class="hljs-number">4.7</span>
+                }
+            },
+            <span class="hljs-attr">xAxis</span>: {  
+                <span class="hljs-attr">title</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span> },
+                <span class="hljs-attr">label</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span> },
+                <span class="hljs-attr">ticks</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span> },
+                <span class="hljs-attr">interlacing</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span> }
+            },
+            <span class="hljs-attr">yAxis</span>: {
+                <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span>,
+                <span class="hljs-attr">title</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span> },
+                <span class="hljs-attr">label</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span> },
+                <span class="hljs-attr">ticks</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span> }
+            }
+        }
+    }
+});
+
+
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 1'</span>, <span class="hljs-string">'Joy factors'</span>, <span class="hljs-string">'Region'</span>, <span class="hljs-string">'Country code'</span>], },
+            <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> }
+        }
+    }
+}
+, <span class="hljs-string">'500ms'</span>);
+
+
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 1'</span>, <span class="hljs-string">'Joy factors'</span>, <span class="hljs-string">'Region'</span>, <span class="hljs-string">'Country code'</span>] },
+            <span class="hljs-attr">y</span>: { 
+                <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 3'</span>], 
+                <span class="hljs-attr">range</span>: { <span class="hljs-attr">min</span>: <span class="hljs-string">'-60%'</span> } <span class="hljs-comment">// Set the radius of the empty center-circle.</span>
+            },
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Comparison'</span>
+    },
+    <span class="hljs-attr">style</span>: {
+        <span class="hljs-attr">plot</span>: {
+            <span class="hljs-attr">marker</span>: {
+                <span class="hljs-attr">borderWidth</span>: <span class="hljs-number">0</span>,
+       <span class="hljs-attr">borderOpacity</span>: <span class="hljs-number">1</span>
+            }
+        }
+    }
+});
+
+</pre></div>
+
+</body></html>

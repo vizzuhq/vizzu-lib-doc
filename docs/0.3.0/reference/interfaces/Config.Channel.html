@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Channel | </title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for ">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 	<script async src="../assets/js/search.js" id="search-script"></script>
@@ -22,8 +22,6 @@
 					<ul class="results">
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
-					</ul>
-					<ul class="results-priority" style="display:none">
 					</ul>
 					<a href="../index.html" class="title"></a>
 				</div>
@@ -43,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -56,51 +52,34 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
+					<a href="../modules.html"></a>
+				</li>
+				<li>
 					<a href="../modules/Config.html">Config</a>
 				</li>
 				<li>
 					<a href="Config.Channel.html">Channel</a>
 				</li>
 			</ul>
+			<h1>Interface Channel</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
-		<div class="col-3 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="../modules.html">Exports</a>
-					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="../modules/Anim.html">Anim</a>
-					</li>
-					<li class="current tsd-kind-namespace">
-						<a href="../modules/Config.html">Config</a>
-					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="../modules/Data.html">Data</a>
-					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="../modules/Styles.html">Styles</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-		<div class="col-7 offset-3 col-content">
-			<h1>Interface Channel</h1>
-			<section class="tsd-panel tsd-comment"><div class="tsd-comment tsd-typography tsd-comment-shorttext">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
 					<div class="lead">
 						<p>Channels are the main building blocks of the chart. Each channel describes
-							a particular aspect of the markers (position, color, etc.) and connects
-							them to the underlying data. Each channel can be connected to a single
-							continuous data series that will determine the measure of the channel,
-							and an ordered list of categorical data sets, which will recursively slice
-							the channel.
-						The channels are represented on the chart as an axis or legend.</p>
+							a particular aspect of the markers (vertical &amp; horizontal position, color, etc.)
+							and connects them to the underlying data. A single measure and an ordered list of
+							dimensions can be on each channel. The dimensions will recursively slice the
+							measure on the channel. The channels are represented on the chart as an
+						axis or legend.</p>
 					</div>
-			</div></section>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -110,6 +89,7 @@
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
@@ -131,13 +111,13 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="attach" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> attach</h3>
-					<div class="tsd-signature tsd-kind-icon">attach<span class="tsd-signature-symbol">:</span> <a href="../modules/Data.html#SeriesList" class="tsd-signature-type">SeriesList</a></div>
+					<div class="tsd-signature tsd-kind-icon">attach<span class="tsd-signature-symbol">:</span> <a href="../modules/Data.html#SeriesList" class="tsd-signature-type" data-tsd-kind="Type alias">SeriesList</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in vizzu.d.ts:123</li>
+							<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L124">vizzu.d.ts:124</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>List of <a href="Data.Series.html#name">data series names</a> to be added to the
 							channel beside the ones already added.</p>
@@ -147,15 +127,15 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="detach" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> detach</h3>
-					<div class="tsd-signature tsd-kind-icon">detach<span class="tsd-signature-symbol">:</span> <a href="../modules/Data.html#SeriesList" class="tsd-signature-type">SeriesList</a></div>
+					<div class="tsd-signature tsd-kind-icon">detach<span class="tsd-signature-symbol">:</span> <a href="../modules/Data.html#SeriesList" class="tsd-signature-type" data-tsd-kind="Type alias">SeriesList</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in vizzu.d.ts:126</li>
+							<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L127">vizzu.d.ts:127</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>List of <a href="Data.Series.html#name">data series names</a> to be removed to the
+							<p>List of <a href="Data.Series.html#name">data series names</a> to be removed from the
 							channel.</p>
 						</div>
 					</div>
@@ -166,12 +146,12 @@
 					<div class="tsd-signature tsd-kind-icon">label<wbr>Level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in vizzu.d.ts:132</li>
+							<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L133">vizzu.d.ts:133</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Only one categorical data series can be shown on an axis or legend by
+							<p>Only one dimension can be shown on an axis or legend by
 							name. This index specifies which attached series should be used.</p>
 						</div>
 					</div>
@@ -179,29 +159,29 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="range" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> range</h3>
-					<div class="tsd-signature tsd-kind-icon">range<span class="tsd-signature-symbol">:</span> <a href="Config.ChannelRange.html" class="tsd-signature-type">ChannelRange</a></div>
+					<div class="tsd-signature tsd-kind-icon">range<span class="tsd-signature-symbol">:</span> <a href="Config.ChannelRange.html" class="tsd-signature-type" data-tsd-kind="Interface">ChannelRange</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in vizzu.d.ts:129</li>
+							<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L130">vizzu.d.ts:130</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Specifies the range which determines how the represented data will be
-							scales on the channel.</p>
+							<p>Specifies the range that determines how the represented data scales
+							on the channel.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="set" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> set</h3>
-					<div class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">:</span> <a href="../modules/Data.html#SeriesList" class="tsd-signature-type">SeriesList</a></div>
+					<div class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">:</span> <a href="../modules/Data.html#SeriesList" class="tsd-signature-type" data-tsd-kind="Type alias">SeriesList</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in vizzu.d.ts:120</li>
+							<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L121">vizzu.d.ts:121</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>List of <a href="Data.Series.html#name">data series names</a> on the
 							channel.</p>
@@ -214,26 +194,47 @@
 					<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in vizzu.d.ts:117</li>
+							<li>Defined in <a href="https://github.com/vizzuhq/vizzu-lib/blob/c0fc541/src/apps/weblib/js-api/vizzu.d.ts#L118">vizzu.d.ts:118</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography tsd-comment-shorttext">
+					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>This title shown on the axis or legend corresponds to the channel.
-								If not specified, the title will hold the data series name connected to
-							the channel.</p>
+							<p>This title is shown on the axis or legend corresponding to the channel.
+								If not specified, the title will be the name of the measure attached to
+							that channel.</p>
 						</div>
 					</div>
 				</section>
 			</section>
-			<!--{&quot;options&quot;:&quot;/home/simon/Desktop/vizzu/vizzu-lib/tools/refgen&quot;,&quot;tsconfig&quot;:&quot;/home/simon/Desktop/vizzu/vizzu-lib/tools/refgen&quot;,&quot;packages&quot;:[],&quot;entryPoints&quot;:[&quot;/home/simon/Desktop/vizzu/vizzu-lib/src/apps/weblib/js-api/vizzu.d.ts&quot;],&quot;exclude&quot;:[],&quot;externalPattern&quot;:[&quot;**/node_modules/**&quot;],&quot;excludeExternals&quot;:false,&quot;excludeNotDocumented&quot;:false,&quot;excludeInternal&quot;:false,&quot;excludePrivate&quot;:false,&quot;excludeProtected&quot;:false,&quot;disableSources&quot;:false,&quot;includes&quot;:&quot;&quot;,&quot;media&quot;:&quot;&quot;,&quot;watch&quot;:false,&quot;preserveWatchOutput&quot;:false,&quot;emit&quot;:false,&quot;out&quot;:&quot;/home/simon/Desktop/vizzu/vizzu-lib/docs/reference&quot;,&quot;json&quot;:&quot;&quot;,&quot;pretty&quot;:true,&quot;theme&quot;:&quot;./node_modules/typedoc-neo-theme/bin/default&quot;,&quot;highlightTheme&quot;:&quot;light-plus&quot;,&quot;name&quot;:&quot;&quot;,&quot;includeVersion&quot;:false,&quot;excludeTags&quot;:[],&quot;readme&quot;:&quot;&quot;,&quot;defaultCategory&quot;:&quot;Other&quot;,&quot;categoryOrder&quot;:[],&quot;categorizeByGroup&quot;:true,&quot;sort&quot;:[&quot;kind&quot;,&quot;instance-first&quot;,&quot;alphabetical&quot;],&quot;gitRevision&quot;:&quot;&quot;,&quot;gitRemote&quot;:&quot;origin&quot;,&quot;gaID&quot;:&quot;&quot;,&quot;gaSite&quot;:&quot;auto&quot;,&quot;hideGenerator&quot;:false,&quot;toc&quot;:[],&quot;disableOutputCheck&quot;:false,&quot;help&quot;:false,&quot;version&quot;:false,&quot;showConfig&quot;:false,&quot;plugin&quot;:[],&quot;logger&quot;:&quot;console&quot;,&quot;logLevel&quot;:1,&quot;treatWarningsAsErrors&quot;:false,&quot;listInvalidSymbolLinks&quot;:false}-->
 		</div>
-		<div class="col-2 col-menu secondary-menu">
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="../modules/Anim.html">Anim</a>
+					</li>
+					<li class="current tsd-kind-namespace">
+						<a href="../modules/Config.html">Config</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="../modules/Data.html">Data</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="../modules/Event.html">Event</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="../modules/Styles.html">Styles</a>
+					</li>
+				</ul>
+			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-namespace root">
+					<li class="current tsd-kind-interface tsd-parent-kind-namespace">
 						<a href="Config.Channel.html" class="tsd-kind-icon">Channel</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -258,13 +259,16 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace root">
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
 						<a href="Config.ChannelRange.html" class="tsd-kind-icon">Channel<wbr>Range</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace root">
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="Config.Channels.html" class="tsd-kind-icon">Channels</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
 						<a href="Config.Chart.html" class="tsd-kind-icon">Chart</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace root">
+					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
 						<a href="../modules/Config.html#ChannelExtrema" class="tsd-kind-icon">Channel<wbr>Extrema</a>
 					</li>
 				</ul>
@@ -273,9 +277,22 @@
 	</div>
 </div>
 <footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+		</div>
+	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>

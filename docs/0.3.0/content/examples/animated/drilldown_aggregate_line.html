@@ -1,0 +1,118 @@
+<!DOCTYPE html><html><head>
+		<title>Vizzu library example</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/highlight.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/example.css">
+	</head>
+<body>
+	<noscript>
+		<p class="noscript">To use Vizzu, please enable Javascript.</p>
+	</noscript>
+	<div id="vizzuCanvas"></div>
+	<div id="navigation">
+		<button id="example-replay-btn" class="button" type="button" onclick="location.reload()">▶ replay</button>
+	</div>
+	<div id="script">
+<script type="module">
+import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import { data } from '/test/integration/test_data/chart_types_eu.js';
+
+
+let chart = new Vizzu('vizzuCanvas');
+
+
+
+chart.animate({
+    data: data,
+    config: {
+        channels: {
+            x: { set: ['Year'] },
+            y: {
+                set: ['Value 3 (+)'],
+                range: {
+                    max: '6000000000' // Keep the yAxis-range during the next animation phase.
+                }
+            },
+            size: { set: ['Country'] } // Set the other categories of the chart.
+        },
+        title: 'Line Chart',
+        geometry: 'line'
+    }
+});
+
+
+chart.animate({
+    config: {
+        channels: {
+            color: { set: ['Country'] },
+            size: { set: null } // You don't need the categories on this channel, because they are on the 'color' channel already.
+        },
+        title: 'Drill Down'
+    }
+});
+
+
+chart.animate({
+    config: {
+        channels: {
+            y: {
+                range: {
+                    max: '110%' // Set back the default yAxis-range.
+                }
+            },
+        },
+        title: 'Drilled Line Chart'
+    }
+});
+
+
+</script>
+		</div>
+	<div id="code"><pre>
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">data</span>: data,
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] },
+            <span class="hljs-attr">y</span>: {
+                <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 3 (+)'</span>],
+                <span class="hljs-attr">range</span>: {
+                    <span class="hljs-attr">max</span>: <span class="hljs-string">'6000000000'</span> <span class="hljs-comment">// Keep the yAxis-range during the next animation phase.</span>
+                }
+            },
+            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>] } <span class="hljs-comment">// Set the other categories of the chart.</span>
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Line Chart'</span>,
+        <span class="hljs-attr">geometry</span>: <span class="hljs-string">'line'</span>
+    }
+});
+
+
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>] },
+            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> } <span class="hljs-comment">// You don't need the categories on this channel, because they are on the 'color' channel already.</span>
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Drill Down'</span>
+    }
+});
+
+
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">y</span>: {
+                <span class="hljs-attr">range</span>: {
+                    <span class="hljs-attr">max</span>: <span class="hljs-string">'110%'</span> <span class="hljs-comment">// Set back the default yAxis-range.</span>
+                }
+            },
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Drilled Line Chart'</span>
+    }
+});
+
+</pre></div>
+
+</body></html>
