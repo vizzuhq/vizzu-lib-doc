@@ -15,7 +15,7 @@
 	</div>
 	<div id="script">
 <script type="module">
-import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/dist/vizzu.min.js';
 import { data } from '/test/integration/test_data/chart_types_eu.js';
 
 
@@ -34,7 +34,7 @@ chart.animate({
             y: { set: ['Year', 'Value 5 (+/-)'] },
             color: {
                 set: ['Value 5 (+/-)'],
-                range: { // Set range of colorGradient.
+                range: { // Setting the range of the colorGradient symmetrically so that the color changes at 0
                     min: '-45',
                     max: '45'
                 }
@@ -48,7 +48,17 @@ chart.animate({
     style: {
         plot: {
             marker: {
-                colorGradient: '#3d51b8 0, #6389ec 0.15, #9fbffa 0.35, #d5d7d9 0.5, #f4b096 0.65, #e36c56 0.85, #ac1727 1', // Set the color palette of the colorGradient. 
+                // / Setting the colors used for the measure on the color channel
+                colorGradient: 
+                [
+                    '#3d51b8 0',
+                    '#6389ec 0.15',
+                    '#9fbffa 0.35',
+                    '#d5d7d9 0.5',
+                    '#f4b096 0.65',
+                    '#e36c56 0.85',
+                    '#ac1727 1'
+                ].join(),
                 label: {
                     position: 'top'
                 }
@@ -82,7 +92,7 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>, <span class="hljs-string">'Value 5 (+/-)'</span>] },
             <span class="hljs-attr">color</span>: {
                 <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 5 (+/-)'</span>],
-                <span class="hljs-attr">range</span>: { <span class="hljs-comment">// Set range of colorGradient.</span>
+                <span class="hljs-attr">range</span>: { <span class="hljs-comment">// Setting the range of the colorGradient symmetrically so that the color changes at 0</span>
                     <span class="hljs-attr">min</span>: <span class="hljs-string">'-45'</span>,
                     <span class="hljs-attr">max</span>: <span class="hljs-string">'45'</span>
                 }
@@ -96,7 +106,17 @@ chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">plot</span>: {
             <span class="hljs-attr">marker</span>: {
-                <span class="hljs-attr">colorGradient</span>: <span class="hljs-string">'#3d51b8 0, #6389ec 0.15, #9fbffa 0.35, #d5d7d9 0.5, #f4b096 0.65, #e36c56 0.85, #ac1727 1'</span>, <span class="hljs-comment">// Set the color palette of the colorGradient. </span>
+                <span class="hljs-comment">// / Setting the colors used for the measure on the color channel</span>
+                <span class="hljs-attr">colorGradient</span>: 
+                [
+                    <span class="hljs-string">'#3d51b8 0'</span>,
+                    <span class="hljs-string">'#6389ec 0.15'</span>,
+                    <span class="hljs-string">'#9fbffa 0.35'</span>,
+                    <span class="hljs-string">'#d5d7d9 0.5'</span>,
+                    <span class="hljs-string">'#f4b096 0.65'</span>,
+                    <span class="hljs-string">'#e36c56 0.85'</span>,
+                    <span class="hljs-string">'#ac1727 1'</span>
+                ].<span class="hljs-title function_">join</span>(),
                 <span class="hljs-attr">label</span>: {
                     <span class="hljs-attr">position</span>: <span class="hljs-string">'top'</span>
                 }

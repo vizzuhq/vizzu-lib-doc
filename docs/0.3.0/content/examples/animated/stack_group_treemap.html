@@ -15,7 +15,7 @@
 	</div>
 	<div id="script">
 <script type="module">
-import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/dist/vizzu.min.js';
 import { data } from '/test/integration/test_data/chart_types_eu.js';
 
 
@@ -28,11 +28,11 @@ data: data,
 config: {
   channels: {
     size: { set: ['Value 2 (+)'] },
-    noop: { set: ['Country_code'] }, // noop (no operation) channel ...???
+    noop: { set: ['Country_code'] }, //The noop channel splits the markers as all the other channels but will have no effect on the markers’ appearance.
     color: { set: ['Joy factors'] },
     label: { set: ['Country_code'] }
   },
-  title: 'Treemap Comparision.',
+  title: 'Treemap.',
   geometry: 'rectangle'
 }
   });
@@ -41,9 +41,9 @@ config: {
 chart.animate({
 config: {
   channels: {
-    size: { set: ['Value 2 (+)', 'Country_code'] } // Put dimension data series on 'size' channel to stack by other dimension which is on 'color' channel. 
+    size: { set: ['Value 2 (+)', 'Country_code'] } // With a dimension on the size channel Vizzu will stack the elements by the categories on the other channels on charts without coordinates. Here the Country code dimension is used to stack the bubbles by the dimension on the color channel. 
   },
-  title: 'Treemap Stacked.'
+  title: 'Stacked Treemap.'
 }
   });
 
@@ -56,11 +56,11 @@ chart.<span class="hljs-title function_">animate</span>({
 <span class="hljs-attr">config</span>: {
   <span class="hljs-attr">channels</span>: {
     <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>] },
-    <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>] }, <span class="hljs-comment">// noop (no operation) channel ...???</span>
+    <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>] }, <span class="hljs-comment">//The noop channel splits the markers as all the other channels but will have no effect on the markers’ appearance.</span>
     <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
     <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>] }
   },
-  <span class="hljs-attr">title</span>: <span class="hljs-string">'Treemap Comparision.'</span>,
+  <span class="hljs-attr">title</span>: <span class="hljs-string">'Treemap.'</span>,
   <span class="hljs-attr">geometry</span>: <span class="hljs-string">'rectangle'</span>
 }
   });
@@ -69,9 +69,9 @@ chart.<span class="hljs-title function_">animate</span>({
 chart.<span class="hljs-title function_">animate</span>({
 <span class="hljs-attr">config</span>: {
   <span class="hljs-attr">channels</span>: {
-    <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>, <span class="hljs-string">'Country_code'</span>] } <span class="hljs-comment">// Put dimension data series on 'size' channel to stack by other dimension which is on 'color' channel. </span>
+    <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>, <span class="hljs-string">'Country_code'</span>] } <span class="hljs-comment">// With a dimension on the size channel Vizzu will stack the elements by the categories on the other channels on charts without coordinates. Here the Country code dimension is used to stack the bubbles by the dimension on the color channel. </span>
   },
-  <span class="hljs-attr">title</span>: <span class="hljs-string">'Treemap Stacked.'</span>
+  <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Treemap.'</span>
 }
   });
 

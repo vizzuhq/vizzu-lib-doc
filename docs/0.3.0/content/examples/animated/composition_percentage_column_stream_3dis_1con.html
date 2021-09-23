@@ -15,7 +15,7 @@
 	</div>
 	<div id="script">
 <script type="module">
-import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/dist/vizzu.min.js';
 import { data } from '/test/integration/test_data/chart_types_eu.js';
 
 
@@ -33,7 +33,7 @@ chart.animate({
         channels: {
             x: { set: ['Year'] },
             y: { set: ['Value 2 (+)', 'Country'] },
-            noop: { set: ['Country'] } // noop (no operation) channel ...???
+            noop: { set: ['Country'] } //The noop channel splits the markers as all the other channels but will have no effect on the markers’ appearance.
         },
         title: 'Column Chart',
         geometry: 'rectangle'
@@ -52,7 +52,7 @@ chart.animate({
             color: { set: ['Country'] },
             noop: { set: null }
         },
-        title: 'Drill down & check the elements separatelly',
+        title: 'Trellis Column Chart',
         split: true,
     }
 });
@@ -63,11 +63,11 @@ chart.animate({
         channels: {
             y: {
                 range: {
-                    max: '110%' // Set back the default yAxis-range.
+                    max: 'auto' // Setting back the y-axis range to the default value.
                 }
             }
         },
-        title: '...or together',
+        title: 'Stacked Column Chart',
         split: false
     }
 });
@@ -75,7 +75,7 @@ chart.animate({
 
 chart.animate({
     config: {
-        title: '...or the relative differences between these',
+        title: '100% Column Chart',
         align: 'stretch'
     }
 });
@@ -94,7 +94,7 @@ chart.<span class="hljs-title function_">animate</span>({
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] },
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>, <span class="hljs-string">'Country'</span>] },
-            <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>] } <span class="hljs-comment">// noop (no operation) channel ...???</span>
+            <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>] } <span class="hljs-comment">//The noop channel splits the markers as all the other channels but will have no effect on the markers’ appearance.</span>
         },
         <span class="hljs-attr">title</span>: <span class="hljs-string">'Column Chart'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'rectangle'</span>
@@ -113,7 +113,7 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>] },
             <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> }
         },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Drill down &amp; check the elements separatelly'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Trellis Column Chart'</span>,
         <span class="hljs-attr">split</span>: <span class="hljs-literal">true</span>,
     }
 });
@@ -124,11 +124,11 @@ chart.<span class="hljs-title function_">animate</span>({
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: {
                 <span class="hljs-attr">range</span>: {
-                    <span class="hljs-attr">max</span>: <span class="hljs-string">'110%'</span> <span class="hljs-comment">// Set back the default yAxis-range.</span>
+                    <span class="hljs-attr">max</span>: <span class="hljs-string">'auto'</span> <span class="hljs-comment">// Setting back the y-axis range to the default value.</span>
                 }
             }
         },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'...or together'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Column Chart'</span>,
         <span class="hljs-attr">split</span>: <span class="hljs-literal">false</span>
     }
 });
@@ -136,7 +136,7 @@ chart.<span class="hljs-title function_">animate</span>({
 
 chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'...or the relative differences between these'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'100% Column Chart'</span>,
         <span class="hljs-attr">align</span>: <span class="hljs-string">'stretch'</span>
     }
 });

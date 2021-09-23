@@ -15,7 +15,7 @@
 	</div>
 	<div id="script">
 <script type="module">
-import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/dist/vizzu.min.js';
 import { data } from '/test/integration/test_data/chart_types_eu.js';
 
 
@@ -31,7 +31,7 @@ chart.animate({
             y: { set: ['Country', 'Value 2 (+)'] },
             color: { set: ['Country'] },
         },
-        title: 'Time distribution',
+        title: 'Stacked Area Chart',
         geometry: 'area'
     },
     style: {
@@ -55,6 +55,7 @@ chart.animate({
                 }
             }
         },
+        title: 'Trellis Area Chart',
         split: true
     }
 });
@@ -66,7 +67,7 @@ chart.animate({
             x: { set: ['Value 2 (+)', 'Year'] },
             y: { detach: ['Value 2 (+)'] }
         },
-        title: 'Total',
+        title: 'Bar Chart',
         geometry: 'rectangle',
         split: false,
     },
@@ -85,7 +86,7 @@ chart.animate({
     }
 },
     {
-        geometry: { delay: 0, duration: 1 }, // Set timing for better animation.
+        geometry: { delay: 0, duration: 1 }, // Setting a custom rhythm for the animation to assist the viewer in following it.
         y: {
             delay: 0,
             duration: 1
@@ -125,7 +126,7 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>, <span class="hljs-string">'Value 2 (+)'</span>] },
             <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>] },
         },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Time distribution'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Area Chart'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'area'</span>
     },
     <span class="hljs-attr">style</span>: {
@@ -149,6 +150,7 @@ chart.<span class="hljs-title function_">animate</span>({
                 }
             }
         },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Trellis Area Chart'</span>,
         <span class="hljs-attr">split</span>: <span class="hljs-literal">true</span>
     }
 });
@@ -160,7 +162,7 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>, <span class="hljs-string">'Year'</span>] },
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Value 2 (+)'</span>] }
         },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Total'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Bar Chart'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'rectangle'</span>,
         <span class="hljs-attr">split</span>: <span class="hljs-literal">false</span>,
     },
@@ -179,7 +181,7 @@ chart.<span class="hljs-title function_">animate</span>({
     }
 },
     {
-        <span class="hljs-attr">geometry</span>: { <span class="hljs-attr">delay</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">duration</span>: <span class="hljs-number">1</span> }, <span class="hljs-comment">// Set timing for better animation.</span>
+        <span class="hljs-attr">geometry</span>: { <span class="hljs-attr">delay</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">duration</span>: <span class="hljs-number">1</span> }, <span class="hljs-comment">// Setting a custom rhythm for the animation to assist the viewer in following it.</span>
         <span class="hljs-attr">y</span>: {
             <span class="hljs-attr">delay</span>: <span class="hljs-number">0</span>,
             <span class="hljs-attr">duration</span>: <span class="hljs-number">1</span>

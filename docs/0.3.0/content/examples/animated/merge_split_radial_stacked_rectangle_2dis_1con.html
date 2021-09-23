@@ -15,7 +15,7 @@
 	</div>
 	<div id="script">
 <script type="module">
-import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/dist/vizzu.min.js';
 import { data } from '/test/integration/test_data/chart_types_eu.js';
 
 
@@ -31,12 +31,12 @@ chart.animate({
             y: { 
                 set: ['Year'], 
                 range: { 
-                    min: '-3' // Set the radius of the empty center-circle.
+                    min: '-3' // Setting the radius of the empty circle in the centre.
                 } 
             },
             color: { set: ['Country'] }
         },
-        title: 'Stacked Radial Bar Chart',
+        title: 'Radial Bar Chart',
         coordSystem: 'polar'
     },
     style: { // This chart type no needs axles and axis labels, except small size yAxis labels. 
@@ -59,7 +59,7 @@ chart.animate({
 
 chart.animate({
     config: {
-        title: 'Splitted Radial Bar Chart',
+        title: 'Trellis Radial Bar Chart',
         split: true
     }
 });
@@ -76,12 +76,12 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">y</span>: { 
                 <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>], 
                 <span class="hljs-attr">range</span>: { 
-                    <span class="hljs-attr">min</span>: <span class="hljs-string">'-3'</span> <span class="hljs-comment">// Set the radius of the empty center-circle.</span>
+                    <span class="hljs-attr">min</span>: <span class="hljs-string">'-3'</span> <span class="hljs-comment">// Setting the radius of the empty circle in the centre.</span>
                 } 
             },
             <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>] }
         },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Radial Bar Chart'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Radial Bar Chart'</span>,
         <span class="hljs-attr">coordSystem</span>: <span class="hljs-string">'polar'</span>
     },
     <span class="hljs-attr">style</span>: { <span class="hljs-comment">// This chart type no needs axles and axis labels, except small size yAxis labels. </span>
@@ -104,7 +104,7 @@ chart.<span class="hljs-title function_">animate</span>({
 
 chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Splitted Radial Bar Chart'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Trellis Radial Bar Chart'</span>,
         <span class="hljs-attr">split</span>: <span class="hljs-literal">true</span>
     }
 });

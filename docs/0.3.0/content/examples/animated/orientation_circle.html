@@ -15,7 +15,7 @@
 	</div>
 	<div id="script">
 <script type="module">
-import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/dist/vizzu.min.js';
 import { data } from '/test/integration/test_data/chart_types_eu.js';
 
 
@@ -30,9 +30,9 @@ chart.animate({
             x: { set: ['Value 5 (+/-)'] },
             y: { set: ['Joy factors'] },
             lightness: { set: ['Joy factors'] }, // Lightness channel not necessary but helps to fallow during the animation how spreading categories of the first chart.
-            noop: { set: ['Year'] } // noop (no operation) channel ...??? 
+            noop: { set: ['Year'] } //The noop channel splits the markers as all the other channels but will have no effect on the markers’ appearance. 
         },
-        title: 'Distribution by Y',
+        title: 'Dot Plot',
         geometry: 'circle'
     }
 });
@@ -44,8 +44,7 @@ chart.animate({
             x: { set: ['Year'] },
             y: { set: ['Value 5 (+/-)'] },
             noop: { set: ['Joy factors'] }
-        },
-        title: 'Distribution by X'
+        }
     }
 });
 
@@ -60,9 +59,9 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 5 (+/-)'</span>] },
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
             <span class="hljs-attr">lightness</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] }, <span class="hljs-comment">// Lightness channel not necessary but helps to fallow during the animation how spreading categories of the first chart.</span>
-            <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] } <span class="hljs-comment">// noop (no operation) channel ...??? </span>
+            <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] } <span class="hljs-comment">//The noop channel splits the markers as all the other channels but will have no effect on the markers’ appearance. </span>
         },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Distribution by Y'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Dot Plot'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'circle'</span>
     }
 });
@@ -74,8 +73,7 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] },
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 5 (+/-)'</span>] },
             <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] }
-        },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Distribution by X'</span>
+        }
     }
 });
 

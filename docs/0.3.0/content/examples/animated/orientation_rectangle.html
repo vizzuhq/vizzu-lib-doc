@@ -15,7 +15,7 @@
 	</div>
 	<div id="script">
 <script type="module">
-import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/dist/vizzu.min.js';
 import { data } from '/test/integration/test_data/tutorial.js';
 
 
@@ -44,7 +44,7 @@ config: {
     y: { set: ['Categ. Parent'] },
   },
   legend: null,
-  title: 'Values can be stacked by the other axis too.',
+  title: 'Stacked Bar Chart',
 }
   });
 
@@ -52,7 +52,7 @@ config: {
 chart.animate({
 config: {
   channels: {
-    x: { set: ['Values 1'] }, // Take off 'Timeseries' data series to show sum of the new stacked bars.
+    x: { set: ['Values 1'] }, // Taking the dimension off to show the sum of the newly stacked elements.
   }
 }
   });
@@ -82,7 +82,7 @@ chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Categ. Parent'</span>] },
   },
   <span class="hljs-attr">legend</span>: <span class="hljs-literal">null</span>,
-  <span class="hljs-attr">title</span>: <span class="hljs-string">'Values can be stacked by the other axis too.'</span>,
+  <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Bar Chart'</span>,
 }
   });
 
@@ -90,7 +90,7 @@ chart.<span class="hljs-title function_">animate</span>({
 chart.<span class="hljs-title function_">animate</span>({
 <span class="hljs-attr">config</span>: {
   <span class="hljs-attr">channels</span>: {
-    <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Values 1'</span>] }, <span class="hljs-comment">// Take off 'Timeseries' data series to show sum of the new stacked bars.</span>
+    <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Values 1'</span>] }, <span class="hljs-comment">// Taking the dimension off to show the sum of the newly stacked elements.</span>
   }
 }
   });

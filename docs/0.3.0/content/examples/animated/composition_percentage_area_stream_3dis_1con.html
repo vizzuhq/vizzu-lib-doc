@@ -15,7 +15,7 @@
 	</div>
 	<div id="script">
 <script type="module">
-import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/dist/vizzu.min.js';
 import { data } from '/test/integration/test_data/chart_types_eu.js';
 
 
@@ -43,7 +43,7 @@ chart.animate({
 
 chart.animate({
     config: {
-        title: 'Check relative differences between the elements',
+        title: '100% Stacked Area Chart',
         align: 'stretch'
     }
 });
@@ -58,7 +58,7 @@ chart.animate({
                 }
             },
         },
-        title: '...or the elements separatelly',
+        title: 'Trellis (Splitted) Area Chart',
         align: 'min',
         split: true
     }
@@ -88,7 +88,7 @@ chart.<span class="hljs-title function_">animate</span>({
 
 chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Check relative differences between the elements'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'100% Stacked Area Chart'</span>,
         <span class="hljs-attr">align</span>: <span class="hljs-string">'stretch'</span>
     }
 });
@@ -103,7 +103,7 @@ chart.<span class="hljs-title function_">animate</span>({
                 }
             },
         },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'...or the elements separatelly'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Trellis (Splitted) Area Chart'</span>,
         <span class="hljs-attr">align</span>: <span class="hljs-string">'min'</span>,
         <span class="hljs-attr">split</span>: <span class="hljs-literal">true</span>
     }

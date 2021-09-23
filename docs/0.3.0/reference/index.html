@@ -58,86 +58,60 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<p align="center">
-					<a href="https://github.com/vizzuhq/vizzu-lib">
-						<img src="/docs/images/logo-bg-white.svg" alt="Vizzu" />
-					</a>
-					<p align="center">Library for animated data visualizations and data stories.</p>
-					<p align="center">
-						<a href="https://lib.vizzuhq.com/0.3.0/">Tutorial, Examples, Reference</a>
-						· <a href="https://github.com/vizzuhq/vizzu-lib">Repository</a>
-					</p>
-				</p>
-				<a href="#about-the-project" id="about-the-project" style="color: inherit; text-decoration: none;">
-					<h1>About The Project</h1>
+				<a href="#vizzu-js-library-reference" id="vizzu-js-library-reference" style="color: inherit; text-decoration: none;">
+					<h1>Vizzu JS Library Reference</h1>
 				</a>
-				<p>Vizzu is a free, open-source Javascript/C++ library utilizing a generic dataviz engine
-					that generates many types of charts and seamlessly animates between them.
-					It is designed for building animated data stories and interactive explorers
-					as Vizzu enables showing different perspectives of the data that the viewers can
-				easily follow due to the animation.</p>
-				<p>Main features:</p>
+				<p>This is the API reference document of the Vizzu JS library. It provides information
+					about every detail of the API. This works best for users who already have a basic
+				understanding of the Vizzu Library and its logic.</p>
+				<p>In case you&#39;re just getting started with Vizzu, we strongly recommend visiting our
+				<a href="https://lib.vizzuhq.com/0.3.0">Tutorial</a> first.</p>
+				<a href="#library-overview" id="library-overview" style="color: inherit; text-decoration: none;">
+					<h2>Library Overview</h2>
+				</a>
+				<p>The main entry point of the library is the <a href="classes/default.html">Vizzu</a> class,
+				and its most important component is the <a href="classes/default.html#animate">animate()</a> method:</p>
 				<ul>
-					<li>Designed with animation in focus; </li>
-					<li>Defaults based on data visualization guidelines;</li>
-					<li>Automatic data aggregation, data filtering;</li>
-					<li>HTML5 canvas rendering;</li>
-					<li>Written in C++ compiled to WebAssembly;</li>
-					<li>Dependency-free.</li>
+					<li><a href="classes/default.html">Vizzu</a> class<ul>
+							<li><a href="classes/default.html#constructor">constructor()</a></li>
+							<li><a href="classes/default.html#animate">animate</a> ( <a href="interfaces/AnimTarget.html">AnimTarget</a> , <a href="interfaces/Anim.Options.html">Anim.Options</a> )</li>
+						</ul>
+					</li>
 				</ul>
-				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
-					<h1>Installation</h1>
+				<p>The animate() method&#39;s main parameter is the <a href="interfaces/AnimTarget.html">AnimTarget</a>
+				interface, which contains the configuration of the chart, the underlying data, and the chart&#39;s style settings:</p>
+				<ul>
+					<li><a href="interfaces/AnimTarget.html">AnimTarget</a><ul>
+							<li><a href="modules/Data.html#Set">Data.Set</a></li>
+							<li><a href="interfaces/Config.Chart.html">Config.Chart</a><ul>
+									<li><a href="interfaces/Config.Channels.html">Config.Channels</a></li>
+								</ul>
+							</li>
+							<li><a href="interfaces/Styles.Chart.html">Styles.Chart</a><ul>
+									<li><a href="interfaces/Styles.Plot.html">Styles.Plot</a><ul>
+											<li><a href="interfaces/Styles.Marker.html">Styles.Marker</a></li>
+											<li><a href="interfaces/Styles.Axis.html">Styles.Axis</a></li>
+										</ul>
+									</li>
+									<li><a href="interfaces/Styles.Legend.html">Styles.Legend</a></li>
+									<li><a href="interfaces/Styles.Title.html">Styles.Title</a></li>
+									<li><a href="interfaces/Styles.Tooltip.html">Styles.Tooltip</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<a href="#details" id="details" style="color: inherit; text-decoration: none;">
+					<h2>Details:</h2>
 				</a>
-				<p>Install via <a href="https://www.npmjs.com/package/vizzu">npm</a>:</p>
-				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> </span><span style="color: #001080">vizzu</span>
-</code></pre>
-				<p>Or use it from CDN:</p>
-				<pre><code class="language-html"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">type</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;module&quot;</span><span style="color: #800000">&gt;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000FF"> </span><span style="color: #001080">Vizzu</span><span style="color: #000000FF"> </span><span style="color: #AF00DB">from</span><span style="color: #000000FF"> </span><span style="color: #A31515">&#039;https://cdn.jsdelivr.net/npm/vizzu@0.3.0/vizzu.js&#039;</span><span style="color: #000000FF">;</span>
-<span style="color: #800000">&lt;/script&gt;</span>
-</code></pre>
-				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h1>Usage</h1>
-				</a>
-				<p>Create a placeholder element that will contain the rendered chart:</p>
-				<pre><code class="language-html"><span style="color: #800000">&lt;div</span><span style="color: #000000"> </span><span style="color: #FF0000">id</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;myVizzu&quot;</span><span style="color: #000000"> </span><span style="color: #FF0000">style</span><span style="color: #000000">=</span><span style="color: #0000FF">&quot;width:800px; height:480px;&quot;</span><span style="color: #800000">&gt;&lt;/div&gt;</span>
-</code></pre>
-				<p>Create a simple bar chart:</p>
-				<pre><code class="language-javascript"><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">Vizzu</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js&#039;</span><span style="color: #000000">;</span>
-
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">data</span><span style="color: #000000"> = {</span>
-<span style="color: #000000">  </span><span style="color: #001080">series:</span><span style="color: #000000"> [</span>
-<span style="color: #000000">    { </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Foo&#039;</span><span style="color: #000000">, </span><span style="color: #001080">values:</span><span style="color: #000000"> [</span><span style="color: #A31515">&#039;Alice&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;Bob&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;Ted&#039;</span><span style="color: #000000">] },</span>
-<span style="color: #000000">    { </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Bar&#039;</span><span style="color: #000000">, </span><span style="color: #001080">values:</span><span style="color: #000000"> [</span><span style="color: #098658">15</span><span style="color: #000000">, </span><span style="color: #098658">32</span><span style="color: #000000">, </span><span style="color: #098658">12</span><span style="color: #000000">] },</span>
-<span style="color: #000000">    { </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Baz&#039;</span><span style="color: #000000">, </span><span style="color: #001080">values:</span><span style="color: #000000"> [</span><span style="color: #098658">5</span><span style="color: #000000">, </span><span style="color: #098658">3</span><span style="color: #000000">, </span><span style="color: #098658">2</span><span style="color: #000000">] }</span>
-<span style="color: #000000">  ]</span>
-<span style="color: #000000">};</span>
-
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">chart</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Vizzu</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;myVizzu&#039;</span><span style="color: #000000">, { </span><span style="color: #001080">data</span><span style="color: #000000"> });</span>
-</code></pre>
-				<pre><code class="language-javascript"><span style="color: #001080">chart</span><span style="color: #000000">.</span><span style="color: #795E26">animate</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">x:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Foo&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">y:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Bar&#039;</span>
-<span style="color: #000000">});</span>
-</code></pre>
-				<p>Then turn it into a scatter plot:</p>
-				<pre><code class="language-javascript"><span style="color: #001080">chart</span><span style="color: #000000">.</span><span style="color: #795E26">animate</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">color:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Foo&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">x:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Baz&#039;</span><span style="color: #000000">, </span>
-<span style="color: #000000">  </span><span style="color: #001080">geometry:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;circle&#039;</span><span style="color: #000000"> </span>
-<span style="color: #000000">});</span>
-</code></pre>
-				<p><a href="https://jsfiddle.net/VizzuHQ/dk7b86vc/19/">Try it!</a></p>
-				<p><img src="https://vizzuhq.github.io/vizzu-lib-doc/readme/example.gif" alt="Example chart"></p>
-				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
-					<h1>Contributing</h1>
-				</a>
-				<p>We welcome contributions to the project, visit our <a href="CONTRIBUTING.md">Contributing</a> page for further info.</p>
-				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
-					<h1>License</h1>
-				</a>
-				<p>Copyright © 2021 <a href="https://vizzuhq.com">Vizzu Kft.</a>.</p>
-				<p>Released under the <a href="LICENSE">Apache 2.0 License</a>.</p>
+				<p>You can find all interface declarations and types under these namespaces. </p>
+				<ul>
+					<li><a href="modules/Data.html">Data</a> - Data structure and operations</li>
+					<li><a href="modules/Config.html">Config</a> - Configuration settings of your charts</li>
+					<li><a href="modules/Styles.html">Style</a> - Style settings</li>
+					<li><a href="modules/Anim.html">Anim</a> - Animation settings</li>
+					<li><a href="modules/Event.html">Events</a> - Event handling</li>
+				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">

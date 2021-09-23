@@ -15,7 +15,7 @@
 	</div>
 	<div id="script">
 <script type="module">
-import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/dist/vizzu.min.js';
 import { data } from '/test/integration/test_data/chart_types_eu.js';
 
 
@@ -33,7 +33,7 @@ chart.animate({
             size: { set: ['Value 2 (+)'] },
             label: { set: ['Country_code'] }
         },
-        title: 'Relationship',
+        title: 'Bubble Plot',
         geometry: 'circle'
     }
 });
@@ -44,9 +44,9 @@ chart.animate({
         channels: {
             x: { set: null },
             y: { set: null },
-            size: { set: ['Value 2 (+)', 'Country_code'] } // Put dimension data series on 'size' channel to stack by other dimension which is on 'color' channel. 
+            size: { set: ['Value 2 (+)', 'Country_code'] } // With a dimension on the size channel Vizzu will stack the elements by the categories on the other channels on charts without coordinates. Here the Country code dimension is used to stack the bubbles by the dimension on the color channel. 
         },
-        title: 'Stacked Comparison'
+        title: 'Stacked Bubble Chart'
     }
 });
 
@@ -54,9 +54,9 @@ chart.animate({
 chart.animate({
     config: {
         channels: {
-            size: { set: ['Value 2 (+)'] } // Take dimension data series off from 'size' channel to terminate stacking. 
+            size: { set: ['Value 2 (+)'] } // The stacking is eliminated when we remove the extra dimension from the size channel. 
         },
-        title: 'Comparison'
+        title: 'Bubble Chart'
     }
 });
 
@@ -74,7 +74,7 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>] },
             <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>] }
         },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Relationship'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Bubble Plot'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'circle'</span>
     }
 });
@@ -85,9 +85,9 @@ chart.<span class="hljs-title function_">animate</span>({
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> },
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> },
-            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>, <span class="hljs-string">'Country_code'</span>] } <span class="hljs-comment">// Put dimension data series on 'size' channel to stack by other dimension which is on 'color' channel. </span>
+            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>, <span class="hljs-string">'Country_code'</span>] } <span class="hljs-comment">// With a dimension on the size channel Vizzu will stack the elements by the categories on the other channels on charts without coordinates. Here the Country code dimension is used to stack the bubbles by the dimension on the color channel. </span>
         },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Comparison'</span>
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Bubble Chart'</span>
     }
 });
 
@@ -95,9 +95,9 @@ chart.<span class="hljs-title function_">animate</span>({
 chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
-            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>] } <span class="hljs-comment">// Take dimension data series off from 'size' channel to terminate stacking. </span>
+            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>] } <span class="hljs-comment">// The stacking is eliminated when we remove the extra dimension from the size channel. </span>
         },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Comparison'</span>
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Bubble Chart'</span>
     }
 });
 

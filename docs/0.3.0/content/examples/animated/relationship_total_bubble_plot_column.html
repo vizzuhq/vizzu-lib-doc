@@ -15,7 +15,7 @@
 	</div>
 	<div id="script">
 <script type="module">
-import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/dist/vizzu.min.js';
 import { data } from '/test/integration/test_data/chart_types_eu.js';
 
 
@@ -33,7 +33,7 @@ chart.animate({
             size: { set: ['Value 2 (+)'] },
             label: { set: ['Country_code'] }
         },
-        title: 'Realationship',
+        title: 'Bubble Plot',
         geometry: 'circle'
     }
 }
@@ -47,7 +47,7 @@ chart.animate({
             x: { set: ['Value 2 (+)', 'Country_code'] },
             label: { set: null }
         },
-        title: 'Total',
+        title: 'Bar Chart',
         geometry: 'rectangle',
         orientation: 'vertical'
     }
@@ -66,8 +66,7 @@ chart.animate({
         channels: {
             x: { set: ['Value 2 (+)'] },
             label: { set: ['Value 2 (+)'] }
-        },
-        title: 'Total'
+        }
     }
 });
 
@@ -85,7 +84,7 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>] },
             <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>] }
         },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Realationship'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Bubble Plot'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'circle'</span>
     }
 }
@@ -99,7 +98,7 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>, <span class="hljs-string">'Country_code'</span>] },
             <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> }
         },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Total'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Bar Chart'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'rectangle'</span>,
         <span class="hljs-attr">orientation</span>: <span class="hljs-string">'vertical'</span>
     }
@@ -118,8 +117,7 @@ chart.<span class="hljs-title function_">animate</span>({
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>] },
             <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>] }
-        },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'Total'</span>
+        }
     }
 });
 

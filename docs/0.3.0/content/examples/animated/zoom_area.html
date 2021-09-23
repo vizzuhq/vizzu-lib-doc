@@ -15,7 +15,7 @@
 	</div>
 	<div id="script">
 <script type="module">
-import Vizzu from 'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/dist/vizzu.min.js';
 import { data } from '/test/integration/test_data/chart_types_eu.js';
 
 
@@ -35,7 +35,7 @@ chart.animate({
             y: { set: ['Value 3 (+)', 'Country_code'] },
             color: { set: ['Country_code'] }
         },
-        title: 'See all',
+        title: 'Stacked Area',
         geometry: 'area'
     }
 });
@@ -45,10 +45,9 @@ chart.animate(
     {
         data: { 
             filter: record => data.filter(record) 
-                && record.Year < 12 && record.Year > 6 // Set filter range.
+                && record.Year < 12 && record.Year > 6 
         },
         config: {
-            title: 'Zoom in',
             align: 'min'
         }
     });
@@ -69,7 +68,7 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 3 (+)'</span>, <span class="hljs-string">'Country_code'</span>] },
             <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>] }
         },
-        <span class="hljs-attr">title</span>: <span class="hljs-string">'See all'</span>,
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Area'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'area'</span>
     }
 });
@@ -79,10 +78,9 @@ chart.<span class="hljs-title function_">animate</span>(
     {
         <span class="hljs-attr">data</span>: { 
             <span class="hljs-attr">filter</span>: <span class="hljs-function"><span class="hljs-params">record</span> =&gt;</span> data.<span class="hljs-title function_">filter</span>(record) 
-                &amp;&amp; record.<span class="hljs-property">Year</span> &lt; <span class="hljs-number">12</span> &amp;&amp; record.<span class="hljs-property">Year</span> &gt; <span class="hljs-number">6</span> <span class="hljs-comment">// Set filter range.</span>
+                &amp;&amp; record.<span class="hljs-property">Year</span> &lt; <span class="hljs-number">12</span> &amp;&amp; record.<span class="hljs-property">Year</span> &gt; <span class="hljs-number">6</span> 
         },
         <span class="hljs-attr">config</span>: {
-            <span class="hljs-attr">title</span>: <span class="hljs-string">'Zoom in'</span>,
             <span class="hljs-attr">align</span>: <span class="hljs-string">'min'</span>
         }
     });
