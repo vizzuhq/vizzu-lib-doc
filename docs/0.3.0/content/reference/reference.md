@@ -28,7 +28,6 @@ interface, which contains the configuration of the chart, the underlying data, a
 			* [Styles.Marker](interfaces/Styles.Marker.html)
 			* [Styles.Axis](interfaces/Styles.Axis.html)
 		* [Styles.Legend](interfaces/Styles.Legend.html)
-		* [Styles.Title](interfaces/Styles.Title.html)
 		* [Styles.Tooltip](interfaces/Styles.Tooltip.html)
 		
 
