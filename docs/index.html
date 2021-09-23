@@ -1,0 +1,91 @@
+<!DOCTYPE html><html><head>
+	<meta charset="utf-8">
+	<title>Vizzu Library</title>
+	<link rel="icon" href="0.3.0/images/favicon.svg">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="0.3.0/style/root.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="0.3.0/style/highlight.css">
+</head>
+<body>
+	<div id="content"><p align="center">
+  <a href="https://github.com/vizzuhq/vizzu-lib">
+    <img src="https://vizzuhq.github.io/vizzu-lib-doc/readme/logo-bg-white.svg" alt="Vizzu">
+  </a>
+  </p><p align="center">Library for animated data visualizations and data stories.</p>
+  <p align="center">
+    <a href="https://lib.vizzuhq.com/0.3.0/">Tutorial &amp; Examples</a>
+    · <a href="https://lib.vizzuhq.com/0.3.0/reference">Reference</a> 
+    · <a href="https://github.com/vizzuhq/vizzu-lib">Repository</a>
+  </p>
+<p></p>
+
+<h1 id="about-the-project">About The Project</h1>
+<p>Vizzu is a free, open-source Javascript/C++ library utilizing a generic dataviz engine 
+that generates many types of charts and seamlessly animates between them. 
+It can be used to create static charts but more importantly it is designed for building animated data stories 
+and interactive explorers as Vizzu enables showing different perspectives of the data that the viewers can 
+easily follow due to the animation.</p>
+<p>Main features:</p>
+<ul>
+<li>Designed with animation in focus; </li>
+<li>Defaults based on data visualization guidelines;</li>
+<li>Automatic data aggregation &amp; data filtering;</li>
+<li>HTML5 canvas rendering;</li>
+<li>Written in C++ compiled to WebAssembly;</li>
+<li>Dependency-free.</li>
+</ul>
+<h1 id="installation">Installation</h1>
+<p>Install via <a href="https://www.npmjs.com/package/vizzu">npm</a>:</p>
+<pre><code>npm install vizzu
+</code></pre>
+<p>Or use it from CDN:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Vizzu</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'https://cdn.jsdelivr.net/npm/vizzu@0.3.0/vizzu.js'</span>;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h1 id="usage">Usage</h1>
+<p>Create a placeholder element that will contain the rendered chart:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myVizzu"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width:800px; height:480px;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>Create a simple bar chart:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vizzu</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'https://vizzu-lib-main.storage.googleapis.com/lib/vizzu.js'</span>;
+
+<span class="hljs-keyword">let</span> data = {
+  <span class="hljs-attr">series</span>: [
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">'Foo'</span>, <span class="hljs-attr">values</span>: [<span class="hljs-string">'Alice'</span>, <span class="hljs-string">'Bob'</span>, <span class="hljs-string">'Ted'</span>] },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">'Bar'</span>, <span class="hljs-attr">values</span>: [<span class="hljs-number">15</span>, <span class="hljs-number">32</span>, <span class="hljs-number">12</span>] },
+    { <span class="hljs-attr">name</span>: <span class="hljs-string">'Baz'</span>, <span class="hljs-attr">values</span>: [<span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>] }
+  ]
+};
+
+<span class="hljs-keyword">let</span> chart = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vizzu</span>(<span class="hljs-string">'myVizzu'</span>, { data });
+</code></pre>
+<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+  <span class="hljs-attr">x</span>: <span class="hljs-string">'Foo'</span>,
+  <span class="hljs-attr">y</span>: <span class="hljs-string">'Bar'</span>
+});
+</code></pre>
+<p>Then turn it into a scatter plot:</p>
+<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+  <span class="hljs-attr">color</span>: <span class="hljs-string">'Foo'</span>,
+  <span class="hljs-attr">x</span>: <span class="hljs-string">'Baz'</span>, 
+  <span class="hljs-attr">geometry</span>: <span class="hljs-string">'circle'</span> 
+});
+</code></pre>
+<p><a href="https://jsfiddle.net/VizzuHQ/dk7b86vc/19/">Try it!</a></p>
+<p><img src="https://vizzuhq.github.io/vizzu-lib-doc/readme/example.gif" alt="Example chart"></p>
+<h1 id="contributing">Contributing</h1>
+<p>We welcome contributions to the project, visit our <a href="https://github.com/vizzuhq/vizzu-lib/blob/main/CONTRIBUTING.md">Contributing</a> page for further info.</p>
+<h1 id="contact">Contact</h1>
+<ul>
+<li>Join our Slack: <a href="https://join.slack.com/t/vizzu-community/shared_invite/zt-w2nqhq44-2CCWL4o7qn2Ns1EFSf9kEg">vizzu-community.slack.com</a></li>
+<li>Drop us a line at <a href="mailto:hello@vizzuhq.com">hello@vizzuhq.com</a></li>
+<li>Follow us on twitter: <a href="https://twitter.com/VizzuHQ">https://twitter.com/VizzuHQ</a></li>
+</ul>
+<h1 id="license">License</h1>
+<p>Copyright © 2021 <a href="https://vizzuhq.com">Vizzu Kft.</a>.</p>
+<p>Released under the <a href="https://github.com/vizzuhq/vizzu-lib/blob/main/LICENSE">Apache 2.0 License</a>.</p>
+</div>
+
+
+</body></html>
