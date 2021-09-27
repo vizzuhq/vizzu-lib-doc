@@ -29,7 +29,11 @@ chart.animate({
         channels: {
             color: { set: ['Joy factors'] },
             label: { set: ['Country_code'] },
-            size: { set: ['Country_code', 'Value 2 (+)'] } // With a dimension on the size channel Vizzu will stack the elements by the categories on the other channels on charts without coordinates. Here the Country code dimension is used to stack the bubbles by the dimension on the color channel. 
+            /* With a dimension on the size channel Vizzu will stack
+            the elements by the categories on the other channels
+            on charts without coordinates. Here the Country code dimension is
+            used to stack the bubbles by the dimension on the color channel. */
+            size: { set: ['Country_code', 'Value 2 (+)'] }
         },
         title: 'Stacked Bubble Chart',
         geometry: 'circle'
@@ -43,7 +47,9 @@ chart.animate({
             x: { set: ['Country_code', 'Value 2 (+)'] },
             y: { set: ['Joy factors'] },
             label: { set: null },
-            size: { set: null } // The stacking is eliminated when we remove the extra dimension from the size channel. 
+            /* The stacking is eliminated when we remove
+            the extra dimension from the size channel. */
+            size: { set: null } 
         },
         title: 'Bar Chart',
         geometry: 'rectangle',
@@ -71,7 +77,11 @@ chart.<span class="hljs-title function_">animate</span>({
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
             <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>] },
-            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>, <span class="hljs-string">'Value 2 (+)'</span>] } <span class="hljs-comment">// With a dimension on the size channel Vizzu will stack the elements by the categories on the other channels on charts without coordinates. Here the Country code dimension is used to stack the bubbles by the dimension on the color channel. </span>
+            <span class="hljs-comment">/* With a dimension on the size channel Vizzu will stack
+            the elements by the categories on the other channels
+            on charts without coordinates. Here the Country code dimension is
+            used to stack the bubbles by the dimension on the color channel. */</span>
+            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>, <span class="hljs-string">'Value 2 (+)'</span>] }
         },
         <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Bubble Chart'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'circle'</span>
@@ -85,7 +95,9 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>, <span class="hljs-string">'Value 2 (+)'</span>] },
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
             <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> },
-            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> } <span class="hljs-comment">// The stacking is eliminated when we remove the extra dimension from the size channel. </span>
+            <span class="hljs-comment">/* The stacking is eliminated when we remove
+            the extra dimension from the size channel. */</span>
+            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> } 
         },
         <span class="hljs-attr">title</span>: <span class="hljs-string">'Bar Chart'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'rectangle'</span>,

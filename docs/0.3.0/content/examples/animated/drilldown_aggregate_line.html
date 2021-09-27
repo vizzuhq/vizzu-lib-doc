@@ -30,11 +30,16 @@ chart.animate({
             x: { set: ['Year'] },
             y: {
                 set: ['Value 3 (+)'],
+                /* Making the chart elements fill the whole of
+                the y-axis as the default value is now 110% */
                 range: {
-                    max: '6000000000' // Making the chart elements fill the whole of the y-axis as the default value is now 110%
+                    max: '6000000000' 
                 }
             },
-            size: { set: ['Country'] } // Add the dimension that we’ll use in the next state without splitting the lines in this state.
+            /* Add the dimension that we’ll use 
+            in the next state without splitting
+            the lines in this state. */
+            size: { set: ['Country'] } 
         },
         title: 'Line Chart',
         geometry: 'line'
@@ -46,7 +51,9 @@ chart.animate({
     config: {
         channels: {
             color: { set: ['Country'] },
-            size: { set: null } // We don’t need this dimension here anymore since it’s already on the 'color' channel.
+            /* We don’t need this dimension here anymore
+            since it’s already on the 'color' channel. */
+            size: { set: null }
         }
     }
 });
@@ -56,8 +63,10 @@ chart.animate({
     config: {
         channels: {
             y: {
+                /* Setting back the y-axis range
+                to the default value. */
                 range: {
-                    max: 'auto' // Setting back the y-axis range to the default value.
+                    max: 'auto' 
                 }
             },
         }
@@ -75,11 +84,16 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] },
             <span class="hljs-attr">y</span>: {
                 <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 3 (+)'</span>],
+                <span class="hljs-comment">/* Making the chart elements fill the whole of
+                the y-axis as the default value is now 110% */</span>
                 <span class="hljs-attr">range</span>: {
-                    <span class="hljs-attr">max</span>: <span class="hljs-string">'6000000000'</span> <span class="hljs-comment">// Making the chart elements fill the whole of the y-axis as the default value is now 110%</span>
+                    <span class="hljs-attr">max</span>: <span class="hljs-string">'6000000000'</span> 
                 }
             },
-            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>] } <span class="hljs-comment">// Add the dimension that we’ll use in the next state without splitting the lines in this state.</span>
+            <span class="hljs-comment">/* Add the dimension that we’ll use 
+            in the next state without splitting
+            the lines in this state. */</span>
+            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>] } 
         },
         <span class="hljs-attr">title</span>: <span class="hljs-string">'Line Chart'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'line'</span>
@@ -91,7 +105,9 @@ chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>] },
-            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> } <span class="hljs-comment">// We don’t need this dimension here anymore since it’s already on the 'color' channel.</span>
+            <span class="hljs-comment">/* We don’t need this dimension here anymore
+            since it’s already on the 'color' channel. */</span>
+            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> }
         }
     }
 });
@@ -101,8 +117,10 @@ chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: {
+                <span class="hljs-comment">/* Setting back the y-axis range
+                to the default value. */</span>
                 <span class="hljs-attr">range</span>: {
-                    <span class="hljs-attr">max</span>: <span class="hljs-string">'auto'</span> <span class="hljs-comment">// Setting back the y-axis range to the default value.</span>
+                    <span class="hljs-attr">max</span>: <span class="hljs-string">'auto'</span> 
                 }
             },
         }

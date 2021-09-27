@@ -49,8 +49,10 @@ chart.animate({
             x: { set: ['Value 2 (+)'] },
             y: {
                 set: ['Joy factors'],
+                /* Setting the radius of
+                the empty circle in the centre. */
                 range: {
-                    min: '-30%',// Setting the radius of the empty circle in the centre.
+                    min: '-30%',
                 }
             },
             size: { set: null },
@@ -59,7 +61,9 @@ chart.animate({
         title: 'Radial Chart',
         coordSystem: 'polar'
     },
-    style: {  // All axes and axis labels are unnecessary on these types of charts, except for the labels of the y-axis.
+    /* All axes and axis labels are unnecessary on these types of charts,
+    except for the labels of the y-axis. */
+    style: {
         plot: {
             marker: {
                 label: { fontSize: null }
@@ -107,8 +111,10 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>] },
             <span class="hljs-attr">y</span>: {
                 <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>],
+                <span class="hljs-comment">/* Setting the radius of
+                the empty circle in the centre. */</span>
                 <span class="hljs-attr">range</span>: {
-                    <span class="hljs-attr">min</span>: <span class="hljs-string">'-30%'</span>,<span class="hljs-comment">// Setting the radius of the empty circle in the centre.</span>
+                    <span class="hljs-attr">min</span>: <span class="hljs-string">'-30%'</span>,
                 }
             },
             <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> },
@@ -117,7 +123,9 @@ chart.<span class="hljs-title function_">animate</span>({
         <span class="hljs-attr">title</span>: <span class="hljs-string">'Radial Chart'</span>,
         <span class="hljs-attr">coordSystem</span>: <span class="hljs-string">'polar'</span>
     },
-    <span class="hljs-attr">style</span>: {  <span class="hljs-comment">// All axes and axis labels are unnecessary on these types of charts, except for the labels of the y-axis.</span>
+    <span class="hljs-comment">/* All axes and axis labels are unnecessary on these types of charts,
+    except for the labels of the y-axis. */</span>
+    <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">plot</span>: {
             <span class="hljs-attr">marker</span>: {
                 <span class="hljs-attr">label</span>: { <span class="hljs-attr">fontSize</span>: <span class="hljs-literal">null</span> }

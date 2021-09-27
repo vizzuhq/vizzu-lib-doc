@@ -34,7 +34,9 @@ chart.animate({
             y: { set: ['Year', 'Value 5 (+/-)'] },
             color: {
                 set: ['Value 5 (+/-)'],
-                range: { // Setting the range of the colorGradient symmetrically so that the color changes at 0
+                /* Setting the range of the colorGradient
+                symmetrically so that the color changes at 0 */
+                range: {
                     min: '-45',
                     max: '45'
                 }
@@ -48,7 +50,8 @@ chart.animate({
     style: {
         plot: {
             marker: {
-                // / Setting the colors used for the measure on the color channel
+                /* Setting the colors used for the measure
+                on the color channel */
                 colorGradient: 
                 [
                     '#3d51b8 0',
@@ -92,7 +95,9 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>, <span class="hljs-string">'Value 5 (+/-)'</span>] },
             <span class="hljs-attr">color</span>: {
                 <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 5 (+/-)'</span>],
-                <span class="hljs-attr">range</span>: { <span class="hljs-comment">// Setting the range of the colorGradient symmetrically so that the color changes at 0</span>
+                <span class="hljs-comment">/* Setting the range of the colorGradient
+                symmetrically so that the color changes at 0 */</span>
+                <span class="hljs-attr">range</span>: {
                     <span class="hljs-attr">min</span>: <span class="hljs-string">'-45'</span>,
                     <span class="hljs-attr">max</span>: <span class="hljs-string">'45'</span>
                 }
@@ -106,7 +111,8 @@ chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
         <span class="hljs-attr">plot</span>: {
             <span class="hljs-attr">marker</span>: {
-                <span class="hljs-comment">// / Setting the colors used for the measure on the color channel</span>
+                <span class="hljs-comment">/* Setting the colors used for the measure
+                on the color channel */</span>
                 <span class="hljs-attr">colorGradient</span>: 
                 [
                     <span class="hljs-string">'#3d51b8 0'</span>,

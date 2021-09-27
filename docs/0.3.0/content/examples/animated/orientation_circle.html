@@ -29,8 +29,12 @@ chart.animate({
         channels: {
             x: { set: ['Value 5 (+/-)'] },
             y: { set: ['Joy factors'] },
-            lightness: { set: ['Joy factors'] }, // Lightness channel not necessary but helps to fallow during the animation how spreading categories of the first chart.
-            noop: { set: ['Year'] } //The noop channel splits the markers as all the other channels but will have no effect on the markers’ appearance. 
+            /* Lightness channel is used to assist the viewer
+            in following the animation. */
+            lightness: { set: ['Joy factors'] },
+            /* The noop channel splits the markers as all the other channels
+            but will have no effect on the markers’ appearance. */
+            noop: { set: ['Year'] } 
         },
         title: 'Dot Plot',
         geometry: 'circle'
@@ -58,8 +62,12 @@ chart.<span class="hljs-title function_">animate</span>({
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 5 (+/-)'</span>] },
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
-            <span class="hljs-attr">lightness</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] }, <span class="hljs-comment">// Lightness channel not necessary but helps to fallow during the animation how spreading categories of the first chart.</span>
-            <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] } <span class="hljs-comment">//The noop channel splits the markers as all the other channels but will have no effect on the markers’ appearance. </span>
+            <span class="hljs-comment">/* Lightness channel is used to assist the viewer
+            in following the animation. */</span>
+            <span class="hljs-attr">lightness</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
+            <span class="hljs-comment">/* The noop channel splits the markers as all the other channels
+            but will have no effect on the markers’ appearance. */</span>
+            <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] } 
         },
         <span class="hljs-attr">title</span>: <span class="hljs-string">'Dot Plot'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'circle'</span>

@@ -30,7 +30,9 @@ chart.animate({
             x: { set: ['Joy factors'] },
             y: { set: ['Value 5 (+/-)'] },
             color: { set: ['Joy factors'] },
-            noop: { set: ['Country_code'] } //The noop channel splits the markers as all the other channels but will have no effect on the markers’ appearance.
+            /* The noop channel splits the markers as all the other channels
+            but will have no effect on the markers’ appearance. */
+            noop: { set: ['Country_code'] } 
         },
         title: 'Dot Plot',
         geometry: 'circle'
@@ -66,7 +68,9 @@ chart.<span class="hljs-title function_">animate</span>({
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 5 (+/-)'</span>] },
             <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
-            <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>] } <span class="hljs-comment">//The noop channel splits the markers as all the other channels but will have no effect on the markers’ appearance.</span>
+            <span class="hljs-comment">/* The noop channel splits the markers as all the other channels
+            but will have no effect on the markers’ appearance. */</span>
+            <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>] } 
         },
         <span class="hljs-attr">title</span>: <span class="hljs-string">'Dot Plot'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'circle'</span>

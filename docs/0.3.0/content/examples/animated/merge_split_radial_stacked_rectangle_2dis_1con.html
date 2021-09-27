@@ -29,9 +29,11 @@ chart.animate({
         channels: {
             x: { set: ['Country', 'Value 2 (+)'] },
             y: { 
-                set: ['Year'], 
+                set: ['Year'],
+                /* Setting the radius of the empty circle
+                in the centre. */
                 range: { 
-                    min: '-3' // Setting the radius of the empty circle in the centre.
+                    min: '-3'
                 } 
             },
             color: { set: ['Country'] }
@@ -39,7 +41,9 @@ chart.animate({
         title: 'Radial Bar Chart',
         coordSystem: 'polar'
     },
-    style: { // This chart type no needs axles and axis labels, except small size yAxis labels. 
+    /* This chart type no needs axles and axis labels,
+    except small size yAxis labels. */
+    style: { 
         plot: {
             yAxis: {
                 color: '#ffffff00',
@@ -74,9 +78,11 @@ chart.<span class="hljs-title function_">animate</span>({
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>, <span class="hljs-string">'Value 2 (+)'</span>] },
             <span class="hljs-attr">y</span>: { 
-                <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>], 
+                <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>],
+                <span class="hljs-comment">/* Setting the radius of the empty circle
+                in the centre. */</span>
                 <span class="hljs-attr">range</span>: { 
-                    <span class="hljs-attr">min</span>: <span class="hljs-string">'-3'</span> <span class="hljs-comment">// Setting the radius of the empty circle in the centre.</span>
+                    <span class="hljs-attr">min</span>: <span class="hljs-string">'-3'</span>
                 } 
             },
             <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country'</span>] }
@@ -84,7 +90,9 @@ chart.<span class="hljs-title function_">animate</span>({
         <span class="hljs-attr">title</span>: <span class="hljs-string">'Radial Bar Chart'</span>,
         <span class="hljs-attr">coordSystem</span>: <span class="hljs-string">'polar'</span>
     },
-    <span class="hljs-attr">style</span>: { <span class="hljs-comment">// This chart type no needs axles and axis labels, except small size yAxis labels. </span>
+    <span class="hljs-comment">/* This chart type no needs axles and axis labels,
+    except small size yAxis labels. */</span>
+    <span class="hljs-attr">style</span>: { 
         <span class="hljs-attr">plot</span>: {
             <span class="hljs-attr">yAxis</span>: {
                 <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span>,

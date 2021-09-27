@@ -50,8 +50,10 @@ chart.animate({
     config: {
         channels: {
             y: {
+                /* Making the chart elements fill the whole of
+                   the y-axis as the default value is now 110% */
                 range: {
-                    max: '100%' // For use the whole range of the yAxis. (Default = 110%)  
+                    max: '100%' 
                 }
             }
         },
@@ -86,7 +88,9 @@ chart.animate({
     }
 },
     {
-        geometry: { delay: 0, duration: 1 }, // Setting a custom rhythm for the animation to assist the viewer in following it.
+        /* Setting a custom rhythm for the animation
+        to assist the viewer in following it. */
+        geometry: { delay: 0, duration: 1 }, 
         y: {
             delay: 0,
             duration: 1
@@ -139,8 +143,10 @@ chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">y</span>: {
+                <span class="hljs-comment">/* Making the chart elements fill the whole of
+                   the y-axis as the default value is now 110% */</span>
                 <span class="hljs-attr">range</span>: {
-                    <span class="hljs-attr">max</span>: <span class="hljs-string">'100%'</span> <span class="hljs-comment">// For use the whole range of the yAxis. (Default = 110%)  </span>
+                    <span class="hljs-attr">max</span>: <span class="hljs-string">'100%'</span> 
                 }
             }
         },
@@ -175,7 +181,9 @@ chart.<span class="hljs-title function_">animate</span>({
     }
 },
     {
-        <span class="hljs-attr">geometry</span>: { <span class="hljs-attr">delay</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">duration</span>: <span class="hljs-number">1</span> }, <span class="hljs-comment">// Setting a custom rhythm for the animation to assist the viewer in following it.</span>
+        <span class="hljs-comment">/* Setting a custom rhythm for the animation
+        to assist the viewer in following it. */</span>
+        <span class="hljs-attr">geometry</span>: { <span class="hljs-attr">delay</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">duration</span>: <span class="hljs-number">1</span> }, 
         <span class="hljs-attr">y</span>: {
             <span class="hljs-attr">delay</span>: <span class="hljs-number">0</span>,
             <span class="hljs-attr">duration</span>: <span class="hljs-number">1</span>

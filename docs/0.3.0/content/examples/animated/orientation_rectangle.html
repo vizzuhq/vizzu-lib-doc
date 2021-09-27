@@ -52,7 +52,9 @@ config: {
 chart.animate({
 config: {
   channels: {
-    x: { set: ['Values 1'] }, // Taking the dimension off to show the sum of the newly stacked elements.
+    /* Taking the dimension off to show the sum of
+    the newly stacked elements. */
+    x: { set: ['Values 1'] }, 
   }
 }
   });
@@ -90,7 +92,9 @@ chart.<span class="hljs-title function_">animate</span>({
 chart.<span class="hljs-title function_">animate</span>({
 <span class="hljs-attr">config</span>: {
   <span class="hljs-attr">channels</span>: {
-    <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Values 1'</span>] }, <span class="hljs-comment">// Taking the dimension off to show the sum of the newly stacked elements.</span>
+    <span class="hljs-comment">/* Taking the dimension off to show the sum of
+    the newly stacked elements. */</span>
+    <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Values 1'</span>] }, 
   }
 }
   });

@@ -29,8 +29,12 @@ chart.animate({
         channels: {
             x: { set: ['Value 5 (+/-)'] },
             y: { set: ['Value 6 (+/-)'] },
-            noop: { set: ['Joy factors'] }, //The noop channel splits the markers as all the other channels but will have no effect on the markers’ appearance.
-            lightness: { set: ['Year'] } // Lightness channel is used to assist the viewer in following the animation.
+            /* The noop channel splits the markers as all the other channels
+            but will have no effect on the markers’ appearance. */
+            noop: { set: ['Joy factors'] },
+            /* Lightness channel is used to assist the viewer
+            in following the animation. */
+            lightness: { set: ['Year'] }
         },
         title: 'Scatter Plot',
         geometry: 'circle'
@@ -94,8 +98,12 @@ chart.<span class="hljs-title function_">animate</span>({
         <span class="hljs-attr">channels</span>: {
             <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 5 (+/-)'</span>] },
             <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 6 (+/-)'</span>] },
-            <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] }, <span class="hljs-comment">//The noop channel splits the markers as all the other channels but will have no effect on the markers’ appearance.</span>
-            <span class="hljs-attr">lightness</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] } <span class="hljs-comment">// Lightness channel is used to assist the viewer in following the animation.</span>
+            <span class="hljs-comment">/* The noop channel splits the markers as all the other channels
+            but will have no effect on the markers’ appearance. */</span>
+            <span class="hljs-attr">noop</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
+            <span class="hljs-comment">/* Lightness channel is used to assist the viewer
+            in following the animation. */</span>
+            <span class="hljs-attr">lightness</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] }
         },
         <span class="hljs-attr">title</span>: <span class="hljs-string">'Scatter Plot'</span>,
         <span class="hljs-attr">geometry</span>: <span class="hljs-string">'circle'</span>

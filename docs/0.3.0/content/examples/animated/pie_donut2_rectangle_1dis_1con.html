@@ -34,7 +34,9 @@ chart.animate({
         title: 'Pie Chart',
         coordSystem: 'polar'
     },
-    style: {  // All axes and axis labels are unnecessary on these types of charts. Meanwhile the marker labels are enlarged. 
+    /* All axes and axis labels are unnecessary on these types of charts.
+    Meanwhile the marker labels are enlarged. */
+    style: {  
         plot: {
             marker: {
                 label: {
@@ -63,7 +65,9 @@ chart.animate({
 chart.animate({
     config: {
         channels: {
-            y: { range: { min: '-200%' } } // Setting the radius of the empty circle in the centre. 
+            /* Setting the radius of
+            the empty circle in the centre. */
+            y: { range: { min: '-200%' } }  
         },
         title: 'Donut Chart'
     }
@@ -84,7 +88,9 @@ chart.<span class="hljs-title function_">animate</span>({
         <span class="hljs-attr">title</span>: <span class="hljs-string">'Pie Chart'</span>,
         <span class="hljs-attr">coordSystem</span>: <span class="hljs-string">'polar'</span>
     },
-    <span class="hljs-attr">style</span>: {  <span class="hljs-comment">// All axes and axis labels are unnecessary on these types of charts. Meanwhile the marker labels are enlarged. </span>
+    <span class="hljs-comment">/* All axes and axis labels are unnecessary on these types of charts.
+    Meanwhile the marker labels are enlarged. */</span>
+    <span class="hljs-attr">style</span>: {  
         <span class="hljs-attr">plot</span>: {
             <span class="hljs-attr">marker</span>: {
                 <span class="hljs-attr">label</span>: {
@@ -113,7 +119,9 @@ chart.<span class="hljs-title function_">animate</span>({
 chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">config</span>: {
         <span class="hljs-attr">channels</span>: {
-            <span class="hljs-attr">y</span>: { <span class="hljs-attr">range</span>: { <span class="hljs-attr">min</span>: <span class="hljs-string">'-200%'</span> } } <span class="hljs-comment">// Setting the radius of the empty circle in the centre. </span>
+            <span class="hljs-comment">/* Setting the radius of
+            the empty circle in the centre. */</span>
+            <span class="hljs-attr">y</span>: { <span class="hljs-attr">range</span>: { <span class="hljs-attr">min</span>: <span class="hljs-string">'-200%'</span> } }  
         },
         <span class="hljs-attr">title</span>: <span class="hljs-string">'Donut Chart'</span>
     }
