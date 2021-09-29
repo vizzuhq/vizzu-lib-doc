@@ -53,7 +53,7 @@
 				<li id="submenuitem-0.7" class="submenuitem">Align &amp; range</li>
 				<li id="submenuitem-0.8" class="submenuitem">Aggregate/drill-down</li>
 				<li id="submenuitem-0.9" class="submenuitem">Orientation, split &amp; polar</li>
-				<li id="submenuitem-0.10" class="submenuitem">Filtering</li>
+				<li id="submenuitem-0.10" class="submenuitem">Filtering &amp; adding new records</li>
 				<li id="submenuitem-0.11" class="submenuitem">Without coordinates &amp; noop channel</li>
 				<li id="submenuitem-0.12" class="submenuitem">Color palette &amp; fonts</li>
 				<li id="submenuitem-0.13" class="submenuitem">Chart layout</li>
@@ -1312,9 +1312,11 @@ setting the axis range on the axis with the dimension so that the viewers can ea
 				</script>
 		</div>
 		
-			<h2 id="chapter-0.10" class="subtitle">Filtering</h2>
+			<h2 id="chapter-0.10" class="subtitle">Filtering &amp; adding new records</h2>
 			<p class="paragraph">Filtering enables you to zoom in or out within a chart, allowing the viewer to 
-focus on certain selected elements, or add new ones to provide more context. </p><p class="paragraph">We add two items from the Genres dimension - using the || operator - to 
+focus on certain selected elements, or get more context.
+You can also add new records to the data on the chart which makes it easy to work
+with real-time sources.</p><p class="paragraph">We add two items from the Genres dimension - using the || operator - to 
 the filter, so the chart elements that belong to the other two items will vanish 
 from the chart.</p>
 		<div id="snippet-0.10.1" class="snippet runable" tabindex="0">
@@ -1381,10 +1383,40 @@ from the chart.</p>
         filter: null,
     }
 }) },
-						{"title":"Filter off ","run":true,"pure":false});
+						{"title":"Filter off","run":true,"pure":false});
 				</script>
 		</div>
-		
+		<p class="paragraph">Here we add another record to the data set and update the chart accordingly.</p>
+		<div id="snippet-0.10.4" class="snippet runable" tabindex="0">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">data</span>: {
+        <span class="hljs-attr">records</span>: [
+          [<span class="hljs-string">'Soul'</span>, <span class="hljs-string">'Hard'</span>, <span class="hljs-number">91</span>],
+          [<span class="hljs-string">'Soul'</span>, <span class="hljs-string">'Smooth'</span>, <span class="hljs-number">57</span>],
+          [<span class="hljs-string">'Soul'</span>, <span class="hljs-string">'Experimental'</span>, <span class="hljs-number">115</span>],
+            ] 
+    }
+})
+</code></pre>
+
+			<script>
+					registry.addSnippet(
+						"0.10.4", 
+						chart => { chart.animate({
+    data: {
+        records: [
+          ['Soul', 'Hard', 91],
+          ['Soul', 'Smooth', 57],
+          ['Soul', 'Experimental', 115],
+            ] 
+    }
+}) },
+						{"title":"Adding new records","run":true,"pure":false});
+				</script>
+		</div>
+		<p class="paragraph">Note: combining this option with the <a href="#chapter-0.17">store function</a> makes it easy to 
+update previously configured states with fresh data since this function saves the config 
+and style parameters of the chart into a variable but not the data.</p>
 			<h2 id="chapter-0.11" class="subtitle">Without coordinates &amp; noop channel</h2>
 			<p class="paragraph">Certain chart types have neither measures nor dimensions on the axes such as 
 treemaps and bubble charts. This is a case when the noop channel comes in handy 
