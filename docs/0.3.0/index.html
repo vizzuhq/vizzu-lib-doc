@@ -246,7 +246,7 @@ select the type depending on the first element of the values array using the typ
 operator. If all items are numbers, it will be declared as a measure, in any 
 other case, a dimension.</p><p class="paragraph">Data specified by series:</p>
 		<div class="snippet">
-			<pre><code class="language-javascript"><span class="hljs-attr">data</span>: {
+			<pre><code class="language-javascript"><span class="hljs-keyword">let</span> data = {
   <span class="hljs-attr">series</span>: [
     {
       <span class="hljs-attr">name</span>: <span class="hljs-string">'Genres'</span>, 
@@ -254,7 +254,7 @@ other case, a dimension.</p><p class="paragraph">Data specified by series:</p>
       <span class="hljs-attr">values</span>: [
         <span class="hljs-string">'Pop'</span>, <span class="hljs-string">'Rock'</span>, <span class="hljs-string">'Jazz'</span>, <span class="hljs-string">'Metal'</span>, 
         <span class="hljs-string">'Pop'</span>, <span class="hljs-string">'Rock'</span>, <span class="hljs-string">'Jazz'</span>, <span class="hljs-string">'Metal'</span>, 
-        <span class="hljs-string">'Pop'</span>, <span class="hljs-string">'Rock'</span>, <span class="hljs-string">'Jazz'</span>, <span class="hljs-string">'Metal'</span>,
+        <span class="hljs-string">'Pop'</span>, <span class="hljs-string">'Rock'</span>, <span class="hljs-string">'Jazz'</span>, <span class="hljs-string">'Metal'</span>
       ]
     },
     {
@@ -272,14 +272,14 @@ other case, a dimension.</p><p class="paragraph">Data specified by series:</p>
       <span class="hljs-attr">values</span>: [ <span class="hljs-number">114</span>, <span class="hljs-number">96</span>, <span class="hljs-number">78</span>, <span class="hljs-number">52</span>, <span class="hljs-number">56</span>, <span class="hljs-number">36</span>, <span class="hljs-number">174</span>, <span class="hljs-number">121</span>, <span class="hljs-number">127</span>, <span class="hljs-number">83</span>, <span class="hljs-number">94</span>, <span class="hljs-number">58</span> ]
     }
   ]
-}
+};
 </code></pre>
 
 			
 		</div>
 		<p class="paragraph">Data specified by records:</p>
 		<div class="snippet">
-			<pre><code class="language-javascript"><span class="hljs-attr">data</span>: {
+			<pre><code class="language-javascript"><span class="hljs-keyword">let</span> data = {
   <span class="hljs-attr">series</span>: [
     { <span class="hljs-attr">name</span>: <span class="hljs-string">'Genres'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'dimension'</span> },
     { <span class="hljs-attr">name</span>: <span class="hljs-string">'Types'</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">'dimension'</span> },
@@ -299,7 +299,7 @@ other case, a dimension.</p><p class="paragraph">Data specified by series:</p>
     [<span class="hljs-string">'Jazz'</span>, <span class="hljs-string">'Experimental'</span>, <span class="hljs-number">94</span>],
     [<span class="hljs-string">'Metal'</span>, <span class="hljs-string">'Experimental'</span>, <span class="hljs-number">58</span>],
   ]
-}
+};
 </code></pre>
 
 			
@@ -315,7 +315,7 @@ other case, a dimension.</p><p class="paragraph">Data specified by series:</p>
 
 
 		<div class="snippet">
-			<pre><code class="language-javascript"><span class="hljs-attr">data</span>: {
+			<pre><code class="language-javascript"><span class="hljs-keyword">let</span> data = {
     <span class="hljs-attr">dimensions</span>: [ 
         { <span class="hljs-attr">name</span>: <span class="hljs-string">'Genres'</span>, <span class="hljs-attr">values</span>: [ <span class="hljs-string">'Pop'</span>, <span class="hljs-string">'Rock'</span>, <span class="hljs-string">'Jazz'</span>, <span class="hljs-string">'Metal'</span> ] },
         { <span class="hljs-attr">name</span>: <span class="hljs-string">'Types'</span>, <span class="hljs-attr">values</span>: [ <span class="hljs-string">'Hard'</span>, <span class="hljs-string">'Smooth'</span>, <span class="hljs-string">'Experimental'</span> ] }
@@ -330,7 +330,14 @@ other case, a dimension.</p><p class="paragraph">Data specified by series:</p>
             ]
         }
     ]
-}
+};
+</code></pre>
+
+			
+		</div>
+		<p class="paragraph">You should set the data in the first animate call:</p>
+		<div class="snippet">
+			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({ data });
 </code></pre>
 
 			
