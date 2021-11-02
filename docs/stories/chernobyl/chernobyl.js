@@ -104,7 +104,7 @@ for (let sec = 1; sec <= 90; sec++)
         event.preventDefault();
       });
     }
-  
+   
     return chart.animate(
     {
       data: {
