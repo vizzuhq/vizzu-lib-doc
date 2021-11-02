@@ -7,7 +7,9 @@ const style = {
 	  paddingBottom: 50,
 	  marker: {
 		colorGradient: '#ffffffee 0, #000000ca 1',
-		colorPalette: '#de0000ff '+ (new Array(20)).fill('#ffffffee').join(' '),
+		colorPalette: '#de0000ff' + ' ' 
+		  + (new Array(18)).fill('#ffffffee').join(' ') + ' '
+		  + (new Array(5)).fill('#26292a').join(' '),
 		rectangleSpacing: 0.9,
 		label: { fontSize: 28 }
 	  },
