@@ -1,0 +1,134 @@
+<!DOCTYPE html><html><head>
+		<title>Vizzu library example</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/highlight.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/example.css">
+		<script type="module">
+			import JsFiddle from '../../../script/jsfiddle.js';
+			document.getElementById('example-edit-btn').onclick = () => {
+				let html = `<div id="vizzuCanvas" ></div>`;
+				let css = `#vizzuCanvas {
+					width: 680px; 
+					height: 446px;
+				}`;
+				let code = document.getElementById('script')
+					.getElementsByTagName('SCRIPT')[0].innerText;
+				JsFiddle.post(html, css, code);
+			}
+		</script>
+	</head>
+<body>
+	<noscript>
+		<p class="noscript">To use Vizzu, please enable Javascript.</p>
+	</noscript>
+	<div id="vizzuCanvas"></div>
+	<div id="navigation">
+		<button id="example-replay-btn" class="button example-btn" type="button" onclick="location.reload()">▶ replay</button>
+		<button id="example-edit-btn" class="button example-btn" type="button">edit</button>
+	</div>
+	<div id="script">
+<script type="module">
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.1/dist/vizzu.min.js';
+import { data } from 'https://lib.vizzuhq.com/test/integration/test_data/chart_types_eu.js';
+
+
+let chart = new Vizzu('vizzuCanvas');
+
+
+
+chart.animate({
+    data: data,
+    config: {
+        channels: {
+            color: { set: ['Joy factors'] },
+            label: { set: ['Country_code'] },
+            /* With a dimension on the size channel Vizzu will stack
+            the elements by the categories on the other channels
+            on charts without coordinates. Here the Country code dimension is
+            used to stack the bubbles by the dimension on the color channel. */
+            size: { set: ['Country_code', 'Value 2 (+)'] }
+        },
+        title: 'Stacked Bubble Chart',
+        geometry: 'circle'
+    }
+});
+
+
+chart.animate({
+    config: {
+        channels: {
+            x: { set: ['Country_code', 'Value 2 (+)'] },
+            y: { set: ['Joy factors'] },
+            label: { set: null },
+            /* The stacking is eliminated when we remove
+            the extra dimension from the size channel. */
+            size: { set: null } 
+        },
+        title: 'Bar Chart',
+        geometry: 'rectangle',
+        orientation: 'vertical'
+    }
+});
+
+
+chart.animate({
+    config: {
+        channels: {
+            x: { detach: ['Country_code'] },
+            label: { set: ['Value 2 (+)'] }
+        }
+    }
+});
+
+
+</script>
+		</div>
+	<div id="code"><pre>
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">data</span>: data,
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
+            <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>] },
+            <span class="hljs-comment">/* With a dimension on the size channel Vizzu will stack
+            the elements by the categories on the other channels
+            on charts without coordinates. Here the Country code dimension is
+            used to stack the bubbles by the dimension on the color channel. */</span>
+            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>, <span class="hljs-string">'Value 2 (+)'</span>] }
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Bubble Chart'</span>,
+        <span class="hljs-attr">geometry</span>: <span class="hljs-string">'circle'</span>
+    }
+});
+
+
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Country_code'</span>, <span class="hljs-string">'Value 2 (+)'</span>] },
+            <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
+            <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> },
+            <span class="hljs-comment">/* The stacking is eliminated when we remove
+            the extra dimension from the size channel. */</span>
+            <span class="hljs-attr">size</span>: { <span class="hljs-attr">set</span>: <span class="hljs-literal">null</span> } 
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Bar Chart'</span>,
+        <span class="hljs-attr">geometry</span>: <span class="hljs-string">'rectangle'</span>,
+        <span class="hljs-attr">orientation</span>: <span class="hljs-string">'vertical'</span>
+    }
+});
+
+
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">detach</span>: [<span class="hljs-string">'Country_code'</span>] },
+            <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>] }
+        }
+    }
+});
+
+</pre></div>
+
+</body></html>
