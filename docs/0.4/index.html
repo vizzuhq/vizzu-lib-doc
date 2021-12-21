@@ -111,7 +111,7 @@ on the right side of the screen.</p><h3 id="installation">Installation</h3>
 		<div class="snippet">
 			<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">Vizzu</span> <span class="hljs-keyword">from</span> 
-  <span class="hljs-string">'https://cdn.jsdelivr.net/npm/vizzu@0.3.1/dist/vizzu.min.js'</span>;
+  <span class="hljs-string">'https://cdn.jsdelivr.net/npm/vizzu@0.4.0/dist/vizzu.min.js'</span>;
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 
@@ -1110,7 +1110,7 @@ this feature to filter certain elements, just like in the following example.</p>
         }
     }
 }) },
-						{"title":"Axis range set explicitly on an axis with discrete series","run":true,"pure":false});
+						{"title":"Back to the default ranges","run":true,"pure":false});
 				</script>
 		</div>
 		
@@ -1534,9 +1534,8 @@ channel - this is why the bubbles are in separate, small groups.</p>
 		</div>
 		
 			<h2 id="chapter-0.12" class="subtitle">Color palette &amp; fonts</h2>
-			<p class="paragraph">This and the next chapter provide a quick intro to the styling of the charts using the style object. 
-The style settings are similar to CSS. The font sizes automatically adjust to the chart size to help 
-readability, but they can also be set separately or for specific groups.</p><p class="paragraph">The actual style settings of the chart can be accessed via the style property.</p>
+			<p class="paragraph">This and the next chapter provide a quick intro to the styling of the charts. You can either use the style property like in the following examples or use CSS. By using CSS, it's easier to set the same style for multiple charts on one page or re-use style settings.</p><p class="paragraph">If you use CSS, don't change the set parameters later on via the style property.</p><p class="paragraph">The font sizes automatically adjust to the chart size to help 
+readability, and can also be set separately or for specific groups.</p><p class="paragraph">The actual style settings of the chart can be accessed via the style property.</p>
 		<div class="snippet">
 			<pre><code class="language-javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chart.<span class="hljs-property">style</span>); 
 </code></pre>
@@ -1544,7 +1543,8 @@ readability, but they can also be set separately or for specific groups.</p><p c
 			
 		</div>
 		<p class="paragraph">The color palette is changed to the colors we add here. The order of the dimension’s 
-items in the data set determine which color belongs to which item as the colors are added one-by-one. </p>
+items in the data set determine which color belongs to which item as the colors are added one-by-one. 
+If you want to use the same setting via CSS, you should add <code>--vizzu-plot-marker-colorPalette: #9355e8FF #123456FF #BDAF10FF;</code></p>
 		<div id="snippet-0.12.1" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
@@ -1572,7 +1572,8 @@ items in the data set determine which color belongs to which item as the colors 
 						{"title":"Color palette","run":true,"pure":false});
 				</script>
 		</div>
-		<p class="paragraph">Changing the title font size will only affect the title; all other font sizes remain the same.</p>
+		<p class="paragraph">Changing the title font size will only affect the title; all other font sizes remain the same.
+CSS version: <code>--vizzu-title-fontSize: 50;</code></p>
 		<div id="snippet-0.12.2" class="snippet runable" tabindex="0">
 			<pre><code class="language-javascript">chart.<span class="hljs-title function_">animate</span>({
     <span class="hljs-attr">style</span>: {
@@ -2074,7 +2075,7 @@ the following, simplified format to do that. </p>
 		</div>
 		
 			<h2 id="chapter-0.15" class="subtitle">Animation control</h2>
-			<p class="paragraph">Using the methods of the chart's animation object, you can play, pause, stop, seek or reverse the animations.</p><p class="paragraph">In this step, we set an event that pauses the animation when it reaches 75% of 
+			<p class="paragraph">Using the result object provided by the chart's animate method you can play, pause, stop, seek or reverse the animations.</p><p class="paragraph">In this step, we set an event that pauses the animation when it reaches 75% of 
 progress and seeks back to 25% of progress, then restarts the animation from 
 there.</p>
 		<div id="snippet-0.15.1" class="snippet runable" tabindex="0">
