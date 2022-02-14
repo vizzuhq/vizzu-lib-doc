@@ -40,7 +40,10 @@ export default class Main
 
 		let initId = '0.0.0';
 		let hash = window.location.hash;
-		if (hash) initId = DomHelper.parseIdString(hash).id;
+		if (hash) {
+			if (hash === 'animated-charts') hash = 'examples-1.1';
+			initId = DomHelper.parseIdString(hash).id;
+		}
 		this.navigateToId(initId);
 	}
 
