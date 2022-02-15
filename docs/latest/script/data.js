@@ -4,8 +4,8 @@ const data = {
 			name: 'Genres',
 			type: 'dimension',
 			values: [
-				'Pop', 'Rock', 'Jazz', 'Metal', 
-				'Pop', 'Rock', 'Jazz', 'Metal', 
+				'Pop', 'Rock', 'Jazz', 'Metal',
+				'Pop', 'Rock', 'Jazz', 'Metal',
 				'Pop', 'Rock', 'Jazz', 'Metal',
 			]
 		},
@@ -13,8 +13,8 @@ const data = {
 			name: 'Types',
 			type: 'dimension',
 			values: [
-				'Hard', 'Hard', 'Hard', 'Hard', 
-				'Smooth', 'Smooth', 'Smooth', 'Smooth', 
+				'Hard', 'Hard', 'Hard', 'Hard',
+				'Smooth', 'Smooth', 'Smooth', 'Smooth',
 				'Experimental', 'Experimental', 'Experimental', 'Experimental'
 			]
 		},
