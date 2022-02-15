@@ -41,6 +41,7 @@ export default class Main
 		let initId = '0.0.0';
 		let hash = window.location.hash;
 		if (hash) {
+                        if(hash === '#static-charts') hash = 'examples-1.0';
 			if (hash === '#animated-charts') hash = 'examples-1.1';
 			initId = DomHelper.parseIdString(hash).id;
 		}
