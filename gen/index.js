@@ -15,7 +15,7 @@ function loadIndexHTML()
 
 function saveIndexHTML(dom)
 {
-	fs.writeFileSync('docs/latest/index.html', dom.serialize());
+	fs.writeFileSync('docs/test/index.html', dom.serialize());
 	return Promise.resolve();
 }
 

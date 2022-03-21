@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed&display=swap');
+
+
+/**
+  * Variables and overrides
+  * =======================
+  */
+
+:root {
+	/* Override bootstrap body font */
+	--bs-font-sans-serif: Roboto, "Helvetica Neue", Arial;
+	--bs-body-font-family: Roboto, "Helvetica Neue", Arial;
+	--bs-body-font-size: 15px;
+}
+
+html {
+	/* Set a variable for the sidebar width */
+	--sidebar-width: 250px;
+	/* Override bootstrap colors with Vizzu dark and primary blue */
+	--bs-dark: #333;
+	--bs-dark-rgb: 48, 48, 48;
+	--bs-primary: #4171cd;
+	--bs-primary-rgb: 0, 133, 197;
+	
+	--bs-body-bg: #fff;
+	--bs-body-bg-alternate: #f8f9fa;
+	--bs-body-color: #212529;
+	--vizzu-border-color: #dee2e6;
+	--vizzu-sidebar-color: #333;
+	--vizzu-svg-fill-color: #000;
+}
+
+html.theme-dark {
+	--bs-body-bg: #333;
+	--bs-body-bg-alternate: #444;
+	--vizzu-sidebar-color: #444;
+	--bs-body-color: #ccc;
+	--vizzu-border-color: #555;
+	--vizzu-svg-fill-color: #ccc;
+}
+
+/**
+ * Basic element appearance
+ * ========================
+ */
+ 
+body {
+	background-color: --bs-body-bg;
+}
+
+h2 {
+	margin-top: 2rem;
+}
+
+h1 {
+	margin-top: 4rem;
+}
+
+
+h1:first-of-type {
+	margin-top: 0;
+}
+
+
+h3 {
+	margin-top: 2rem;
+}
+
+a {
+	color: var(--bs-primary);
+}
+
+svg {
+	fill: var(--vizzu-svg-fill-color);
+}
+
+
+/**
+ * Generic appearance classes
+ */
+
+ .depth-shadow {
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.c-pointer {
+	cursor: pointer;
+}
+
+.ellipses {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+
+/**
+ * Header
+ * ======
+ */
+
+/* The header is fixed on top so you cannot scroll it out */
+.vizzu-header {
+	position: fixed;
+	box-sizing: border-box;
+	width: 100%;
+	top: 0;
+	background-color: var(--bs-body-bg-alternate);
+	z-index: 1020; /* Bootstrap z-indexes */
+}
+
+html:not([data-scroll='0']) .vizzu-header {
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+/**
+ * Sidebar appereance and behavior
+ * ===============================
+ */
+
+/* The rest of the page maintains a margin so it does not slip under the header */
+.vizzu-page {
+	margin-top: 3rem;
+}
+
+.vizzu-sidebar {
+	min-width: var(--sidebar-width);
+	max-width: var(--sidebar-width);
+	z-index: 1;
+	position: fixed;
+	top: 4rem;
+	bottom: 0;
+	overflow: hidden auto;
+	
+	/* Sidebar styled for default mobile view, its not visible and is slid out to the left by its entire width */
+	visibility: hidden;
+	margin-left: calc(var(--sidebar-width) * -1);
+	transition: all 0.3s;
+	background-color: var(--vizzu-sidebar-color);
+}
+
+html:not([data-scroll='0']) .vizzu-sidebar {
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Style bar, mobiled view, toggled state. Gets visible and is slid in place (no margin) */
+.vizzu-page-sidebar-toggled .vizzu-sidebar {
+	visibility: visible;
+	margin-left: 0;
+}
+
+/* Mobile view content onyl needs top and bottom paddings */
+.vizzu-content {
+	padding: 1.5rem 0;
+}
+
+/* Semi transparent cover om the page when sidebar is drawn */
+.vizzu-sidebar-scrim {
+	display: none;
+	background-color: rgba(0, 0, 0, 0.4);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+/* On mobile, the scrim is visible if the sidebar is drwan out */
+.vizzu-page-sidebar-toggled>.vizzu-sidebar-scrim {
+	display: block;
+}
+
+/* Styling sidebar links */
+
+.vizzu-sidebar > ul > li {
+	margin-bottom: 1em;
+	text-transform: uppercase;
+}
+
+.vizzu-sidebar > ul > li > ul {
+	text-transform: none;
+}
+
+.vizzu-sidebar li,
+.vizzu-sidebar a {
+	color: var(--bs-gray-500);
+	text-decoration: none;
+}
+
+.vizzu-sidebar a[href].active,
+.vizzu-sidebar a[href]:hover {
+	color: white;
+}
+
+.vizzu-submenu {
+	padding-left: 1em;
+}
+
+.vizzu-submenu li {
+	list-style-type: none;
+}
+
+/* Anchor trick to scroll to proper position */
+a.anchor {
+	display: block;
+	position: relative;
+	top: -5rem;
+	visibility: hidden;
+}
+
+
+/* 
+ * Responsive behavior of containers
+ * ==================================
+ */
+
+/* Eliminate max width under the 'md' and 'lg'  breakpoint (looks bad on landscape mobile)  */ 
+@media (min-width: 576px) and (max-width: 991.99px) {
+	.container, .container-sm {
+		max-width: inherit;
+	}
+}
+/* Keep max-width for xxl breakpoints */
+@media (min-width: 1400px) {
+	.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+		max-width: 1140px;
+	}
+}
+
+/* 
+ * Responsive behavior of the sidebar
+ * ==================================
+ */
+
+/* 
+ * This is the 'md' breakpoint in Bootstrap
+ * We will style non-mobile view with the media query below
+ */
+@media (min-width: 768px) {
+
+	/* Content default view. Note, that in desktop mode, the sidebar is shown by default, 
+	which is the opposite behavior than on mobile */
+	.vizzu-content {
+		/* Content needs to maintain margin from the left edge, so it does not get covered */
+		margin-left: var(--sidebar-width);
+		/* Content needs vertical _and_ horizontal padding */
+		padding: 1.5rem;
+	}
+
+	/* Content nedds only vert padding and need no margin if the sidebar is closed */
+	.vizzu-page-sidebar-toggled .vizzu-content {
+		margin-left: 0;
+		padding: 1.5rem 0;
+	}
+
+	/* The sidebar, by default, is visible, and does not have shadow (it does not overlap content) */
+	.vizzu-sidebar {
+		/* box-shadow: none; */
+		margin-left: 0;
+		visibility: visible;
+	}
+
+	/* The sidebar, when toggled, slides out, becomes invisible */
+	.vizzu-page-sidebar-toggled .vizzu-sidebar {
+		visibility: hidden;
+		margin-left: calc(var(--sidebar-width) * -1);
+	}
+
+	/* On desktop we do not show the sidebar scrim, because sidebar does not cover content */
+	.vizzu-page-sidebar-toggled>.vizzu-sidebar-scrim {
+		display: none;
+	}
+
+}
+
+
+/**
+ * Content appearance
+ * ==================
+ */
+
+.vizzu-content th,
+td {
+	text-align: center;
+	border: 1px solid var(--vizzu-border-color);
+	padding: 0.1em 1em 0.1em;
+}
+
+.vizzu-content table {
+	margin-bottom: 2em;
+	border-collapse: collapse;
+	font-size: 13px;
+	font-family: 'Roboto';
+}
+
+.width-protect {
+	display: grid;
+    overflow-x: auto;
+    width: 0;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.snippet {
+	width: 100%;
+	display: grid;
+	overflow-x: auto;
+}
+
+.snippet pre {
+	background-color: var(--bs-body-bg-alternate);
+	border: 1px solid var(--vizzu-border-color);
+	padding: 1em;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.snippet-player-chart-ready:before {
+	content: 'Tap to replay';
+	color: #4171CD;
+	font-size: 10px;
+	position: absolute;
+	width: 100%;
+	text-align: right;
+}
+
+.snippet-player {
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.snippet-player-chart {
+	box-sizing: border-box;
+	position: absolute;
+	animation: opacity 0.5s;
+}
+
+.snippet-player-snapshot {
+	box-sizing: border-box;
+	width: 100%;
+
+}
+
+/**
+ * Thumbnails
+ * ==========
+ */
+
+img.thumbnail-static {
+	width: 100%;
+	cursor: pointer;
+	border: 1px solid var(--vizzu-border-color);	
+}
+img.thumbnail-static:hover {
+	box-shadow: rgba(0, 0, 0, .1) 3px 3px 10px;
+}
+
+video.thumbnail-animated {
+	width: 100%;
+	cursor: pointer;
+	border: 1px solid var(--vizzu-border-color);
+}
+video.thumbnail-animated:hover {
+	box-shadow: rgba(0, 0, 0, .1) 3px 3px 10px;
+}
+
+
+/**
+ * Modal windows
+ * =============
+ */
+
+.vizzu-modal {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1040;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.vizzu-modal-content {
+	z-index: 1060;
+	box-sizing: border-box;
+    height: 100%;
+}
+
+.vizzu-modal-content iframe {
+	height: 10em;
+	transition: height 0.3s;
+	box-sizing: border-box;
+}
+
+.vizzu-modal-content .spinner-grow {
+	width: 6em;
+	height: 6em;
+}
+

@@ -14,8 +14,15 @@ class Examples
 		this.examples.push(...this.collect('sample_static', 'static', 'png'));
 		this.examples.push(...this.collect('templates', 'animated', 'webm'));
 
+		this.mkDirs();
 		this.generateHtml();
 		this.generateHtmls();
+	}
+
+	mkDirs()
+	{
+		fs.mkdirSync('./docs/test/content/examples/static', { recursive: true });
+		fs.mkdirSync('./docs/test/content/examples/animated', { recursive: true });
 	}
 
 	generateHtml()
@@ -92,7 +99,7 @@ class Examples
 				let urlBase = targetBase + outputFolder + '/'
 					+ path.basename(jsFilename, '.mjs');
 
-				let targetBasename = '../' + urlBase;
+				let targetBasename = 'docs/test/' + urlBase;
 
 				return { 
 					jsFilename, 

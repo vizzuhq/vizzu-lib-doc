@@ -9,4 +9,4 @@ for the documentation, go to https://lib.vizzuhq.com/latest
 npm run build
 ```
 
-This will overwrite the content in the docs/latest folder.
+This will overwrite the content in the docs/test folder.

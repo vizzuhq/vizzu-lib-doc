@@ -17,7 +17,7 @@ function reference()
     const project = app.convert();
 
     if (project) {
-        const outputDir = "docs/latest/reference";
+        const outputDir = "docs/test/reference";
         return app.generateDocs(project, outputDir);
     }
 }

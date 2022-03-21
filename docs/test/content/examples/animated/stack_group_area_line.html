@@ -1,0 +1,163 @@
+<!DOCTYPE html><html><head>
+	<title>Vizzu library example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="../../../style/highlight.css">
+	<script type="module" id="initScript">
+		import JsFiddle from '../../../script/jsfiddle.js';
+		window.edit = () => {
+			let html = `<div id="vizzuCanvas" ></div>`;
+			let css = `#vizzuCanvas {
+				width: 680px; 
+				height: 446px;
+			}`;
+			let code = document.getElementById('script')
+				.getElementsByTagName('SCRIPT')[0].innerText;
+			JsFiddle.post(html, css, code);
+		};
+	
+				window.replay = () => {
+					window.location.reload();
+				};
+			</script>
+	<style>
+		:root {
+			--bs-light: #f8f9fa;
+			--bs-gray-300: #dee2e6;
+		}
+
+		#vizzuCanvas {
+			width: 100%;
+			height: 320px;
+		}
+
+		body {
+			margin: 0;
+		}
+
+		pre {
+			width: 100%;
+			overflow: auto;
+			background-color: var(--bs-light);
+			padding: 1em;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<noscript>
+		<p class="noscript">To use Vizzu, please enable Javascript.</p>
+	</noscript>
+	<div id="vizzuCanvas"></div>
+	<div id="script">
+<script type="module">
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@~0.4.0/dist/vizzu.min.js';
+import { data } from 'https://lib.vizzuhq.com/test/integration/test_data/tutorial.js';
+
+
+let chart = new Vizzu('vizzuCanvas');
+
+
+
+chart.animate({
+data: data,
+config: {
+  channels: {
+    x: { set: ['Timeseries'] },
+    y: {
+      set: ['Values 1', 'Categ. Parent'],
+      /* Making the chart elements fill the whole of
+         the y-axis as the default value is now 110% */
+      range: {
+        max: '400'
+      }
+    },
+    label: { set: ['Values 1'] },
+    color: { set: ['Categ. Parent'] },
+  },
+  title: 'Stacked Area Chart',
+  geometry: 'area'
+}
+  });
+
+
+chart.animate({
+config: {
+  channels: {
+    y: { set: ['Values 1'] }
+  },
+  title: 'Line Chart',
+  geometry: 'line'
+}
+  });
+
+
+chart.animate({
+config: {
+  channels: {
+    y: {
+      /* Setting back the y-axis range
+      to the default value. */
+      range: {
+        max: 'auto'
+      }
+    }
+  }
+}
+  });
+
+
+</script>
+		</div>
+	<div id="code"><pre>
+chart.<span class="hljs-title function_">animate</span>({
+<span class="hljs-attr">data</span>: data,
+<span class="hljs-attr">config</span>: {
+  <span class="hljs-attr">channels</span>: {
+    <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Timeseries'</span>] },
+    <span class="hljs-attr">y</span>: {
+      <span class="hljs-attr">set</span>: [<span class="hljs-string">'Values 1'</span>, <span class="hljs-string">'Categ. Parent'</span>],
+      <span class="hljs-comment">/* Making the chart elements fill the whole of
+         the y-axis as the default value is now 110% */</span>
+      <span class="hljs-attr">range</span>: {
+        <span class="hljs-attr">max</span>: <span class="hljs-string">'400'</span>
+      }
+    },
+    <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Values 1'</span>] },
+    <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Categ. Parent'</span>] },
+  },
+  <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Area Chart'</span>,
+  <span class="hljs-attr">geometry</span>: <span class="hljs-string">'area'</span>
+}
+  });
+
+
+chart.<span class="hljs-title function_">animate</span>({
+<span class="hljs-attr">config</span>: {
+  <span class="hljs-attr">channels</span>: {
+    <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Values 1'</span>] }
+  },
+  <span class="hljs-attr">title</span>: <span class="hljs-string">'Line Chart'</span>,
+  <span class="hljs-attr">geometry</span>: <span class="hljs-string">'line'</span>
+}
+  });
+
+
+chart.<span class="hljs-title function_">animate</span>({
+<span class="hljs-attr">config</span>: {
+  <span class="hljs-attr">channels</span>: {
+    <span class="hljs-attr">y</span>: {
+      <span class="hljs-comment">/* Setting back the y-axis range
+      to the default value. */</span>
+      <span class="hljs-attr">range</span>: {
+        <span class="hljs-attr">max</span>: <span class="hljs-string">'auto'</span>
+      }
+    }
+  }
+}
+  });
+
+</pre></div>
+
+
+</body></html><!-- Path: docs/generator/example.in.html -->
