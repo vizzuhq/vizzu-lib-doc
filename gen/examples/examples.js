@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const sharp = require('sharp');
 const Example = require('./example.js');
 const exampleList = require('./example-list.js');
 
@@ -80,9 +79,10 @@ class Examples
 		let list = Object.keys(exampleList[inputFolder]);
 		return list
 			.filter(filename => filename.match(/.mjs$/))
-			.map(jsFilename => jsFolder + jsFilename)
-			.map(jsFilename => 
+			.map(filename => 
 			{
+				let jsFilename = jsFolder + filename;
+
 				let basename = path.basename(jsFilename, '.mjs');
 				
 				let pngFilename = jsFilename
@@ -101,6 +101,9 @@ class Examples
 
 				let targetBasename = 'docs/test/' + urlBase;
 
+				let tags = exampleList[inputFolder][filename].tags;
+				let desc = exampleList[inputFolder][filename].desc;
+
 				return { 
 					jsFilename, 
 					pngFilename,
@@ -109,7 +112,9 @@ class Examples
 					outputFolder,
 					extension,
 					urlBase,
-					targetBasename
+					targetBasename,
+					tags,
+					desc
 				};
 			});
 	}

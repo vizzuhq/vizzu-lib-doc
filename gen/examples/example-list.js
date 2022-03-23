@@ -1,5 +1,5 @@
-const m = (cnt) => cnt + ' measure' + (cnt > 1) ? 's' : '';
-const d = (cnt) => cnt + ' dimension' + (cnt > 1) ? 's' : '';
+const m = (cnt) => cnt + ' measure' + ((cnt > 1) ? 's' : '');
+const d = (cnt) => cnt + ' dimension' + ((cnt > 1) ? 's' : '');
 const Co = 'Comparison';
 const Di = 'Distribution';
 const PW = 'Part-to-whole';

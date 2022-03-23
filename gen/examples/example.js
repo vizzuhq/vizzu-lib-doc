@@ -3,7 +3,8 @@
 const fs = require('fs');
 const jsdom = require('jsdom');
 const path = require('path');
-const vm = require('vm')
+const vm = require('vm');
+const { marked } = require('marked');
 const hljs = require('highlight.js/lib/common');
 
 const { JSDOM } = jsdom;
@@ -20,6 +21,8 @@ class Example
 
 		this.loadHTML().then(dom => {
 			this.initScript(dom);
+			this.setTags(dom);
+			this.setDesc(dom);
 			this.setCode(dom);
 			this.saveHTML(dom, targetName+'.html');
 		});
@@ -88,6 +91,21 @@ let chart = new Vizzu('vizzuCanvas');
 ${this.script}
 </script>
 		`;
+	}
+
+	setTags(dom)
+	{
+		let tagsElement = dom.window.document.getElementById('tags');
+		tagsElement.innerHTML = '<b>Tags:</b> ' + this.example.tags.join(' / ');
+	}
+
+	setDesc(dom)
+	{
+		let descElement = dom.window.document.getElementById('desc');
+		if (this.example.desc)
+			descElement.innerHTML =  marked(this.example.desc);
+		else
+			descElement.remove();
 	}
 
 	saveHTML(dom, filename)
