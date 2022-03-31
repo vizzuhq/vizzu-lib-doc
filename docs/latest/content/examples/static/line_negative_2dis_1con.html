@@ -29,6 +29,8 @@
 
 		body {
 			margin: 0;
+			color: #666;
+			font-family: Roboto;
 		}
 
 		pre {
@@ -38,6 +40,15 @@
 			padding: 1em;
 			box-sizing: border-box;
 		}
+
+		#desc {
+			margin-top: 1em;
+		}
+
+		#tags {
+			font-size: 0.8em;
+		}
+
 	</style>
 </head>
 <body>
@@ -45,9 +56,11 @@
 		<p class="noscript">To use Vizzu, please enable Javascript.</p>
 	</noscript>
 	<div id="vizzuCanvas"></div>
+	
+	<div id="tags"><b>Tags:</b> 1 measure / 2 dimensions / Comparison / Change over time / Deviation / Negative values / Ordered dimension / Line</div>
 	<div id="script">
 <script type="module">
-import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.4.3/dist/vizzu.min.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@~0.4.0/dist/vizzu.min.js';
 import { data } from 'https://lib.vizzuhq.com/test/integration/test_data/chart_types_eu.js';
 
 
