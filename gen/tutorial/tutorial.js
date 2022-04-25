@@ -38,6 +38,7 @@ class Tutorial
 				heading: this.heading.bind(this),
 				paragraph: this.paragraph.bind(this),
 				code: this.code.bind(this),
+				link: this.link.bind(this)
 			}
 		});
 	}
@@ -60,6 +61,11 @@ class Tutorial
 		});
 
 		return content;
+	}
+
+	link(href, title, string) 
+	{
+		return this.defaultRender.link(href, title, string);
 	}
 
 	heading(text, level, raw, slugger)
