@@ -72,28 +72,25 @@ chart.animate(
     {
         data: data,
         config: Vizzu.presets.lollipop({
-            x:'Year',
-            y:'Value 1 (+)',
+            x: 'Year',
+            y: 'Value 1 (+)',
             title: 'Lollipop Chart'
-          }),
+        }),
         style:
         {
             plot: {
                 paddingLeft: '8em',
-            yAxis: {
-                label: { paddingRight: '0.8em' }
+                yAxis: {
+                    label: { paddingRight: '0.8em' }
                 },
-            xAxis: {
-                title: { paddingTop: '2.4em' },
-                label: { paddingTop: '0.8em' }
+                xAxis: {
+                    title: { paddingTop: '2.4em' },
+                    label: { paddingTop: '0.8em' }
                 }
             }
         }
     }
 );
-
-
-chart.feature('tooltip',true);
 
 
 </script>
@@ -103,28 +100,25 @@ chart.<span class="hljs-title function_">animate</span>(
     {
         <span class="hljs-attr">data</span>: data,
         <span class="hljs-attr">config</span>: <span class="hljs-title class_">Vizzu</span>.<span class="hljs-property">presets</span>.<span class="hljs-title function_">lollipop</span>({
-            <span class="hljs-attr">x</span>:<span class="hljs-string">'Year'</span>,
-            <span class="hljs-attr">y</span>:<span class="hljs-string">'Value 1 (+)'</span>,
+            <span class="hljs-attr">x</span>: <span class="hljs-string">'Year'</span>,
+            <span class="hljs-attr">y</span>: <span class="hljs-string">'Value 1 (+)'</span>,
             <span class="hljs-attr">title</span>: <span class="hljs-string">'Lollipop Chart'</span>
-          }),
+        }),
         <span class="hljs-attr">style</span>:
         {
             <span class="hljs-attr">plot</span>: {
                 <span class="hljs-attr">paddingLeft</span>: <span class="hljs-string">'8em'</span>,
-            <span class="hljs-attr">yAxis</span>: {
-                <span class="hljs-attr">label</span>: { <span class="hljs-attr">paddingRight</span>: <span class="hljs-string">'0.8em'</span> }
+                <span class="hljs-attr">yAxis</span>: {
+                    <span class="hljs-attr">label</span>: { <span class="hljs-attr">paddingRight</span>: <span class="hljs-string">'0.8em'</span> }
                 },
-            <span class="hljs-attr">xAxis</span>: {
-                <span class="hljs-attr">title</span>: { <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'2.4em'</span> },
-                <span class="hljs-attr">label</span>: { <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'0.8em'</span> }
+                <span class="hljs-attr">xAxis</span>: {
+                    <span class="hljs-attr">title</span>: { <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'2.4em'</span> },
+                    <span class="hljs-attr">label</span>: { <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'0.8em'</span> }
                 }
             }
         }
     }
 );
-
-
-chart.<span class="hljs-title function_">feature</span>(<span class="hljs-string">'tooltip'</span>,<span class="hljs-literal">true</span>);
 
 </pre></div>
 

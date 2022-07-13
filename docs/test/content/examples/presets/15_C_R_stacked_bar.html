@@ -77,19 +77,19 @@ chart.animate(
                 record.Country == 'Bulgaria' ||
                 record.Country == 'Cyprus' ||
                 record.Country == 'Czechia'
-            }),
-            config: Vizzu.presets.stackedBar({
-              x:'Value 2 (+)',
-              y:'Country',
-              stackedBy:'Joy factors',
-              title: 'Stacked Bar Chart'
-            }),
+        }),
+        config: Vizzu.presets.stackedBar({
+            x: 'Value 2 (+)',
+            y: 'Country',
+            stackedBy: 'Joy factors',
+            title: 'Stacked Bar Chart'
+        }),
         style: {
             plot: {
                 paddingLeft: '1.2em',
                 yAxis: {
                     label: {
-                       paddingRight: '0.8em'
+                        paddingRight: '0.8em'
                     }
                 },
                 xAxis: {
@@ -100,9 +100,6 @@ chart.animate(
         }
     }
 );
-
-
-chart.feature('tooltip',true);
 
 
 </script>
@@ -117,19 +114,19 @@ chart.<span class="hljs-title function_">animate</span>(
                 record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Bulgaria'</span> ||
                 record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Cyprus'</span> ||
                 record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Czechia'</span>
-            }),
-            <span class="hljs-attr">config</span>: <span class="hljs-title class_">Vizzu</span>.<span class="hljs-property">presets</span>.<span class="hljs-title function_">stackedBar</span>({
-              <span class="hljs-attr">x</span>:<span class="hljs-string">'Value 2 (+)'</span>,
-              <span class="hljs-attr">y</span>:<span class="hljs-string">'Country'</span>,
-              <span class="hljs-attr">stackedBy</span>:<span class="hljs-string">'Joy factors'</span>,
-              <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Bar Chart'</span>
-            }),
+        }),
+        <span class="hljs-attr">config</span>: <span class="hljs-title class_">Vizzu</span>.<span class="hljs-property">presets</span>.<span class="hljs-title function_">stackedBar</span>({
+            <span class="hljs-attr">x</span>: <span class="hljs-string">'Value 2 (+)'</span>,
+            <span class="hljs-attr">y</span>: <span class="hljs-string">'Country'</span>,
+            <span class="hljs-attr">stackedBy</span>: <span class="hljs-string">'Joy factors'</span>,
+            <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Bar Chart'</span>
+        }),
         <span class="hljs-attr">style</span>: {
             <span class="hljs-attr">plot</span>: {
                 <span class="hljs-attr">paddingLeft</span>: <span class="hljs-string">'1.2em'</span>,
                 <span class="hljs-attr">yAxis</span>: {
                     <span class="hljs-attr">label</span>: {
-                       <span class="hljs-attr">paddingRight</span>: <span class="hljs-string">'0.8em'</span>
+                        <span class="hljs-attr">paddingRight</span>: <span class="hljs-string">'0.8em'</span>
                     }
                 },
                 <span class="hljs-attr">xAxis</span>: {
@@ -140,9 +137,6 @@ chart.<span class="hljs-title function_">animate</span>(
         }
     }
 );
-
-
-chart.<span class="hljs-title function_">feature</span>(<span class="hljs-string">'tooltip'</span>,<span class="hljs-literal">true</span>);
 
 </pre></div>
 

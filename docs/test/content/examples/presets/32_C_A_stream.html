@@ -69,102 +69,96 @@ let chart = new Vizzu('vizzuCanvas');
 
 
 {
-chart.on('plot-axis-label-draw', event => {
-		let year = parseFloat(event.data.text);
-		if (!isNaN(year) && year % 5 != 0)
-			event.preventDefault();
-	});
+    chart.on('plot-axis-label-draw', event => {
+        let year = parseFloat(event.data.text);
+        if (!isNaN(year) && year % 5 != 0)
+            event.preventDefault();
+    });
     return chart.animate(
-    {
-        data: Object.assign(data, {
-            filter: record =>
-                record.Format == 'DVD' ||
-                record.Format == 'Other' ||
-                record.Format == 'Tapes' ||
-                record.Format == 'Download' ||
-                record.Format == 'Streaming' ||
-                record.Format == 'Cassette' ||
-                record.Format == 'Vinyl' ||
-                record.Format == 'CD'
+        {
+            data: Object.assign(data, {
+                filter: record =>
+                    record.Format == 'DVD' ||
+                    record.Format == 'Other' ||
+                    record.Format == 'Tapes' ||
+                    record.Format == 'Download' ||
+                    record.Format == 'Streaming' ||
+                    record.Format == 'Cassette' ||
+                    record.Format == 'Vinyl' ||
+                    record.Format == 'CD'
             }),
             config: Vizzu.presets.stream({
-              x:'Year',
-              y:'Revenue [m$]',
-              stackedBy: 'Format', 
-              title: 'Stream Graph'
+                x: 'Year',
+                y: 'Revenue [m$]',
+                stackedBy: 'Format',
+                title: 'Stream Graph'
             }),
-        style: {
-            plot: {
-                paddingLeft: '1.2em',
-                yAxis: {
-                    label: {
-                       paddingRight: '0.8em'
+            style: {
+                plot: {
+                    paddingLeft: '1.2em',
+                    yAxis: {
+                        label: {
+                            paddingRight: '0.8em'
+                        },
+                        interlacing: { color: '#ffffff00' }
                     },
-                    interlacing: { color: '#ffffff00' }
-                },
-                xAxis: {
-                    label: {
-                       paddingTop: '0.8em'
+                    xAxis: {
+                        label: {
+                            paddingTop: '0.8em'
+                        }
                     }
                 }
             }
-        }
-    });
+        });
 };
-
-
-chart.feature('tooltip',true);
 
 
 </script>
 		</div>
 	<div id="code"><pre>
 {
-chart.<span class="hljs-title function_">on</span>(<span class="hljs-string">'plot-axis-label-draw'</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> {
-		<span class="hljs-keyword">let</span> year = <span class="hljs-built_in">parseFloat</span>(event.<span class="hljs-property">data</span>.<span class="hljs-property">text</span>);
-		<span class="hljs-keyword">if</span> (!<span class="hljs-built_in">isNaN</span>(year) &amp;&amp; year % <span class="hljs-number">5</span> != <span class="hljs-number">0</span>)
-			event.<span class="hljs-title function_">preventDefault</span>();
-	});
+    chart.<span class="hljs-title function_">on</span>(<span class="hljs-string">'plot-axis-label-draw'</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> {
+        <span class="hljs-keyword">let</span> year = <span class="hljs-built_in">parseFloat</span>(event.<span class="hljs-property">data</span>.<span class="hljs-property">text</span>);
+        <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">isNaN</span>(year) &amp;&amp; year % <span class="hljs-number">5</span> != <span class="hljs-number">0</span>)
+            event.<span class="hljs-title function_">preventDefault</span>();
+    });
     <span class="hljs-keyword">return</span> chart.<span class="hljs-title function_">animate</span>(
-    {
-        <span class="hljs-attr">data</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(data, {
-            <span class="hljs-attr">filter</span>: <span class="hljs-function"><span class="hljs-params">record</span> =&gt;</span>
-                record.<span class="hljs-property">Format</span> == <span class="hljs-string">'DVD'</span> ||
-                record.<span class="hljs-property">Format</span> == <span class="hljs-string">'Other'</span> ||
-                record.<span class="hljs-property">Format</span> == <span class="hljs-string">'Tapes'</span> ||
-                record.<span class="hljs-property">Format</span> == <span class="hljs-string">'Download'</span> ||
-                record.<span class="hljs-property">Format</span> == <span class="hljs-string">'Streaming'</span> ||
-                record.<span class="hljs-property">Format</span> == <span class="hljs-string">'Cassette'</span> ||
-                record.<span class="hljs-property">Format</span> == <span class="hljs-string">'Vinyl'</span> ||
-                record.<span class="hljs-property">Format</span> == <span class="hljs-string">'CD'</span>
+        {
+            <span class="hljs-attr">data</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(data, {
+                <span class="hljs-attr">filter</span>: <span class="hljs-function"><span class="hljs-params">record</span> =&gt;</span>
+                    record.<span class="hljs-property">Format</span> == <span class="hljs-string">'DVD'</span> ||
+                    record.<span class="hljs-property">Format</span> == <span class="hljs-string">'Other'</span> ||
+                    record.<span class="hljs-property">Format</span> == <span class="hljs-string">'Tapes'</span> ||
+                    record.<span class="hljs-property">Format</span> == <span class="hljs-string">'Download'</span> ||
+                    record.<span class="hljs-property">Format</span> == <span class="hljs-string">'Streaming'</span> ||
+                    record.<span class="hljs-property">Format</span> == <span class="hljs-string">'Cassette'</span> ||
+                    record.<span class="hljs-property">Format</span> == <span class="hljs-string">'Vinyl'</span> ||
+                    record.<span class="hljs-property">Format</span> == <span class="hljs-string">'CD'</span>
             }),
             <span class="hljs-attr">config</span>: <span class="hljs-title class_">Vizzu</span>.<span class="hljs-property">presets</span>.<span class="hljs-title function_">stream</span>({
-              <span class="hljs-attr">x</span>:<span class="hljs-string">'Year'</span>,
-              <span class="hljs-attr">y</span>:<span class="hljs-string">'Revenue [m$]'</span>,
-              <span class="hljs-attr">stackedBy</span>: <span class="hljs-string">'Format'</span>, 
-              <span class="hljs-attr">title</span>: <span class="hljs-string">'Stream Graph'</span>
+                <span class="hljs-attr">x</span>: <span class="hljs-string">'Year'</span>,
+                <span class="hljs-attr">y</span>: <span class="hljs-string">'Revenue [m$]'</span>,
+                <span class="hljs-attr">stackedBy</span>: <span class="hljs-string">'Format'</span>,
+                <span class="hljs-attr">title</span>: <span class="hljs-string">'Stream Graph'</span>
             }),
-        <span class="hljs-attr">style</span>: {
-            <span class="hljs-attr">plot</span>: {
-                <span class="hljs-attr">paddingLeft</span>: <span class="hljs-string">'1.2em'</span>,
-                <span class="hljs-attr">yAxis</span>: {
-                    <span class="hljs-attr">label</span>: {
-                       <span class="hljs-attr">paddingRight</span>: <span class="hljs-string">'0.8em'</span>
+            <span class="hljs-attr">style</span>: {
+                <span class="hljs-attr">plot</span>: {
+                    <span class="hljs-attr">paddingLeft</span>: <span class="hljs-string">'1.2em'</span>,
+                    <span class="hljs-attr">yAxis</span>: {
+                        <span class="hljs-attr">label</span>: {
+                            <span class="hljs-attr">paddingRight</span>: <span class="hljs-string">'0.8em'</span>
+                        },
+                        <span class="hljs-attr">interlacing</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span> }
                     },
-                    <span class="hljs-attr">interlacing</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span> }
-                },
-                <span class="hljs-attr">xAxis</span>: {
-                    <span class="hljs-attr">label</span>: {
-                       <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'0.8em'</span>
+                    <span class="hljs-attr">xAxis</span>: {
+                        <span class="hljs-attr">label</span>: {
+                            <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'0.8em'</span>
+                        }
                     }
                 }
             }
-        }
-    });
+        });
 };
-
-
-chart.<span class="hljs-title function_">feature</span>(<span class="hljs-string">'tooltip'</span>,<span class="hljs-literal">true</span>);
 
 </pre></div>
 

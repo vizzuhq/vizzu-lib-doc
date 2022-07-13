@@ -72,23 +72,20 @@ chart.animate(
     {
         data: data,
         config: Vizzu.presets.stackedBubble({
-            size:'Value 2 (+)',
-            color:'Joy factors',
-            stackedBy:'Country_code',
+            size: 'Value 2 (+)',
+            color: 'Joy factors',
+            stackedBy: 'Country_code',
             title: 'Stacked Bubble Chart'
-          }),
+        }),
         style: {
             plot: {
                 paddingLeft: '0em',
                 paddingRight: '12.42em',
-                },
-            legend:{ maxWidth: '20%' },
+            },
+            legend: { maxWidth: '20%' },
         }
     }
 );
-
-
-chart.feature('tooltip',true);
 
 
 </script>
@@ -98,23 +95,20 @@ chart.<span class="hljs-title function_">animate</span>(
     {
         <span class="hljs-attr">data</span>: data,
         <span class="hljs-attr">config</span>: <span class="hljs-title class_">Vizzu</span>.<span class="hljs-property">presets</span>.<span class="hljs-title function_">stackedBubble</span>({
-            <span class="hljs-attr">size</span>:<span class="hljs-string">'Value 2 (+)'</span>,
-            <span class="hljs-attr">color</span>:<span class="hljs-string">'Joy factors'</span>,
-            <span class="hljs-attr">stackedBy</span>:<span class="hljs-string">'Country_code'</span>,
+            <span class="hljs-attr">size</span>: <span class="hljs-string">'Value 2 (+)'</span>,
+            <span class="hljs-attr">color</span>: <span class="hljs-string">'Joy factors'</span>,
+            <span class="hljs-attr">stackedBy</span>: <span class="hljs-string">'Country_code'</span>,
             <span class="hljs-attr">title</span>: <span class="hljs-string">'Stacked Bubble Chart'</span>
-          }),
+        }),
         <span class="hljs-attr">style</span>: {
             <span class="hljs-attr">plot</span>: {
                 <span class="hljs-attr">paddingLeft</span>: <span class="hljs-string">'0em'</span>,
                 <span class="hljs-attr">paddingRight</span>: <span class="hljs-string">'12.42em'</span>,
-                },
-            <span class="hljs-attr">legend</span>:{ <span class="hljs-attr">maxWidth</span>: <span class="hljs-string">'20%'</span> },
+            },
+            <span class="hljs-attr">legend</span>: { <span class="hljs-attr">maxWidth</span>: <span class="hljs-string">'20%'</span> },
         }
     }
 );
-
-
-chart.<span class="hljs-title function_">feature</span>(<span class="hljs-string">'tooltip'</span>,<span class="hljs-literal">true</span>);
 
 </pre></div>
 

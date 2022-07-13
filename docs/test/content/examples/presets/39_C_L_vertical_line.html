@@ -80,14 +80,14 @@ chart.animate(
                 record.Country == 'Denmark' ||
                 record.Country == 'Estonia' ||
                 record.Country == 'Spain' ||
-                record.Country == 'France' 
-            }),
-            config: Vizzu.presets.line({
-              x:'Value 6 (+/-)',
-              y:'Year',
-              dividedBy:'Country',
-              title: 'Vertical Line Chart'
-            }),
+                record.Country == 'France'
+        }),
+        config: Vizzu.presets.line({
+            x: 'Value 6 (+/-)',
+            y: 'Year',
+            dividedBy: 'Country',
+            title: 'Vertical Line Chart'
+        }),
         style: {
             plot: {
                 paddingLeft: '1.2em',
@@ -97,15 +97,11 @@ chart.animate(
                 xAxis: {
                     label: { paddingTop: '0.8em' },
                     title: { paddingTop: '2.4em' }
-                    }
                 }
             }
-        
+        }
     }
 );
-
-
-chart.feature('tooltip',true);
 
 
 </script>
@@ -123,14 +119,14 @@ chart.<span class="hljs-title function_">animate</span>(
                 record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Denmark'</span> ||
                 record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Estonia'</span> ||
                 record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Spain'</span> ||
-                record.<span class="hljs-property">Country</span> == <span class="hljs-string">'France'</span> 
-            }),
-            <span class="hljs-attr">config</span>: <span class="hljs-title class_">Vizzu</span>.<span class="hljs-property">presets</span>.<span class="hljs-title function_">line</span>({
-              <span class="hljs-attr">x</span>:<span class="hljs-string">'Value 6 (+/-)'</span>,
-              <span class="hljs-attr">y</span>:<span class="hljs-string">'Year'</span>,
-              <span class="hljs-attr">dividedBy</span>:<span class="hljs-string">'Country'</span>,
-              <span class="hljs-attr">title</span>: <span class="hljs-string">'Vertical Line Chart'</span>
-            }),
+                record.<span class="hljs-property">Country</span> == <span class="hljs-string">'France'</span>
+        }),
+        <span class="hljs-attr">config</span>: <span class="hljs-title class_">Vizzu</span>.<span class="hljs-property">presets</span>.<span class="hljs-title function_">line</span>({
+            <span class="hljs-attr">x</span>: <span class="hljs-string">'Value 6 (+/-)'</span>,
+            <span class="hljs-attr">y</span>: <span class="hljs-string">'Year'</span>,
+            <span class="hljs-attr">dividedBy</span>: <span class="hljs-string">'Country'</span>,
+            <span class="hljs-attr">title</span>: <span class="hljs-string">'Vertical Line Chart'</span>
+        }),
         <span class="hljs-attr">style</span>: {
             <span class="hljs-attr">plot</span>: {
                 <span class="hljs-attr">paddingLeft</span>: <span class="hljs-string">'1.2em'</span>,
@@ -140,15 +136,11 @@ chart.<span class="hljs-title function_">animate</span>(
                 <span class="hljs-attr">xAxis</span>: {
                     <span class="hljs-attr">label</span>: { <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'0.8em'</span> },
                     <span class="hljs-attr">title</span>: { <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'2.4em'</span> }
-                    }
                 }
             }
-        
+        }
     }
 );
-
-
-chart.<span class="hljs-title function_">feature</span>(<span class="hljs-string">'tooltip'</span>,<span class="hljs-literal">true</span>);
 
 </pre></div>
 

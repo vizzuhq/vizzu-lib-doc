@@ -72,30 +72,27 @@ chart.animate(
     {
         data: data,
         config: Vizzu.presets.scatter({
-            x:'Value 6 (+/-)',
-            y:'Value 5 (+/-)',
-            dividedBy:'Year',
+            x: 'Value 6 (+/-)',
+            y: 'Value 5 (+/-)',
+            dividedBy: 'Year',
             title: 'Scatter Plot'
-          }),
+        }),
         style: {
             plot: {
                 paddingLeft: '8em',
                 yAxis: {
                     label: {
-                       paddingRight: '0.8em'
+                        paddingRight: '0.8em'
                     }
                 },
                 xAxis: {
-                  title: { paddingTop: '2.4em' },
-                  label: { paddingTop: '0.8em' }
+                    title: { paddingTop: '2.4em' },
+                    label: { paddingTop: '0.8em' }
                 }
             }
         }
     }
 );
-
-
-chart.feature('tooltip',true);
 
 
 </script>
@@ -105,30 +102,27 @@ chart.<span class="hljs-title function_">animate</span>(
     {
         <span class="hljs-attr">data</span>: data,
         <span class="hljs-attr">config</span>: <span class="hljs-title class_">Vizzu</span>.<span class="hljs-property">presets</span>.<span class="hljs-title function_">scatter</span>({
-            <span class="hljs-attr">x</span>:<span class="hljs-string">'Value 6 (+/-)'</span>,
-            <span class="hljs-attr">y</span>:<span class="hljs-string">'Value 5 (+/-)'</span>,
-            <span class="hljs-attr">dividedBy</span>:<span class="hljs-string">'Year'</span>,
+            <span class="hljs-attr">x</span>: <span class="hljs-string">'Value 6 (+/-)'</span>,
+            <span class="hljs-attr">y</span>: <span class="hljs-string">'Value 5 (+/-)'</span>,
+            <span class="hljs-attr">dividedBy</span>: <span class="hljs-string">'Year'</span>,
             <span class="hljs-attr">title</span>: <span class="hljs-string">'Scatter Plot'</span>
-          }),
+        }),
         <span class="hljs-attr">style</span>: {
             <span class="hljs-attr">plot</span>: {
                 <span class="hljs-attr">paddingLeft</span>: <span class="hljs-string">'8em'</span>,
                 <span class="hljs-attr">yAxis</span>: {
                     <span class="hljs-attr">label</span>: {
-                       <span class="hljs-attr">paddingRight</span>: <span class="hljs-string">'0.8em'</span>
+                        <span class="hljs-attr">paddingRight</span>: <span class="hljs-string">'0.8em'</span>
                     }
                 },
                 <span class="hljs-attr">xAxis</span>: {
-                  <span class="hljs-attr">title</span>: { <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'2.4em'</span> },
-                  <span class="hljs-attr">label</span>: { <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'0.8em'</span> }
+                    <span class="hljs-attr">title</span>: { <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'2.4em'</span> },
+                    <span class="hljs-attr">label</span>: { <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'0.8em'</span> }
                 }
             }
         }
     }
 );
-
-
-chart.<span class="hljs-title function_">feature</span>(<span class="hljs-string">'tooltip'</span>,<span class="hljs-literal">true</span>);
 
 </pre></div>
 

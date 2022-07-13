@@ -77,20 +77,20 @@ chart.animate(
                 record.Country == 'Bulgaria' ||
                 record.Country == 'Cyprus' ||
                 record.Country == 'Denmark' ||
-               record.Country == 'Hungary'
-            }),
-            config: Vizzu.presets.groupedBar({
-              x:'Value 5 (+/-)',
-              y:'Country',
-              groupedBy:'Joy factors',
-              title: 'Grouped Bar Chart'
-            }),
+                record.Country == 'Hungary'
+        }),
+        config: Vizzu.presets.groupedBar({
+            x: 'Value 5 (+/-)',
+            y: 'Country',
+            groupedBy: 'Joy factors',
+            title: 'Grouped Bar Chart'
+        }),
         style: {
             plot: {
                 paddingLeft: '1.65em',
                 yAxis: {
                     label: {
-                       paddingRight: '0.8em'
+                        paddingRight: '0.8em'
                     }
                 },
                 xAxis: {
@@ -101,9 +101,6 @@ chart.animate(
         }
     }
 );
-
-
-chart.feature('tooltip',true);
 
 
 </script>
@@ -118,20 +115,20 @@ chart.<span class="hljs-title function_">animate</span>(
                 record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Bulgaria'</span> ||
                 record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Cyprus'</span> ||
                 record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Denmark'</span> ||
-               record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Hungary'</span>
-            }),
-            <span class="hljs-attr">config</span>: <span class="hljs-title class_">Vizzu</span>.<span class="hljs-property">presets</span>.<span class="hljs-title function_">groupedBar</span>({
-              <span class="hljs-attr">x</span>:<span class="hljs-string">'Value 5 (+/-)'</span>,
-              <span class="hljs-attr">y</span>:<span class="hljs-string">'Country'</span>,
-              <span class="hljs-attr">groupedBy</span>:<span class="hljs-string">'Joy factors'</span>,
-              <span class="hljs-attr">title</span>: <span class="hljs-string">'Grouped Bar Chart'</span>
-            }),
+                record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Hungary'</span>
+        }),
+        <span class="hljs-attr">config</span>: <span class="hljs-title class_">Vizzu</span>.<span class="hljs-property">presets</span>.<span class="hljs-title function_">groupedBar</span>({
+            <span class="hljs-attr">x</span>: <span class="hljs-string">'Value 5 (+/-)'</span>,
+            <span class="hljs-attr">y</span>: <span class="hljs-string">'Country'</span>,
+            <span class="hljs-attr">groupedBy</span>: <span class="hljs-string">'Joy factors'</span>,
+            <span class="hljs-attr">title</span>: <span class="hljs-string">'Grouped Bar Chart'</span>
+        }),
         <span class="hljs-attr">style</span>: {
             <span class="hljs-attr">plot</span>: {
                 <span class="hljs-attr">paddingLeft</span>: <span class="hljs-string">'1.65em'</span>,
                 <span class="hljs-attr">yAxis</span>: {
                     <span class="hljs-attr">label</span>: {
-                       <span class="hljs-attr">paddingRight</span>: <span class="hljs-string">'0.8em'</span>
+                        <span class="hljs-attr">paddingRight</span>: <span class="hljs-string">'0.8em'</span>
                     }
                 },
                 <span class="hljs-attr">xAxis</span>: {
@@ -142,9 +139,6 @@ chart.<span class="hljs-title function_">animate</span>(
         }
     }
 );
-
-
-chart.<span class="hljs-title function_">feature</span>(<span class="hljs-string">'tooltip'</span>,<span class="hljs-literal">true</span>);
 
 </pre></div>
 
