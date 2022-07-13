@@ -126,11 +126,11 @@ class Tutorial
 
 				let  codeToRegister = code;
 				if (codeToRegister.match(/^\s*chart.animate\(/))
-					codeToRegister = codeToRegister
-						.replace(/\s*chart.animate\(/, '')
-						.replace(/\)\s*$/, '');
+					codeToRegister = `chart => ${codeToRegister}`;
 				else 
 					codeToRegister = `chart => { ${codeToRegister}; return chart; }`;
+
+				codeToRegister = codeToRegister.replace(/Vizzu\./,'chart.constructor.');
 
 				codeInject = `
 					registry.addSnippet(
