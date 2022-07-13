@@ -36,6 +36,7 @@ class Example
 		let reformatted = '\n';
 
 		script = script.replace(/export default testSteps;/,'');
+		script = script.replace(/chart\.constructor\./,'Vizzu.');
 		script = script.replace(/(import.*)/,(match, p1) => {
 			let importLine = p1
 				.replace(/from\s+(['"])(..\/)*/,"from $1https://lib.vizzuhq.com/test/integration/")
@@ -83,7 +84,7 @@ class Example
 			+ '</pre>';
 		scriptElement.innerHTML += `
 <script type="module">
-import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@~0.4.0/dist/vizzu.min.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@~0.5.0/dist/vizzu.min.js';
 ${this.imports}
 
 let chart = new Vizzu('vizzuCanvas');

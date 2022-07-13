@@ -10,6 +10,7 @@ class Examples
 	constructor()
 	{
 		this.examples = [];
+		this.examples.push(...this.collect('preset', 'presets', 'png'));
 		this.examples.push(...this.collect('sample_static', 'static', 'png'));
 		this.examples.push(...this.collect('templates', 'animated', 'webm'));
 
@@ -21,15 +22,18 @@ class Examples
 	mkDirs()
 	{
 		fs.mkdirSync('./docs/test/content/examples/static', { recursive: true });
+		fs.mkdirSync('./docs/test/content/examples/presets', { recursive: true });
 		fs.mkdirSync('./docs/test/content/examples/animated', { recursive: true });
 	}
 
 	generateHtml()
 	{
+		let indexPresets = 0;
 		let indexStatic = 0;
 		let indexAnimated = 0;
 		this.htmlStatic = '';
 		this.htmlAnimated = '';
+		this.htmlPresets = '';
 		for (let example of this.examples)
 		{
 			if (example.outputFolder === 'static')
@@ -43,6 +47,19 @@ class Examples
 					</div>
 				`;
 				indexStatic++;
+			}
+			else if (example.outputFolder === 'presets')
+			{
+				let alt = '';
+
+				this.htmlPresets += `
+					<div class="col-6 col-sm-4 col-xl-3 mb-4 thumbnail-static-card">
+						<img src="${example.urlBase}.png" class="thumbnail-static action-static-example"
+							data-target="${example.urlBase}.html" alt="${alt}">
+					</div>
+				`;
+				indexPresets++;
+
 			}
 			else
 			{
@@ -145,11 +162,14 @@ function examples(dom)
 
 	let examples = new Examples();
 
-	let view0 = dom.window.document.getElementById('static-examples');
-	view0.innerHTML = examples.htmlStatic;
+	let view0 = dom.window.document.getElementById('preset-examples');
+	view0.innerHTML = examples.htmlPresets;
 
-	let view1 = dom.window.document.getElementById('animated-examples');
-	view1.innerHTML = examples.htmlAnimated;
+	let view1 = dom.window.document.getElementById('static-examples');
+	view1.innerHTML = examples.htmlStatic;
+
+	let view2 = dom.window.document.getElementById('animated-examples');
+	view2.innerHTML = examples.htmlAnimated;
 
 	return dom;
 }
