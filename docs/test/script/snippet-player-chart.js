@@ -1,6 +1,6 @@
 import data from './data.js';
 import Vizzu from
-	'https://cdn.jsdelivr.net/npm/vizzu@0.3.1/dist/vizzu.min.js';
+	'https://cdn.jsdelivr.net/npm/vizzu@~0.5.0/dist/vizzu.min.js';
 
 export default class SnippetPlayerChart extends HTMLElement {
 
