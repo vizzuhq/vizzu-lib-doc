@@ -1,6 +1,7 @@
 {
   "compilerOptions": {},
   "files": [
-    "../../vizzu-lib/src/apps/weblib/js-api/vizzu.d.ts"
+    "../../vizzu-lib/src/apps/weblib/js-api/vizzu.d.ts",
+    "../../vizzu-lib/src/apps/weblib/js-api/presets.d.ts"
   ]
 }

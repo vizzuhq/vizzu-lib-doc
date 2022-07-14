@@ -8,10 +8,11 @@ function reference()
 
     app.bootstrap({
         plugin: ["./gen/reference/default-rename.js"],
-        entryPoints: ["vizzu-lib/src/apps/weblib/js-api/vizzu.d.ts"],
+        entryPoints: ["vizzu-lib/src/apps/weblib/js-api/vizzu.d.ts", "vizzu-lib/src/apps/weblib/js-api/presets.d.ts"],
         entryPointStrategy: 'expand',
         tsconfig: "gen/reference/tsconfig.json",
-        readme: "vizzu-lib/docs/content/reference/reference.md" 
+        readme: "vizzu-lib/docs/content/reference/reference.md",
+        name: "Vizzu",
     });
 
     const project = app.convert();
