@@ -1,7 +1,7 @@
 import {data} from './friends-supporting-data.js';
 import {Portraits} from './friends-supporting-portraits.js';
 import {palette, style} from './friends-supporting-style.js';
-import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.3/dist/vizzu.min.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@~0.5.0/dist/vizzu.min.js';
 
 const skip = [
   's01e15',  's01e18',  's01e21',  's01e22',  's01e24',  's02e01',  's02e05',  's02e06',
