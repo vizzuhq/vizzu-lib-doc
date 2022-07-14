@@ -31,7 +31,7 @@ const exampleList =
 		'15_C_R_stacked_bar.mjs': { tags: [] },
 		'16_C_R_splitted_bar.mjs': { tags: [] },
 		'17_C_R_percentage_bar.mjs': { tags: [] },
-		'20_C_C_lollipop chart.mjs': { tags: [] },
+		'20_C_C_lollipop_chart.mjs': { tags: [] },
 		'22_C_C_scatter.mjs': { tags: [] },
 		'24_C_C_bubbleplot.mjs': { tags: [] },
 		'27_C_A_area_negative.mjs': { tags: [] },
