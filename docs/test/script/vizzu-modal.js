@@ -79,8 +79,6 @@ export default class VizzuModal extends HTMLElement {
 				if (w.edit) this.edit = w.edit;
 				if (w.replay) this.replay = w.replay;
 			}, 10);
-
-
 		});
 
 		this.querySelector('h2').innerText = title;

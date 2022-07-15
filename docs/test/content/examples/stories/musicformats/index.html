@@ -9,7 +9,22 @@
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 <body> 
-	<canvas id="myVizzu" width="1280" height="720"></canvas>
+	<div id="zoom" style="width: 100%">
+		<canvas id="myVizzu" width="1280" height="720"></canvas>
+	</div>
+	<script>
+		parent = window.frameElement;
+		if (parent) {
+			window.addEventListener("resize", () => {
+				let zoomElement = document.getElementById("zoom");
+				let scale = parent.clientWidth / 1280;
+				let translate = 100 * (1 - scale) / 2; 
+				let transform = `translate(-${translate}%, -${translate}%) scale(${scale-0.01})`;
+				zoomElement.style.transform = transform;
+				zoomElement.style.height = `${720 * scale}px`;
+			});
+		}
+	</script>
 	<p><a href="https://github.com/vizzuhq/vizzu-lib-doc/tree/main/docs/0.5/content/examples/stories/musicformats" target="_blank">Source</a></p>
 	<script src="musicformats.js" type="module">
 </script>
