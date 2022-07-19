@@ -18,7 +18,7 @@ body, html {
        url('roboto-condensed-v18-latin_latin-ext-regular.ttf') format('truetype'); /* Legacy iOS */
 }
 
-#VizzuCanvas {
+#vizzuCanvas {
 	width: 1280px;
 	height: 720px;
 }
