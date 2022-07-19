@@ -71,17 +71,26 @@ export default class VizzuModal extends HTMLElement {
 		iframe.addEventListener("load", (event) => {
 			iframe.classList.remove('d-none');
 			spinner.classList.add('d-none');
-			let height = Math.min(iframe.contentWindow.document.body.scrollHeight + 48, window.innerHeight - 128);
-			//console.log(iframe.contentWindow.document.body.scrollHeight, window.innerHeight, height)
-			iframe.style.height = height + "px";
+			let w = iframe.contentWindow
+			w.autoAdjustHeight = () => {
+				this.autoAdjustHeight();
+			};
+
+			this.autoAdjustHeight();
 			setTimeout(() => {
-				let w = iframe.contentWindow
+				
 				if (w.edit) this.edit = w.edit;
 				if (w.replay) this.replay = w.replay;
 			}, 10);
 		});
 
 		this.querySelector('h2').innerText = title;
+	}
+
+	autoAdjustHeight() {
+		let iframe = this.querySelector('.vizzu-modal-content-placeholder iframe');
+		let height = Math.min(iframe.contentWindow.document.body.scrollHeight + 48, window.innerHeight - 128);
+		iframe.style.height = height + "px";
 	}
 
 	set replay(fn) {

@@ -13,19 +13,7 @@
 	<div id="zoom" style="width: 100%">
 		<canvas id="testVizzuCanvas" width="1280" height="720"></canvas>
 	</div>
-	<script>
-		parent = window.frameElement;
-		if (parent) {
-			window.addEventListener("resize", () => {
-				let zoomElement = document.getElementById("zoom");
-				let scale = parent.clientWidth / 1280;
-				let translate = 100 * (1 - scale) / 2; 
-				let transform = `translate(-${translate}%, -${translate}%) scale(${scale-0.01})`;
-				zoomElement.style.transform = transform;
-				zoomElement.style.height = `${720 * scale}px`;
-			});
-		}
-	</script>
+	<script src="../_script/autoscale.js" ></script>
 	<p><a href="https://github.com/vizzuhq/vizzu-lib-doc/tree/main/docs/0.5/content/examples/stories/cocoa" target="_blank">Source</a></p>
 	<script src="cocoa.js" type="module">
 	</script>
