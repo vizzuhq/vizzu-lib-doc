@@ -68,6 +68,12 @@ export default class VizzuDocumentation {
 					document.querySelector('vizzu-modal').showUrl(event.target.dataset.target, event.target.dataset.title);
 				});
 			});
+			/* Story thumbnails */
+			document.querySelectorAll('.action-story-example').forEach((element) => {
+				element.addEventListener('click', (event) => {
+					document.querySelector('vizzu-modal').showUrl(event.target.dataset.target, event.target.dataset.title);
+				});
+			});
 		});
 	}
 
