@@ -4,10 +4,6 @@
 
 * { margin: 0; padding: 0;}
 
-body, html {
-	height:100%;
-}
-
 @font-face {
   font-family: 'Roboto Condensed';
   font-style: normal;
@@ -18,7 +14,7 @@ body, html {
        url('roboto-condensed-v18-latin_latin-ext-regular.ttf') format('truetype'); /* Legacy iOS */
 }
 
-#VizzuCanvas {
+#vizzuCanvas {
 	width: 1280px;
 	height: 720px;
 }
