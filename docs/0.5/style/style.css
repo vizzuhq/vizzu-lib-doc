@@ -389,7 +389,7 @@ video.thumbnail-animated:hover {
 
 .vizzu-modal-content iframe {
 	height: 10em;
-	transition: height 0.3s;
+	
 	box-sizing: border-box;
 }
 
