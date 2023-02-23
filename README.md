@@ -6,7 +6,7 @@ for the documentation, go to https://lib.vizzuhq.com/latest
 ### Building the documentation
 
 ```shell
-npm run build
+make dev
+make thumbnails
+make doc
 ```
-
-This will overwrite the content in the docs/test folder.
