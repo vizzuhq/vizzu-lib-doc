@@ -25,7 +25,7 @@ class ReadmeImages:
     @staticmethod
     def generate() -> None:
         """A method for generating readme images."""
-        for path in (REPO_PATH / "readme").rglob("*"):
+        for path in (REPO_PATH / "docs" / "readme").rglob("*"):
             with open(path, "rb") as f_image:
                 image = f_image.read()
             with mkdocs_gen_files.open(f"assets/readme/{path.name}", "wb") as f_image:
