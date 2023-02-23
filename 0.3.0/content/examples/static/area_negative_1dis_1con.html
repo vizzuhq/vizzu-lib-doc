@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head>
+		<title>Vizzu library example</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/highlight.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../../../style/example.css">
+		<script type="module">
+			import JsFiddle from '../../../script/jsfiddle.js';
+			document.getElementById('example-edit-btn').onclick = () => {
+				let html = `<div id="vizzuCanvas" ></div>`;
+				let css = `#vizzuCanvas {
+					width: 680px; 
+					height: 446px;
+				}`;
+				let code = document.getElementById('script')
+					.getElementsByTagName('SCRIPT')[0].innerText;
+				JsFiddle.post(html, css, code);
+			}
+		</script>
+	</head>
+<body>
+	<noscript>
+		<p class="noscript">To use Vizzu, please enable Javascript.</p>
+	</noscript>
+	<div id="vizzuCanvas"></div>
+	<div id="navigation">
+		<button id="example-replay-btn" class="button example-btn" type="button" onclick="location.reload()">▶ replay</button>
+		<button id="example-edit-btn" class="button example-btn" type="button">edit</button>
+	</div>
+	<div id="script">
+<script type="module">
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.3.1/dist/vizzu.min.js';
+import { data } from 'https://lib.vizzuhq.com/test/integration/test_data/chart_types_eu.js';
+
+
+let chart = new Vizzu('vizzuCanvas');
+
+
+
+chart.animate({
+    data: data,
+    config: {
+        channels: {
+            x: { set: ['Year'] },
+            y: { set: ['$exists', 'Value 5 (+/-)'] },
+            label: { set: ['Value 5 (+/-)'] },
+        },
+        title: 'Area Chart with (-) Nums',
+        geometry: 'area'
+    }
+});
+
+
+</script>
+		</div>
+	<div id="code"><pre>
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">data</span>: data,
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Year'</span>] },
+            <span class="hljs-attr">y</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'$exists'</span>, <span class="hljs-string">'Value 5 (+/-)'</span>] },
+            <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 5 (+/-)'</span>] },
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Area Chart with (-) Nums'</span>,
+        <span class="hljs-attr">geometry</span>: <span class="hljs-string">'area'</span>
+    }
+});
+
+</pre></div>
+
+</body></html>
