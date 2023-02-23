@@ -21,7 +21,7 @@ STATIC_EXAMPLES_PATH = WEB_CONTENT_PATH / "static"
 ANIMATED_EXAMPLES_PATH = WEB_CONTENT_PATH / "animated"
 PRESET_EXAMPLES_PATH = WEB_CONTENT_PATH / "presets"
 SHOWCASES_PATH = REPO_PATH / "docs" / "showcases"
-JS_ASSETS_PATH = "../../assets/javascripts"
+JS_ASSETS_PATH = "assets/javascripts"
 
 
 sys.path.insert(0, str(MKDOCS_PATH / "modules"))
@@ -74,12 +74,12 @@ class GenExamples:
         with open(item, "r", encoding="utf8") as fh_item:
             return fh_item.read()
 
-    def _create_index(self) -> None:
+    def _create_index(self, js_assets_path) -> None:
         with mkdocs_gen_files.open(f"{self._dst}/index.md", "a") as fh_index:
             meta = """---\nhide:\n  - toc\n---"""
             fh_index.write(f"{meta}\n\n")
             fh_index.write(f"# {self._name}\n")
-            fh_index.write(f'<script src="{JS_ASSETS_PATH}/thumbs.js"></script>\n')
+            fh_index.write(f'<script src="{js_assets_path}/thumbs.js"></script>\n')
 
     def _add_image(self, item: Path, title: str) -> None:
         with mkdocs_gen_files.open(f"{self._dst}/index.md", "a") as fh_index:
@@ -153,7 +153,7 @@ class GenExamples:
     def generate(self) -> None:
         """A method for generating examples."""
 
-        self._create_index()
+        self._create_index("../../" + JS_ASSETS_PATH)
         src = self._src
         items = list(src.rglob("*.mjs"))
         items.sort(key=lambda f: f.stem)
@@ -197,7 +197,7 @@ class GenShowcases(GenExamples):
     def generate(self) -> None:
         """A method for overwriting GenExamples.generate method."""
 
-        self._create_index()
+        self._create_index("../" + JS_ASSETS_PATH)
         src = self._src
         items = list(src.rglob("*.js")) + list(src.rglob("main.html"))
         for item in items:
