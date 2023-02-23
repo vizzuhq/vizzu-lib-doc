@@ -1,0 +1,146 @@
+<!DOCTYPE html><html><head>
+	<title>Vizzu library example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="../../../style/highlight.css">
+	<script type="module" id="initScript">
+		import JsFiddle from '../../../script/jsfiddle.js';
+		window.edit = () => {
+			let html = `<div id="vizzuCanvas" ></div>`;
+			let css = `#vizzuCanvas {
+				width: 680px; 
+				height: 446px;
+			}`;
+			let code = document.getElementById('script')
+				.getElementsByTagName('SCRIPT')[0].innerText;
+			JsFiddle.post(html, css, code);
+		};
+	</script>
+	<style>
+		:root {
+			--bs-light: #f8f9fa;
+			--bs-gray-300: #dee2e6;
+		}
+
+		#vizzuCanvas {
+			width: 100%;
+			height: 320px;
+		}
+
+		body {
+			margin: 0;
+			color: #666;
+			font-family: Roboto;
+		}
+
+		pre {
+			width: 100%;
+			overflow: auto;
+			background-color: var(--bs-light);
+			padding: 1em;
+			box-sizing: border-box;
+		}
+
+		#desc {
+			margin-top: 1em;
+		}
+
+		#tags {
+			font-size: 0.8em;
+		}
+
+	</style>
+</head>
+<body>
+	<noscript>
+		<p class="noscript">To use Vizzu, please enable Javascript.</p>
+	</noscript>
+	<div id="vizzuCanvas"></div>
+	
+	<div id="tags"><b>Tags:</b> </div>
+	<div id="script">
+<script type="module">
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@~0.5.0/dist/vizzu.min.js';
+import { data } from 'https://lib.vizzuhq.com/test/integration/test_data/chart_types_eu.js';
+
+
+let chart = new Vizzu('vizzuCanvas');
+
+
+
+chart.animate(
+    {
+        data: Object.assign(data, {
+            filter: record =>
+                record.Country == 'Austria' ||
+                record.Country == 'Belgium' ||
+                record.Country == 'Bulgaria' ||
+                record.Country == 'Cyprus' ||
+                record.Country == 'Denmark' ||
+                record.Country == 'Hungary'
+        }),
+        config: Vizzu.presets.groupedBar({
+            x: 'Value 5 (+/-)',
+            y: 'Country',
+            groupedBy: 'Joy factors',
+            title: 'Grouped Bar Chart'
+        }),
+        style: {
+            plot: {
+                paddingLeft: '1.65em',
+                yAxis: {
+                    label: {
+                        paddingRight: '0.8em'
+                    }
+                },
+                xAxis: {
+                    title: { paddingTop: '2.4em' },
+                    label: { paddingTop: '0.8em' }
+                }
+            }
+        }
+    }
+);
+
+
+</script>
+		</div>
+	<div id="code"><pre>
+chart.<span class="hljs-title function_">animate</span>(
+    {
+        <span class="hljs-attr">data</span>: <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(data, {
+            <span class="hljs-attr">filter</span>: <span class="hljs-function"><span class="hljs-params">record</span> =&gt;</span>
+                record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Austria'</span> ||
+                record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Belgium'</span> ||
+                record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Bulgaria'</span> ||
+                record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Cyprus'</span> ||
+                record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Denmark'</span> ||
+                record.<span class="hljs-property">Country</span> == <span class="hljs-string">'Hungary'</span>
+        }),
+        <span class="hljs-attr">config</span>: <span class="hljs-title class_">Vizzu</span>.<span class="hljs-property">presets</span>.<span class="hljs-title function_">groupedBar</span>({
+            <span class="hljs-attr">x</span>: <span class="hljs-string">'Value 5 (+/-)'</span>,
+            <span class="hljs-attr">y</span>: <span class="hljs-string">'Country'</span>,
+            <span class="hljs-attr">groupedBy</span>: <span class="hljs-string">'Joy factors'</span>,
+            <span class="hljs-attr">title</span>: <span class="hljs-string">'Grouped Bar Chart'</span>
+        }),
+        <span class="hljs-attr">style</span>: {
+            <span class="hljs-attr">plot</span>: {
+                <span class="hljs-attr">paddingLeft</span>: <span class="hljs-string">'1.65em'</span>,
+                <span class="hljs-attr">yAxis</span>: {
+                    <span class="hljs-attr">label</span>: {
+                        <span class="hljs-attr">paddingRight</span>: <span class="hljs-string">'0.8em'</span>
+                    }
+                },
+                <span class="hljs-attr">xAxis</span>: {
+                    <span class="hljs-attr">title</span>: { <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'2.4em'</span> },
+                    <span class="hljs-attr">label</span>: { <span class="hljs-attr">paddingTop</span>: <span class="hljs-string">'0.8em'</span> }
+                }
+            }
+        }
+    }
+);
+
+</pre></div>
+
+
+</body></html><!-- Path: docs/generator/example.in.html -->

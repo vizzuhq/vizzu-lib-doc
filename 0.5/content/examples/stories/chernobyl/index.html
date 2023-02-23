@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vizzu Chernobyl</title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="favicon/favicon.svg">
+		<link rel="preload" href="css/style.css" as="style">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow">
+	</head>
+<body>
+	<div id="zoom" style="width: 100%">
+		<canvas id="vizzuCanvas" width="1280" height="720"></canvas>
+		<div style="display:none;">
+			<img id="bgImage" src="background.png" width="1280" height="720">
+		</div>
+	</div>
+	<script src="../script/autoscale.js" type="text/javascript"></script>
+	<p><a href="https://github.com/vizzuhq/vizzu-lib-doc/tree/main/docs/0.5/content/examples/stories/chernobyl" target="_blank">Source</a></p>
+	<script src="chernobyl.js" type="module">
+	</script>
+</body>
+</html>

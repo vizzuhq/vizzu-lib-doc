@@ -1,0 +1,156 @@
+<!DOCTYPE html><html><head>
+	<title>Vizzu library example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="../../../style/highlight.css">
+	<script type="module" id="initScript">
+		import JsFiddle from '../../../script/jsfiddle.js';
+		window.edit = () => {
+			let html = `<div id="vizzuCanvas" ></div>`;
+			let css = `#vizzuCanvas {
+				width: 680px; 
+				height: 446px;
+			}`;
+			let code = document.getElementById('script')
+				.getElementsByTagName('SCRIPT')[0].innerText;
+			JsFiddle.post(html, css, code);
+		};
+	</script>
+	<style>
+		:root {
+			--bs-light: #f8f9fa;
+			--bs-gray-300: #dee2e6;
+		}
+
+		#vizzuCanvas {
+			width: 100%;
+			height: 320px;
+		}
+
+		body {
+			margin: 0;
+			color: #666;
+			font-family: Roboto;
+		}
+
+		pre {
+			width: 100%;
+			overflow: auto;
+			background-color: var(--bs-light);
+			padding: 1em;
+			box-sizing: border-box;
+		}
+
+		#desc {
+			margin-top: 1em;
+		}
+
+		#tags {
+			font-size: 0.8em;
+		}
+
+	</style>
+</head>
+<body>
+	<noscript>
+		<p class="noscript">To use Vizzu, please enable Javascript.</p>
+	</noscript>
+	<div id="vizzuCanvas"></div>
+	
+	<div id="tags"><b>Tags:</b> 1 measure / 1 dimension / Comparison / Part-to-whole / Ranking / Rectangle</div>
+	<div id="script">
+<script type="module">
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@~0.5.0/dist/vizzu.min.js';
+import { data } from 'https://lib.vizzuhq.com/test/integration/test_data/chart_types_eu.js';
+
+
+let chart = new Vizzu('vizzuCanvas');
+
+
+
+chart.animate({
+    data: data,
+    config: {
+        channels: {
+            x: { set: ['Joy factors', 'Value 2 (+)'] },
+            color: { set: ['Joy factors'] },
+            label: { set: ['Value 2 (+)'] }
+        },
+        title: 'Pie Chart',
+        coordSystem: 'polar'
+    },
+    /* All axes and axis labels are unnecessary
+    on these types of charts. Meanwhile the marker labels
+    are enlarged. */
+    style: { 
+        plot: {
+            marker: {
+                label: {
+                    fontSize: 14,
+                    position: 'center'
+                }
+            },
+            xAxis: {
+                title: {
+                    color: '#ffffff00'
+                },
+                label: {
+                    color: '#ffffff00'
+                }
+            },
+            yAxis: {
+                color: '#ffffff00',
+                title: { color: '#ffffff00' },
+                label: { color: '#ffffff00' }
+            }
+        }
+    }
+});
+
+
+</script>
+		</div>
+	<div id="code"><pre>
+chart.<span class="hljs-title function_">animate</span>({
+    <span class="hljs-attr">data</span>: data,
+    <span class="hljs-attr">config</span>: {
+        <span class="hljs-attr">channels</span>: {
+            <span class="hljs-attr">x</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>, <span class="hljs-string">'Value 2 (+)'</span>] },
+            <span class="hljs-attr">color</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Joy factors'</span>] },
+            <span class="hljs-attr">label</span>: { <span class="hljs-attr">set</span>: [<span class="hljs-string">'Value 2 (+)'</span>] }
+        },
+        <span class="hljs-attr">title</span>: <span class="hljs-string">'Pie Chart'</span>,
+        <span class="hljs-attr">coordSystem</span>: <span class="hljs-string">'polar'</span>
+    },
+    <span class="hljs-comment">/* All axes and axis labels are unnecessary
+    on these types of charts. Meanwhile the marker labels
+    are enlarged. */</span>
+    <span class="hljs-attr">style</span>: { 
+        <span class="hljs-attr">plot</span>: {
+            <span class="hljs-attr">marker</span>: {
+                <span class="hljs-attr">label</span>: {
+                    <span class="hljs-attr">fontSize</span>: <span class="hljs-number">14</span>,
+                    <span class="hljs-attr">position</span>: <span class="hljs-string">'center'</span>
+                }
+            },
+            <span class="hljs-attr">xAxis</span>: {
+                <span class="hljs-attr">title</span>: {
+                    <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span>
+                },
+                <span class="hljs-attr">label</span>: {
+                    <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span>
+                }
+            },
+            <span class="hljs-attr">yAxis</span>: {
+                <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span>,
+                <span class="hljs-attr">title</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span> },
+                <span class="hljs-attr">label</span>: { <span class="hljs-attr">color</span>: <span class="hljs-string">'#ffffff00'</span> }
+            }
+        }
+    }
+});
+
+</pre></div>
+
+
+</body></html><!-- Path: docs/generator/example.in.html -->
