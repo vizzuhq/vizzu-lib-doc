@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {},
+  "files": [
+    "../../../vizzu-lib/example/lib/vizzu.d.ts",
+    "../../../vizzu-lib/example/lib/presets.d.ts"
+  ]
+}

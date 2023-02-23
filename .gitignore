@@ -1,0 +1,13 @@
+.venv
+__pycache__
+.mypy_cache
+
+node_modules
+package-lock.json
+
+site
+tools/mkdocs/reference/tmp/
+vizzu-lib
+docs/examples/**/*.png
+docs/examples/**/*.mp4
+docs/examples/**/*.webm
