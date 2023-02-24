@@ -26,7 +26,7 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
         }
     }),chart => chart.animate({
         config: {
-            title: 'Marimekko with Other Orientation II',
+            title: 'Marimekko with Other Orientation',
             orientation: 'vertical'
         }
     })

@@ -66,11 +66,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://lib.vizzuhq.com/0.7/examples/animated/merge_split_area_stream_2dis_1con/</loc>
-         <lastmod>2023-02-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://lib.vizzuhq.com/0.7/examples/animated/merge_split_area_stream_3dis_1con/</loc>
          <lastmod>2023-02-24</lastmod>
          <changefreq>daily</changefreq>
@@ -92,11 +87,6 @@
     </url>
     <url>
          <loc>https://lib.vizzuhq.com/0.7/examples/animated/orientation_dot_circle/</loc>
-         <lastmod>2023-02-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://lib.vizzuhq.com/0.7/examples/animated/orientation_marimekko_rectangle_1dis_2con/</loc>
          <lastmod>2023-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -147,26 +137,6 @@
     </url>
     <url>
          <loc>https://lib.vizzuhq.com/0.7/examples/animated/total_element_bubble_column/</loc>
-         <lastmod>2023-02-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://lib.vizzuhq.com/0.7/examples/animated/total_time_area_bar/</loc>
-         <lastmod>2023-02-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://lib.vizzuhq.com/0.7/examples/animated/total_time_area_column/</loc>
-         <lastmod>2023-02-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://lib.vizzuhq.com/0.7/examples/animated/total_time_bar_line/</loc>
-         <lastmod>2023-02-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://lib.vizzuhq.com/0.7/examples/animated/total_time_column_line/</loc>
          <lastmod>2023-02-24</lastmod>
          <changefreq>daily</changefreq>
     </url>

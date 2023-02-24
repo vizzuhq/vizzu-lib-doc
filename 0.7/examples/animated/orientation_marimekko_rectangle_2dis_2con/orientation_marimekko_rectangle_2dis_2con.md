@@ -2,7 +2,7 @@
 data_url: ../../../assets/data/chart_types_eu.js
 ---
 
-# Marimekko  to Marimekko with Other Orientation II
+# Marimekko  to Marimekko with Other Orientation
 
 <div id="example_01"></div>
 
@@ -61,7 +61,7 @@ chart.animate({
 
 chart.animate({
     config: {
-        "title": "Marimekko with Other Orientation II",
+        "title": "Marimekko with Other Orientation",
         "orientation": "vertical"
     }
 });
