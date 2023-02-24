@@ -13,6 +13,7 @@ VIZZU_BACKEND_URL = ""
 VIZZU_STYLE_REFERENCE_URL = ""
 VIZZU_VERSION = ""
 VIZZU_TEST_VERSION = ""
+VIZZU_LIB_DOC_URL = ""
 SHOWCASE_VIZZU_URL = ""
 SHOWCASE_GITHUB_URL = ""
 SHOWCASE_HOST_URL = ""
@@ -20,6 +21,19 @@ SHOWCASE_HOST_URL = ""
 
 class Vizzu:
     """A class for working with Vizzu."""
+
+    @staticmethod
+    def get_vizzulibdoc_url() -> str:
+        """
+        A static method for returning vizzu lib doc url.
+
+        Returns:
+            Backend vizzu lib doc url.
+        """
+
+        if VIZZU_LIB_DOC_URL:
+            return VIZZU_LIB_DOC_URL
+        return "https://github.com/vizzuhq/vizzu-lib-doc"
 
     @staticmethod
     def get_backend_url() -> str:
@@ -155,7 +169,7 @@ class Vizzu:
         """
 
         version = Vizzu.get_version()
-        github_url = "https://github.com/vizzuhq/vizzu-lib-doc/tree/gh-pages"
+        github_url = f"{Vizzu.get_vizzulibdoc_url()}/tree/gh-pages"
         new_github_url = github_url
         if SHOWCASE_GITHUB_URL:
             new_github_url = SHOWCASE_GITHUB_URL
