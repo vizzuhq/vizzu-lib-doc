@@ -88,7 +88,7 @@ plugins:
       include_source: True
       execute: False
       allow_errors: False
-      kernel_name: .venv
+      kernel_name: .venv_vizzu_doc
 
 nav:
   - Home: index.md

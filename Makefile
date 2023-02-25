@@ -12,10 +12,10 @@ endif
 
 .PHONY: clean \
 	clean-dev update-dev-req install-dev-req touch-dev \
-	check format check-format lint check-typing \
+	check format check-format check-lint check-typing \
 	clean-doc doc
 
-VIRTUAL_ENV = .venv
+VIRTUAL_ENV = .venv_vizzu_doc
 
 DEV_BUILD_FLAG = $(VIRTUAL_ENV)/DEV_BUILD_FLAG
 DEV_JS_BUILD_FLAG = $(VIRTUAL_ENV)/DEV_JS_BUILD_FLAG
@@ -86,7 +86,7 @@ check-format: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
 	cd tools/javascripts && \
 		npm run check-prettier
 
-lint: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
+check-lint: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/pylint tools
 	cd tools/javascripts && \
 		npm run check-eslint
