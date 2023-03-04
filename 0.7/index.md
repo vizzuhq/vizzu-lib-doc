@@ -1,6 +1,6 @@
 <p align="center">
   <a href="">
-    <img src="assets/readme/infinite-60.gif" alt="Vizzu" />
+    <img src="readme/infinite-60.gif" alt="Vizzu" />
   </a>
   <p align="center"><b>Vizzu</b> - Library for animated data visualizations and data stories.</p>
   <p align="center">
@@ -112,7 +112,7 @@ chart.animate({
 
 [Try it!](https://jsfiddle.net/VizzuHQ/dk7b86vc)
 
-![Example chart](assets/readme/example.gif)
+![Example chart](readme/example.gif)
 
 ## FAQ
 
