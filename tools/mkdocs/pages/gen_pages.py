@@ -191,10 +191,6 @@ class Page:
                 match[0], f"[{match[1]}]({match[3]}.md{match[5]})"
             )
 
-        content = content.replace(
-            f"{Vizzu.get_vizzulibdoc_url()}/raw/main/docs/readme/",
-            f"{site}/latest/assets/readme/",
-        )
         content = content.replace(f"{site}/latest/", "").replace(f"{site}/latest", "./")
 
         if keep:

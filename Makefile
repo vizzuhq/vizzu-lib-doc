@@ -61,7 +61,7 @@ $(DEV_JS_BUILD_FLAG):
 
 # ci
 
-check: check-format lint check-typing
+check: check-format check-lint check-typing
 
 format: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/black tools
