@@ -38,7 +38,7 @@ let dataReady = new Promise(function(complete, error)
 	// calling Papa parse to process the CSV file with configs tailored for
 	// the format of the actual CSV file. See Papa.parse configs here:
 	// https://www.papaparse.com/docs#config
-	Papa.parse('https://lib.vizzuhq.com/datasets/population_total_long.csv',
+	Papa.parse('https://raw.githubusercontent.com/vizzuhq/vizzu-lib-doc/gh-pages/0.3.0/content/howtos/csv-input/population_total_long.csv',
 {
 		download: true, // we indicate that the passed parameter is an URL 
 		header: true, // our CSV file start with a header line
