@@ -12,8 +12,9 @@ endif
 
 .PHONY: clean \
 	clean-dev update-dev-req install-dev-req touch-dev \
+	touch-dev-js \
 	check format check-format check-lint check-typing \
-	clean-doc doc
+	clean-doc doc thumbnails touch-thumbnails-js
 
 VIRTUAL_ENV = .venv_vizzu_doc
 
@@ -43,15 +44,13 @@ touch-dev:
 
 dev: $(DEV_BUILD_FLAG)
 
+dev-js: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
+
 $(DEV_BUILD_FLAG):
 	$(PYTHON_BIN) -m venv $(VIRTUAL_ENV)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) -m pip install --upgrade pip
 	$(MAKE) -f Makefile install-dev-req
 	$(MAKE) -f Makefile touch-dev
-
-touch-dev-js:
-	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) tools/make/touch.py -f $(DEV_JS_BUILD_FLAG)
-
 
 $(DEV_JS_BUILD_FLAG):
 	npm install ./tools/javascripts/
@@ -108,14 +107,13 @@ endif
 touch-thumbnails-js:
 	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) tools/make/touch.py -f $(THUMBNAILS_JS_BUILD_FLAG)
 
+thumbnails: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG) $(THUMBNAILS_JS_BUILD_FLAG)
+	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) ./tools/mkdocs/thumbnails/gen_thumbnails.py
+
+doc: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
+	$(VIRTUAL_ENV)/$(BIN_PATH)/mkdocs build -f ./tools/mkdocs/mkdocs.yml
+
 $(THUMBNAILS_JS_BUILD_FLAG):
 	cd vizzu-lib/test/integration && \
 		npm install
 	$(MAKE) -f Makefile touch-thumbnails-js
-
-thumbnails: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG) $(THUMBNAILS_JS_BUILD_FLAG)
-	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) ./tools/mkdocs/thumbnails/gen_thumbnails.py
-
-
-doc: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
-	$(VIRTUAL_ENV)/$(BIN_PATH)/mkdocs build -f ./tools/mkdocs/mkdocs.yml
