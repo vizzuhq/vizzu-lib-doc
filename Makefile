@@ -14,7 +14,7 @@ endif
 	clean-dev update-dev-req install-dev-req touch-dev \
 	clean-dev-js touch-dev-js \
 	check format check-format check-lint check-typing \
-	clean-doc doc thumbnails touch-thumbnails-js
+	clean-doc doc thumbnails touch-thumbnails-js deploy
 
 VIRTUAL_ENV = .venv_vizzu_doc
 
@@ -115,6 +115,9 @@ thumbnails: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG) $(THUMBNAILS_JS_BUILD_FLAG)
 
 doc: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/mkdocs build -f ./tools/mkdocs/mkdocs.yml
+
+deploy: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
+	. $(VIRTUAL_ENV)/$(BIN_PATH)/activate; $(PYTHON_BIN) tools/release/deploy.py
 
 $(THUMBNAILS_JS_BUILD_FLAG):
 	cd vizzu-lib/test/integration && \
