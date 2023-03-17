@@ -1,3 +1,5 @@
+.vscode
+
 .venv_vizzu_doc
 __pycache__
 .mypy_cache
