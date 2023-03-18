@@ -63,7 +63,7 @@ ______________________________________________________________________
 
 Seeks the animation to the position specified by time or progress percentage.
 Seeking the animation to the end position will not trigger the 
-[Vizzu.animate|animation promise](../classes/vizzu.Vizzu.md#animate) to resolve.
+[animation promise](../classes/vizzu.Vizzu.md#animate) to resolve.
 
 Parameters
 
