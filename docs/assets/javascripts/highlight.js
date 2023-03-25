@@ -5,5 +5,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 
     hljs.highlightElement(el); // eslint-disable-line no-undef
+    if (
+      window.location.href.includes("/examples/") ||
+      window.location.href.includes("/showcases/")
+    ) {
+      hljs.lineNumbersBlock(el); // eslint-disable-line no-undef
+    }
   });
 });
