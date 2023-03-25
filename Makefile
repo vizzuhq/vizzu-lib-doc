@@ -45,6 +45,9 @@ install-dev-req:
 touch-dev:
 	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) tools/make/touch.py -f $(DEV_BUILD_FLAG)
 
+touch-dev-js:
+	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) tools/make/touch.py -f $(DEV_JS_BUILD_FLAG)
+
 dev: $(DEV_BUILD_FLAG)
 
 dev-js: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
