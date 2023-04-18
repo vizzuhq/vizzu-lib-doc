@@ -13,14 +13,14 @@ class PresetsMock {
 }
 
 class VizzuMock {
-  constructor(title, description, data, dataFileName, dataName) {
+  constructor(title, description, data, assetsPath, dataFileName, dataName) {
     this.description = "";
     if (description) {
       this.description = description;
     }
     this.data = data;
     this.code = `---
-data_url: ../../../assets/data/${dataFileName}.js
+data_url: ${assetsPath}/assets/data/${dataFileName}.js
 ---
 
 # ${title}
@@ -129,9 +129,10 @@ ${this.description}
 
 const inputFileName = process.argv[2];
 const dataFilePath = process.argv[3];
-const dataFileName = process.argv[4];
-const dataName = process.argv[5];
-let title = process.argv[6];
+const assetsPath = process.argv[4];
+const dataFileName = process.argv[5];
+const dataName = process.argv[6];
+let title = process.argv[7];
 const inputFileLoaded = import(inputFileName);
 const dataFileLoaded = import(dataFilePath + "/" + dataFileName + ".mjs");
 Promise.all([inputFileLoaded, dataFileLoaded]).then((results) => {
@@ -141,7 +142,14 @@ Promise.all([inputFileLoaded, dataFileLoaded]).then((results) => {
     title = module.title;
   }
   const data = results[1][dataName];
-  const chart = new VizzuMock(title, description, data, dataFileName, dataName);
+  const chart = new VizzuMock(
+    title,
+    description,
+    data,
+    assetsPath,
+    dataFileName,
+    dataName
+  );
   for (const testStep of module.default) {
     testStep(chart);
   }

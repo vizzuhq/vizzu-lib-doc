@@ -46,6 +46,12 @@ pyyaml
 types-pyyaml
 #
 #
+# markdown
+#
+markdown
+types-Markdown
+#
+#
 Pillow
 types-Pillow
 #

@@ -4,9 +4,10 @@ import os
 from pathlib import Path
 import re
 import sys
-from typing import List, Dict, Optional
+from typing import List, Dict
 
 import mkdocs_gen_files
+import markdown
 
 
 REPO_PATH = Path(__file__).parent / ".." / ".." / ".."
@@ -57,6 +58,7 @@ class GenExamples:
 
         self._src = src
         self._dst = dst
+        self._depth = len(dst.split("/")) + 1
 
         self._generated: List[str] = []
         self._indices: List[str] = []
@@ -164,29 +166,16 @@ class GenExamples:
         dataname = dataname.strip()
         return dataname
 
-    def _create_index(
-        self, parent_path: Optional[Path] = None, assets_path: Optional[str] = None
-    ) -> str:
-        index = self._dst
-        depth = 2
-
-        if parent_path:
-            dst = os.path.relpath(parent_path, self._src)
-            index = "/".join([self._dst, dst]) if dst != "." else self._dst
-            depth += dst.count("/")
-            if dst != ".":
-                depth += 1
-
-        if not assets_path:
-            assets_path = "/".join([".."] * depth)
-
+    def _create_index(self, dst: str, depth: int) -> str:
+        index = "/".join([self._dst, dst]) if dst != "." else self._dst
+        assets = "/".join([".."] * (depth - 1))
         if index not in self._indices:
             with mkdocs_gen_files.open(f"{index}/index.md", "a") as fh_index:
                 meta = """---\nhide:\n  - toc\n---"""
                 fh_index.write(f"{meta}\n\n")
                 fh_index.write(f"# {self._name}\n")
                 fh_index.write(
-                    f'<script src="{assets_path + "/" + JS_ASSETS_PATH}/thumbs.js"></script>\n'
+                    f'<script src="{assets + "/" + JS_ASSETS_PATH}/thumbs.js"></script>\n'
                 )
             self._indices.append(index)
 
@@ -236,13 +225,9 @@ class GenExamples:
             with mkdocs_gen_files.open(f"assets/data/{datafile}.csv", "w") as f_example:
                 f_example.write(content)
 
-    def _generate_example_js(
-        self, item: Path, dst: str, datafile: str, dataname: str
+    def _generate_example_js(  # pylint: disable=too-many-arguments
+        self, item: Path, dst: str, depth: int, datafile: str, dataname: str
     ) -> None:
-        depth = 3
-        depth += dst.count("/")
-        if dst != ".":
-            depth += 1
         params = [str(item), "/".join([".."] * depth), datafile, dataname]
         content = Node.node(True, GEN_PATH / "mjs2js.mjs", *params)
         with mkdocs_gen_files.open(
@@ -254,11 +239,19 @@ class GenExamples:
         self,
         item: Path,
         dst: str,
+        depth: int,
         datafile: str,
         dataname: str,
         title: str,
     ) -> None:
-        params = [str(item), str(TEST_DATA_PATH), datafile, dataname, title]
+        params = [
+            str(item),
+            str(TEST_DATA_PATH),
+            "/".join([".."] * depth),
+            datafile,
+            dataname,
+            title,
+        ]
         content = Node.node(True, GEN_PATH / "mjs2md.mjs", *params)
         content = Vizzu.set_version(content)
         content = Md.format(content)
@@ -267,37 +260,43 @@ class GenExamples:
         ) as f_example:
             f_example.write(content)
 
-    def _generate_example(
-        self, item: Path, datafile: str, dataname: str, title: str
+    def _generate_example(  # pylint: disable=too-many-arguments
+        self, item: Path, dst: str, depth: int, datafile: str, dataname: str, title: str
     ) -> None:
-        dst = "."
-        if not self._merge_subfolders:
-            dst = os.path.relpath(item.parent, self._src)
-        self._generate_example_md(item, dst, datafile, dataname, title)
-        self._generate_example_js(item, dst, datafile, dataname)
+        self._generate_example_md(item, dst, depth, datafile, dataname, title)
+        self._generate_example_js(item, dst, depth, datafile, dataname)
         GenExamples._generate_example_data(datafile)
 
     def generate(self) -> None:
         """A method for generating examples."""
 
         src = self._src
-        index = self._create_index()
+        dst = "."
+        depth = self._depth
+        index = self._create_index(dst, depth)
         items = list(src.rglob("*.mjs"))
         items.sort(key=lambda f: f.stem)
         for item in items:
-            if item not in self._blocked:
-                if self._merge_subfolders:
-                    if item.stem in self._generated:
-                        raise ValueError(f"example already exists {item.stem}")
-                    self._generated.append(item.stem)
-                else:
-                    index = self._create_index(item.parent)
-                content = GenExamples._get_content(item)
-                datafile = self._get_datafile(item, content)
-                dataname = self._get_dataname(item, content)
-                title = self._get_title(item, content)
-                self._add_index_item(index, item, title)
-                self._generate_example(item, datafile, dataname, title)
+            if item in self._blocked:
+                continue
+            dst = "."
+            depth = self._depth
+            if self._merge_subfolders:
+                if item.stem in self._generated:
+                    raise ValueError(f"example already exists {item.stem}")
+                self._generated.append(item.stem)
+            else:
+                dst = os.path.relpath(item.parent, self._src)
+                depth += dst.count("/")
+                if dst != ".":
+                    depth += 1
+                index = self._create_index(dst, depth)
+            content = GenExamples._get_content(item)
+            datafile = self._get_datafile(item, content)
+            dataname = self._get_dataname(item, content)
+            title = self._get_title(item, content)
+            self._add_index_item(index, item, title)
+            self._generate_example(item, dst, depth, datafile, dataname, title)
 
 
 class GenShowcases(GenExamples):
@@ -306,8 +305,11 @@ class GenShowcases(GenExamples):
     def generate(self) -> None:
         """A method for overwriting GenExamples.generate method."""
 
-        self._create_index(assets_path="..")
         src = self._src
+        dst = "."
+        depth = self._depth
+        index = self._create_index(dst, depth)
+
         items = list(src.rglob("*.js")) + list(src.rglob("main.html"))
         for item in items:
             content = GenExamples._get_content(item)
@@ -323,14 +325,10 @@ class GenShowcases(GenExamples):
         items = list(src.rglob("*.md"))
         items.sort(key=lambda f: f.stem)
         for item in items:
-            with mkdocs_gen_files.open(f"{self._dst}/index.md", "a") as fh_index:
-                fh_index.write(
-                    f"<a href='./{item.stem}/' title=''>"
-                    + "<video nocontrols autoplay muted loop class='image-gallery'"
-                    + f"src='./{item.stem}.mp4'"
-                    + " type='video/mp4'></video>"
-                    + "</a>\n"
-                )
+            content = GenExamples._get_content(item)
+            html = markdown.markdown(content)
+            h1_titles = re.findall(r"<h1.*?>(.*?)</h1>", html)
+            self._add_video(index, item, h1_titles[0])
 
 
 def main() -> None:
