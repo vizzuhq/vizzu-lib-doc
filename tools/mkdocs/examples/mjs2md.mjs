@@ -13,7 +13,11 @@ class PresetsMock {
 }
 
 class VizzuMock {
-  constructor(title, data, dataFileName, dataName) {
+  constructor(title, description, data, dataFileName, dataName) {
+    this.description = "";
+    if (description) {
+      this.description = description;
+    }
     this.data = data;
     this.code = `---
 data_url: ../../../assets/data/${dataFileName}.js
@@ -51,6 +55,8 @@ data_url: ../../../assets/data/${dataFileName}.js
         ${dataName}
     })
     \`\`\`
+
+${this.description}
 
 \`\`\`javascript
 `;
@@ -104,6 +110,14 @@ data_url: ../../../assets/data/${dataFileName}.js
     this.code += fullCode;
   }
 
+  feature(name, enabled) {
+    this.code += `chart.feature('${name}', ${enabled});\n\n`;
+  }
+
+  on(eventName, handler) {
+    this.code += `chart.on('${eventName}', ${handler});\n\n`;
+  }
+
   static get presets() {
     return new PresetsMock();
   }
@@ -117,13 +131,17 @@ const inputFileName = process.argv[2];
 const dataFilePath = process.argv[3];
 const dataFileName = process.argv[4];
 const dataName = process.argv[5];
-const title = process.argv[6];
+let title = process.argv[6];
 const inputFileLoaded = import(inputFileName);
 const dataFileLoaded = import(dataFilePath + "/" + dataFileName + ".mjs");
 Promise.all([inputFileLoaded, dataFileLoaded]).then((results) => {
   const module = results[0];
+  const description = module.description;
+  if (module.title) {
+    title = module.title;
+  }
   const data = results[1][dataName];
-  const chart = new VizzuMock(title, data, dataFileName, dataName);
+  const chart = new VizzuMock(title, description, data, dataFileName, dataName);
   for (const testStep of module.default) {
     testStep(chart);
   }
