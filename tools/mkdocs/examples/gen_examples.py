@@ -193,7 +193,7 @@ class GenExamples:
                 "["
                 + f"![{title}]"
                 + f"(./{item.stem}.png)"
-                + "{ class='image-gallery' }"
+                + f"{{ class='image-gallery', title='{title}' }}"
                 + "]"
                 + f"(./{item.stem}.md)\n"
             )
