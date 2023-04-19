@@ -6,7 +6,6 @@ from typing import Union, Optional, List
 import re
 import sys
 
-import yaml
 import mkdocs_gen_files  # type: ignore
 
 
@@ -19,6 +18,9 @@ sys.path.insert(0, str(MKDOCS_PATH / "modules"))
 
 from context import (  # pylint: disable=import-error, wrong-import-position, wrong-import-order
     chdir,
+)
+from mkdocsconfig import (  # pylint: disable=import-error, wrong-import-position, wrong-import-order
+    MkdocsConfig,
 )
 from md import (  # pylint: disable=import-error, wrong-import-position, wrong-import-order
     Md,
@@ -55,39 +57,6 @@ class Docs:
                     mkdocs_gen_files.set_edit_path(dst, dst)
                 with mkdocs_gen_files.open(dst, "w") as f_dst:
                     f_dst.write(content)
-
-
-class MkdocsConfig:
-    """A class for loading mkdocs configuration."""
-
-    # pylint: disable=too-few-public-methods
-
-    @staticmethod
-    def _format_url(url: Optional[str]) -> Optional[str]:
-        if url and url.endswith("/"):
-            return url[:-1]
-        return url
-
-    @staticmethod
-    def _format(config: dict) -> dict:
-        if "site_url" in config:
-            config["site_url"] = MkdocsConfig._format_url(config["site_url"])
-        return config
-
-    @staticmethod
-    def load(config: Path) -> dict:
-        """
-        A method for loading mkdocs configuration from yaml file.
-
-        Args:
-            config: The path of the yaml configuration file.
-
-        Returns:
-            A dictionary that contains the mkdocs configuration.
-        """
-
-        with open(config, "rt", encoding="utf8") as f_yml:
-            return MkdocsConfig._format(yaml.load(f_yml, Loader=yaml.FullLoader))
 
 
 class IndexPages:
@@ -214,7 +183,10 @@ def main() -> None:
 
         config = MkdocsConfig.load(MKDOCS_PATH / "mkdocs.yml")
 
-        IndexPages.generate(nav_item=config["nav"], skip=["examples/index.md"])
+        IndexPages.generate(
+            nav_item=config["nav"],
+            skip=["examples/index.md", "examples/analytical_operations/index.md"],
+        )
 
         Page.generate(
             src=VIZZU_LIB_PATH / "README.md",

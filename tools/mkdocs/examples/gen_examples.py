@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 import re
 import sys
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 import mkdocs_gen_files
 import markdown
@@ -30,6 +30,9 @@ sys.path.insert(0, str(MKDOCS_PATH / "modules"))
 
 from context import (  # pylint: disable=import-error, wrong-import-position, wrong-import-order
     chdir,
+)
+from mkdocsconfig import (  # pylint: disable=import-error, wrong-import-position, wrong-import-order
+    MkdocsConfig,
 )
 from node import (  # pylint: disable=import-error, wrong-import-position, wrong-import-order
     Node,
@@ -166,14 +169,14 @@ class GenExamples:
         dataname = dataname.strip()
         return dataname
 
-    def _create_index(self, dst: str, depth: int) -> str:
+    def _create_index(self, dst: str, depth: int, title: str) -> str:
         index = "/".join([self._dst, dst]) if dst != "." else self._dst
         assets = "/".join([".."] * (depth - 1))
         if index not in self._indices:
             with mkdocs_gen_files.open(f"{index}/index.md", "a") as fh_index:
                 meta = """---\nhide:\n  - toc\n---"""
                 fh_index.write(f"{meta}\n\n")
-                fh_index.write(f"# {self._name}\n")
+                fh_index.write(f"# {title}\n")
                 fh_index.write(
                     f'<script src="{assets + "/" + JS_ASSETS_PATH}/thumbs.js"></script>\n'
                 )
@@ -186,6 +189,36 @@ class GenExamples:
             self._add_video(index, item, title)
         else:
             self._add_image(index, item, title)
+
+    @staticmethod
+    def _find_key(dic: dict, val: str) -> Optional[str]:
+        # pylint: disable=too-many-nested-blocks,too-many-return-statements,too-many-branches
+
+        if isinstance(dic, dict):
+            for key, value in dic.items():
+                if isinstance(value, dict):
+                    nested_key = GenExamples._find_key(value, val)
+                    if nested_key is not None:
+                        return nested_key
+                elif isinstance(value, list):
+                    for item in value:
+                        if isinstance(item, dict):
+                            nested_key = GenExamples._find_key(item, val)
+                            if nested_key is not None:
+                                return nested_key
+                        elif item == val:
+                            return key
+                elif value == val:
+                    return key
+        elif isinstance(dic, list):
+            for item in dic:
+                if isinstance(item, dict):
+                    nested_key = GenExamples._find_key(item, val)
+                    if nested_key is not None:
+                        return nested_key
+                elif item == val:
+                    return item
+        return None
 
     def _add_image(self, index: str, item: Path, title: str) -> None:
         with mkdocs_gen_files.open(f"{index}/index.md", "a") as fh_index:
@@ -203,8 +236,11 @@ class GenExamples:
             fh_index.write(
                 f"<a href='./{item.stem}/' title='{title}'>"
                 + "<video nocontrols autoplay muted loop class='image-gallery'"
+                + f"src='./{item.stem}.webm'"
+                + " type='video/webm'>"
                 + f"src='./{item.stem}.mp4'"
-                + " type='video/mp4'></video>"
+                + " type='video/mp4'>"
+                + "</video>"
                 + "</a>\n"
             )
 
@@ -270,10 +306,11 @@ class GenExamples:
     def generate(self) -> None:
         """A method for generating examples."""
 
+        config = MkdocsConfig.load(MKDOCS_PATH / "mkdocs.yml")
         src = self._src
         dst = "."
         depth = self._depth
-        index = self._create_index(dst, depth)
+        index = self._create_index(dst, depth, self._name)
         items = list(src.rglob("*.mjs"))
         items.sort(key=lambda f: f.stem)
         for item in items:
@@ -288,9 +325,14 @@ class GenExamples:
             else:
                 dst = os.path.relpath(item.parent, self._src)
                 depth += dst.count("/")
+                value = self._dst + "/"
                 if dst != ".":
                     depth += 1
-                index = self._create_index(dst, depth)
+                    value += dst + "/"
+                group_title = GenExamples._find_key(config["nav"], value)
+                if not group_title:
+                    group_title = item.parent.name
+                index = self._create_index(dst, depth, group_title)
             content = GenExamples._get_content(item)
             datafile = self._get_datafile(item, content)
             dataname = self._get_dataname(item, content)
@@ -308,7 +350,7 @@ class GenShowcases(GenExamples):
         src = self._src
         dst = "."
         depth = self._depth
-        index = self._create_index(dst, depth)
+        index = self._create_index(dst, depth, self._name)
 
         items = list(src.rglob("*.js")) + list(src.rglob("main.html"))
         for item in items:

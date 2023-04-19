@@ -123,7 +123,7 @@ nav:
       - Preset charts: examples/presets/
       - Analytical operations:
           - examples/analytical_operations/index.md
-          - Drill down to: examples/analytical_operations/drilldown/
+          - Drill down: examples/analytical_operations/drilldown/
           - Sum: examples/analytical_operations/sum/
           - Total: examples/analytical_operations/total/
           - Compare: examples/analytical_operations/compare/
