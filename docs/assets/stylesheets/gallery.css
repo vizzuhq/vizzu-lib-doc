@@ -1,7 +1,24 @@
 .image-gallery {
   max-width: 320px;
   border: 1px solid #ddd;
-  margin: 20px;
+  margin: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+.image-gallery-w-caption {
+  max-width: 320px;
+  border: 1px solid #ddd;
+  margin: 20px !important;
+  margin-bottom: 0px !important;
+}
+
+.image-figure {
+  margin: 0px !important;
+}
+
+.image-caption {
+  margin: 0px !important;
+  margin-bottom: 20px !important;
 }
 
 .image-center {

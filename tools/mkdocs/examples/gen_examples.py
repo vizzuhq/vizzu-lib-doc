@@ -184,14 +184,74 @@ class GenExamples:
 
         return index
 
-    def _add_index_item(self, index: str, item: Path, title: str) -> None:
+    def _add_index_item(  # pylint: disable=too-many-arguments
+        self,
+        index: str,
+        title: str,
+        href: str,
+        thumbnail: Optional[str] = None,
+        figcaption: bool = False,
+    ) -> None:
+        if not thumbnail:
+            thumbnail = href
         if self._video_thumbnails:
-            self._add_video(index, item, title)
+            self._add_video(index, title, href, thumbnail, figcaption)
         else:
-            self._add_image(index, item, title)
+            self._add_image(index, title, href, thumbnail)
+
+    def _add_index_sub_menus(self, index: str, groups: dict) -> None:
+        with mkdocs_gen_files.open(f"{index}/index.md", "a") as fh_index:
+            fh_index.write("<pre>")
+        for group_title in groups.keys():
+            self._add_index_item(
+                index,
+                group_title,
+                groups[group_title]["dst"],
+                groups[group_title]["dst"] + "/" + groups[group_title]["item"].stem,
+                True,
+            )
+        with mkdocs_gen_files.open(f"{index}/index.md", "a") as fh_index:
+            fh_index.write("</pre>\n")
+
+    def _add_image(self, index: str, title: str, href: str, thumbnail: str) -> None:
+        with mkdocs_gen_files.open(f"{index}/index.md", "a") as fh_index:
+            fh_index.write(
+                "["
+                + f"![{title}]"
+                + f"(./{thumbnail}.png)"
+                + f"{{ class='image-gallery', title='{title}' }}"
+                + "]"
+                + f"(./{href}.md)\n"
+            )
+
+    def _add_video(  # pylint: disable=too-many-arguments
+        self, index: str, title: str, href: str, thumbnail: str, figcaption: bool
+    ) -> None:
+        with mkdocs_gen_files.open(f"{index}/index.md", "a") as fh_index:
+            html = []
+            html.append(f"<a href='./{href}/' title='{title}'>")
+            if figcaption:
+                html.append("<figure markdown class='image-figure'>")
+                html.append(
+                    "<video nocontrols autoplay muted loop class='image-gallery-w-caption'"
+                )
+            else:
+                html.append(
+                    "<video nocontrols autoplay muted loop class='image-gallery'"
+                )
+            html.append(f" src='./{thumbnail}.webm'")
+            html.append(" type='video/webm'>")
+            html.append(f" src='./{thumbnail}.mp4'")
+            html.append(" type='video/mp4'>")
+            html.append("</video>")
+            if figcaption:
+                html.append(f"<figcaption class='image-caption'>{title}</figcaption>")
+                html.append("</figure>")
+            html.append("</a>\n")
+            fh_index.write("".join(html))
 
     @staticmethod
-    def _find_key(dic: dict, val: str) -> Optional[str]:
+    def _find_key(dic: dict, val: str, default: Optional[str] = None) -> Optional[str]:
         # pylint: disable=too-many-nested-blocks,too-many-return-statements,too-many-branches
 
         if isinstance(dic, dict):
@@ -218,31 +278,7 @@ class GenExamples:
                         return nested_key
                 elif item == val:
                     return item
-        return None
-
-    def _add_image(self, index: str, item: Path, title: str) -> None:
-        with mkdocs_gen_files.open(f"{index}/index.md", "a") as fh_index:
-            fh_index.write(
-                "["
-                + f"![{title}]"
-                + f"(./{item.stem}.png)"
-                + f"{{ class='image-gallery', title='{title}' }}"
-                + "]"
-                + f"(./{item.stem}.md)\n"
-            )
-
-    def _add_video(self, index: str, item: Path, title: str) -> None:
-        with mkdocs_gen_files.open(f"{index}/index.md", "a") as fh_index:
-            fh_index.write(
-                f"<a href='./{item.stem}/' title='{title}'>"
-                + "<video nocontrols autoplay muted loop class='image-gallery'"
-                + f"src='./{item.stem}.webm'"
-                + " type='video/webm'>"
-                + f"src='./{item.stem}.mp4'"
-                + " type='video/mp4'>"
-                + "</video>"
-                + "</a>\n"
-            )
+        return default
 
     @staticmethod
     def _generate_example_data(datafile: str) -> None:
@@ -307,17 +343,18 @@ class GenExamples:
         """A method for generating examples."""
 
         config = MkdocsConfig.load(MKDOCS_PATH / "mkdocs.yml")
-        src = self._src
         dst = "."
         depth = self._depth
         index = self._create_index(dst, depth, self._name)
-        items = list(src.rglob("*.mjs"))
+        groups = {}
+        items = list(self._src.rglob("*.mjs"))
         items.sort(key=lambda f: f.stem)
         for item in items:
             if item in self._blocked:
                 continue
             dst = "."
             depth = self._depth
+            sub_index = index
             if self._merge_subfolders:
                 if item.stem in self._generated:
                     raise ValueError(f"example already exists {item.stem}")
@@ -329,16 +366,19 @@ class GenExamples:
                 if dst != ".":
                     depth += 1
                     value += dst + "/"
-                group_title = GenExamples._find_key(config["nav"], value)
-                if not group_title:
-                    group_title = item.parent.name
-                index = self._create_index(dst, depth, group_title)
+                group_title = GenExamples._find_key(
+                    config["nav"], value, item.parent.name
+                )
+                if group_title not in groups:
+                    groups[group_title] = {"item": item, "dst": dst}
+                sub_index = self._create_index(dst, depth, group_title)  # type: ignore
             content = GenExamples._get_content(item)
             datafile = self._get_datafile(item, content)
             dataname = self._get_dataname(item, content)
             title = self._get_title(item, content)
-            self._add_index_item(index, item, title)
+            self._add_index_item(sub_index, title, item.stem)
             self._generate_example(item, dst, depth, datafile, dataname, title)
+        self._add_index_sub_menus(index, groups)
 
 
 class GenShowcases(GenExamples):
@@ -347,12 +387,11 @@ class GenShowcases(GenExamples):
     def generate(self) -> None:
         """A method for overwriting GenExamples.generate method."""
 
-        src = self._src
         dst = "."
         depth = self._depth
         index = self._create_index(dst, depth, self._name)
 
-        items = list(src.rglob("*.js")) + list(src.rglob("main.html"))
+        items = list(self._src.rglob("*.js")) + list(self._src.rglob("main.html"))
         for item in items:
             content = GenExamples._get_content(item)
             if item.suffix == ".js":
@@ -364,13 +403,13 @@ class GenShowcases(GenExamples):
             ) as fh_js:
                 fh_js.write(content)
 
-        items = list(src.rglob("*.md"))
+        items = list(self._src.rglob("*.md"))
         items.sort(key=lambda f: f.stem)
         for item in items:
             content = GenExamples._get_content(item)
             html = markdown.markdown(content)
             h1_titles = re.findall(r"<h1.*?>(.*?)</h1>", html)
-            self._add_video(index, item, h1_titles[0])
+            self._add_index_item(index, h1_titles[0], item.stem)
 
 
 def main() -> None:

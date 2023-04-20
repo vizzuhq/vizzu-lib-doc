@@ -133,7 +133,7 @@ nav:
           - Filter: examples/analytical_operations/filter_zoom/
           - Change dimension: examples/analytical_operations/change_dimension/
           - Add to / exclude from: examples/analytical_operations/add_to_and_exclude_from/
-          - Other: examples/analytical_operations/other/
+          - Miscellaneous: examples/analytical_operations/other/
       - Static charts: examples/static/
   - Showcases: showcases/
   - Code reference:
