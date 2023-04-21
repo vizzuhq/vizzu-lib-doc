@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 import re
 import sys
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Union
 
 import mkdocs_gen_files
 import markdown
@@ -199,10 +199,27 @@ class GenExamples:
         else:
             self._add_image(index, title, href, thumbnail)
 
-    def _add_index_sub_menus(self, index: str, groups: dict) -> None:
+    def _add_index_sub_menus(
+        self, config: Union[dict, list], index: str, groups: dict
+    ) -> None:
         with mkdocs_gen_files.open(f"{index}/index.md", "a") as fh_index:
             fh_index.write("<pre>")
+        sorted_items = {}
+        items = []
         for group_title in groups.keys():
+            number = GenExamples._find_dict_with_key_value(
+                config, group_title, self._dst + "/" + groups[group_title]["dst"] + "/"
+            )
+            if number:
+                sorted_items[number] = group_title
+            else:
+                items.append(group_title)
+        numbers = list(sorted_items.keys())
+        numbers.sort()
+        numbers.reverse()
+        for number in numbers:
+            items.insert(0, sorted_items[number])
+        for group_title in items:
             self._add_index_item(
                 index,
                 group_title,
@@ -251,11 +268,13 @@ class GenExamples:
             fh_index.write("".join(html))
 
     @staticmethod
-    def _find_key(dic: dict, val: str, default: Optional[str] = None) -> Optional[str]:
+    def _find_key(
+        data: Union[dict, list], val: str, default: Optional[str] = None
+    ) -> Optional[str]:
         # pylint: disable=too-many-nested-blocks,too-many-return-statements,too-many-branches
 
-        if isinstance(dic, dict):
-            for key, value in dic.items():
+        if isinstance(data, dict):
+            for key, value in data.items():
                 if isinstance(value, dict):
                     nested_key = GenExamples._find_key(value, val)
                     if nested_key is not None:
@@ -270,8 +289,8 @@ class GenExamples:
                             return key
                 elif value == val:
                     return key
-        elif isinstance(dic, list):
-            for item in dic:
+        elif isinstance(data, list):
+            for item in data:
                 if isinstance(item, dict):
                     nested_key = GenExamples._find_key(item, val)
                     if nested_key is not None:
@@ -279,6 +298,24 @@ class GenExamples:
                 elif item == val:
                     return item
         return default
+
+    @staticmethod
+    def _find_dict_with_key_value(
+        data: Union[dict, list], key: str, val: str
+    ) -> Optional[int]:
+        if isinstance(data, dict):
+            for sub_data in data.values():
+                index = GenExamples._find_dict_with_key_value(sub_data, key, val)
+                if index is not None:
+                    return index
+        elif isinstance(data, list):
+            for i, sub_data in enumerate(data):
+                if isinstance(sub_data, dict) and sub_data.get(key) == val:
+                    return i
+                index = GenExamples._find_dict_with_key_value(sub_data, key, val)
+                if index is not None:
+                    return index
+        return None
 
     @staticmethod
     def _generate_example_data(datafile: str) -> None:
@@ -378,7 +415,7 @@ class GenExamples:
             title = self._get_title(item, content)
             self._add_index_item(sub_index, title, item.stem)
             self._generate_example(item, dst, depth, datafile, dataname, title)
-        self._add_index_sub_menus(index, groups)
+        self._add_index_sub_menus(config["nav"], index, groups)
 
 
 class GenShowcases(GenExamples):
