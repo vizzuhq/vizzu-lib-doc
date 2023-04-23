@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 import re
 import sys
-from typing import List, Dict, Optional, Union
+from typing import List, Dict, Optional, Union, Tuple
 
 import mkdocs_gen_files
 import markdown
@@ -199,17 +199,13 @@ class GenExamples:
         else:
             self._add_image(index, title, href, thumbnail)
 
-    def _add_index_sub_menus(
-        self, config: Union[dict, list], index: str, groups: dict
-    ) -> None:
+    def _add_index_sub_menus(self, index: str, groups: dict) -> None:
         with mkdocs_gen_files.open(f"{index}/index.md", "a") as fh_index:
             fh_index.write("<pre>")
         sorted_items = {}
         items = []
         for group_title in groups.keys():
-            number = GenExamples._find_dict_with_key_value(
-                config, group_title, self._dst + "/" + groups[group_title]["dst"] + "/"
-            )
+            number = groups[group_title]["number"]
             if number:
                 sorted_items[number] = group_title
             else:
@@ -268,54 +264,48 @@ class GenExamples:
             fh_index.write("".join(html))
 
     @staticmethod
-    def _find_key(
-        data: Union[dict, list], val: str, default: Optional[str] = None
-    ) -> Optional[str]:
-        # pylint: disable=too-many-nested-blocks,too-many-return-statements,too-many-branches
-
+    def _find_dict_with_value(
+        data: Union[dict, list], val: str
+    ) -> Tuple[Optional[str], Optional[int]]:
         if isinstance(data, dict):
-            for key, value in data.items():
-                if isinstance(value, dict):
-                    nested_key = GenExamples._find_key(value, val)
-                    if nested_key is not None:
-                        return nested_key
-                elif isinstance(value, list):
-                    for item in value:
-                        if isinstance(item, dict):
-                            nested_key = GenExamples._find_key(item, val)
-                            if nested_key is not None:
-                                return nested_key
-                        elif item == val:
-                            return key
-                elif value == val:
-                    return key
-        elif isinstance(data, list):
-            for item in data:
-                if isinstance(item, dict):
-                    nested_key = GenExamples._find_key(item, val)
-                    if nested_key is not None:
-                        return nested_key
-                elif item == val:
-                    return item
-        return default
+            return GenExamples._find_dict_with_value_in_dict(data, val)
+        if isinstance(data, list):
+            return GenExamples._find_dict_with_value_in_list(data, val)
+        return None, None
 
     @staticmethod
-    def _find_dict_with_key_value(
-        data: Union[dict, list], key: str, val: str
-    ) -> Optional[int]:
-        if isinstance(data, dict):
-            for sub_data in data.values():
-                index = GenExamples._find_dict_with_key_value(sub_data, key, val)
-                if index is not None:
-                    return index
-        elif isinstance(data, list):
-            for i, sub_data in enumerate(data):
-                if isinstance(sub_data, dict) and sub_data.get(key) == val:
-                    return i
-                index = GenExamples._find_dict_with_key_value(sub_data, key, val)
-                if index is not None:
-                    return index
-        return None
+    def _find_dict_with_value_in_dict(
+        data: dict, val: str
+    ) -> Tuple[Optional[str], Optional[int]]:
+        for key, value in data.items():
+            if isinstance(value, dict):
+                if len(value) == 1 and val in value.values():
+                    return key, None
+                nested_result = GenExamples._find_dict_with_value(value, val)
+                if nested_result != (None, None):
+                    return nested_result
+            if isinstance(value, list):
+                nested_result = GenExamples._find_dict_with_value(value, val)
+                if nested_result != (None, None):
+                    return nested_result
+            if value == val:
+                return key, None
+        return None, None
+
+    @staticmethod
+    def _find_dict_with_value_in_list(
+        data: list, val: str
+    ) -> Tuple[Optional[str], Optional[int]]:
+        for i, item in enumerate(data):
+            if isinstance(item, dict) and len(item) == 1 and val in item.values():
+                return list(item.keys())[0], i
+            if isinstance(item, (list, dict)):
+                nested_result = GenExamples._find_dict_with_value(item, val)
+                if nested_result != (None, None):
+                    return nested_result
+            if item == val:
+                return None, i
+        return None, None
 
     @staticmethod
     def _generate_example_data(datafile: str) -> None:
@@ -379,6 +369,8 @@ class GenExamples:
     def generate(self) -> None:
         """A method for generating examples."""
 
+        # pylint: disable=too-many-locals
+
         config = MkdocsConfig.load(MKDOCS_PATH / "mkdocs.yml")
         dst = "."
         depth = self._depth
@@ -403,11 +395,11 @@ class GenExamples:
                 if dst != ".":
                     depth += 1
                     value += dst + "/"
-                group_title = GenExamples._find_key(
-                    config["nav"], value, item.parent.name
+                group_title, number = GenExamples._find_dict_with_value(
+                    config["nav"], value
                 )
-                if group_title not in groups:
-                    groups[group_title] = {"item": item, "dst": dst}
+                if group_title and group_title not in groups:
+                    groups[group_title] = {"item": item, "dst": dst, "number": number}
                 sub_index = self._create_index(dst, depth, group_title)  # type: ignore
             content = GenExamples._get_content(item)
             datafile = self._get_datafile(item, content)
@@ -415,7 +407,7 @@ class GenExamples:
             title = self._get_title(item, content)
             self._add_index_item(sub_index, title, item.stem)
             self._generate_example(item, dst, depth, datafile, dataname, title)
-        self._add_index_sub_menus(config["nav"], index, groups)
+        self._add_index_sub_menus(index, groups)
 
 
 class GenShowcases(GenExamples):
