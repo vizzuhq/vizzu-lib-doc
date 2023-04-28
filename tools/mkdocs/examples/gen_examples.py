@@ -136,12 +136,6 @@ class GenExamples:
     def _get_title(self, item: Path, content: str) -> str:
         if self._filename_title:
             title_parts = str(item.stem).split("_")
-            for index, value in enumerate(title_parts):
-                try:
-                    tmp = int(value)
-                    title_parts[index] = str(tmp)
-                except ValueError:
-                    continue
             title = " ".join(title_parts[1:])
             return title
 
