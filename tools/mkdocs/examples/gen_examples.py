@@ -418,9 +418,9 @@ class GenShowcases(GenExamples):
         for item in items:
             content = GenExamples._get_content(item)
             if item.suffix == ".js":
-                content = Vizzu.set_js_showcase_url(content)
+                content = Vizzu.set_version_showcase_js(content)
             elif item.suffix == ".html":
-                content = Vizzu.set_html_showcase_url(content)
+                content = Vizzu.set_version_showcase_html(content)
             with mkdocs_gen_files.open(
                 self._dst + "/" + os.path.relpath(item, SHOWCASES_PATH), "w"
             ) as fh_js:

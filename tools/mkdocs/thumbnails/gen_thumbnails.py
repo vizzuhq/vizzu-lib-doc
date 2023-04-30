@@ -47,7 +47,7 @@ class Thumbnails:
             Node.node(True, "test.js", "--delete")
             params = []
             params.append("--vizzu")
-            params.append(Vizzu.get_test_version())
+            params.append(Vizzu.get_vizzu_test_version())
             params.append("--images")
             params.append("ALL")
             params += src.rglob("*.mjs")  # type: ignore
@@ -95,7 +95,7 @@ class Thumbnails:
         with chdir(VIZZU_VIDEO_PATH):
             params = []
             params.append("--vizzu")
-            params.append(Vizzu.get_test_version())
+            params.append(Vizzu.get_vizzu_test_version())
             params += src.rglob("*.mjs")  # type: ignore
             if gen_params:
                 params += gen_params

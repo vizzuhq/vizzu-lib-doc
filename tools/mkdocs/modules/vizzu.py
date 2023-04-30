@@ -10,33 +10,24 @@ VIZZU_LIB_PATH = REPO_PATH / "vizzu-lib"
 
 
 VIZZU_BACKEND_URL = ""
-VIZZU_STYLE_REFERENCE_URL = ""
+VIZZU_STYLEREF_BACKEND_URL = ""
+VIZZU_SHOWCASE_BACKEND_URL = ""
+GITHUB_SHOWCASE_BACKEND_URL = ""
+SITE_SHOWCASE_BACKEND_URL = ""
+
 VIZZU_VERSION = ""
 VIZZU_TEST_VERSION = ""
-VIZZU_LIB_DOC_URL = ""
-SHOWCASE_VIZZU_URL = ""
-SHOWCASE_GITHUB_URL = ""
-SHOWCASE_HOST_URL = ""
+
+VIZZU_DOC_URL = "https://github.com/vizzuhq/vizzu-lib-doc"
+VIZZU_SITE_URL = "https://lib.vizzuhq.com"
+VIZZU_CDN_URL = "https://cdn.jsdelivr.net/npm/vizzu"
 
 
 class Vizzu:
     """A class for working with Vizzu."""
 
     @staticmethod
-    def get_vizzulibdoc_url() -> str:
-        """
-        A static method for returning vizzu lib doc url.
-
-        Returns:
-            Backend vizzu lib doc url.
-        """
-
-        if VIZZU_LIB_DOC_URL:
-            return VIZZU_LIB_DOC_URL
-        return "https://github.com/vizzuhq/vizzu-lib-doc"
-
-    @staticmethod
-    def get_backend_url() -> str:
+    def get_vizzu_backend_url() -> str:
         """
         A static method for returning backend vizzu url.
 
@@ -46,25 +37,25 @@ class Vizzu:
 
         if VIZZU_BACKEND_URL:
             return VIZZU_BACKEND_URL
-        version = Vizzu.get_version()
-        return f"https://cdn.jsdelivr.net/npm/vizzu@{version}/dist/vizzu.min.js"
+        version = Vizzu.get_vizzu_version()
+        return f"{VIZZU_CDN_URL}@{version}/dist/vizzu.min.js"
 
     @staticmethod
-    def get_style_reference_url() -> str:
+    def get_vizzu_styleref_backend_url() -> str:
         """
-        A static method for returning style reference vizzu url.
+        A static method for returning backend vizzu style reference url.
 
         Returns:
-            Style reference vizzu url.
+            Backend vizzu style reference url.
         """
 
-        if VIZZU_STYLE_REFERENCE_URL:
-            return VIZZU_STYLE_REFERENCE_URL
-        version = Vizzu.get_version()
-        return f"https://cdn.jsdelivr.net/npm/vizzu@{version}/dist/vizzu.min.js"
+        if VIZZU_STYLEREF_BACKEND_URL:
+            return VIZZU_STYLEREF_BACKEND_URL
+        version = Vizzu.get_vizzu_version()
+        return f"{VIZZU_CDN_URL}@{version}/dist/vizzu.min.js"
 
     @staticmethod
-    def get_full_version() -> list:
+    def get_vizzu_full_version() -> list:
         """
         A static method for returning vizzu major.minor.patch version.
 
@@ -86,7 +77,7 @@ class Vizzu:
             ]
 
     @staticmethod
-    def get_version() -> str:
+    def get_vizzu_version() -> str:
         """
         A static method for returning vizzu major.minor version.
 
@@ -96,11 +87,11 @@ class Vizzu:
 
         if VIZZU_VERSION:
             return VIZZU_VERSION
-        version_parts = Vizzu.get_full_version()
+        version_parts = Vizzu.get_vizzu_full_version()
         return f"{version_parts[0]}.{version_parts[1]}"
 
     @staticmethod
-    def get_test_version() -> str:
+    def get_vizzu_test_version() -> str:
         """
         A static method for returning vizzu test version.
 
@@ -110,35 +101,46 @@ class Vizzu:
 
         if VIZZU_TEST_VERSION:
             return VIZZU_TEST_VERSION
-        version_parts = Vizzu.get_full_version()
+        version_parts = Vizzu.get_vizzu_full_version()
         return f"{version_parts[0]}.{version_parts[1]}.{version_parts[2]}"
 
     @staticmethod
-    def set_version(content: str) -> str:
+    def set_version(content: str, restore: bool = False) -> str:
         """
         A static method for setting vizzu version in content.
 
         Args:
             content: Content to be modified.
+            restore: A flag to restore the content.
 
         Returns:
             Modified content.
         """
 
-        version = Vizzu.get_version()
-        content = content.replace(
-            "https://cdn.jsdelivr.net/npm/vizzu@latest/",
-            f"https://cdn.jsdelivr.net/npm/vizzu@{version}/",
-        )
-        content = content.replace(
-            "https://lib.vizzuhq.com/latest/", f"https://lib.vizzuhq.com/{version}/"
-        )
+        version = Vizzu.get_vizzu_version()
+        if not restore:
+            content = content.replace(
+                f"{VIZZU_CDN_URL}@latest/",
+                f"{VIZZU_CDN_URL}@{version}/",
+            )
+            content = content.replace(
+                f"{VIZZU_SITE_URL}/latest/", f"{VIZZU_SITE_URL}/{version}/"
+            )
+        else:
+            content = content.replace(
+                f"{VIZZU_CDN_URL}@{version}/",
+                f"{VIZZU_CDN_URL}@latest/",
+            )
+            content = content.replace(
+                f"{VIZZU_SITE_URL}/{version}/",
+                f"{VIZZU_SITE_URL}/latest/",
+            )
         return content
 
     @staticmethod
-    def set_js_showcase_url(content: str) -> str:
+    def set_version_showcase_js(content: str) -> str:
         """
-        A static method for setting vizzu version in showcase js content.
+        A static method for setting versions in showcase.
 
         Args:
             content: Content to be modified.
@@ -147,19 +149,19 @@ class Vizzu:
             Modified content.
         """
 
-        version = Vizzu.get_version()
-        vizzu_url = f"https://cdn.jsdelivr.net/npm/vizzu@{version}/dist/vizzu.min.js"
-        if SHOWCASE_VIZZU_URL:
-            vizzu_url = SHOWCASE_VIZZU_URL
+        version = Vizzu.get_vizzu_version()
+        vizzu_url = f"{VIZZU_CDN_URL}@{version}/dist/vizzu.min.js"
+        if VIZZU_SHOWCASE_BACKEND_URL:
+            vizzu_url = VIZZU_SHOWCASE_BACKEND_URL
         content = content.replace(
-            "https://cdn.jsdelivr.net/npm/vizzu@latest/dist/vizzu.min.js", vizzu_url
+            f"{VIZZU_CDN_URL}@latest/dist/vizzu.min.js", vizzu_url
         )
         return content
 
     @staticmethod
-    def set_html_showcase_url(content: str) -> str:
+    def set_version_showcase_html(content: str) -> str:
         """
-        A static method for setting version urls in showcase html content.
+        A static method for setting versions in showcase.
 
         Args:
             content: Content to be modified.
@@ -168,18 +170,17 @@ class Vizzu:
             Modified content.
         """
 
-        version = Vizzu.get_version()
-        github_url = f"{Vizzu.get_vizzulibdoc_url()}/tree/gh-pages"
+        version = Vizzu.get_vizzu_version()
+        github_url = f"{VIZZU_DOC_URL}/tree/gh-pages"
         new_github_url = github_url
-        if SHOWCASE_GITHUB_URL:
-            new_github_url = SHOWCASE_GITHUB_URL
+        if GITHUB_SHOWCASE_BACKEND_URL:
+            new_github_url = GITHUB_SHOWCASE_BACKEND_URL
         content = content.replace(
             f"{github_url}/latest/",
             f"{new_github_url}/{version}/",
         )
-        host_url = "https://lib.vizzuhq.com"
-        new_host_url = host_url
-        if SHOWCASE_HOST_URL:
-            new_host_url = SHOWCASE_HOST_URL
-        content = content.replace(f"{host_url}/latest/", f"{new_host_url}/{version}/")
+        site_url = VIZZU_SITE_URL
+        if SITE_SHOWCASE_BACKEND_URL:
+            site_url = SITE_SHOWCASE_BACKEND_URL
+        content = content.replace(f"{VIZZU_SITE_URL}/latest/", f"{site_url}/{version}/")
         return content

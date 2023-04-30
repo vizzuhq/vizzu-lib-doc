@@ -28,7 +28,7 @@ class Deploy:
     def mike() -> None:
         """A method for deploying site."""
 
-        version = Vizzu.get_version()
+        version = Vizzu.get_vizzu_version()
 
         params = [
             "mike",

@@ -3,7 +3,6 @@
 import os
 from pathlib import Path
 from typing import Union, Optional, List
-import re
 import sys
 
 import mkdocs_gen_files  # type: ignore
@@ -28,35 +27,6 @@ from md import (  # pylint: disable=import-error, wrong-import-position, wrong-i
 from vizzu import (  # pylint: disable=import-error, wrong-import-position, wrong-import-order
     Vizzu,
 )
-
-
-class Docs:
-    """A class for creating docs pages."""
-
-    # pylint: disable=too-few-public-methods
-
-    @staticmethod
-    def generate(skip: Optional[List[str]] = None) -> None:
-        """
-        A method for generating docs pages.
-
-        Args:
-            skip: List of file names to skip.
-        """
-
-        docs_path = VIZZU_LIB_PATH / "docs"
-        for path in list(docs_path.rglob("*.md")) + list(docs_path.rglob("*.js")):
-            if skip and path.name in skip:
-                continue
-            with open(path, "rt", encoding="utf8") as f_src:
-                dst = path.relative_to(docs_path)
-                content = f_src.read()
-                if path.suffix == ".md":
-                    content = Vizzu.set_version(content)
-                    content = Md.format(content)
-                    mkdocs_gen_files.set_edit_path(dst, dst)
-                with mkdocs_gen_files.open(dst, "w") as f_dst:
-                    f_dst.write(content)
 
 
 class IndexPages:
@@ -138,13 +108,14 @@ class Page:
     # pylint: disable=too-few-public-methods
 
     @staticmethod
-    def generate(src: Path, dst: str, site: str, keep: bool = False) -> None:
+    def generate(src: Path, dst: str, pos: str, site: str, keep: bool = False) -> None:
         """
         A method for generating a page.
 
         Args:
             src: Source path.
             dst: Destination path.
+            pos: Destination relative pos to the index.
             site: Site url.
             keep: Place the original content into a pre tag.
         """
@@ -152,24 +123,43 @@ class Page:
         with open(src, "rt", encoding="utf8") as f_src:
             content = f_src.read()
 
-        for match in re.finditer(
-            rf"\[([^]]*)\]\(({site}/)([^]]*)(.html)([^]]*)?\)",
-            content,
-        ):
-            content = content.replace(
-                match[0], f"[{match[1]}]({match[3]}.md{match[5]})"
-            )
-
-        content = content.replace(f"{site}/latest/", "").replace(f"{site}/latest", "./")
-
+        content = content.replace(f"{site}/latest/", pos).replace(f"{site}/latest", pos)
+        content = Vizzu.set_version(content)
         if keep:
             content = f"<pre>{content}</pre>"
-
-        content = Vizzu.set_version(content)
 
         mkdocs_gen_files.set_edit_path(dst, ".." / Path(dst).parent / Path(src).name)
         with mkdocs_gen_files.open(dst, "w") as f_dst:
             f_dst.write(content)
+
+
+class Docs:
+    """A class for creating docs pages."""
+
+    # pylint: disable=too-few-public-methods
+
+    @staticmethod
+    def generate(skip: Optional[List[str]] = None) -> None:
+        """
+        A method for generating docs pages.
+
+        Args:
+            skip: List of file names to skip.
+        """
+
+        docs_path = VIZZU_LIB_PATH / "docs"
+        for path in list(docs_path.rglob("*.md")) + list(docs_path.rglob("*.js")):
+            if skip and path.name in skip:
+                continue
+            with open(path, "rt", encoding="utf8") as f_src:
+                dst = path.relative_to(docs_path)
+                content = f_src.read()
+                if path.suffix == ".md":
+                    content = Vizzu.set_version(content)
+                    content = Md.format(content)
+                    mkdocs_gen_files.set_edit_path(dst, dst)
+                with mkdocs_gen_files.open(dst, "w") as f_dst:
+                    f_dst.write(content)
 
 
 def main() -> None:
@@ -179,9 +169,9 @@ def main() -> None:
     """
 
     with chdir(REPO_PATH):
-        Docs.generate(skip=["reference.md"])
-
         config = MkdocsConfig.load(MKDOCS_PATH / "mkdocs.yml")
+
+        Docs.generate(skip=["reference.md"])
 
         IndexPages.generate(
             nav_item=config["nav"],
@@ -191,12 +181,14 @@ def main() -> None:
         Page.generate(
             src=VIZZU_LIB_PATH / "README.md",
             dst="index.md",
+            pos="./",
             site=config["site_url"],
         )
 
         Page.generate(
             src=VIZZU_LIB_PATH / "LICENSE",
             dst="LICENSE.md",
+            pos="../",
             site=config["site_url"],
             keep=True,
         )
