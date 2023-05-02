@@ -17,13 +17,13 @@ jobs:
 
       - uses: actions/cache@v3
         with:
-          path: ./.venv_vizzudoc
-          key: venv-vizzudoc-${{ github.run_id }}
+          path: ./.venv_vizzu_doc
+          key: venv-vizzu-doc-${{ github.run_id }}
 
       - uses: actions/cache@v3
         with:
           path: ./node_modules
-          key: nodemodules-vizzudoc-${{ github.run_id }}
+          key: nodemodules-vizzu-doc-${{ github.run_id }}
 
       - name: Init dev environment
         run: make dev
