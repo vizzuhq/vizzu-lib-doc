@@ -1,10 +1,13 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 class Csv2Js {
-  static csv(csv, dimensions) {
+  static csv(csv, dimensions, measures) {
     return new Promise((resolve, reject) => {
       if (!dimensions) {
         dimensions = [];
+      }
+      if (!measures) {
+        measures = [];
       }
       const detectedDimensions = {};
       const data = { series: [], records: [] };
@@ -16,7 +19,7 @@ class Csv2Js {
           const keys = Object.keys(csvData[i]);
           for (const key of keys) {
             const numValue = +csvData[i][key];
-            if (!isNaN(numValue)) {
+            if (csvData[i][key] !== "" && !isNaN(numValue)) {
               record.push(numValue);
             } else {
               record.push(csvData[i][key]);
@@ -30,7 +33,8 @@ class Csv2Js {
           const series = {
             name: key,
             type:
-              dimensions.includes(key) || detectedDimensions[key]
+              dimensions.includes(key) ||
+              (detectedDimensions[key] && !measures.includes(key))
                 ? "dimension"
                 : "measure",
           };
