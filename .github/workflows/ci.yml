@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  workflow_call:
+
+jobs:
+
+  check_ci:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/cache@v3
+      with:
+        path: ./.venv_vizzudoc
+        key: venv-vizzudoc-${{ github.run_id }}
+
+    - uses: actions/cache@v3
+      with:
+        path: ./node_modules
+        key: nodemodules-vizzudoc-${{ github.run_id }}
+
+    - name: Touch dev environment
+      run: make touch-dev
+
+    - name: Touch dev-js environment
+      run: make touch-dev-js
+          
+    - name: Check format
+      run: make check-format
+
+    - name: Check lint
+      run: make check-lint
+
+    - name: Check typing
+      run: make check-typing

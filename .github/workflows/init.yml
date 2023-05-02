@@ -1,0 +1,32 @@
+name: Init
+
+on:
+  workflow_call:
+
+jobs:
+
+  init_dev:
+
+    runs-on: ubuntu-latest
+
+    env:
+      PUPPETEER_CACHE_DIR: ${{ github.workspace }}/node_modules/.chromium
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/cache@v3
+        with:
+          path: ./.venv_vizzudoc
+          key: venv-vizzudoc-${{ github.run_id }}
+
+      - uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: nodemodules-vizzudoc-${{ github.run_id }}
+
+      - name: Init dev environment
+        run: make dev
+
+      - name: Init dev-js environment
+        run: make dev-js
