@@ -186,11 +186,39 @@ def main() -> None:
         )
 
         Page.generate(
+            src=VIZZU_LIB_PATH / "CODE_OF_CONDUCT.md",
+            dst="CODE_OF_CONDUCT.md",
+            pos="../",
+            site=config["site_url"],
+        )
+
+        Page.generate(
             src=VIZZU_LIB_PATH / "LICENSE",
             dst="LICENSE.md",
             pos="../",
             site=config["site_url"],
             keep=True,
+        )
+
+        Page.generate(
+            src=VIZZU_LIB_PATH / "CONTRIBUTING.md",
+            dst="CONTRIBUTING.md",
+            pos="../",
+            site=config["site_url"],
+        )
+
+        Page.generate(
+            src=VIZZU_LIB_PATH / "FAQ.md",
+            dst="FAQ.md",
+            pos="../",
+            site=config["site_url"],
+        )
+
+        Page.generate(
+            src=VIZZU_LIB_PATH / "PROJECTS.md",
+            dst="PROJECTS.md",
+            pos="../",
+            site=config["site_url"],
         )
 
 
