@@ -1,7 +1,7 @@
 import {data} from './friends-supporting-data.js';
 import {Portraits} from './friends-supporting-portraits.js';
 import {palette, style} from './friends-supporting-style.js';
-import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.5/dist/vizzu.min.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.7/dist/vizzu.min.js';
 
 const skip = [
   's01e15',  's01e18',  's01e21',  's01e22',  's01e24',  's02e01',  's02e05',  's02e06',
@@ -98,7 +98,7 @@ function slide(seid, actFilter) {
         y: {attach: ['Lines', 'season'], 
           range: {
             min: 0,
-            max: 10
+            max: 9.99999
           }
         },
         color: {attach: ['season']},
@@ -113,7 +113,8 @@ function slide(seid, actFilter) {
   {
     x: { delay: '0s', duration: '.7s', easing: 'linear' },
     y: { delay: '0s', duration: '.7s', easing: 'ease-in' },
-    show: { delay: '0s', duration: '.7s', easing: 'ease-in' }
+    show: { delay: '0s', duration: '.7s', easing: 'ease-in' },
+    title: { delay: '0s', duration: '.7s', easing: 'linear' },
   });
 }
 

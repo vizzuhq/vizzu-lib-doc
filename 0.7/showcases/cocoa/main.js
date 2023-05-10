@@ -1,4 +1,4 @@
-import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.5/dist/vizzu.min.js';
+import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@0.7/dist/vizzu.min.js';
 
 let parties = [
 	'Farmers 6.6¢',
@@ -279,7 +279,7 @@ chart.initializing.then(chart =>
 			}
 		}
 	}
-}, { delay: '2s'}))
+}, { delay: '2s', regroupStrategy: 'fade'}))
 .then(chart =>
 	chart.animate({
 		config: {
@@ -327,8 +327,7 @@ chart.initializing.then(chart =>
 			}
 		}
 	})
-}).
-
-catch((err) => {
+})
+.catch((err) => {
 	console.log(err);
   });
