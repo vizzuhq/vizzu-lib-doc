@@ -26,6 +26,8 @@ VIZZU_CDN_URL = "https://cdn.jsdelivr.net/npm/vizzu"
 class Vizzu:
     """A class for working with Vizzu."""
 
+    _vizzu_version = ""
+
     @staticmethod
     def get_vizzu_backend_url() -> str:
         """
@@ -87,8 +89,10 @@ class Vizzu:
 
         if VIZZU_VERSION:
             return VIZZU_VERSION
-        version_parts = Vizzu.get_vizzu_full_version()
-        return f"{version_parts[0]}.{version_parts[1]}"
+        if not Vizzu._vizzu_version:
+            version_parts = Vizzu.get_vizzu_full_version()
+            Vizzu._vizzu_version = f"{version_parts[0]}.{version_parts[1]}"
+        return Vizzu._vizzu_version
 
     @staticmethod
     def get_vizzu_test_version() -> str:
