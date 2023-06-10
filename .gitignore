@@ -5,7 +5,6 @@ __pycache__
 .mypy_cache
 
 node_modules
-package-lock.json
 
 site
 tools/mkdocs/reference/tmp/

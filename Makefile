@@ -11,56 +11,58 @@ endif
 
 
 .PHONY: clean \
-	clean-dev update-dev-req install-dev-req touch-dev \
-	clean-dev-js touch-dev-js \
+	clean-dev-py update-dev-py-req install-dev-py-req check-dev-py \
+	clean-dev-js check-dev-js \
 	check format check-format check-lint check-typing \
-	clean-doc doc thumbnails touch-thumbnails-js deploy
+	clean-doc doc thumbnails deploy
 
 VIRTUAL_ENV = .venv_vizzu_doc
 
-DEV_BUILD_FLAG = $(VIRTUAL_ENV)/DEV_BUILD_FLAG
-DEV_JS_BUILD_FLAG = $(VIRTUAL_ENV)/DEV_JS_BUILD_FLAG
-THUMBNAILS_JS_BUILD_FLAG = $(VIRTUAL_ENV)/THUMBNAILS_JS_BUILD_FLAG
+DEV_PY_BUILD_FLAG = $(VIRTUAL_ENV)/DEV_PY_BUILD_FLAG
+DEV_JS_BUILD_FLAG = node_modules/DEV_JS_BUILD_FLAG
+THUMBNAILS_JS_BUILD_FLAG = vizzu-lib/test/integration/node_modules/THUMBNAILS_JS_BUILD_FLAG
 
 
 
-clean: clean-dev clean-dev-js clean-doc
+clean: clean-dev-py clean-dev-js clean-doc
 
 
 
 # init
 
-clean-dev:
+clean-dev-py:
 	$(PYTHON_BIN) -c "import os, shutil;shutil.rmtree('$(VIRTUAL_ENV)') if os.path.exists('$(VIRTUAL_ENV)') else print('Nothing to be done for \'clean-dev\'')"
 
 clean-dev-js:
 	$(PYTHON_BIN) -c "import os, shutil;shutil.rmtree('node_modules') if os.path.exists('node_modules') else print('Nothing to be done for \'clean-dev-js\'')"
 
-update-dev-req: $(DEV_BUILD_FLAG)
-	$(VIRTUAL_ENV)/$(BIN_PATH)/pip-compile --upgrade dev-requirements.in
+update-dev-py-req: $(DEV_PY_BUILD_FLAG)
+	$(VIRTUAL_ENV)/$(BIN_PATH)/pip-compile --upgrade dev-requirements.in --resolver=backtracking
 
-install-dev-req:
+install-dev-py-req: $(DEV_PY_BUILD_FLAG)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/pip install -r dev-requirements.txt
+	$(VIRTUAL_ENV)/$(BIN_PATH)/pip install --use-pep517 git+https://github.com/jimporter/mike.git
 
-touch-dev:
-	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) tools/make/touch.py -f $(DEV_BUILD_FLAG)
+check-dev-py:
+	$(PYTHON_BIN) tools/make/touch.py -f $(DEV_PY_BUILD_FLAG) --check
 
-touch-dev-js:
-	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) tools/make/touch.py -f $(DEV_JS_BUILD_FLAG)
+check-dev-js:
+	$(PYTHON_BIN) tools/make/touch.py -f $(DEV_JS_BUILD_FLAG) --check
 
-dev: $(DEV_BUILD_FLAG)
+dev-py: $(DEV_PY_BUILD_FLAG)
 
-dev-js: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
+dev-js: $(DEV_JS_BUILD_FLAG)
 
-$(DEV_BUILD_FLAG):
+$(DEV_PY_BUILD_FLAG):
 	$(PYTHON_BIN) -m venv $(VIRTUAL_ENV)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) -m pip install --upgrade pip
-	$(MAKE) -f Makefile install-dev-req
-	$(MAKE) -f Makefile touch-dev
+	$(VIRTUAL_ENV)/$(BIN_PATH)/pip install -r dev-requirements.txt
+	$(VIRTUAL_ENV)/$(BIN_PATH)/pip install --use-pep517 git+https://github.com/jimporter/mike.git
+	$(PYTHON_BIN) tools/make/touch.py -f $(DEV_PY_BUILD_FLAG)
 
 $(DEV_JS_BUILD_FLAG):
-	npm install ./tools/javascripts/
-	$(MAKE) -f Makefile touch-dev-js
+	npm install .
+	$(PYTHON_BIN) tools/make/touch.py -f $(DEV_JS_BUILD_FLAG)
 
 
 
@@ -68,7 +70,7 @@ $(DEV_JS_BUILD_FLAG):
 
 check: check-format check-lint check-typing
 
-format: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
+format: $(DEV_PY_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/black tools
 	$(VIRTUAL_ENV)/$(BIN_PATH)/black -l 70 docs
 	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) tools/mdformat/mdformat.py $(VIRTUAL_ENV)/$(BIN_PATH)/mdformat \
@@ -76,10 +78,9 @@ format: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
 		--end-of-line keep \
 		--line-length 70 \
 		docs
-	cd tools/javascripts && \
-		npm run prettier
+	npm run prettier
 
-check-format: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
+check-format: $(DEV_PY_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/black --check tools
 	$(VIRTUAL_ENV)/$(BIN_PATH)/black --check -l 70 docs
 	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) tools/mdformat/mdformat.py $(VIRTUAL_ENV)/$(BIN_PATH)/mdformat \
@@ -88,15 +89,13 @@ check-format: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
 		--end-of-line keep \
 		--line-length 70 \
 		docs
-	cd tools/javascripts && \
-		npm run check-prettier
+	npm run check-prettier
 
-check-lint: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
+check-lint: $(DEV_PY_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/pylint tools
-	cd tools/javascripts && \
-		npm run check-eslint
+	npm run check-eslint
 
-check-typing: $(DEV_BUILD_FLAG)
+check-typing: $(DEV_PY_BUILD_FLAG)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/mypy tools
 
 
@@ -110,19 +109,16 @@ else
 	rm -rf site
 endif
 
-touch-thumbnails-js:
-	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) tools/make/touch.py -f $(THUMBNAILS_JS_BUILD_FLAG)
-
-thumbnails: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG) $(THUMBNAILS_JS_BUILD_FLAG)
+thumbnails: $(DEV_PY_BUILD_FLAG) $(DEV_JS_BUILD_FLAG) $(THUMBNAILS_JS_BUILD_FLAG)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) ./tools/mkdocs/thumbnails/gen_thumbnails.py
 
-doc: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
+doc: $(DEV_PY_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/mkdocs build -f ./tools/mkdocs/mkdocs.yml
 
-deploy: $(DEV_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
+deploy: $(DEV_PY_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
 	. $(VIRTUAL_ENV)/$(BIN_PATH)/activate; $(PYTHON_BIN) tools/release/deploy.py
 
 $(THUMBNAILS_JS_BUILD_FLAG):
 	cd vizzu-lib/test/integration && \
 		npm install
-	$(MAKE) -f Makefile touch-thumbnails-js
+	$(PYTHON_BIN) tools/make/touch.py -f $(THUMBNAILS_JS_BUILD_FLAG)

@@ -4,29 +4,33 @@ on:
   workflow_call:
 
 jobs:
-
   init_dev:
-
     runs-on: ubuntu-latest
 
-    env:
-      PUPPETEER_CACHE_DIR: ${{ github.workspace }}/node_modules/.chromium
-
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/cache@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
         with:
-          path: ./.venv_vizzu_doc
-          key: venv-vizzu-doc-${{ github.run_id }}
+          fetch-depth: 1
 
-      - uses: actions/cache@v3
+      - name: Cache dev-py environment
+        uses: actions/cache@v3
         with:
-          path: ./node_modules
-          key: nodemodules-vizzu-doc-${{ github.run_id }}
+          path: .venv_vizzu_doc
+          key: dev-py-${{ hashFiles('dev-requirements.txt') }}
 
-      - name: Init dev environment
-        run: make dev
+      - name: Init dev-py environment
+        run: |
+          make check-dev-py
+          make dev-py
+
+      - name: Cache dev-js environment
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: dev-js-${{ hashFiles('package-lock.json') }}
 
       - name: Init dev-js environment
-        run: make dev-js
+        run: |
+          make check-dev-js
+          make dev-js
