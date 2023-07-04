@@ -54,7 +54,9 @@ class Thumbnails:
             Node.node(True, "test.js", *params)
 
     @staticmethod
-    def copy_images(src: Path, dst: Path, merge_subfolders: bool) -> None:
+    def copy_images(
+        src: Path, dst: Path, merge_subfolders: bool, add_subfolder: bool
+    ) -> None:
         """
         A method for copying static thumbnails.
 
@@ -69,17 +71,19 @@ class Thumbnails:
         dst.mkdir(parents=True, exist_ok=True)
         for path in dst.rglob("*.png"):
             path.unlink(missing_ok=True)
-        for path in src.rglob("*100.000%-1new.png"):
-            full_dst = dst
+        for path in src.rglob("*000_100.000%-1new.png"):
             test_case = path.parent
+            test_name = test_case.name
+            full_dst = dst
+            sub = os.path.relpath(test_case.parent, src)
             if not merge_subfolders:
-                sub = os.path.relpath(test_case.parent, src)
                 full_dst = full_dst / sub
                 full_dst.mkdir(parents=True, exist_ok=True)
-                print(sub)
+            if add_subfolder and sub != ".":
+                test_name += f"_{sub}"
             with Image.open(path) as image:
                 resized = image.resize((320, 180))
-                resized.save(full_dst / (test_case.name + ".png"), format="png")
+                resized.save(full_dst / (test_name + ".png"), format="png")
 
     @staticmethod
     def generate_videos(src: Path, gen_params: Optional[List[str]] = None) -> None:
@@ -146,6 +150,7 @@ def main() -> None:
             / "static",
             REPO_PATH / "docs" / "examples" / "static",
             True,
+            False,
         )
 
         Thumbnails.generate_images(VIZZU_TEST_PATH / "test_cases/web_content/presets/")
@@ -157,6 +162,7 @@ def main() -> None:
             / "web_content"
             / "presets",
             REPO_PATH / "docs" / "examples" / "presets",
+            True,
             True,
         )
 
