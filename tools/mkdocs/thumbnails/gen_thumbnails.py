@@ -161,15 +161,6 @@ def main() -> None:
         )
 
         Thumbnails.generate_videos(
-            VIZZU_TEST_PATH / "test_cases/web_content/animated/", ["--reverse"]
-        )
-        Thumbnails.copy_videos(
-            VIZZU_VIDEO_PATH / "resized" / "test_cases" / "web_content" / "animated",
-            REPO_PATH / "docs" / "examples" / "animated",
-            True,
-        )
-
-        Thumbnails.generate_videos(
             VIZZU_TEST_PATH / "test_cases/web_content/analytical_operations/"
         )
         Thumbnails.copy_videos(
