@@ -42,7 +42,7 @@ class Thumbnails:
             src: Source folder.
         """
 
-        print("Generating images...")
+        print(f"Generating images: {src}")
         with chdir(VIZZU_TEST_PATH):
             Node.node(True, "test.js", "--delete")
             params = []
@@ -54,9 +54,7 @@ class Thumbnails:
             Node.node(True, "test.js", *params)
 
     @staticmethod
-    def copy_images(
-        src: Path, dst: Path, merge_subfolders: bool, add_subfolder: bool
-    ) -> None:
+    def copy_images(src: Path, dst: Path, merge_subfolders: bool) -> None:
         """
         A method for copying static thumbnails.
 
@@ -66,7 +64,7 @@ class Thumbnails:
             merge_subfolders: Merge subfolders flag.
         """
 
-        print("Copying images...")
+        print(f"Copying images: {src}")
         dst = REPO_PATH / "docs" / "examples" / src.name
         dst.mkdir(parents=True, exist_ok=True)
         for path in dst.rglob("*.png"):
@@ -76,11 +74,11 @@ class Thumbnails:
             test_name = test_case.name
             full_dst = dst
             sub = os.path.relpath(test_case.parent, src)
-            if not merge_subfolders:
+            if merge_subfolders and sub != ".":
+                test_name += f"_{sub}"
+            else:
                 full_dst = full_dst / sub
                 full_dst.mkdir(parents=True, exist_ok=True)
-            if add_subfolder and sub != ".":
-                test_name += f"_{sub}"
             with Image.open(path) as image:
                 resized = image.resize((320, 180))
                 resized.save(full_dst / (test_name + ".png"), format="png")
@@ -95,7 +93,7 @@ class Thumbnails:
             gen_params: Parameters for generate.js.
         """
 
-        print("Generating videos...")
+        print(f"Generating videos: {src}")
         with chdir(VIZZU_VIDEO_PATH):
             params = []
             params.append("--vizzu")
@@ -117,19 +115,23 @@ class Thumbnails:
             merge_subfolders: Merge subfolders flag.
         """
 
-        print("Copying videos...")
+        print(f"Copying videos: {src}")
         dst.mkdir(parents=True, exist_ok=True)
         for path in list(dst.rglob("*.webm")) + list(dst.rglob("*.mp4")):
             path.unlink(missing_ok=True)
         for path in list(src.rglob("*.webm")) + list(src.rglob("*.mp4")):
+            test_name = path.stem
+            test_suffix = path.suffix
             full_dst = dst
-            if not merge_subfolders:
-                sub = os.path.relpath(path.parent, src)
+            sub = os.path.relpath(path.parent, src)
+            if merge_subfolders and sub != ".":
+                test_name += f"_{sub}"
+            else:
                 full_dst = full_dst / sub
                 full_dst.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(
                 path,
-                full_dst / path.name,
+                full_dst / (test_name + test_suffix),
             )
 
 
@@ -150,7 +152,6 @@ def main() -> None:
             / "static",
             REPO_PATH / "docs" / "examples" / "static",
             True,
-            False,
         )
 
         Thumbnails.generate_images(VIZZU_TEST_PATH / "test_cases/web_content/presets/")
@@ -162,7 +163,6 @@ def main() -> None:
             / "web_content"
             / "presets",
             REPO_PATH / "docs" / "examples" / "presets",
-            True,
             True,
         )
 
