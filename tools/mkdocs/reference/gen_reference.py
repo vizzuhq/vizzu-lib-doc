@@ -47,28 +47,28 @@ class Reference:
             folder: The destination folder of the code reference.
         """
 
-        Reference._gen_dts()
+        with chdir(REPO_PATH / "vizzu-lib" / "project" / "js"):
+            os.putenv("NODE_PATH", "node_modules")
+            Reference._gen_preset_yaml()
+            Reference._gen_dts()
         Reference._gen_reference(folder)
 
     @staticmethod
     def _gen_dts() -> None:
-        Reference._gen_vizzu_dts()
-        Reference._gen_preset_dts()
-
-    @staticmethod
-    def _gen_vizzu_dts() -> None:
-        shutil.copyfile(
-            f"{JS_API_PATH}/vizzu.d.ts",
-            f"{VIZZU_LIB_EXAMPLE_PATH}/vizzu.d.ts",
+        Node.run(
+            True,
+            "npm",
+            "run",
+            "gen-presets-yaml",
         )
 
     @staticmethod
-    def _gen_preset_dts() -> None:
-        Node.node(
+    def _gen_preset_yaml() -> None:
+        Node.run(
             True,
-            f"{PRESET_GEN_PATH}/preset-dts-gen.js",
-            f"{JS_API_PATH}/presets.js",
-            f"{VIZZU_LIB_EXAMPLE_PATH}/presets.d.ts",
+            "npm",
+            "run",
+            "gen-presets-yaml",
         )
 
     @staticmethod
