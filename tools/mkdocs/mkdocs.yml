@@ -86,7 +86,6 @@ plugins:
   - autorefs
   - gen-files:
       scripts:
-        - thumbnails/gen_readme.py
         - pages/gen_pages.py
         - snippets/gen_vizzu.py
         - examples/gen_examples.py
