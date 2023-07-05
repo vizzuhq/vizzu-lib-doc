@@ -135,6 +135,5 @@ nav:
   - Showcases: showcases/
   - Code reference:
       - reference/README.md
-      - Vizzu: reference/modules/vizzu.md
-      - Presets: reference/modules/presets.md
+      - Vizzu: reference/modules.md
   - License: LICENSE.md

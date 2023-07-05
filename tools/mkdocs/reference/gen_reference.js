@@ -14,10 +14,7 @@ function reference() {
 
   app.bootstrap({
     plugin: ["typedoc-plugin-markdown", "typedoc-plugin-rename-defaults"],
-    entryPoints: [
-      path.join(vizzuLibExamplePath, "vizzu.d.ts"),
-      path.join(vizzuLibExamplePath, "presets.d.ts"),
-    ],
+    entryPoints: [path.join(vizzuLibExamplePath, "vizzu.d.ts")],
     entryPointStrategy: "expand",
     tsconfig: path.join(genPath, "tsconfig.json"),
     name: "Vizzu",

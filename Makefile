@@ -21,6 +21,7 @@ VIRTUAL_ENV = .venv_vizzu_doc
 DEV_PY_BUILD_FLAG = $(VIRTUAL_ENV)/DEV_PY_BUILD_FLAG
 DEV_JS_BUILD_FLAG = node_modules/DEV_JS_BUILD_FLAG
 THUMBNAILS_JS_BUILD_FLAG = vizzu-lib/test/integration/node_modules/THUMBNAILS_JS_BUILD_FLAG
+DTS_BUILD_FLAG = vizzu-lib/project/js/node_modules/DTS_BUILD_FLAG
 
 
 
@@ -112,7 +113,7 @@ endif
 thumbnails: $(DEV_PY_BUILD_FLAG) $(DEV_JS_BUILD_FLAG) $(THUMBNAILS_JS_BUILD_FLAG)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/$(PYTHON_BIN) ./tools/mkdocs/thumbnails/gen_thumbnails.py
 
-doc: $(DEV_PY_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
+doc: $(DEV_PY_BUILD_FLAG) $(DEV_JS_BUILD_FLAG) $(DTS_BUILD_FLAG)
 	$(VIRTUAL_ENV)/$(BIN_PATH)/mkdocs build -f ./tools/mkdocs/mkdocs.yml
 
 deploy: $(DEV_PY_BUILD_FLAG) $(DEV_JS_BUILD_FLAG)
@@ -122,3 +123,8 @@ $(THUMBNAILS_JS_BUILD_FLAG):
 	cd vizzu-lib/test/integration && \
 		npm install
 	$(PYTHON_BIN) tools/make/touch.py -f $(THUMBNAILS_JS_BUILD_FLAG)
+
+$(DTS_BUILD_FLAG):
+	cd vizzu-lib/project/js && \
+		npm install
+	$(PYTHON_BIN) tools/make/touch.py -f $(DTS_BUILD_FLAG)
