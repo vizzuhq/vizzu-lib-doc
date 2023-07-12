@@ -46,7 +46,7 @@ function anim_1010_0110(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count', 'File name'] },
+                    y: { set: ['count()', 'File name'] },
                     x: { set: ['Language'] }
                 },
                 //  '9 File count + types 1',
@@ -66,8 +66,8 @@ function anim_1010_0110(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count'] },
-                    label: { set: ['$count'] },
+                    y: { set: ['count()'] },
+                    label: { set: ['count()'] },
                 },
                 //  '10 File count + types 2',
             },

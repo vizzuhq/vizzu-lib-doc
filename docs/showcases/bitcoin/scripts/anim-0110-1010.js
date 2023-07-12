@@ -3,10 +3,10 @@ function anim_0110_1010(chart) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: ['$count'] },
+                y: { set: ['count()'] },
                 x: { set: ['Language'] },
                 color: { set: ['Language'] },
-                label: { set: ['$count'] },
+                label: { set: ['count()'] },
             },
             //  '10 File count + types 2',
             sort: 'byValue',
@@ -27,7 +27,7 @@ function anim_0110_1010(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count', 'File name'] },
+                    y: { set: ['count()', 'File name'] },
                     label: { set: null },
                 },
                 //  '11 File count + type 3',
