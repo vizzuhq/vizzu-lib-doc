@@ -22,7 +22,7 @@ from vizzu import (  # pylint: disable=import-error, wrong-import-position, wron
 class Deploy:
     """A class for deploying site."""
 
-    latest: bool = True
+    latest: bool = False
 
     @staticmethod
     def mike() -> None:
