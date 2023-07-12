@@ -3,10 +3,10 @@ function anim_1000_0100(chart) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: ['$count'] },
+                y: { set: ['count()'] },
                 x: { set: null },
                 color: { set: null },
-                label: { set: ['$count'] },
+                label: { set: ['count()'] },
             },
             //  '13 File count 2',
             legend: null

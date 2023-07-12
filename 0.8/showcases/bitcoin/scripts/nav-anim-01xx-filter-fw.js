@@ -6,10 +6,10 @@ function nav_anim_01xx_filter_fw(chart, dirLevel) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: ['$count', nextDir] },
+                y: { set: ['count()', nextDir] },
                 x: { set: null },
                 color: { set: null },
-                label: { set: ['$count'] }
+                label: { set: ['count()'] }
             },
             legend: null
         },
@@ -26,7 +26,7 @@ function nav_anim_01xx_filter_fw(chart, dirLevel) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count'] },
+                    y: { set: ['count()'] },
                     x: { set: [nextDir] }
                 }
             },
@@ -43,9 +43,9 @@ function nav_anim_01xx_filter_fw(chart, dirLevel) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count'] },
+                    y: { set: ['count()'] },
                     x: { set: [nextDir] },
-                    label: { set: ['$count'] }
+                    label: { set: ['count()'] }
                 },
                 title: null
             },

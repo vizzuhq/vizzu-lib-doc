@@ -89,7 +89,7 @@ function slide(seid, actFilter) {
     },
     config: {
       channels: {
-        x: {attach: ['$exists', 'name'], 
+        x: {attach: ['name'], 
           range: {
             min: 0,
             max: '102%'

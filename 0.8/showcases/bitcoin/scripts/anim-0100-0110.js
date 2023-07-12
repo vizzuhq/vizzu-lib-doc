@@ -3,10 +3,10 @@ function anim_0100_0110(chart) {
     return chart.animate({
         config: {
             channels: {
-                y: { set: ['$count'] },
+                y: { set: ['count()'] },
                 x: { set: null },
                 color: { set: null },
-                label: { set: ['$count'] },
+                label: { set: ['count()'] },
             },//  '13 File count 2',
             legend: null
         },
@@ -24,7 +24,7 @@ function anim_0100_0110(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count', 'Language', 'File name'] },
+                    y: { set: ['count()', 'Language', 'File name'] },
                     x: { set: null },
                     label: { set: null },
                     color: { set: ['Language'] }
@@ -45,7 +45,7 @@ function anim_0100_0110(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count', 'File name'] },
+                    y: { set: ['count()', 'File name'] },
                     x: { set: ['Language'] },
                     color: { set: ['Language'] }
                 },//  '9 File count + types 1',
@@ -67,9 +67,9 @@ function anim_0100_0110(chart) {
         .then(chart => chart.animate({
             config: {
                 channels: {
-                    y: { set: ['$count'] },
+                    y: { set: ['count()'] },
                     x: { set: ['Language'] },
-                    label: { set: ['$count'] },
+                    label: { set: ['count()'] },
                     color: { set: ['Language'] }
                 },
                 //  '10 File count + types 2',
