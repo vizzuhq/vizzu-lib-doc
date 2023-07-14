@@ -4063,11 +4063,14 @@ chart.animate({
 })</code></pre>
 </details>
 <pre class="highlight"><code class="language-javascript">chart.animate({
-    config: Vizzu.presets.column({
-        "x": "Joy factors",
-        "y": "Value 2 (+)",
+    config: {
+        "channels": {
+            "x": "Joy factors",
+            "y": "Value 2 (+)",
+            "label": "Value 2 (+)"
+        },
         "title": "Column Chart"
-    })
+    }
 });</code></pre>
 <script src="./main.js"></script>
 
