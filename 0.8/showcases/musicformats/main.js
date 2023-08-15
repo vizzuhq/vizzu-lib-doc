@@ -13,17 +13,8 @@ function drawYear(event) {
 		1000, 500);
 }
 
-function fixMarkerLabel(event) {
-	const cutAfterDot = /\..*/;
-	let label = event.data.text;
-	label = label.replace(cutAfterDot, ' m$');
-	event.renderingContext.fillText(label, event.data.rect.pos.x, event.data.rect.pos.y);
-	event.preventDefault();
-}
-
 anim = anim.then(chart => {
 	chart.on('logo-draw', drawYear);
-	chart.on('plot-marker-label-draw', fixMarkerLabel);
 	return chart;
 });
 
@@ -66,7 +57,10 @@ for (let year = 1973; year <= 2020; year++) {
 						label: { color: '#ffffff00', numberFormat: 'grouped' }
 					},
 					marker: {
-						colorPalette: '#b74c20FF #c47f58FF #1c9761FF #ea4549FF #875792FF #3562b6FF #ee7c34FF #efae3aFF'
+						colorPalette: '#b74c20FF #c47f58FF #1c9761FF #ea4549FF #875792FF #3562b6FF #ee7c34FF #efae3aFF',
+						label: {
+							maxFractionDigits: 0
+						}
 					}
 				}
 			}
@@ -107,7 +101,6 @@ anim = anim.then(chart => {
 
 anim = anim.then(chart => {
 	chart.off('logo-draw', drawYear);
-	chart.off('plot-marker-label-draw', fixMarkerLabel);
 	return chart;
 });
 
