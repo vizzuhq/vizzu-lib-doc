@@ -4243,7 +4243,9 @@ in any other case, a dimension.</p>
     ]
 };</code></pre>
 <p>Where records can be arrays as shown above or objects:</p>
-<pre class="highlight"><code class="language-javascript">        {
+<pre class="highlight"><code class="language-javascript">let data = {
+    // ...
+    records: [{
             Genres: 'Pop',
             Kinds: 'Hard',
             Popularity: 114
@@ -4252,7 +4254,9 @@ in any other case, a dimension.</p>
             Kinds: 'Hard',
             Popularity: 96
         },
-        ...</code></pre>
+        // ...
+    ],
+};</code></pre>
 <p>Using data cube form:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

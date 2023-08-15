@@ -4092,8 +4092,8 @@ chart.animate({
 <pre class="highlight"><code class="language-javascript">chart.animate({
     data: {
         filter: record =&gt;
-            record["Genres"] == 'Pop' ||
-            record["Genres"] == 'Metal',
+            record['Genres'] == 'Pop' ||
+            record['Genres'] == 'Metal',
     }
 })</code></pre>
 <p>Now we add a cross-filter that includes items from both the <code>Genres</code> and the
@@ -4104,8 +4104,8 @@ we weren't update the filter, <code>Vizzu</code> would use it in subsequent stat
 <pre class="highlight"><code class="language-javascript">chart.animate({
     data: {
         filter: record =&gt;
-            (record["Genres"] == 'Pop' || record["Genres"] == 'Metal') &amp;&amp;
-            record["Kinds"] == 'Smooth'
+            (record['Genres'] == 'Pop' || record['Genres'] == 'Metal') &amp;&amp;
+            record['Kinds'] == 'Smooth'
     }
 })</code></pre>
 <p>Switching the filter off to get back to the original view.</p>
