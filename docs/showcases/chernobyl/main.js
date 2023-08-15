@@ -30,14 +30,6 @@ anim = anim.then(chart =>
     timeFraction = Math.min(0.99, event.data.progress);
   });
 
-  chart.on('plot-marker-label-draw', event => {
-    const cutAfterDot = /\.\d*/; // workaround: label precision setting is missing
-    let label = event.data.text;
-    label = label.replace(cutAfterDot, '');
-    event.renderingContext.fillText(label, event.data.rect.pos.x, event.data.rect.pos.y);    
-  	event.preventDefault();
-  });
-
   chart.on('plot-axis-label-draw', event => {
     if (event.data.text.startsWith('Radiation dose'))
       event.renderingContext.fillStyle =

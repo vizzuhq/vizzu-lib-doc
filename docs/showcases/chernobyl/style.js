@@ -11,7 +11,10 @@ const style = {
 		  + (new Array(18)).fill('#ffffffee').join(' ') + ' '
 		  + (new Array(5)).fill('#26292a').join(' '),
 		rectangleSpacing: 0.9,
-		label: { fontSize: 28 }
+		label: { 
+			fontSize: 28,
+			maxFractionDigits: 0,
+		}
 	  },
 	  xAxis: {
 		interlacing: {
