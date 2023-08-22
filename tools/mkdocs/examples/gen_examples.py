@@ -241,15 +241,15 @@ class GenExamples:
             if figcaption:
                 html.append("<figure markdown class='image-figure'>")
                 html.append(
-                    "<video nocontrols autoplay muted loop class='image-gallery-w-caption'"
+                    "<video nocontrols autoplay muted loop class='image-gallery-w-caption'>"
                 )
             else:
                 html.append(
-                    "<video nocontrols autoplay muted loop class='image-gallery'"
+                    "<video nocontrols autoplay muted loop class='image-gallery'>"
                 )
-            html.append(f" src='./{thumbnail}.webm'")
+            html.append(f"<source src='./{thumbnail}.webm'")
             html.append(" type='video/webm'>")
-            html.append(f" src='./{thumbnail}.mp4'")
+            html.append(f"<source src='./{thumbnail}.mp4'")
             html.append(" type='video/mp4'>")
             html.append("</video>")
             if figcaption:
