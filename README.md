@@ -18,14 +18,6 @@ Clone `vizzu-lib` into `vizzu-lib-doc` and
 git clone git@github.com:vizzuhq/vizzu-lib.git
 ```
 
-Run static code analysis over `vizzu-lib` documentation releated files:
-
-```shell
-cd vizzu-lib/tools/docs
-make check
-cd ../../..
-```
-
 Run static code analysis over `vizzu-lib-doc`:
 
 ```shell
