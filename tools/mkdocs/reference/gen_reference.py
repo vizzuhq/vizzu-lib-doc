@@ -49,18 +49,16 @@ class Reference:
 
         with chdir(REPO_PATH / "vizzu-lib" / "project" / "js"):
             os.putenv("NODE_PATH", "node_modules")
+            Reference._delete_dts()
             Reference._gen_preset_yaml()
             Reference._gen_dts()
         Reference._gen_reference(folder)
 
     @staticmethod
-    def _gen_dts() -> None:
-        Node.run(
-            True,
-            "npm",
-            "run",
-            "gen-presets-yaml",
-        )
+    def _delete_dts() -> None:
+        dts = VIZZU_LIB_EXAMPLE_PATH / "vizzu.d.ts"
+        if os.path.exists(dts):
+            os.remove(dts)
 
     @staticmethod
     def _gen_preset_yaml() -> None:
@@ -69,6 +67,15 @@ class Reference:
             "npm",
             "run",
             "gen-presets-yaml",
+        )
+
+    @staticmethod
+    def _gen_dts() -> None:
+        Node.run(
+            True,
+            "npm",
+            "run",
+            "gen-dts",
         )
 
     @staticmethod
