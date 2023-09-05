@@ -4122,62 +4122,18 @@ chart.on('logo-draw', logoDrawHandler);</code></pre>
 method.</p>
 <div id="tutorial_04"></div>
 
-<pre class="highlight"><code class="language-javascript">function backgroundImageHandler(event) {
-    const bgImage = new Image();
-    bgImage.src = "https://vizzuhq.com/images/logo/logo.svg";
+<pre class="highlight"><code class="language-javascript">const image = new Image();
 
-    // Get the dimensions of the chart canvas
-    const vizzuCanvasWidth = event.renderingContext.canvas.width;
-    const vizzuCanvasHeight = event.renderingContext.canvas.height;
-
-    // Calculate the aspect ratios of the image and the canvas
-    const imageAspectRatio = bgImage.width / bgImage.height;
-    const canvasAspectRatio = vizzuCanvasWidth / vizzuCanvasHeight;
-
-    // Calculate the dimensions and position of the image on the canvas
-    let imageWidth;
-    let imageHeight;
-    if (imageAspectRatio &gt; canvasAspectRatio) {
-        imageWidth = vizzuCanvasWidth;
-        imageHeight = vizzuCanvasWidth / imageAspectRatio;
-    } else {
-        imageHeight = vizzuCanvasHeight;
-        imageWidth = vizzuCanvasHeight * imageAspectRatio;
-    }
-    const xOffset = (vizzuCanvasWidth - imageWidth) / 2;
-    const yOffset = (vizzuCanvasHeight - imageHeight) / 2;
-
-    // Draw the background image on the canvas
-    event.renderingContext.drawImage(
-        bgImage,
-        xOffset,
-        yOffset,
-        imageWidth,
-        imageHeight
-    );
+function backgroundImageHandler(event) {
+    event.renderingContext.drawImage(image, 0, 0,
+        event.data.rect.size.x, event.data.rect.size.y);
     event.preventDefault();
 }
 
-chart.on('background-draw', backgroundImageHandler);</code></pre>
-<details class="info">
-<summary>Info - How to make interlacing transparent</summary>
-<pre class="highlight"><code class="language-javascript">chart.animate({
-    style: {
-        plot: {
-            xAxis: {
-                interlacing: {
-                    color: "#ffffff00"
-                }
-            },
-            yAxis: {
-                interlacing: {
-                    color: "#ffffff00"
-                }
-            },
-        },
-    },
-});</code></pre>
-</details>
+image.src = 'data:image/gif;base64,R0lGODlhAwACAPIAAJLf6q/i7M/r8un0+PT6+/n8/QAAAAAAACH5BAQAAAAALAAAAAADAAIAAAMEWBMkkAA7';
+image.onload = () =&gt; {
+    chart.on('background-draw', backgroundImageHandler);
+};</code></pre>
 <p>Unregistering the previously registered handler.</p>
 <pre class="highlight"><code class="language-javascript">chart.off('background-draw', backgroundImageHandler);</code></pre>
 <script src="../events.js"></script>
