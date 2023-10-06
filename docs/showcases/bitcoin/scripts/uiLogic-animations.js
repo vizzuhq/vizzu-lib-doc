@@ -45,8 +45,8 @@ function busyPromise(fn) {
 
 function performInitAnimation(info) {
   if (!enterTransientState()) return
-  let promise1 = animInit(infoChart)
-  let promise2 = navAnimInit(navChart)
+  const promise1 = animInit(infoChart)
+  const promise2 = navAnimInit(navChart)
   databaseFileCount = info.files
   Promise.all([promise1, promise2]).then(() => leaveTransientState())
 }
@@ -266,12 +266,15 @@ function navLabelDrawHandler(event) {
 
 function paralellAnim() {
   let promise1 = Promise.resolve()
-  if (navAnimationType == 'switchToLineCount') {
+  if (navAnimationType === 'switchToLineCount') {
+    // eslint-disable-next-line no-undef
     promise1 = nav_anim_01xx_10xx(navChart, dirFilter.length)
-  } else if (navAnimationType == 'switchToFileCount') {
+  } else if (navAnimationType === 'switchToFileCount') {
+    // eslint-disable-next-line no-undef
     promise1 = nav_anim_10xx_01xx(navChart, dirFilter.length)
   }
-  let promise2 = window[encodeAnimFunctionName()](infoChart)
+  // eslint-disable-next-line no-undef
+  const promise2 = window[encodeAnimFunctionName()](infoChart)
   Promise.all([promise1, promise2]).then(() => {
     leaveTransientState()
     if (navAnimationType === 'switchToLineCount') stateFRestore = false
@@ -279,8 +282,8 @@ function paralellAnim() {
 }
 
 function serialAnim() {
-  let fnName = encodeAnimFunctionName()
-  if (navAnimationType == 'switchToLineCount') {
+  const fnName = encodeAnimFunctionName()
+  if (navAnimationType === 'switchToLineCount') {
     // eslint-disable-next-line no-undef
     nav_anim_01xx_10xx(navChart, dirFilter.length).then(() => {
       // eslint-disable-next-line no-undef
