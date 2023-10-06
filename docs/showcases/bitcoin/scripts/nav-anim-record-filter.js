@@ -1,4 +1,5 @@
-function nav_anim_record_filter(chart, filterFn) {
+// eslint-disable-next-line no-unused-vars
+function navAnimRecordFilter(chart, filterFn) {
   return chart.animate(
     {
       data: {

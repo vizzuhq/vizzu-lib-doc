@@ -189,10 +189,10 @@ function updateAnimationVariables() {
 
 function applyFilter() {
   let filter1 = busyPromise(() => {
-    return nav_anim_record_filter(infoChart, (record) => selectRecord(record))
+    return navAnimRecordFilter(infoChart, (record) => selectRecord(record))
   })
   let filter2 = busyPromise(() => {
-    return nav_anim_record_filter(navChart, (record) => selectRecord(record))
+    return navAnimRecordFilter(navChart, (record) => selectRecord(record))
   })
   // always paralell
   if (true || databaseFileCount < paralellAnimLimit) {
