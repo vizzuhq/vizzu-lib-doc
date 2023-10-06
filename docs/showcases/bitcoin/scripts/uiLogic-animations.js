@@ -66,11 +66,11 @@ function performAnimation() {
 
 function performFilteringAnimationFw(event) {
     navAnimationType = 'navFw';
-    if (event.data.marker != undefined) {
+    if (event.target.tagName === 'plot-marker') {
         if (dirMaxDepth > dirFilter.length) {
             let level = dirFilter.length;
             let levelStr = 'Folder level ' + level.toString();
-            let filterStr = event.data.marker.categories[levelStr];
+            let filterStr = event.target.categories[levelStr];
             currentDirectory = 'workspace' + filterStr.substring(1);
             setBackLabelState(false);
             if (dirFilter[dirFilter.length - 1] == filterStr) {
@@ -271,7 +271,7 @@ function selectRecord(record) {
 
 function navLabelDrawHandler(event) {
     let tmp = [];
-    let label = event.data.text;
+    let label = event.target.value;
     if (label == dirFilter[dirFilter.length - 1])
         label =  './';
     else
@@ -280,12 +280,18 @@ function navLabelDrawHandler(event) {
         label = tmp[tmp.length - 2];
     if (label == '.')
         label = './';
-    let textRect = event.renderingContext.measureText(label);
+    let ctx = event.renderingContext;
+    let textRect = ctx.measureText(label);
     let height = textRect.actualBoundingBoxAscent;
-    event.renderingContext.fillText(label,
-        event.data.rect.pos.x + event.data.rect.size.x - textRect.width,
-        event.data.rect.pos.y + event.data.rect.size.y - height / 2);
-  	event.preventDefault();
+    ctx.save();
+    let rect = event.detail.rect;
+    const tr = rect.transform;
+    ctx.transform(tr[0][0], tr[1][0], tr[0][1], tr[1][1], tr[0][2], tr[1][2]);
+    ctx.fillText(label,
+        rect.size.x - textRect.width - height / 2,
+        rect.size.y / 2 + height / 2);
+    ctx.restore();
+    event.preventDefault();
 }
 
 function paralellAnim() {
