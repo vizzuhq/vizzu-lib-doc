@@ -27,15 +27,15 @@ anim = anim.then(chart =>
   });
 
   chart.on('update', event => { 
-    timeFraction = Math.min(0.99, event.data.progress);
+    timeFraction = Math.min(0.99, event.detail.progress);
   });
 
   chart.on('plot-axis-label-draw', event => {
-    if (event.data.text.startsWith('Radiation dose'))
+    if (event.target.value.startsWith('Radiation dose'))
       event.renderingContext.fillStyle =
         event.renderingContext.fillStyle.replace(/\([^,]*,[^,]*,[^,]*,/, '(222,0,0,');
     for (let record of data.records.slice(19, 24))
-      if (event.data.text === record[1])
+      if (event.target.value === record[1])
         event.renderingContext.fillStyle = 
           event.renderingContext.fillStyle.replace(/\([^,]*,[^,]*,[^,]*,/, '(38,39,40,');
   });

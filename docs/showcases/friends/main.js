@@ -50,14 +50,18 @@ function drawBg(dc) {
   dc.drawImage(bgImage, 0, 0);
 }
 
-function text(dc, x, y, sx, sy, txt)
+function text(dc, rect, txt)
 {
   let img = portraits.getByName(txt);
   if (img !== undefined) {
     let alpha = String(dc.fillStyle).split(',')[3].slice(0, -1);
+    dc.save();
     dc.globalAlpha = alpha;
-    dc.drawImage(img, x + sx + 10, y - 13, 48, 48);
+    const tr = rect.transform;
+    dc.transform(tr[0][0], tr[1][0], tr[0][1], tr[1][1], tr[0][2], tr[1][2]);
+    dc.drawImage(img, rect.size.x - 14 - 48, rect.size.y - 48, 48, 48);
     dc.globalAlpha = 1;
+    dc.restore();
     return true;
   }
   return false;
@@ -134,9 +138,8 @@ chart.initializing.then(chart =>
   });
 
   chart.on('plot-axis-label-draw', event => {
-    let rect = event.data.rect;
-    let ok = text(event.renderingContext, 
-      rect.pos.x, rect.pos.y, rect.size.x, rect.size.y, event.data.text);
+    let rect = event.detail.rect;
+    let ok = text(event.renderingContext, rect, event.target.value);
     if (!ok) event.preventDefault();
   });
 

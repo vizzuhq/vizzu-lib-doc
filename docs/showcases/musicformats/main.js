@@ -79,7 +79,7 @@ for (let year = 1973; year <= 2020; year++) {
 
 anim = anim.then(chart => {
 	chart.on('plot-axis-label-draw', event => {
-		let year = parseFloat(event.data.text);
+		let year = parseFloat(event.target.value);
 		if (!isNaN(year) && year % 5 != 0)
 			event.preventDefault();
 	});
