@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars, camelcase
 function anim_1010_0110(chart) {
   return chart
     .animate(
@@ -9,7 +10,7 @@ function anim_1010_0110(chart) {
             color: 'Language',
             label: { set: ['Line count'] }
           },
-          //  '4 code + types 2',
+          // '4 code + types 2',
           legend: null,
           sort: 'byValue'
         },
@@ -33,7 +34,7 @@ function anim_1010_0110(chart) {
               x: { set: ['Line count', 'File name'] },
               label: null
             }
-            //  '5 code + types 3'
+            // '5 code + types 3'
           },
           style: {
             plot: {
@@ -55,7 +56,7 @@ function anim_1010_0110(chart) {
               y: { set: ['count()', 'File name'] },
               x: { set: ['Language'] }
             },
-            //  '9 File count + types 1',
+            // '9 File count + types 1',
             reverse: true
           },
           style: {
@@ -78,7 +79,7 @@ function anim_1010_0110(chart) {
               y: { set: ['count()'] },
               label: { set: ['count()'] }
             }
-            //  '10 File count + types 2',
+            // '10 File count + types 2',
           },
           style: {
             plot: {

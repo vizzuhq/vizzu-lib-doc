@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars, camelcase
 function anim_1001_1000(chart) {
   return chart
     .animate(
@@ -9,7 +10,7 @@ function anim_1001_1000(chart) {
             label: { set: null },
             color: { detach: ['Language'] }
           },
-          //  '7 code+ Files 1',
+          // '7 code+ Files 1',
           sort: 'byValue',
           legend: null,
           reverse: false
@@ -35,7 +36,7 @@ function anim_1001_1000(chart) {
               color: { set: null },
               label: { set: null }
             },
-            //1 code1
+            // 1 code1
             sort: 'byValue'
           },
           style: {
