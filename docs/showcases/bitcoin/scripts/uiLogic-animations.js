@@ -67,9 +67,9 @@ function performFilteringAnimationFw(event) {
   navAnimationType = 'navFw'
   if (event.target.tagName === 'plot-marker') {
     if (dirMaxDepth > dirFilter.length) {
-      const level = dirFilter.length
-      const levelStr = 'Folder level ' + level.toString()
-      const filterStr = event.target.categories[levelStr]
+      let level = dirFilter.length // eslint-disable-line prefer-const
+      let levelStr = 'Folder level ' + level.toString() // eslint-disable-line prefer-const
+      let filterStr = event.target.categories[levelStr] // eslint-disable-line prefer-const
       currentDirectory = 'workspace' + filterStr.substring(1)
       setBackLabelState(false) // eslint-disable-line no-undef
       if (dirFilter[dirFilter.length - 1] === filterStr) {
@@ -157,7 +157,9 @@ function enterTransientState() {
 function leaveTransientState() {
   if (!inTransientState) return false
   enableControls() // eslint-disable-line no-undef
-  if (navAnimationType == 'switchToLineCount') setFilesChekboxState(false, stateFRestore)
+  // eslint-disable-next-line no-undef
+  if (navAnimationType === 'switchToLineCount') setFilesChekboxState(false, stateFRestore)
+  // eslint-disable-next-line no-undef
   if (stateFDisabled) setFilesChekboxState(true, false)
   inTransientState = false
   stopProgressIndication()
@@ -180,12 +182,14 @@ function encodeAnimFunctionName() {
 
 function selectNavAnimationType() {
   let type = 'none'
+  // eslint-disable-next-line eqeqeq
   if (stateFC == true && lastStateFC == false) {
     type = 'switchToFileCount'
     stateFDisabled = true
     stateFRestore = stateF
     stateF = false
   }
+  // eslint-disable-next-line eqeqeq
   if (stateFC == false && lastStateFC == true) {
     type = 'switchToLineCount'
     stateF = stateFRestore
@@ -202,13 +206,18 @@ function updateAnimationVariables() {
 }
 
 function applyFilter() {
+  // eslint-disable-next-line prefer-const
   let filter1 = busyPromise(() => {
+    // eslint-disable-next-line no-undef
     return navAnimRecordFilter(infoChart, (record) => selectRecord(record))
   })
+  // eslint-disable-next-line prefer-const
   let filter2 = busyPromise(() => {
+    // eslint-disable-next-line no-undef
     return navAnimRecordFilter(navChart, (record) => selectRecord(record))
   })
   // always paralell
+  // eslint-disable-next-line no-constant-condition
   if (true || databaseFileCount < paralellAnimLimit) {
     filter1.exec()
     filter2.exec()
@@ -222,12 +231,16 @@ function applyFilter() {
 
 function applyFilterFw() {
   enterTransientState()
-  let promises = applyFilter()
+  const promises = applyFilter()
   Promise.all([promises[0].promise, promises[1].promise]).then(() => {
     if (dirMaxDepth > dirFilter.length) {
-      if (stateLC)
+      if (stateLC) {
+        // eslint-disable-next-line no-undef
         nav_anim_10xx_filter_fw(navChart, dirFilter.length).then(() => leaveTransientState())
-      else nav_anim_01xx_filter_fw(navChart, dirFilter.length).then(() => leaveTransientState())
+      } else {
+        // eslint-disable-next-line no-undef
+        nav_anim_01xx_filter_fw(navChart, dirFilter.length).then(() => leaveTransientState())
+      }
     } else leaveTransientState()
   })
 }
@@ -235,13 +248,14 @@ function applyFilterFw() {
 function applyFilterBw() {
   let filterStr = ''
   dirFilter.pop()
+  // eslint-disable-next-line eqeqeq, no-undef
   if (dirFilter == 0) setBackLabelState(true)
   else {
     filterStr = dirFilter[dirFilter.length - 1]
     currentDirectory = 'workspace' + filterStr.substring(1)
-    setBackLabelState(false)
+    setBackLabelState(false) // eslint-disable-line no-undef
   }
-  let promises = applyFilter()
+  const promises = applyFilter()
   Promise.all([promises[0].promise, promises[1].promise]).then(() => {
     leaveTransientState()
     if (filterStr != '') {
