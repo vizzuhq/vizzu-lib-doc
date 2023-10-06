@@ -9,7 +9,7 @@ export var palette = [
   '#958aa4F0',
   '#8b85acF0',
   '#8482b1F0'
-];
+]
 
 export var style = {
   backgroundColor: '#FFFFFF00',
@@ -18,15 +18,15 @@ export var style = {
     paddingLeft: 293,
     paddingRight: 140,
     paddingBottom: 45,
-    marker:
-        {label: {position: 'center', filter: 'lightness(0.5)', fontSize: 16 },
-        rectangleSpacing: 0.4,
-        colorPalette: palette.join(' '),
-      },
+    marker: {
+      label: { position: 'center', filter: 'lightness(0.5)', fontSize: 16 },
+      rectangleSpacing: 0.4,
+      colorPalette: palette.join(' ')
+    },
 
     xAxis: {
       color: '#fcbe8c80',
-      interlacing: {color: '#fcbe8c0C'},
+      interlacing: { color: '#fcbe8c0C' },
       label: {
         paddingRight: 75,
         fontSize: 26,
@@ -43,7 +43,7 @@ export var style = {
     },
     yAxis: {
       color: '#fcbe8c80',
-      interlacing: {color: '#fcbe8c0C'},
+      interlacing: { color: '#fcbe8c0C' },
       label: {
         paddingRight: 125,
         fontSize: 26,
@@ -67,6 +67,5 @@ export var style = {
     paddingRight: 75,
     fontFamily: 'Roboto Condensed, sans-serif'
   },
-  legend: {width: 0},
-
-};
+  legend: { width: 0 }
+}

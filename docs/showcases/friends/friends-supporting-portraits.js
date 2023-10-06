@@ -37,27 +37,27 @@ const filelist = [
   'Paolo.png',
   'Nurse Sizemore.png',
   'Leslie.png'
-];
+]
 
 export class Portraits {
   constructor() {
-	this.loaded = 0;
-	this.cnt = filelist.length;
-    this.imgs = new Map();
+    this.loaded = 0
+    this.cnt = filelist.length
+    this.imgs = new Map()
     for (let file of filelist) {
-      let img = new Image();
-	    img.onload = () => { 
-        this.loaded++; 
-        if (this.loaded == this.cnt) console.log('portraits loaded');
-      };
-      img.src = 'portraits/' + file;
-     this.imgs.set(file, img);
+      let img = new Image()
+      img.onload = () => {
+        this.loaded++
+        if (this.loaded == this.cnt) console.log('portraits loaded')
+      }
+      img.src = 'portraits/' + file
+      this.imgs.set(file, img)
     }
   }
 
   getByName(name) {
-    if (this.loaded < this.cnt) return undefined;
-    let file = name + (name.slice(-1) == '.' ? 'png' : '.png');
-    return this.imgs.has(file) ? this.imgs.get(file) : undefined;
+    if (this.loaded < this.cnt) return undefined
+    let file = name + (name.slice(-1) == '.' ? 'png' : '.png')
+    return this.imgs.has(file) ? this.imgs.get(file) : undefined
   }
 }

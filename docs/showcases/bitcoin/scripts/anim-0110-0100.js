@@ -1,94 +1,104 @@
 function anim_0110_0100(chart) {
-
-    return chart.animate({
+  return chart
+    .animate(
+      {
         config: {
-            channels: {
-                y: { set: ['count()'] },
-                x: { set: ['Language'] },
-                label: { set: ['count()'] },
-                color: { set: ['Language'] }
-            },
-            //  '10 File count + types 2',
-            sort: 'byValue',
-            legend: null,
-            reverse: true,
+          channels: {
+            y: { set: ['count()'] },
+            x: { set: ['Language'] },
+            label: { set: ['count()'] },
+            color: { set: ['Language'] }
+          },
+          //  '10 File count + types 2',
+          sort: 'byValue',
+          legend: null,
+          reverse: true
         },
         style: {
-            plot: {
-                paddingLeft: '9em',
-                marker: { label: { position: 'top' } },
-                xAxis: { label: { angle: -0.7 } }
-            }
+          plot: {
+            paddingLeft: '9em',
+            marker: { label: { position: 'top' } },
+            xAxis: { label: { angle: -0.7 } }
+          }
         }
-    },
-        { duration: 0.1 }
+      },
+      { duration: 0.1 }
     )
 
-        .then(chart => chart.animate({
-            config: {
-                channels: {
-                    y: { set: ['count()', 'File name'] },
-                    x: { set: ['Language'] },
-                    color: { set: ['Language'] },
-                    label: { set: null },
-                },
-                //  '11 File count + type 3',
-                sort: 'byValue',
-                legend: null,
-                reverse: true,
+    .then((chart) =>
+      chart.animate(
+        {
+          config: {
+            channels: {
+              y: { set: ['count()', 'File name'] },
+              x: { set: ['Language'] },
+              color: { set: ['Language'] },
+              label: { set: null }
             },
-            style: {
-                plot: {
-                    paddingLeft: '9em',
-                    marker: { label: { position: 'top' } },
-                    xAxis: { label: { angle: -0.7 } }
-                }
+            //  '11 File count + type 3',
+            sort: 'byValue',
+            legend: null,
+            reverse: true
+          },
+          style: {
+            plot: {
+              paddingLeft: '9em',
+              marker: { label: { position: 'top' } },
+              xAxis: { label: { angle: -0.7 } }
             }
+          }
         },
-            { duration: 0.5 }
-        ))
+        { duration: 0.5 }
+      )
+    )
 
-        .then(chart => chart.animate({
-            config: {
-                channels: {
-                    y: { set: ['count()', 'Language', 'File name'] },
-                    x: { set: null },
-                    label: { set: null },
-                    color: { set: ['Language'] }
-                },
-                //  '12 File count 1',
-                legend: null
+    .then((chart) =>
+      chart.animate(
+        {
+          config: {
+            channels: {
+              y: { set: ['count()', 'Language', 'File name'] },
+              x: { set: null },
+              label: { set: null },
+              color: { set: ['Language'] }
             },
-            style: {
-                plot: {
-                    paddingLeft: '9em',
-                    marker: { label: { position: 'center' } },
-                    xAxis: { label: { angle: -0.7 } }
-                }
+            //  '12 File count 1',
+            legend: null
+          },
+          style: {
+            plot: {
+              paddingLeft: '9em',
+              marker: { label: { position: 'center' } },
+              xAxis: { label: { angle: -0.7 } }
             }
+          }
         },
-            { duration: 2 }
-        ))
+        { duration: 2 }
+      )
+    )
 
-        .then(chart => chart.animate({
-            config: {
-                channels: {
-                    y: { set: ['count()'] },
-                    x: { set: null },
-                    color: { set: null },
-                    label: { set: ['count()'] },
-                },
-                //  '13 File count 2',
-                legend: null
+    .then((chart) =>
+      chart.animate(
+        {
+          config: {
+            channels: {
+              y: { set: ['count()'] },
+              x: { set: null },
+              color: { set: null },
+              label: { set: ['count()'] }
             },
-            style: {
-                plot: {
-                    paddingLeft: '9em',
-                    marker: { label: { position: 'center' } },
-                    xAxis: { label: { angle: -0.7 } }
-                }
+            //  '13 File count 2',
+            legend: null
+          },
+          style: {
+            plot: {
+              paddingLeft: '9em',
+              marker: { label: { position: 'center' } },
+              xAxis: { label: { angle: -0.7 } }
             }
+          }
         },
-            { duration: 0.5 }
-        ));
+        { duration: 0.5 }
+      )
+    )
 }
