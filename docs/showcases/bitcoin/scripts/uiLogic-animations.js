@@ -1,7 +1,7 @@
 let inTransientState = false
 let navAnimationType = 'initial'
 let stateF_disabled = false
-let stateF_restore = false
+let stateFRestore = false
 
 let stateL = true
 let stateF = false
@@ -143,7 +143,7 @@ function enterTransientState() {
 function leaveTransientState() {
   if (!inTransientState) return false
   enableControls()
-  if (navAnimationType == 'switchToLineCount') setFilesChekboxState(false, stateF_restore)
+  if (navAnimationType == 'switchToLineCount') setFilesChekboxState(false, stateFRestore)
   if (stateF_disabled) setFilesChekboxState(true, false)
   inTransientState = false
   stopProgressIndication()
@@ -169,12 +169,12 @@ function selectNavAnimationType() {
   if (stateFC == true && last_stateFC == false) {
     type = 'switchToFileCount'
     stateF_disabled = true
-    stateF_restore = stateF
+    stateFRestore = stateF
     stateF = false
   }
   if (stateFC == false && last_stateFC == true) {
     type = 'switchToLineCount'
-    stateF = stateF_restore
+    stateF = stateFRestore
     stateF_disabled = false
   }
   return type
@@ -274,26 +274,31 @@ function paralellAnim() {
   let promise2 = window[encodeAnimFunctionName()](infoChart)
   Promise.all([promise1, promise2]).then(() => {
     leaveTransientState()
-    if (navAnimationType == 'switchToLineCount') stateF_restore = false
+    if (navAnimationType === 'switchToLineCount') stateFRestore = false
   })
 }
 
 function serialAnim() {
   let fnName = encodeAnimFunctionName()
   if (navAnimationType == 'switchToLineCount') {
+    // eslint-disable-next-line no-undef
     nav_anim_01xx_10xx(navChart, dirFilter.length).then(() => {
+      // eslint-disable-next-line no-undef
       window[fnName](infoChart).then(() => {
         leaveTransientState()
-        stateF_restore = false
+        stateFRestore = false
       })
     })
-  } else if (navAnimationType == 'switchToFileCount') {
+  } else if (navAnimationType === 'switchToFileCount') {
+    // eslint-disable-next-line no-undef
     nav_anim_10xx_01xx(navChart, dirFilter.length).then(() => {
+      // eslint-disable-next-line no-undef
       window[fnName](infoChart).then(() => {
         leaveTransientState()
       })
     })
   } else {
+    // eslint-disable-next-line no-undef
     window[fnName](infoChart).then(() => {
       leaveTransientState()
     })
