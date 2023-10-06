@@ -258,7 +258,9 @@ function applyFilterBw() {
   const promises = applyFilter()
   Promise.all([promises[0].promise, promises[1].promise]).then(() => {
     leaveTransientState()
+    // eslint-disable-next-line eqeqeq
     if (filterStr != '') {
+      // eslint-disable-next-line no-undef
       vscode.postMessage({ command: 'showinexplorer', text: filterStr })
     }
   })
@@ -266,25 +268,28 @@ function applyFilterBw() {
 
 function selectRecord(record) {
   for (let i = 0; i < dirFilter.length; i++) {
-    let name = 'Folder level ' + i
-    let value = dirFilter[i]
+    const name = 'Folder level ' + i
+    const value = dirFilter[i]
+    // eslint-disable-next-line eqeqeq
     if (record[name] != value) return false
   }
   return true
 }
 
+// eslint-disable-next-line no-unused-vars
 function navLabelDrawHandler(event) {
   let tmp = []
   let label = event.target.value
+  // eslint-disable-next-line eqeqeq
   if (label == dirFilter[dirFilter.length - 1]) label = './'
   else tmp = label.split('/')
   if (tmp.length >= 2) label = tmp[tmp.length - 2]
-  if (label == '.') label = './'
-  let ctx = event.renderingContext
-  let textRect = ctx.measureText(label)
-  let height = textRect.actualBoundingBoxAscent
+  if (label === '.') label = './'
+  let ctx = event.renderingContext // eslint-disable-line prefer-const
+  let textRect = ctx.measureText(label) // eslint-disable-line prefer-const
+  let height = textRect.actualBoundingBoxAscent // eslint-disable-line prefer-const
   ctx.save()
-  let rect = event.detail.rect
+  let rect = event.detail.rect // eslint-disable-line prefer-const
   const tr = rect.transform
   ctx.transform(tr[0][0], tr[1][0], tr[0][1], tr[1][1], tr[0][2], tr[1][2])
   ctx.fillText(label, rect.size.x - textRect.width - height / 2, rect.size.y / 2 + height / 2)
