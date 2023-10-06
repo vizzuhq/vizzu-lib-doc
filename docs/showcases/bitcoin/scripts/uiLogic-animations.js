@@ -17,7 +17,7 @@ const dirFilter = []
 let dirMaxDepth = 0 // eslint-disable-line prefer-const
 let databaseFileCount = 0
 const paralellAnimLimit = 1500
-let currentDirectory = 'workspace' // eslint-disable-line prefer-const
+let currentDirectory = 'workspace' // eslint-disable-line no-unused-vars
 let statusBarTimer = null
 let progressTimer = null
 let progressState = 0
@@ -34,6 +34,7 @@ function busyPromise(fn) {
     promise,
     exec(ready) {
       fn().then(() => {
+        // eslint-disable-next-line eqeqeq
         if (ready != undefined) ready()
         clearTimeout(timeout)
         timeout = null
@@ -43,14 +44,16 @@ function busyPromise(fn) {
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 function performInitAnimation(info) {
   if (!enterTransientState()) return
-  const promise1 = animInit(infoChart)
-  const promise2 = navAnimInit(navChart)
+  const promise1 = animInit(infoChart) // eslint-disable-line no-undef
+  const promise2 = navAnimInit(navChart) // eslint-disable-line no-undef
   databaseFileCount = info.files
   Promise.all([promise1, promise2]).then(() => leaveTransientState())
 }
 
+// eslint-disable-next-line no-unused-vars
 function performAnimation() {
   if (!enterTransientState()) return
   navAnimationType = selectNavAnimationType()
@@ -59,12 +62,13 @@ function performAnimation() {
   updateAnimationVariables()
 }
 
+// eslint-disable-next-line no-unused-vars
 function performFilteringAnimationFw(event) {
   navAnimationType = 'navFw'
   if (event.target.tagName === 'plot-marker') {
     if (dirMaxDepth > dirFilter.length) {
-      let level = dirFilter.length
-      let levelStr = 'Folder level ' + level.toString()
+      let level = dirFilter.length // eslint-disable-line prefer-const
+      let levelStr = 'Folder level ' + level.toString() // eslint-disable-line prefer-const
       let filterStr = event.target.categories[levelStr]
       currentDirectory = 'workspace' + filterStr.substring(1)
       setBackLabelState(false)
