@@ -67,36 +67,45 @@ function performFilteringAnimationFw(event) {
   navAnimationType = 'navFw'
   if (event.target.tagName === 'plot-marker') {
     if (dirMaxDepth > dirFilter.length) {
-      let level = dirFilter.length // eslint-disable-line prefer-const
-      let levelStr = 'Folder level ' + level.toString() // eslint-disable-line prefer-const
-      let filterStr = event.target.categories[levelStr]
+      const level = dirFilter.length
+      const levelStr = 'Folder level ' + level.toString()
+      const filterStr = event.target.categories[levelStr]
       currentDirectory = 'workspace' + filterStr.substring(1)
-      setBackLabelState(false)
-      if (dirFilter[dirFilter.length - 1] == filterStr) {
+      setBackLabelState(false) // eslint-disable-line no-undef
+      if (dirFilter[dirFilter.length - 1] === filterStr) {
+        // eslint-disable-next-line no-undef
         vscode.postMessage({ command: 'showinfo', text: 'No more folder under this level!' })
-        enableControls()
+        enableControls() // eslint-disable-line no-undef
       } else {
         dirFilter.push(filterStr)
         applyFilterFw()
+        // eslint-disable-next-line no-undef
         vscode.postMessage({ command: 'showinexplorer', text: filterStr })
       }
-    } else vscode.postMessage({ command: 'showinfo', text: 'No more folder under this level!' })
+    } else {
+      // eslint-disable-next-line no-undef
+      vscode.postMessage({ command: 'showinfo', text: 'No more folder under this level!' })
+    }
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 function performFilteringAnimationBw() {
   navAnimationType = 'navBw'
   if (dirFilter.length > 0) {
     enterTransientState()
     if (dirMaxDepth > dirFilter.length) {
       if (stateLC)
+        // eslint-disable-next-line no-undef
         nav_anim_10xx_filter_bw(navChart, dirFilter.length - 1).then(() => {
           applyFilterBw()
         })
-      else
+      else {
+        // eslint-disable-next-line no-undef
         nav_anim_01xx_filter_bw(navChart, dirFilter.length - 1).then(() => {
           applyFilterBw()
         })
+      }
     } else {
       applyFilterBw()
     }
@@ -107,17 +116,17 @@ function startProgressIndication() {
   statusBarTimer = setTimeout(() => {
     statusBarTimer = null
     progressTimer = setInterval(() => {
-      let msg = {
+      const msg = {
         command: 'statusbarmsg',
         text: 'CodeViz animation is in progress',
         timeout: 310
       }
-      if (progressState == 0) msg.text += '.'
-      if (progressState == 1) msg.text += '..'
-      if (progressState == 2) msg.text += '...'
-      vscode.postMessage(msg)
+      if (progressState === 0) msg.text += '.'
+      if (progressState === 1) msg.text += '..'
+      if (progressState === 2) msg.text += '...'
+      vscode.postMessage(msg) // eslint-disable-line no-undef
       progressState++
-      if (progressState == 3) progressState = 0
+      if (progressState === 3) progressState = 0
     }, 300)
   }, delayBeforeProgress)
 }
@@ -128,6 +137,7 @@ function stopProgressIndication() {
   if (statusBarTimer != null) {
     clearTimeout(statusBarTimer)
   } else {
+    // eslint-disable-next-line no-undef
     vscode.postMessage({
       command: 'statusbarmsg',
       text: 'CodeViz is ready.',
@@ -138,7 +148,7 @@ function stopProgressIndication() {
 
 function enterTransientState() {
   if (inTransientState) return false
-  disableControls()
+  disableControls() // eslint-disable-line no-undef
   inTransientState = true
   startProgressIndication()
   return true
@@ -146,7 +156,7 @@ function enterTransientState() {
 
 function leaveTransientState() {
   if (!inTransientState) return false
-  enableControls()
+  enableControls() // eslint-disable-line no-undef
   if (navAnimationType == 'switchToLineCount') setFilesChekboxState(false, stateFRestore)
   if (stateFDisabled) setFilesChekboxState(true, false)
   inTransientState = false
