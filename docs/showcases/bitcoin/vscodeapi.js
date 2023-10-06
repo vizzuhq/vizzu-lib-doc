@@ -17,6 +17,7 @@ function getJSONSync(url) {
   return new Promise(function (resolve, reject) {
     getJSON(url, function (err, data) {
       if (err != null)
+        // eslint-disable-next-line prefer-promise-reject-errors
         reject({
           status: 'unable to load sample data'
         })
