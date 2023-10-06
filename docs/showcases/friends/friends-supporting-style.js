@@ -1,4 +1,4 @@
-export var palette = [
+export const palette = [
   '#e6ad66F0',
   '#dfaa6cF0',
   '#d5a574F0',
@@ -11,7 +11,7 @@ export var palette = [
   '#8482b1F0'
 ]
 
-export var style = {
+export const style = {
   backgroundColor: '#FFFFFF00',
   plot: {
     paddingTop: 43,

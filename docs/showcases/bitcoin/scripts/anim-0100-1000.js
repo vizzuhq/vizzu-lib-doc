@@ -1,3 +1,4 @@
+// eslint-disable-next-line camelcase, no-unused-vars
 function anim_0100_1000(chart) {
   return chart.animate(
     {
@@ -8,7 +9,7 @@ function anim_0100_1000(chart) {
           color: { set: null },
           label: { set: ['Line count'] }
         }
-        //1 code 1
+        // 1 code 1
       },
       style: {
         legend: { paddingLeft: '5.789473684' },

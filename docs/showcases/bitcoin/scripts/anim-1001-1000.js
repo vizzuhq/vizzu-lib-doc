@@ -1,3 +1,4 @@
+// eslint-disable-next-line camelcase, no-unused-vars
 function anim_1001_1000(chart) {
   return chart
     .animate(
@@ -35,7 +36,7 @@ function anim_1001_1000(chart) {
               color: { set: null },
               label: { set: null }
             },
-            //1 code1
+            // 1 code1
             sort: 'byValue'
           },
           style: {

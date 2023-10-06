@@ -6,7 +6,7 @@ export default class Dust {
   }
 
   circle(ctx, x, y, r, a, R, G, B) {
-    let grd = ctx.createRadialGradient(x, y, 1, x, y, r)
+    const grd = ctx.createRadialGradient(x, y, 1, x, y, r)
     grd.addColorStop(0, `rgb(${R},${G},${B},${a * 0.5})`)
     grd.addColorStop(0.7, `rgb(${R},${G},${B},${a * 0.75})`)
     grd.addColorStop(0.8, `rgb(${R},${G},${B},${a})`)
@@ -20,8 +20,8 @@ export default class Dust {
 
   rotate(p, i, j, a) {
     a = a * Math.cos(a * a * this.t) * 0.5
-    let x = p[i] - 0.5
-    let y = p[j] - 0.5
+    const x = p[i] - 0.5
+    const y = p[j] - 0.5
     p[i] = 0.5 + Math.cos(a) * x - Math.sin(a) * y
     p[j] = 0.5 + Math.sin(a) * x + Math.cos(a) * y
   }
@@ -42,22 +42,22 @@ export default class Dust {
   render(ctx, width, height) {
     this.t += 10
 
-    let canvas = document.createElement('canvas')
+    const canvas = document.createElement('canvas')
     canvas.width = width
     canvas.height = height
     canvas.style.width = width
     canvas.style.height = height
-    let ctx2 = canvas.getContext('2d')
+    const ctx2 = canvas.getContext('2d')
     /*
 		let red = Math.pow(this.t/40000,5);
 		ctx2.fillStyle = `rgb(100,0,0,${red*0.5})`;
 		ctx2.fillRect(0, 0, width, height);
 */
-    for (let point of this.points) {
-      let distance = point[2]
-      let near = 1.2 - distance
+    for (const point of this.points) {
+      const distance = point[2]
+      const near = 1.2 - distance
 
-      let light =
+      const light =
         (Math.abs(1 + Math.cos(point[3] * 40) + 1) / 2) *
         Math.pow(Math.abs(1 + Math.cos(point[0] * 10) + 1) / 2, 1.5) *
         Math.abs(point[2] - 0.5)
@@ -69,7 +69,7 @@ export default class Dust {
       this.rotate(point, 1, 3, 0.002)
       this.rotate(point, 2, 3, 0.011)
 
-      let r = 1 / Math.pow(0.41 + distance / 1.41, 1.5)
+      const r = 1 / Math.pow(0.41 + distance / 1.41, 1.5)
       let a = 10 * Math.pow(0.1 + distance, 2) * near * light
       a = Math.min(1, 0.25 + 0.75 * a)
       this.circle(ctx2, point[0] * width, point[1] * height, r, a, 140, 140, 140)

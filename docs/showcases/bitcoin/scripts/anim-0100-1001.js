@@ -1,3 +1,4 @@
+// eslint-disable-next-line camelcase, no-unused-vars
 function anim_0100_1001(chart) {
   return chart
     .animate(

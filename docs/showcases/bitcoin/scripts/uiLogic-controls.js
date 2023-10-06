@@ -1,14 +1,14 @@
 function allDescendants(node, fn) {
   if (node == undefined || fn == undefined) return
-  for (var i = 0; i < node.childNodes.length; i++) {
-    var child = node.childNodes[i]
+  for (let i = 0; i < node.childNodes.length; i++) {
+    const child = node.childNodes[i]
     allDescendants(child, fn)
     fn(child)
   }
 }
 
 function disableControls() {
-  let ctrlDiv = document.getElementById('idControlDiv')
+  const ctrlDiv = document.getElementById('idControlDiv')
   allDescendants(ctrlDiv, function (child) {
     child.disabled = true
   })
@@ -17,7 +17,7 @@ function disableControls() {
 }
 
 function enableControls() {
-  let ctrlDiv = document.getElementById('idControlDiv')
+  const ctrlDiv = document.getElementById('idControlDiv')
   allDescendants(ctrlDiv, function (child) {
     child.disabled = false
   })
@@ -49,7 +49,7 @@ function onVizzuLogo() {
 }
 
 function updateInfoLabelsContent(info) {
-  let lines = info.codeCount + info.blankCount + info.commentCount
+  const lines = info.codeCount + info.blankCount + info.commentCount
   const date_label = document.getElementById('label_date')
   const dir_label = document.getElementById('label_dir')
   const files_label = document.getElementById('label_files')

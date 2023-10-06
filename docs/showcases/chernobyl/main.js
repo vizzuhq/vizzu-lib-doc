@@ -3,7 +3,7 @@ import style from './style.js'
 import Dust from './dust.js'
 import Vizzu from '../../assets/dist/vizzu.min.js'
 
-let dust = new Dust()
+const dust = new Dust()
 
 data.filter = (record) => record['Dose [X-rays]'] <= 3600
 
@@ -13,7 +13,7 @@ function drawBg(dc) {
   dc.drawImage(bgImage, 0, 0)
 }
 
-let chart = new Vizzu('vizzuCanvas')
+const chart = new Vizzu('vizzuCanvas')
 let anim = chart.initializing
 let timebase = 0
 let timeFraction = 0
@@ -35,7 +35,7 @@ anim = anim.then((chart) => {
         /\([^,]*,[^,]*,[^,]*,/,
         '(222,0,0,'
       )
-    for (let record of data.records.slice(19, 24))
+    for (const record of data.records.slice(19, 24))
       if (event.target.value === record[1])
         event.renderingContext.fillStyle = event.renderingContext.fillStyle.replace(
           /\([^,]*,[^,]*,[^,]*,/,
@@ -73,7 +73,7 @@ anim = anim.then((chart) => {
   )
 })
 
-let animOptions = {
+const animOptions = {
   duration: 1,
   x: { delay: 0, duration: 1, easing: 'linear' },
   color: { delay: 0, duration: 1, easing: 'linear' },
@@ -131,7 +131,7 @@ for (let sec = 1; sec <= 90; sec++) {
   })
 }
 
-for (let max of [250001, 500000, 1000000, 5000000, 8000000, 155000000, 300000000]) {
+for (const max of [250001, 500000, 1000000, 5000000, 8000000, 155000000, 300000000]) {
   anim = anim.then((chart) => {
     timebase++
     return chart.animate(

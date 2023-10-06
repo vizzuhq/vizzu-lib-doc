@@ -1,7 +1,7 @@
 import Vizzu from '../../assets/dist/vizzu.min.js'
 import data from './data.js'
 
-let chart = new Vizzu('myVizzu', { data })
+const chart = new Vizzu('myVizzu', { data })
 
 let actYear = ''
 let anim = chart.initializing
@@ -23,7 +23,7 @@ for (let year = 1973; year <= 2020; year++) {
     return chart.animate(
       {
         data: {
-          filter: (record) => parseInt(record.Year) == year
+          filter: (record) => parseInt(record.Year) === year
         },
         config: {
           channels: {
@@ -78,8 +78,8 @@ for (let year = 1973; year <= 2020; year++) {
 
 anim = anim.then((chart) => {
   chart.on('plot-axis-label-draw', (event) => {
-    let year = parseFloat(event.target.value)
-    if (!isNaN(year) && year % 5 != 0) event.preventDefault()
+    const year = parseFloat(event.target.value)
+    if (!isNaN(year) && year % 5 !== 0) event.preventDefault()
   })
   return chart.animate(
     {
@@ -106,7 +106,7 @@ anim = anim.then((chart) =>
   chart.animate(
     {
       data: {
-        filter: (record) => record.Year == '2020' || record.Year == '1972'
+        filter: (record) => record.Year === '2020' || record.Year === '1972'
       },
       config: {
         title: 'Lets see the total of the last 47 years'
@@ -138,7 +138,7 @@ for (let year = 2020; year >= 1973; year--) {
     chart.animate(
       {
         data: {
-          filter: (record) => parseInt(record.Year) >= year || record.Year == '1972'
+          filter: (record) => parseInt(record.Year) >= year || record.Year === '1972'
         },
         config: {
           split: true
@@ -159,7 +159,7 @@ anim = anim.then((chart) =>
   chart.animate(
     {
       data: {
-        filter: (record) => record.Year != '1972'
+        filter: (record) => record.Year !== '1972'
       },
       config: {
         split: false

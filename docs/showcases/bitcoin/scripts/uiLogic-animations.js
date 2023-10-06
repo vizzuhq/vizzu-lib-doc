@@ -1,32 +1,32 @@
 let inTransientState = false
 let navAnimationType = 'initial'
-let state_f_disabled = false
-let state_f_restore = false
+let state_f_disabled = false // eslint-disable-line camelcase
+let state_f_restore = false // eslint-disable-line camelcase
 
-let state_l = true
-let state_f = false
-let state_lc = true
-let state_fc = false
+var state_l = true // eslint-disable-line camelcase, no-var
+var state_f = false // eslint-disable-line camelcase, no-var
+var state_lc = true // eslint-disable-line camelcase, no-var
+var state_fc = false // eslint-disable-line camelcase, no-var
 
-let last_state_l = true
-let last_state_f = false
-let last_state_lc = true
-let last_state_fc = false
+let last_state_l = true // eslint-disable-line camelcase
+let last_state_f = false // eslint-disable-line camelcase
+let last_state_lc = true // eslint-disable-line camelcase
+let last_state_fc = false // eslint-disable-line camelcase
 
-let dirFilter = []
-let dirMaxDepth = 0
+const dirFilter = []
+var dirMaxDepth = 0 // eslint-disable-line no-var
 let databaseFileCount = 0
-let paralellAnimLimit = 1500
+const paralellAnimLimit = 1500
 let currentDirectory = 'workspace'
 let statusBarTimer = null
 let progressTimer = null
 let progressState = 0
-let delayBeforeProgress = 4000
+const delayBeforeProgress = 4000
 
 function busyPromise(fn) {
   let _resolve
   let timeout
-  let promise = new Promise((resolve, reject) => {
+  const promise = new Promise((resolve, reject) => {
     _resolve = resolve
     timeout = setTimeout(() => {}, 10000)
   })
@@ -34,7 +34,7 @@ function busyPromise(fn) {
     promise,
     exec(ready) {
       fn().then(() => {
-        if (ready != undefined) ready()
+        if (ready != undefined) ready() // eslint-disable-line eqeqeq
         clearTimeout(timeout)
         timeout = null
         _resolve()
@@ -45,8 +45,8 @@ function busyPromise(fn) {
 
 function performInitAnimation(info) {
   if (!enterTransientState()) return
-  let promise1 = anim_init(infoChart)
-  let promise2 = nav_anim_init(navChart)
+  const promise1 = anim_init(infoChart)
+  const promise2 = nav_anim_init(navChart)
   databaseFileCount = info.files
   Promise.all([promise1, promise2]).then(() => leaveTransientState())
 }
@@ -63,9 +63,9 @@ function performFilteringAnimationFw(event) {
   navAnimationType = 'navFw'
   if (event.target.tagName === 'plot-marker') {
     if (dirMaxDepth > dirFilter.length) {
-      let level = dirFilter.length
-      let levelStr = 'Folder level ' + level.toString()
-      let filterStr = event.target.categories[levelStr]
+      const level = dirFilter.length
+      const levelStr = 'Folder level ' + level.toString()
+      const filterStr = event.target.categories[levelStr]
       currentDirectory = 'workspace' + filterStr.substring(1)
       setBackLabelState(false)
       if (dirFilter[dirFilter.length - 1] == filterStr) {
@@ -103,7 +103,7 @@ function startProgressIndication() {
   statusBarTimer = setTimeout(() => {
     statusBarTimer = null
     progressTimer = setInterval(() => {
-      let msg = {
+      const msg = {
         command: 'statusbarmsg',
         text: 'CodeViz animation is in progress',
         timeout: 310
@@ -188,10 +188,10 @@ function updateAnimationVariables() {
 }
 
 function applyFilter() {
-  let filter1 = busyPromise(() => {
+  const filter1 = busyPromise(() => {
     return nav_anim_record_filter(infoChart, (record) => selectRecord(record))
   })
-  let filter2 = busyPromise(() => {
+  const filter2 = busyPromise(() => {
     return nav_anim_record_filter(navChart, (record) => selectRecord(record))
   })
   // always paralell
@@ -208,7 +208,7 @@ function applyFilter() {
 
 function applyFilterFw() {
   enterTransientState()
-  let promises = applyFilter()
+  const promises = applyFilter()
   Promise.all([promises[0].promise, promises[1].promise]).then(() => {
     if (dirMaxDepth > dirFilter.length) {
       if (state_lc)
@@ -227,7 +227,7 @@ function applyFilterBw() {
     currentDirectory = 'workspace' + filterStr.substring(1)
     setBackLabelState(false)
   }
-  let promises = applyFilter()
+  const promises = applyFilter()
   Promise.all([promises[0].promise, promises[1].promise]).then(() => {
     leaveTransientState()
     if (filterStr != '') {
@@ -238,8 +238,8 @@ function applyFilterBw() {
 
 function selectRecord(record) {
   for (let i = 0; i < dirFilter.length; i++) {
-    let name = 'Folder level ' + i
-    let value = dirFilter[i]
+    const name = 'Folder level ' + i
+    const value = dirFilter[i]
     if (record[name] != value) return false
   }
   return true
@@ -252,11 +252,11 @@ function navLabelDrawHandler(event) {
   else tmp = label.split('/')
   if (tmp.length >= 2) label = tmp[tmp.length - 2]
   if (label == '.') label = './'
-  let ctx = event.renderingContext
-  let textRect = ctx.measureText(label)
-  let height = textRect.actualBoundingBoxAscent
+  const ctx = event.renderingContext
+  const textRect = ctx.measureText(label)
+  const height = textRect.actualBoundingBoxAscent
   ctx.save()
-  let rect = event.detail.rect
+  const rect = event.detail.rect
   const tr = rect.transform
   ctx.transform(tr[0][0], tr[1][0], tr[0][1], tr[1][1], tr[0][2], tr[1][2])
   ctx.fillText(label, rect.size.x - textRect.width - height / 2, rect.size.y / 2 + height / 2)
@@ -271,7 +271,7 @@ function paralellAnim() {
   } else if (navAnimationType == 'switchToFileCount') {
     promise1 = nav_anim_10xx_01xx(navChart, dirFilter.length)
   }
-  let promise2 = window[encodeAnimFunctionName()](infoChart)
+  const promise2 = window[encodeAnimFunctionName()](infoChart)
   Promise.all([promise1, promise2]).then(() => {
     leaveTransientState()
     if (navAnimationType == 'switchToLineCount') state_f_restore = false
@@ -279,7 +279,7 @@ function paralellAnim() {
 }
 
 function serialAnim() {
-  let fnName = encodeAnimFunctionName()
+  const fnName = encodeAnimFunctionName()
   if (navAnimationType == 'switchToLineCount') {
     nav_anim_01xx_10xx(navChart, dirFilter.length).then(() => {
       window[fnName](infoChart).then(() => {

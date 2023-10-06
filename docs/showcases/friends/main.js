@@ -109,7 +109,7 @@ const skip = [
   's10e16'
 ]
 
-var portraits = new Portraits()
+const portraits = new Portraits()
 
 function padZero(num) {
   return String(num).padStart(2, '0')
@@ -121,16 +121,16 @@ function SEId(id) {
 
 function next(id) {
   const seasonLen = [0, 24, 24, 25, 24, 24, 25, 24, 24, 24, 18]
-  let res = { season: id.season, episode: id.episode }
+  const res = { season: id.season, episode: id.episode }
   res.episode++
   if (res.episode > seasonLen[res.season]) {
     res.season++
     if (res.season > 10) return undefined
     res.episode = 1
   }
-  if (res.season == 6 && res.episode == 6) res.episode++
-  if (res.season == 7 && res.episode == 1) res.episode++
-  if (res.season == 7 && res.episode == 21) res.episode++
+  if (res.season === 6 && res.episode === 6) res.episode++
+  if (res.season === 7 && res.episode === 1) res.episode++
+  if (res.season === 7 && res.episode === 21) res.episode++
   return res
 }
 
@@ -139,9 +139,9 @@ function drawBg(dc) {
 }
 
 function text(dc, rect, txt) {
-  let img = portraits.getByName(txt)
+  const img = portraits.getByName(txt)
   if (img !== undefined) {
-    let alpha = String(dc.fillStyle).split(',')[3].slice(0, -1)
+    const alpha = String(dc.fillStyle).split(',')[3].slice(0, -1)
     dc.save()
     dc.globalAlpha = alpha
     const tr = rect.transform
@@ -156,14 +156,14 @@ function text(dc, rect, txt) {
 
 function initSlide() {
   return chart.animate({
-    data: data,
+    data,
     config: {
       title: '',
       sort: 'byValue',
       reverse: true,
       rotate: -90
     },
-    style: style
+    style
   })
 }
 
@@ -217,7 +217,7 @@ function slide(seid, actFilter) {
 
 const bgImage = document.getElementById('bgImage')
 
-let chart = new Vizzu('testVizzuCanvas')
+const chart = new Vizzu('testVizzuCanvas')
 
 chart.initializing.then((chart) => {
   chart.on('background-draw', (event) => {
@@ -230,8 +230,8 @@ chart.initializing.then((chart) => {
   })
 
   chart.on('plot-axis-label-draw', (event) => {
-    let rect = event.detail.rect
-    let ok = text(event.renderingContext, rect, event.target.value)
+    const rect = event.detail.rect
+    const ok = text(event.renderingContext, rect, event.target.value)
     if (!ok) event.preventDefault()
   })
 
@@ -243,13 +243,13 @@ chart.initializing.then((chart) => {
     })
 
   let id = { season: 1, episode: 1 }
-  let filter = []
+  const filter = []
   while (((id = next(id)), id !== undefined)) {
-    let seid = SEId(id)
+    const seid = SEId(id)
     if (data.series[1].values.includes(seid)) {
       filter.push(seid)
       if (!skip.includes(seid)) {
-        let actFilter = [...filter]
+        const actFilter = [...filter]
         res = res.then(() => slide(seid, (record) => actFilter.includes(record.episode)))
       }
     }

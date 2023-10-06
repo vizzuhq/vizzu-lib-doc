@@ -1,6 +1,6 @@
 import Vizzu from '../../assets/dist/vizzu.min.js'
 
-let parties = [
+const parties = [
   'Farmers 6.6¢',
   'Local taxes and buyers 4.2¢',
   'Transport, storage, trade 2.1¢',
@@ -10,7 +10,7 @@ let parties = [
   'Retail and taxes 44.2¢'
 ]
 
-let colors = [
+const colors = [
   '#100905ff',
   '#39220fff',
   '#583e26ff',
@@ -20,7 +20,7 @@ let colors = [
   '#b79868ff'
 ]
 
-let data = {
+const data = {
   series: [
     {
       name: 'Share',
@@ -46,7 +46,7 @@ data.series.push({
   values: ['Farmers 6.6¢', '', '', '', '', '', '']
 })
 
-let style = {
+const style = {
   plot: {
     paddingTop: 0,
     paddingBottom: 0,
@@ -60,7 +60,7 @@ let style = {
         fontSize: 22,
         fontWeight: 'normal',
         position: 'left',
-        filter: 'lightness(0)' //bug: none won't work
+        filter: 'lightness(0)' // bug: none won't work
       }
     },
     xAxis: {
@@ -79,11 +79,11 @@ let style = {
 }
 
 function stage(chart, i) {
-  let palette = colors.slice(i - 1 > 0 ? i - 1 : 0, 8).join(' ')
-  let prev2 = `Parties-${i + 2}`
-  let prev = `Parties-${i + 1}`
-  let act = `Parties-${i}`
-  let yMax = (10 - i < 9 ? 10 - i : 9) - 1
+  const palette = colors.slice(i - 1 > 0 ? i - 1 : 0, 8).join(' ')
+  const prev2 = `Parties-${i + 2}`
+  const prev = `Parties-${i + 1}`
+  const act = `Parties-${i}`
+  const yMax = (10 - i < 9 ? 10 - i : 9) - 1
   return chart
     .animate(
       {
@@ -157,14 +157,12 @@ function stage(chart, i) {
     )
 }
 
-let chart = new Vizzu('testVizzuCanvas')
+const chart = new Vizzu('testVizzuCanvas')
 
 chart.initializing
   .then((chart) => {
-    console.log(chart.version())
-
     chart.on('background-draw', (event) => {
-      let ctx = event.renderingContext
+      const ctx = event.renderingContext
 
       ctx.fillRect(0, 0, 1280, 720)
 
@@ -183,16 +181,16 @@ chart.initializing
     })
 
     chart.on('plot-marker-draw', (event) => {
-      let ctx = event.renderingContext
+      const ctx = event.renderingContext
 
-      let color = ctx.fillStyle
-      if (!tinycolor(color).isValid()) return
+      const color = ctx.fillStyle
+      if (!tinycolor(color).isValid()) return // eslint-disable-line no-undef
 
-      let grd = ctx.createLinearGradient(0, 0, 720, 720)
-      grd.addColorStop(0, tinycolor(color).darken(0))
-      grd.addColorStop(0.25, tinycolor(color).darken(0))
-      grd.addColorStop(0.75, tinycolor(color).darken(15))
-      grd.addColorStop(1, tinycolor(color).darken(37))
+      const grd = ctx.createLinearGradient(0, 0, 720, 720)
+      grd.addColorStop(0, tinycolor(color).darken(0)) // eslint-disable-line no-undef
+      grd.addColorStop(0.25, tinycolor(color).darken(0)) // eslint-disable-line no-undef
+      grd.addColorStop(0.75, tinycolor(color).darken(15)) // eslint-disable-line no-undef
+      grd.addColorStop(1, tinycolor(color).darken(37)) // eslint-disable-line no-undef
       ctx.fillStyle = grd
       ctx.strokeStyle = grd
 
@@ -203,7 +201,7 @@ chart.initializing
     })
 
     chart.on('logo-draw', (event) => {
-      let ctx = event.renderingContext
+      const ctx = event.renderingContext
       ctx.shadowColor = '#00000000'
       ctx.shadowBlur = 0
       event.preventDefault()
@@ -211,10 +209,10 @@ chart.initializing
 
     return chart.animate(
       {
-        data: data,
+        data,
         config: {
           channels: {
-            //bug: title=null or '' won't work
+            // bug: title=null or '' won't work
             x: {
               attach: ['Share'],
               range: {
@@ -238,10 +236,10 @@ chart.initializing
           coordSystem: 'polar',
           reverse: true
         },
-        style: style
+        style
       },
       { duration: 0.00001 }
-    ) //todo: bug, 0 won't work
+    ) // todo: bug, 0 won't work
   })
   .then((chart) =>
     chart.animate(
@@ -345,7 +343,7 @@ chart.initializing
   .then((chart) => {
     // marker label would not show unit
     chart.on('background-draw', (event) => {
-      let ctx = event.renderingContext
+      const ctx = event.renderingContext
       ctx.font = '24px Roboto'
       ctx.fillStyle = colors[0]
       ctx.fillText('6.6¢', 335, 117)

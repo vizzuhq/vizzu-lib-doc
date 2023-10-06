@@ -1,7 +1,7 @@
 const project = 'bitcoin'
 const vscode = acquireVsCodeApi(project)
-let navChart = undefined
-let infoChart = undefined
+let navChart
+let infoChart
 
 function setTitle(project) {
   const title = project ? `CodeViz demo: ${project}` : 'CodeViz demo'
@@ -33,7 +33,7 @@ function importVizzuLibAndCreateCharts() {
   if (navChart == undefined || infoChart == undefined) {
     navChart = undefined
     infoChart = undefined
-    let promise = import('../../../assets/dist/vizzu.min.js')
+    const promise = import('../../../assets/dist/vizzu.min.js')
     promise
       .then((Vizzu) => {
         try {
@@ -53,8 +53,8 @@ function importVizzuLibAndCreateCharts() {
 }
 
 async function initializingVizzuCharts(data) {
-  await infoChart.initializing.then((infoChart) => infoChart.animate({ data: data }))
-  await navChart.initializing.then((navChart) => navChart.animate({ data: data }))
+  await infoChart.initializing.then((infoChart) => infoChart.animate({ data }))
+  await navChart.initializing.then((navChart) => navChart.animate({ data }))
   navChart.on('click', performFilteringAnimationFw)
   navChart.on('plot-axis-label-draw', navLabelDrawHandler)
 }
