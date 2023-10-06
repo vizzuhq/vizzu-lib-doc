@@ -1,5 +1,5 @@
 import data from "./data.js"
-import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@latest/dist/vizzu.min.js';
+import Vizzu from '../../assets/dist/vizzu.min.js';
 
 
 new Vizzu("testVizzuCanvas", { data }).initializing.then((chart) => {

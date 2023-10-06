@@ -1,4 +1,4 @@
-import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@latest/dist/vizzu.min.js';
+import Vizzu from '../../assets/dist/vizzu.min.js';
 
 let parties = [
 	'Farmers 6.6¢',

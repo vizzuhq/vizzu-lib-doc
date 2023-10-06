@@ -1,7 +1,7 @@
 import data from './data.js';
 import style from './style.js';
 import Dust from './dust.js';
-import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@latest/dist/vizzu.min.js';
+import Vizzu from '../../assets/dist/vizzu.min.js';
 
 let dust = new Dust();
 

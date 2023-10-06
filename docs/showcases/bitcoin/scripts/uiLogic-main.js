@@ -36,7 +36,7 @@ function importVizzuLibAndCreateCharts() {
     if (navChart == undefined || infoChart == undefined) {
         navChart = undefined;
         infoChart = undefined;
-        let promise = import('https://cdn.jsdelivr.net/npm/vizzu@latest/dist/vizzu.min.js');
+        let promise = import('../../../assets/dist/vizzu.min.js');
         promise.then( (Vizzu) => {
             try {
                 navChart = new Vizzu.default('navVizzu');

@@ -1,4 +1,4 @@
-import Vizzu from 'https://cdn.jsdelivr.net/npm/vizzu@latest/dist/vizzu.min.js';
+import Vizzu from '../../assets/dist/vizzu.min.js';
 import data from './data.js'
 
 let chart = new Vizzu('myVizzu', { data });
