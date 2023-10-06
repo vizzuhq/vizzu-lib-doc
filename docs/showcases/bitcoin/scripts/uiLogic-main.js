@@ -1,7 +1,7 @@
 const project = 'bitcoin'
-const vscode = acquireVsCodeApi(project)
-let navChart = undefined
-let infoChart = undefined
+const vscode = acquireVsCodeApi(project) // eslint-disable-line no-undef
+let navChart
+let infoChart
 
 function setTitle(project) {
   const title = project ? `CodeViz demo: ${project}` : 'CodeViz demo'
@@ -20,9 +20,9 @@ setTitle(project)
         break
       case 'refresh-data-table':
         await initializingVizzuCharts(message.dataTable)
-        performInitAnimation(message.dataSummary)
-        updateInfoLabelsContent(message.dataSummary)
-        dirMaxDepth = message.dataSummary.depth
+        performInitAnimation(message.dataSummary) // eslint-disable-line no-undef
+        updateInfoLabelsContent(message.dataSummary) // eslint-disable-line no-undef
+        dirMaxDepth = message.dataSummary.depth // eslint-disable-line no-undef
         break
     }
   })
@@ -30,15 +30,17 @@ setTitle(project)
 })()
 
 function importVizzuLibAndCreateCharts() {
+  // eslint-disable-next-line eqeqeq
   if (navChart == undefined || infoChart == undefined) {
     navChart = undefined
     infoChart = undefined
-    let promise = import('../../../assets/dist/vizzu.min.js')
+    const promise = import('../../../assets/dist/vizzu.min.js')
     promise
-      .then((Vizzu) => {
+      .then((VizzuModule) => {
         try {
-          navChart = new Vizzu.default('navVizzu')
-          infoChart = new Vizzu.default('infoVizzu')
+          const Vizzu = VizzuModule.default
+          navChart = new Vizzu('navVizzu')
+          infoChart = new Vizzu('infoVizzu')
           vscode.postMessage({ command: 'vizzu-ready' })
         } catch (e) {
           vscode.postMessage({ command: 'showerror', text: 'Vizzu initialization failure: ' + e })
@@ -48,15 +50,15 @@ function importVizzuLibAndCreateCharts() {
         vscode.postMessage({ command: 'showerror', text: 'Vizzu library import failure: ' + e })
       })
   }
-  setBackLabelState(false)
-  setBackLabelState(true)
+  setBackLabelState(false) // eslint-disable-line no-undef
+  setBackLabelState(true) // eslint-disable-line no-undef
 }
 
 async function initializingVizzuCharts(data) {
-  await infoChart.initializing.then((infoChart) => infoChart.animate({ data: data }))
-  await navChart.initializing.then((navChart) => navChart.animate({ data: data }))
-  navChart.on('click', performFilteringAnimationFw)
-  navChart.on('plot-axis-label-draw', navLabelDrawHandler)
+  await infoChart.initializing.then((infoChart) => infoChart.animate({ data }))
+  await navChart.initializing.then((navChart) => navChart.animate({ data }))
+  navChart.on('click', performFilteringAnimationFw) // eslint-disable-line no-undef
+  navChart.on('plot-axis-label-draw', navLabelDrawHandler) // eslint-disable-line no-undef
 }
 
 async function resetVizzuCharts() {
