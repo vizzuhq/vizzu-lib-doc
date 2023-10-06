@@ -1,14 +1,16 @@
 function allDescendants(node, fn) {
+  // eslint-disable-next-line eqeqeq
   if (node == undefined || fn == undefined) return
-  for (var i = 0; i < node.childNodes.length; i++) {
-    var child = node.childNodes[i]
+  for (let i = 0; i < node.childNodes.length; i++) {
+    var child = node.childNodes[i] // eslint-disable-line no-var
     allDescendants(child, fn)
     fn(child)
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 function disableControls() {
-  let ctrlDiv = document.getElementById('idControlDiv')
+  const ctrlDiv = document.getElementById('idControlDiv')
   allDescendants(ctrlDiv, function (child) {
     child.disabled = true
   })
@@ -16,8 +18,9 @@ function disableControls() {
   if (container != null) container.onclick = undefined
 }
 
+// eslint-disable-next-line no-unused-vars
 function enableControls() {
-  let ctrlDiv = document.getElementById('idControlDiv')
+  const ctrlDiv = document.getElementById('idControlDiv')
   allDescendants(ctrlDiv, function (child) {
     child.disabled = false
   })
@@ -25,31 +28,37 @@ function enableControls() {
   if (container != null) container.onclick = onLabelBack
 }
 
+// eslint-disable-next-line no-unused-vars
 function onDisplayTypeChanged() {
   readAnimationVariables()
-  performAnimation()
+  performAnimation() // eslint-disable-line no-undef
 }
 
 function onLabelBack() {
-  performFilteringAnimationBw()
+  performFilteringAnimationBw() // eslint-disable-line no-undef
 }
 
+// eslint-disable-next-line no-unused-vars
 function onCheckboxLanguages() {
   readAnimationVariables()
-  performAnimation()
+  performAnimation() // eslint-disable-line no-undef
 }
 
+// eslint-disable-next-line no-unused-vars
 function onCheckboxFiles() {
   readAnimationVariables()
-  performAnimation()
+  performAnimation() // eslint-disable-line no-undef
 }
 
+// eslint-disable-next-line no-unused-vars
 function onVizzuLogo() {
+  // eslint-disable-next-line no-undef
   vscode.postMessage({ command: 'openlink', text: 'https://github.com/vizzuhq/vizzu-lib' })
 }
 
+// eslint-disable-next-line no-unused-vars
 function updateInfoLabelsContent(info) {
-  let lines = info.codeCount + info.blankCount + info.commentCount
+  const lines = info.codeCount + info.blankCount + info.commentCount
   const dateLabel = document.getElementById('label_date')
   const dirLabel = document.getElementById('label_dir')
   const filesLabel = document.getElementById('label_files')
@@ -68,21 +77,23 @@ function updateInfoLabelsContent(info) {
 
 function readAnimationVariables() {
   const ctrl1 = document.getElementById('idLineCount')
-  stateLC = ctrl1.selected
+  stateLC = ctrl1.selected // eslint-disable-line no-undef
   const ctrl2 = document.getElementById('idFileCount')
-  stateFC = ctrl2.selected
+  stateFC = ctrl2.selected // eslint-disable-line no-undef
   const ctrl3 = document.getElementById('idChkBoxFiles')
-  stateF = ctrl3.checked
+  stateF = ctrl3.checked // eslint-disable-line no-undef
   const ctrl4 = document.getElementById('idChkBoxLang')
-  stateL = ctrl4.checked
+  stateL = ctrl4.checked // eslint-disable-line no-undef
 }
 
+// eslint-disable-next-line no-unused-vars
 function setFilesChekboxState(disabled, checked) {
   const ctrl = document.getElementById('idChkBoxFiles')
   ctrl.disabled = disabled
   ctrl.checked = checked
 }
 
+// eslint-disable-next-line no-unused-vars
 function setBackLabelState(disabled) {
   const container = document.getElementById('idBackLabelContainer')
   if (disabled) {
@@ -93,6 +104,6 @@ function setBackLabelState(disabled) {
             <a class="link-button" id="idBackLabel">
             Go back!
             </a>
-            &nbsp; &nbsp; Folder: ${currentDirectory}`
+            &nbsp; &nbsp; Folder: ${currentDirectory}` // eslint-disable-line no-undef
   }
 }
