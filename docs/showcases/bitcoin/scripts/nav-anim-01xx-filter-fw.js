@@ -1,6 +1,6 @@
-// eslint-disable-next-line camelcase, no-unused-vars
 function nav_anim_01xx_filter_fw(chart, dirLevel) {
-  const nextDir = 'Folder level ' + dirLevel
+  let crDir = 'Folder level ' + (dirLevel - 1)
+  let nextDir = 'Folder level ' + dirLevel
 
   return chart
     .animate(
