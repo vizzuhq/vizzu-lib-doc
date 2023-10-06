@@ -45,8 +45,8 @@ function busyPromise(fn) {
 
 function performInitAnimation(info) {
   if (!enterTransientState()) return
-  let promise1 = anim_init(infoChart)
-  let promise2 = nav_anim_init(navChart)
+  let promise1 = animInit(infoChart)
+  let promise2 = navAnimInit(navChart)
   databaseFileCount = info.files
   Promise.all([promise1, promise2]).then(() => leaveTransientState())
 }

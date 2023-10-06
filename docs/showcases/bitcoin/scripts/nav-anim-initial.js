@@ -1,4 +1,5 @@
-function nav_anim_init(chart) {
+// eslint-disable-next-line no-unused-vars
+function navAnimInit(chart) {
   return chart
     .animate(
       {
