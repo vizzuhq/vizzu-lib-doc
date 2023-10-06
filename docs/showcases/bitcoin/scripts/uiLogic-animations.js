@@ -1,32 +1,32 @@
 let inTransientState = false
 let navAnimationType = 'initial'
-let stateF_disabled = false
+let stateFDisabled = false
 let stateFRestore = false
 
-let stateL = true
+let stateL = true // eslint-disable-line prefer-const
 let stateF = false
-let stateLC = true
-let stateFC = false
+let stateLC = true // eslint-disable-line prefer-const
+let stateFC = false // eslint-disable-line prefer-const
 
-let last_stateL = true
-let last_stateF = false
-let last_stateLC = true
-let last_stateFC = false
+let lastStateL = true
+let lastStateF = false
+let lastStateLC = true
+let lastStateFC = false
 
-let dirFilter = []
-let dirMaxDepth = 0
+const dirFilter = []
+let dirMaxDepth = 0 // eslint-disable-line prefer-const
 let databaseFileCount = 0
-let paralellAnimLimit = 1500
-let currentDirectory = 'workspace'
+const paralellAnimLimit = 1500
+let currentDirectory = 'workspace' // eslint-disable-line prefer-const
 let statusBarTimer = null
 let progressTimer = null
 let progressState = 0
-let delayBeforeProgress = 4000
+const delayBeforeProgress = 4000
 
 function busyPromise(fn) {
   let _resolve
   let timeout
-  let promise = new Promise((resolve, reject) => {
+  const promise = new Promise((resolve, reject) => {
     _resolve = resolve
     timeout = setTimeout(() => {}, 10000)
   })
@@ -144,7 +144,7 @@ function leaveTransientState() {
   if (!inTransientState) return false
   enableControls()
   if (navAnimationType == 'switchToLineCount') setFilesChekboxState(false, stateFRestore)
-  if (stateF_disabled) setFilesChekboxState(true, false)
+  if (stateFDisabled) setFilesChekboxState(true, false)
   inTransientState = false
   stopProgressIndication()
   return true
@@ -157,34 +157,34 @@ function encodeAnimFunctionName() {
   state += stateFC ? '1' : '0'
   state += stateL ? '1' : '0'
   state += stateF ? '1' : '0'
-  lastState += last_stateLC ? '1' : '0'
-  lastState += last_stateFC ? '1' : '0'
-  lastState += last_stateL ? '1' : '0'
-  lastState += last_stateF ? '1' : '0'
+  lastState += lastStateLC ? '1' : '0'
+  lastState += lastStateFC ? '1' : '0'
+  lastState += lastStateL ? '1' : '0'
+  lastState += lastStateF ? '1' : '0'
   return 'anim_' + lastState + '_' + state
 }
 
 function selectNavAnimationType() {
   let type = 'none'
-  if (stateFC == true && last_stateFC == false) {
+  if (stateFC == true && lastStateFC == false) {
     type = 'switchToFileCount'
-    stateF_disabled = true
+    stateFDisabled = true
     stateFRestore = stateF
     stateF = false
   }
-  if (stateFC == false && last_stateFC == true) {
+  if (stateFC == false && lastStateFC == true) {
     type = 'switchToLineCount'
     stateF = stateFRestore
-    stateF_disabled = false
+    stateFDisabled = false
   }
   return type
 }
 
 function updateAnimationVariables() {
-  last_stateL = stateL
-  last_stateF = stateF
-  last_stateLC = stateLC
-  last_stateFC = stateFC
+  lastStateL = stateL
+  lastStateF = stateF
+  lastStateLC = stateLC
+  lastStateFC = stateFC
 }
 
 function applyFilter() {
