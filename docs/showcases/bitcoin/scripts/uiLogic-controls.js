@@ -50,31 +50,31 @@ function onVizzuLogo() {
 
 function updateInfoLabelsContent(info) {
   let lines = info.codeCount + info.blankCount + info.commentCount
-  const date_label = document.getElementById('label_date')
-  const dir_label = document.getElementById('label_dir')
-  const files_label = document.getElementById('label_files')
-  const lines_label = document.getElementById('label_lines')
-  const code_label = document.getElementById('label_code')
-  const comment_label = document.getElementById('label_comment')
-  const blank_label = document.getElementById('label_blank')
-  date_label.textContent = info.date
-  dir_label.textContent = info.rootDir
-  files_label.textContent = info.files.toString()
-  lines_label.textContent = lines.toString()
-  code_label.textContent = info.codeCount.toString()
-  comment_label.textContent = info.commentCount.toString()
-  blank_label.textContent = info.blankCount.toString()
+  const dateLabel = document.getElementById('label_date')
+  const dirLabel = document.getElementById('label_dir')
+  const filesLabel = document.getElementById('label_files')
+  const linesLabel = document.getElementById('label_lines')
+  const codeLabel = document.getElementById('label_code')
+  const commentLabel = document.getElementById('label_comment')
+  const blankLabel = document.getElementById('label_blank')
+  dateLabel.textContent = info.date
+  dirLabel.textContent = info.rootDir
+  filesLabel.textContent = info.files.toString()
+  linesLabel.textContent = lines.toString()
+  codeLabel.textContent = info.codeCount.toString()
+  commentLabel.textContent = info.commentCount.toString()
+  blankLabel.textContent = info.blankCount.toString()
 }
 
 function readAnimationVariables() {
   const ctrl1 = document.getElementById('idLineCount')
-  state_lc = ctrl1.selected
+  stateLC = ctrl1.selected
   const ctrl2 = document.getElementById('idFileCount')
-  state_fc = ctrl2.selected
+  stateFC = ctrl2.selected
   const ctrl3 = document.getElementById('idChkBoxFiles')
-  state_f = ctrl3.checked
+  stateF = ctrl3.checked
   const ctrl4 = document.getElementById('idChkBoxLang')
-  state_l = ctrl4.checked
+  stateL = ctrl4.checked
 }
 
 function setFilesChekboxState(disabled, checked) {
