@@ -28,8 +28,8 @@ for (let year = 1973; year <= 2020; year++) {
         config: {
           channels: {
             y: { set: ['Format'] },
-            x: { set: ['Revenue [m$]'] },
-            label: { set: ['Revenue [m$]'] },
+            x: { set: ['Revenue'] },
+            label: { set: ['Revenue'] },
             color: { attach: ['Format'] }
           },
           title: 'Music Revenue by Format - Year by Year',
@@ -193,7 +193,7 @@ anim = anim.then((chart) =>
     {
       config: {
         channels: {
-          label: { set: ['Revenue [m$]'] }
+          label: { set: ['Revenue'] }
         }
       }
     },
@@ -210,7 +210,7 @@ anim = anim.then((chart) =>
       config: {
         channels: {
           x: { attach: ['Year'] },
-          label: { detach: ['Revenue [m$]'] }
+          label: { detach: ['Revenue'] }
         }
       }
     },
@@ -227,7 +227,7 @@ anim = anim.then((chart) =>
       config: {
         channels: {
           x: { set: ['Year'] },
-          y: { set: ['Revenue [m$]', 'Format'], range: { min: null, max: null } },
+          y: { set: ['Revenue', 'Format'], range: { min: null, max: null } },
           color: { set: ['Format'] }
         },
         title: 'Music Revenue by Format in the USA 1973 - 2020',
