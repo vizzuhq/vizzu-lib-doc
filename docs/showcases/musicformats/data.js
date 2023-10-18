@@ -2,7 +2,7 @@ const data = {
   series: [
     { name: 'Year', type: 'dimension' },
     { name: 'Format', type: 'dimension' },
-    { name: 'Revenue [m$]', type: 'measure' }
+    { name: 'Revenue', type: 'measure', unit: 'm$' }
   ],
   records: [
     ['1972', 'Other', '0'],

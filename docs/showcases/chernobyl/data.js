@@ -1,6 +1,6 @@
 const data = {
   series: [
-    { name: 'Dose [X-rays]', type: 'measure' },
+    { name: 'Dose', type: 'measure', unit: 'X-rays' },
     { name: 'activity', type: 'dimension' }
   ],
   records: [

@@ -16,9 +16,10 @@ const data = {
       values: []
     },
     {
-      name: 'Revenue [$]',
+      name: 'Revenue',
       type: 'measure',
-      values: []
+      values: [],
+      unit: '$',
     }
   ],
   records: [
