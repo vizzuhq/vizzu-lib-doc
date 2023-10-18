@@ -52,8 +52,8 @@ new Vizzu('testVizzuCanvas', { data }).initializing.then((chart) => {
   chart.animate(
     {
       config: {
-        y: ['Revenue [$]', 'Product'],
-        label: 'Revenue [$]',
+        y: ['Revenue', 'Product'],
+        label: 'Revenue',
         title: 'Revenue of All Products'
       }
     },
@@ -62,13 +62,13 @@ new Vizzu('testVizzuCanvas', { data }).initializing.then((chart) => {
 
   chart.animate(
     {
-      config: { x: ['Region', 'Revenue [$]'], y: 'Product' }
+      config: { x: ['Region', 'Revenue'], y: 'Product' }
     },
     { delay: 2 }
   )
 
   chart.animate({
-    config: { x: 'Revenue [$]', y: 'Product' }
+    config: { x: 'Revenue', y: 'Product' }
   })
 
   chart.animate(
