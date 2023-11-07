@@ -5,7 +5,7 @@ import Vizzu from '../../assets/dist/vizzu.min.js'
 
 const dust = new Dust()
 
-data.filter = (record) => record['Dose'] <= 3600
+data.filter = (record) => record.Dose <= 3600
 
 const bgImage = document.getElementById('bgImage')
 
@@ -117,10 +117,7 @@ for (let sec = 1; sec <= 90; sec++) {
             let offset = 0
             if (record.activity.startsWith('5 year')) offset = 10000
             if (record.activity.startsWith('Fukushima 50')) offset = 10000
-            return (
-              record['Dose'] + offset <=
-              (sec < 80 ? Math.max((250000 * sec) / 90, 3600) : 250000)
-            )
+            return record.Dose + offset <= (sec < 80 ? Math.max((250000 * sec) / 90, 3600) : 250000)
           }
         }
       },
@@ -139,7 +136,7 @@ for (const max of [250001, 500000, 1000000, 5000000, 8000000, 155000000, 3000000
         data: {
           filter: (record) => {
             if (record.activity.startsWith('Radiation dose')) return true
-            return record['Dose'] >= 250000 && record['Dose'] <= max
+            return record.Dose >= 250000 && record.Dose <= max
           }
         },
         config: { channels: { y: { range: { min: null } } } }

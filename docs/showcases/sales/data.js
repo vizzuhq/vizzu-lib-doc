@@ -19,7 +19,7 @@ const data = {
       name: 'Revenue',
       type: 'measure',
       values: [],
-      unit: '$',
+      unit: '$'
     }
   ],
   records: [
