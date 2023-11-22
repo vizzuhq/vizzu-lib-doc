@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.svg">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.10">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.4b4a2bd9.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fad675c6.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
@@ -5516,15 +5516,46 @@
       
         <li class="md-nav__item">
   <a href="#accessors" class="md-nav__link">
-    Accessors
+    <span class="md-ellipsis">
+      Accessors
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Accessors">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      direction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#playstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      playState
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#position" class="md-nav__link">
+    <span class="md-ellipsis">
+      position
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#speed" class="md-nav__link">
-    speed
+    <span class="md-ellipsis">
+      speed
+    </span>
   </a>
   
 </li>
@@ -5536,7 +5567,9 @@
       
         <li class="md-nav__item">
   <a href="#methods" class="md-nav__link">
-    Methods
+    <span class="md-ellipsis">
+      Methods
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Methods">
@@ -5544,49 +5577,63 @@
         
           <li class="md-nav__item">
   <a href="#cancel" class="md-nav__link">
-    cancel
+    <span class="md-ellipsis">
+      cancel
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#pause" class="md-nav__link">
-    pause
+    <span class="md-ellipsis">
+      pause
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#play" class="md-nav__link">
-    play
+    <span class="md-ellipsis">
+      play
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#reverse" class="md-nav__link">
-    reverse
+    <span class="md-ellipsis">
+      reverse
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#seek" class="md-nav__link">
-    seek
+    <span class="md-ellipsis">
+      seek
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#stop" class="md-nav__link">
-    stop
+    <span class="md-ellipsis">
+      stop
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#store" class="md-nav__link">
-    store
+    <span class="md-ellipsis">
+      store
+    </span>
   </a>
   
 </li>
@@ -5617,10 +5664,89 @@
 <p><a href="../../modules/animcontrol/">animcontrol</a>.AnimControl</p>
 <p>Control object for animation.</p>
 <h2 id="accessors">Accessors</h2>
+<h3 id="direction">direction</h3>
+<p>• <code>get</code> <strong>direction</strong>(): <code>"reverse"</code> | <code>"normal"</code></p>
+<p>Getting the play direction of the animation.</p>
+<p>Returns</p>
+<p><code>"reverse"</code> | <code>"normal"</code></p>
+<p>• <code>set</code> <strong>direction</strong>(<code>value</code>): <code>void</code></p>
+<p>Setting the play direction of the animation.</p>
+<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;"><code>"reverse"</code> | <code>"normal"</code></td>
+</tr>
+</tbody>
+</table>
+<p>Returns</p>
+<p><code>void</code></p>
+<hr />
+<h3 id="playstate">playState</h3>
+<p>• <code>get</code> <strong>playState</strong>(): <code>"paused"</code> | <code>"running"</code></p>
+<p>Getting the playback state of the animation.</p>
+<p>Returns</p>
+<p><code>"paused"</code> | <code>"running"</code></p>
+<p>• <code>set</code> <strong>playState</strong>(<code>value</code>): <code>void</code></p>
+<p>Setting the playback state of the animation.</p>
+<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;"><code>"paused"</code> | <code>"running"</code></td>
+</tr>
+</tbody>
+</table>
+<p>Returns</p>
+<p><code>void</code></p>
+<hr />
+<h3 id="position">position</h3>
+<p>• <code>get</code> <strong>position</strong>(): <code>number</code></p>
+<p>Getting the position of the animation.</p>
+<p>Returns</p>
+<p><code>number</code></p>
+<p>• <code>set</code> <strong>position</strong>(<code>value</code>): <code>void</code></p>
+<p>Setting the position of the animation.</p>
+<p>Parameters</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;"><code>number</code></td>
+</tr>
+</tbody>
+</table>
+<p>Returns</p>
+<p><code>void</code></p>
+<hr />
 <h3 id="speed">speed</h3>
+<p>• <code>get</code> <strong>speed</strong>(): <code>number</code></p>
+<p>Getting the playback speed of the animation.</p>
+<p>Returns</p>
+<p><code>number</code></p>
 <p>• <code>set</code> <strong>speed</strong>(<code>value</code>): <code>void</code></p>
-<p>Playback speed of the animation. It is 1.0 by default. Negative values are
-considered 0.</p>
+<p>Setting the playback speed of the animation. It is 1.0 by default. Negative
+values are considered 0.</p>
 <p>Parameters</p>
 <table>
 <thead>
@@ -5647,21 +5773,24 @@ considered 0.</p>
 <hr />
 <h3 id="pause">pause</h3>
 <p>▸ <strong>pause</strong>(): <a href="./"><code>AnimControl</code></a></p>
-<p>Pauses the controlled animation.</p>
 <p>Returns</p>
 <p><a href="./"><code>AnimControl</code></a></p>
+<p><strong><code>Deprecated</code></strong></p>
+<p>Pauses the controlled animation.</p>
 <hr />
 <h3 id="play">play</h3>
 <p>▸ <strong>play</strong>(): <a href="./"><code>AnimControl</code></a></p>
-<p>Plays/resumes playing of the controlled animation.</p>
 <p>Returns</p>
 <p><a href="./"><code>AnimControl</code></a></p>
+<p><strong><code>Deprecated</code></strong></p>
+<p>Plays/resumes playing of the controlled animation.</p>
 <hr />
 <h3 id="reverse">reverse</h3>
 <p>▸ <strong>reverse</strong>(): <a href="./"><code>AnimControl</code></a></p>
-<p>Changes the direction of the controlled animation.</p>
 <p>Returns</p>
 <p><a href="./"><code>AnimControl</code></a></p>
+<p><strong><code>Deprecated</code></strong></p>
+<p>Changes the direction of the controlled animation to reverse.</p>
 <hr />
 <h3 id="seek">seek</h3>
 <p>▸ <strong>seek</strong>(<code>value</code>): <a href="./"><code>AnimControl</code></a></p>
@@ -5786,7 +5915,7 @@ trigger the animation complete promise to resolve.</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["toc.follow", "search.suggest", "search.highlight", "navigation.top", "navigation.footer", "content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.6c14ae12.min.js"></script>
       
         <script src="../../../assets/javascripts/extlinks.js"></script>
       
