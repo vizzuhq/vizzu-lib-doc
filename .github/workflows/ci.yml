@@ -7,7 +7,7 @@ on:
         branches: [main]
 
 jobs:
-    ci:
+    check:
         runs-on: ubuntu-22.04
 
         steps:
@@ -40,8 +40,8 @@ jobs:
 
             - name: Format
               run: |
-                  npx prettier -c vizzu-lib-doc/docs vizzu-lib-doc/.github
+                  npm run format-showcases
 
             - name: Lint
               run: |
-                  npx eslint vizzu-lib-doc/docs
+                    npm run lint-showcases

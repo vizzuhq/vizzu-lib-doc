@@ -18,6 +18,6 @@ cd vizzu-lib
 git clone git@github.com:vizzuhq/vizzu-lib-doc.git
 
 npm install
-npx prettier --config .prettierrc -c vizzu-lib-doc/docs vizzu-lib-doc/.github
-npx eslint --ext .js,.cjs,.mjs --config .eslintrc.cjs vizzu-lib-doc/docs
+npm run format-showcases
+npm run lint-showcases
 ```
