@@ -142,7 +142,7 @@ for (const max of [250001, 500000, 1000000, 5000000, 8000000, 155000000, 3000000
 						return record.Dose >= 250000 && record.Dose <= max
 					}
 				},
-				config: { channels: { y: { range: { min: null } } } }
+				config: { channels: { y: { range: { min: 'auto' } } } }
 			},
 			Object.assign({}, animOptions, { delay: '2s' })
 		)

@@ -270,7 +270,7 @@ new Vizzu('testVizzuCanvas', { data }).initializing.then((chart) => {
 			}
 		},
 		config: {
-			y: { set: ['Player'], range: { max: null, min: null } },
+			y: { set: ['Player'], range: { max: 'auto', min: 'auto' } },
 			x: ['Count', 'Tournament', 'Level', 'Total_GS'],
 			title: 'Rafa also leads in the number of total Grand Slams won'
 		}
