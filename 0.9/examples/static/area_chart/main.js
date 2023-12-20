@@ -11,18 +11,18 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: {
-        channels: {
-          x: 'Year',
-          y: 'Value 5 (+/-)',
-          label: 'Value 5 (+/-)'
-        },
-        title: 'Area Chart',
-        geometry: 'area'
-      }
-    })
+		chart.animate({
+			data,
+			config: {
+				channels: {
+					x: 'Year',
+					y: 'Value 5 (+/-)',
+					label: 'Value 5 (+/-)'
+				},
+				title: 'Area Chart',
+				geometry: 'area'
+			}
+		})
       ]
     }
   ]);

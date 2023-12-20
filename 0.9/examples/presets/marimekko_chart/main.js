@@ -11,16 +11,16 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_4,
-      config: chart.constructor.presets.marimekko({
-        x: 'Value 2 (+)',
-        y: 'Value 3 (+)',
-        stackedBy: 'Joy factors',
-        groupedBy: 'Country',
-        title: 'Marimekko Chart'
-      })
-    })
+		chart.animate({
+			data: data_4,
+			config: chart.constructor.presets.marimekko({
+				x: 'Value 2 (+)',
+				y: 'Value 3 (+)',
+				stackedBy: 'Joy factors',
+				groupedBy: 'Country',
+				title: 'Marimekko Chart'
+			})
+		})
       ]
     }
   ]);

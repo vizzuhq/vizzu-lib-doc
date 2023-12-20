@@ -11,28 +11,28 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_8,
-      config: {
-        channels: {
-          x: 'Year',
-          y: ['Value 2 (+)', 'Country_code'],
-          color: 'Country_code'
-        },
+		chart.animate({
+			data: data_8,
+			config: {
+				channels: {
+					x: 'Year',
+					y: ['Value 2 (+)', 'Country_code'],
+					color: 'Country_code'
+				},
 
-        geometry: 'area',
-        coordSystem: 'polar'
-      }
-    }),(chart) =>
-    chart.animate({
-      data: {
-        filter: (record) => record.Country_code === 'FR' || record.Country_code === 'CY'
-      },
-      config: {}
-    }),(chart) => {
-    chart.feature('tooltip', true)
-    return chart
-  }
+				geometry: 'area',
+				coordSystem: 'polar'
+			}
+		}),(chart) =>
+		chart.animate({
+			data: {
+				filter: (record) => record.Country_code === 'FR' || record.Country_code === 'CY'
+			},
+			config: {}
+		}),(chart) => {
+		chart.feature('tooltip', true)
+		return chart
+	}
       ]
     }
   ]);

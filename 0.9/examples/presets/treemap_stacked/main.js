@@ -11,15 +11,15 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: chart.constructor.presets.stackedTreemap({
-        size: 'Value 2 (+)',
-        color: 'Joy factors',
-        title: 'Stacked Treemap',
-        dividedBy: 'Country_code'
-      })
-    })
+		chart.animate({
+			data,
+			config: chart.constructor.presets.stackedTreemap({
+				size: 'Value 2 (+)',
+				color: 'Joy factors',
+				title: 'Stacked Treemap',
+				dividedBy: 'Country_code'
+			})
+		})
       ]
     }
   ]);

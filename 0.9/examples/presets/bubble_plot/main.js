@@ -11,17 +11,17 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: chart.constructor.presets.bubbleplot({
-        x: 'Value 4 (+/-)',
-        y: 'Value 5 (+/-)',
-        color: 'Joy factors',
-        dividedBy: 'Country',
-        size: 'Value 3 (+)',
-        title: 'Bubble Plot'
-      })
-    })
+		chart.animate({
+			data,
+			config: chart.constructor.presets.bubbleplot({
+				x: 'Value 4 (+/-)',
+				y: 'Value 5 (+/-)',
+				color: 'Joy factors',
+				dividedBy: 'Country',
+				size: 'Value 3 (+)',
+				title: 'Bubble Plot'
+			})
+		})
       ]
     }
   ]);

@@ -11,16 +11,16 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: {
-        channels: {
-          x: ['Year', 'Value 5 (+/-)']
-        },
-        title: 'Dot Plot',
-        geometry: 'circle'
-      }
-    })
+		chart.animate({
+			data,
+			config: {
+				channels: {
+					x: ['Year', 'Value 5 (+/-)']
+				},
+				title: 'Dot Plot',
+				geometry: 'circle'
+			}
+		})
       ]
     }
   ]);

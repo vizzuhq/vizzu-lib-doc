@@ -11,58 +11,59 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) => {
-    chart.on('plot-axis-label-draw', (event) => {
-      const year = parseFloat(event.detail.text)
-      if (!event.detail.text.includes('$') && !isNaN(year) && year % 5 !== 0) event.preventDefault()
-    })
-    return chart
-  },(chart) =>
-    chart.animate({
-      data: Object.assign(data, {
-        filter: (record) => record.Year > 1972
-      }),
-      config: {
-        channels: {
-          x: 'Year',
-          y: ['Revenue', 'Format'],
-          color: 'Format'
-        },
+		chart.on('plot-axis-label-draw', (event) => {
+			const year = parseFloat(event.detail.text)
+			if (!event.detail.text.includes('$') && !isNaN(year) && year % 5 !== 0)
+				event.preventDefault()
+		})
+		return chart
+	},(chart) =>
+		chart.animate({
+			data: Object.assign(data, {
+				filter: (record) => record.Year > 1972
+			}),
+			config: {
+				channels: {
+					x: 'Year',
+					y: ['Revenue', 'Format'],
+					color: 'Format'
+				},
 
-        geometry: 'area',
-        align: 'center'
-      },
-      style: {
-        plot: {
-          yAxis: {
-            label: {
-              numberScale: 'K, M, B, T'
-            }
-          }
-        }
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        split: true
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          y: ['Revenue', 'Year'],
-          x: ['Format']
-        },
+				geometry: 'area',
+				align: 'center'
+			},
+			style: {
+				plot: {
+					yAxis: {
+						label: {
+							numberScale: 'K, M, B, T'
+						}
+					}
+				}
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				split: true
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					y: ['Revenue', 'Year'],
+					x: ['Format']
+				},
 
-        geometry: 'rectangle',
-        align: 'min',
-        split: false,
-        sort: 'byValue',
-        reverse: true
-      }
-    }),(chart) => {
-    chart.feature('tooltip', true)
-    return chart
-  }
+				geometry: 'rectangle',
+				align: 'min',
+				split: false,
+				sort: 'byValue',
+				reverse: true
+			}
+		}),(chart) => {
+		chart.feature('tooltip', true)
+		return chart
+	}
       ]
     }
   ]);

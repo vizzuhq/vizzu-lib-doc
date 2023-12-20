@@ -11,15 +11,15 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_6,
-      config: chart.constructor.presets.radialStackedBar({
-        angle: 'Value 2 (+)',
-        radius: 'Country',
-        stackedBy: 'Joy factors',
-        title: 'Radial Stacked Bar Chart'
-      })
-    })
+		chart.animate({
+			data: data_6,
+			config: chart.constructor.presets.radialStackedBar({
+				angle: 'Value 2 (+)',
+				radius: 'Country',
+				stackedBy: 'Joy factors',
+				title: 'Radial Stacked Bar Chart'
+			})
+		})
       ]
     }
   ]);

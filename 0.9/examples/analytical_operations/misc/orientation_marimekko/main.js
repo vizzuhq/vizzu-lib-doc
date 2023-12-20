@@ -11,26 +11,26 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_4,
-      config: {
-        channels: {
-          x: ['Country', 'Value 2 (+)'],
-          y: ['Joy factors', 'Value 3 (+)'],
-          color: 'Joy factors',
-          label: 'Country',
-          lightness: 'Country'
-        },
+		chart.animate({
+			data: data_4,
+			config: {
+				channels: {
+					x: ['Country', 'Value 2 (+)'],
+					y: ['Joy factors', 'Value 3 (+)'],
+					color: 'Joy factors',
+					label: 'Country',
+					lightness: 'Country'
+				},
 
-        align: 'stretch',
-        orientation: 'horizontal'
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        orientation: 'vertical'
-      }
-    })
+				align: 'stretch',
+				orientation: 'horizontal'
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				orientation: 'vertical'
+			}
+		})
       ]
     }
   ]);

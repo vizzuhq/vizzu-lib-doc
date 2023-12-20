@@ -11,18 +11,18 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: {
-        channels: {
-          x: ['Joy factors', 'Value 2 (+)'],
-          color: 'Joy factors',
-          label: 'Value 2 (+)'
-        },
-        title: 'Pie Chart',
-        coordSystem: 'polar'
-      }
-    })
+		chart.animate({
+			data,
+			config: {
+				channels: {
+					x: ['Joy factors', 'Value 2 (+)'],
+					color: 'Joy factors',
+					label: 'Value 2 (+)'
+				},
+				title: 'Pie Chart',
+				coordSystem: 'polar'
+			}
+		})
       ]
     }
   ]);

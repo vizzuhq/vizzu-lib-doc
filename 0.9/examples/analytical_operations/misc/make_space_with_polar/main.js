@@ -11,39 +11,39 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_8,
-      config: {
-        channels: {
-          x: 'Value 2 (+)',
-          y: 'Country',
-          color: 'Country'
-        }
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          x: ['Value 2 (+)'],
-          y: {
-            set: 'Country',
-            /* Setting the radius of
+		chart.animate({
+			data: data_8,
+			config: {
+				channels: {
+					x: 'Value 2 (+)',
+					y: 'Country',
+					color: 'Country'
+				}
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					x: ['Value 2 (+)'],
+					y: {
+						set: 'Country',
+						/* Setting the radius of
                     the empty circle in the centre. */
-            range: {
-              min: '-30%'
-            }
-          },
-          size: null
-        },
+						range: {
+							min: '-30%'
+						}
+					},
+					size: null
+				},
 
-        coordSystem: 'polar'
-      },
-      style: {
-        plot: {
-          paddingLeft: '25em'
-        }
-      }
-    })
+				coordSystem: 'polar'
+			},
+			style: {
+				plot: {
+					paddingLeft: '25em'
+				}
+			}
+		})
       ]
     }
   ]);

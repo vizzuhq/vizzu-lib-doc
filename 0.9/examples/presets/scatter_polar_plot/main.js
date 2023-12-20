@@ -11,15 +11,15 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: chart.constructor.presets.polarScatter({
-        angle: 'Value 3 (+)',
-        radius: 'Value 2 (+)',
-        dividedBy: 'Country',
-        title: 'Polar Scatter Plot'
-      })
-    })
+		chart.animate({
+			data,
+			config: chart.constructor.presets.polarScatter({
+				angle: 'Value 3 (+)',
+				radius: 'Value 2 (+)',
+				dividedBy: 'Country',
+				title: 'Polar Scatter Plot'
+			})
+		})
       ]
     }
   ]);

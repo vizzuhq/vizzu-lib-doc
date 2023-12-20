@@ -11,15 +11,15 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: chart.constructor.presets.percentageArea({
-        x: 'Year',
-        y: 'Value 2 (+)',
-        stackedBy: 'Country',
-        title: 'Percentage Area Chart'
-      })
-    })
+		chart.animate({
+			data,
+			config: chart.constructor.presets.percentageArea({
+				x: 'Year',
+				y: 'Value 2 (+)',
+				stackedBy: 'Country',
+				title: 'Percentage Area Chart'
+			})
+		})
       ]
     }
   ]);

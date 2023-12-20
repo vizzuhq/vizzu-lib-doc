@@ -11,14 +11,14 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: chart.constructor.presets.area({
-        x: 'Year',
-        y: 'Value 5 (+/-)',
-        title: 'Area Chart'
-      })
-    })
+		chart.animate({
+			data,
+			config: chart.constructor.presets.area({
+				x: 'Year',
+				y: 'Value 5 (+/-)',
+				title: 'Area Chart'
+			})
+		})
       ]
     }
   ]);

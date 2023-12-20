@@ -11,28 +11,28 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_14,
+		chart.animate({
+			data: data_14,
 
-      config: {
-        channels: {
-          y: 'Value 4 (+/-)',
-          x: 'Value 2 (+)',
-          color: 'Country',
-          label: 'Country'
-        },
+			config: {
+				channels: {
+					y: 'Value 4 (+/-)',
+					x: 'Value 2 (+)',
+					color: 'Country',
+					label: 'Country'
+				},
 
-        geometry: 'circle'
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          noop: 'Year',
-          label: null
-        }
-      }
-    })
+				geometry: 'circle'
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					noop: 'Year',
+					label: null
+				}
+			}
+		})
       ]
     }
   ]);

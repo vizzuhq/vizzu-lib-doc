@@ -11,19 +11,19 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: {
-        channels: {
-          x: 'Year',
-          y: 'Value 2 (+)',
-          color: 'Country'
-        },
-        title: 'Polar Line Chart',
-        geometry: 'line',
-        coordSystem: 'polar'
-      }
-    })
+		chart.animate({
+			data,
+			config: {
+				channels: {
+					x: 'Year',
+					y: 'Value 2 (+)',
+					color: 'Country'
+				},
+				title: 'Polar Line Chart',
+				geometry: 'line',
+				coordSystem: 'polar'
+			}
+		})
       ]
     }
   ]);

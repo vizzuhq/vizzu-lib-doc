@@ -11,15 +11,15 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_6,
-      config: chart.constructor.presets.line({
-        x: 'Value 6 (+/-)',
-        y: 'Year',
-        dividedBy: 'Country',
-        title: 'Vertical Line Chart'
-      })
-    })
+		chart.animate({
+			data: data_6,
+			config: chart.constructor.presets.line({
+				x: 'Value 6 (+/-)',
+				y: 'Year',
+				dividedBy: 'Country',
+				title: 'Vertical Line Chart'
+			})
+		})
       ]
     }
   ]);

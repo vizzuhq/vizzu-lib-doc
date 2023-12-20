@@ -11,29 +11,29 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) => {
-    const f = data_6.filter
-    return chart.animate({
-      data: Object.assign(data_6, {
-        filter: (record) => f(record) && record.Year >= 10
-      }),
+		const f = data_6.filter
+		return chart.animate({
+			data: Object.assign(data_6, {
+				filter: (record) => f(record) && record.Year >= 10
+			}),
 
-      config: {
-        channels: {
-          x: 'Year',
-          y: ['Country', 'Value 2 (+)'],
-          color: 'Country'
-        }
-      }
-    })
-  },(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          x: 'Joy factors'
-          //                label: 'Value 2 (+)'
-        }
-      }
-    })
+			config: {
+				channels: {
+					x: 'Year',
+					y: ['Country', 'Value 2 (+)'],
+					color: 'Country'
+				}
+			}
+		})
+	},(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					x: 'Joy factors'
+					//                label: 'Value 2 (+)'
+				}
+			}
+		})
       ]
     }
   ]);

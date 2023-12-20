@@ -11,14 +11,14 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: chart.constructor.presets.pie({
-        angle: 'Value 2 (+)',
-        by: 'Joy factors',
-        title: 'Pie Chart'
-      })
-    })
+		chart.animate({
+			data,
+			config: chart.constructor.presets.pie({
+				angle: 'Value 2 (+)',
+				by: 'Joy factors',
+				title: 'Pie Chart'
+			})
+		})
       ]
     }
   ]);

@@ -11,18 +11,18 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: {
-        channels: {
-          x: 'Value 5 (+/-)',
-          y: 'Country',
-          color: 'Country',
-          label: 'Value 5 (+/-)'
-        },
-        title: 'Bar Chart'
-      }
-    })
+		chart.animate({
+			data,
+			config: {
+				channels: {
+					x: 'Value 5 (+/-)',
+					y: 'Country',
+					color: 'Country',
+					label: 'Value 5 (+/-)'
+				},
+				title: 'Bar Chart'
+			}
+		})
       ]
     }
   ]);

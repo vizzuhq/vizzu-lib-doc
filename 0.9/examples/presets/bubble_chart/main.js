@@ -11,14 +11,14 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: chart.constructor.presets.bubble({
-        size: 'Value 5 (+/-)',
-        color: 'Country_code',
-        title: 'Bubble Chart'
-      })
-    })
+		chart.animate({
+			data,
+			config: chart.constructor.presets.bubble({
+				size: 'Value 5 (+/-)',
+				color: 'Country_code',
+				title: 'Bubble Chart'
+			})
+		})
       ]
     }
   ]);

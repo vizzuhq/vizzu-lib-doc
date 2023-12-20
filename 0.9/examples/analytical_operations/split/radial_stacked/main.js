@@ -11,30 +11,30 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) => {
-    const f = data_8.filter
-    return chart.animate({
-      data: Object.assign(data_8, {
-        filter: (record) => f(record) && record.Year >= 15
-      }),
-      config: {
-        channels: {
-          x: ['Country', 'Value 2 (+)'],
-          y: {
-            set: 'Year',
-            range: { min: '-3' }
-          },
-          color: 'Country'
-        },
+		const f = data_8.filter
+		return chart.animate({
+			data: Object.assign(data_8, {
+				filter: (record) => f(record) && record.Year >= 15
+			}),
+			config: {
+				channels: {
+					x: ['Country', 'Value 2 (+)'],
+					y: {
+						set: 'Year',
+						range: { min: '-3' }
+					},
+					color: 'Country'
+				},
 
-        coordSystem: 'polar'
-      }
-    })
-  },(chart) =>
-    chart.animate({
-      config: {
-        split: true
-      }
-    })
+				coordSystem: 'polar'
+			}
+		})
+	},(chart) =>
+		chart.animate({
+			config: {
+				split: true
+			}
+		})
       ]
     }
   ]);

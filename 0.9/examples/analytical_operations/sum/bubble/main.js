@@ -11,25 +11,25 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: {
-        channels: {
-          color: 'Joy factors',
-          size: 'Value 2 (+)',
-          label: 'Country_code'
-        },
+		chart.animate({
+			data,
+			config: {
+				channels: {
+					color: 'Joy factors',
+					size: 'Value 2 (+)',
+					label: 'Country_code'
+				},
 
-        geometry: 'circle'
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          size: ['Country_code', 'Value 2 (+)']
-        }
-      }
-    })
+				geometry: 'circle'
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					size: ['Country_code', 'Value 2 (+)']
+				}
+			}
+		})
       ]
     }
   ]);

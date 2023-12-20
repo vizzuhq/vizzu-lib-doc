@@ -11,17 +11,17 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: {
-        channels: {
-          x: 'Joy factors',
-          y: 'Value 2 (+)',
-          label: 'Value 2 (+)'
-        },
-        title: 'Column Chart'
-      }
-    })
+		chart.animate({
+			data,
+			config: {
+				channels: {
+					x: 'Joy factors',
+					y: 'Value 2 (+)',
+					label: 'Value 2 (+)'
+				},
+				title: 'Column Chart'
+			}
+		})
       ]
     }
   ]);

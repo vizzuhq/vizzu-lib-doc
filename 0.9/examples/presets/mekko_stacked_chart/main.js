@@ -11,16 +11,16 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_4,
-      config: chart.constructor.presets.mekko({
-        x: 'Value 1 (+)',
-        y: 'Value 2 (+)',
-        stackedBy: 'Joy factors',
-        groupedBy: 'Country',
-        title: 'Stacked Mekko Chart'
-      })
-    })
+		chart.animate({
+			data: data_4,
+			config: chart.constructor.presets.mekko({
+				x: 'Value 1 (+)',
+				y: 'Value 2 (+)',
+				stackedBy: 'Joy factors',
+				groupedBy: 'Country',
+				title: 'Stacked Mekko Chart'
+			})
+		})
       ]
     }
   ]);

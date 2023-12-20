@@ -11,60 +11,60 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: {
-        channels: {
-          x: 'Value 5 (+/-)',
-          y: 'Value 6 (+/-)',
-          /* The noop channel splits the markers as all the other channels
+		chart.animate({
+			data,
+			config: {
+				channels: {
+					x: 'Value 5 (+/-)',
+					y: 'Value 6 (+/-)',
+					/* The noop channel splits the markers as all the other channels
                 but will have no effect on the markers’ appearance. */
-          noop: 'Joy factors',
-          /* Lightness channel is used to assist the viewer
+					noop: 'Joy factors',
+					/* Lightness channel is used to assist the viewer
                 in following the animation. */
-          lightness: 'Year'
-        },
+					lightness: 'Year'
+				},
 
-        geometry: 'circle'
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          x: 'Year'
-        },
+				geometry: 'circle'
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					x: 'Year'
+				},
 
-        orientation: 'horizontal'
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          x: 'Value 5 (+/-)'
-        }
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          y: 'Joy factors',
-          noop: null
-        },
+				orientation: 'horizontal'
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					x: 'Value 5 (+/-)'
+				}
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					y: 'Joy factors',
+					noop: null
+				},
 
-        orientation: 'vertical'
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          y: 'Value 6 (+/-)',
-          noop: 'Joy factors'
-        }
-      }
-    }),(chart) => {
-    chart.feature('tooltip', true)
-    return chart
-  }
+				orientation: 'vertical'
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					y: 'Value 6 (+/-)',
+					noop: 'Joy factors'
+				}
+			}
+		}),(chart) => {
+		chart.feature('tooltip', true)
+		return chart
+	}
       ]
     }
   ]);

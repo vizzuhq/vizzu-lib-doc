@@ -11,20 +11,20 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: {
-        channels: {
-          x: 'Value 6 (+/-)',
-          y: 'Value 5 (+/-)',
-          color: 'Country',
-          size: 'Value 4 (+/-)',
-          label: 'Value 5 (+/-)'
-        },
-        title: 'Bubble Plot',
-        geometry: 'circle'
-      }
-    })
+		chart.animate({
+			data,
+			config: {
+				channels: {
+					x: 'Value 6 (+/-)',
+					y: 'Value 5 (+/-)',
+					color: 'Country',
+					size: 'Value 4 (+/-)',
+					label: 'Value 5 (+/-)'
+				},
+				title: 'Bubble Plot',
+				geometry: 'circle'
+			}
+		})
       ]
     }
   ]);

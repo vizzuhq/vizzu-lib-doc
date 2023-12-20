@@ -11,15 +11,15 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_6,
-      config: chart.constructor.presets.polarStackedColumn({
-        angle: 'Country',
-        radius: 'Value 2 (+)',
-        stackedBy: 'Joy factors',
-        title: 'Polar Stacked Column Chart'
-      })
-    })
+		chart.animate({
+			data: data_6,
+			config: chart.constructor.presets.polarStackedColumn({
+				angle: 'Country',
+				radius: 'Value 2 (+)',
+				stackedBy: 'Joy factors',
+				title: 'Polar Stacked Column Chart'
+			})
+		})
       ]
     }
   ]);

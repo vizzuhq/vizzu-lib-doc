@@ -11,30 +11,30 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_4,
-      config: {
-        channels: {
-          x: ['Country', 'Value 2 (+)'],
-          y: ['Joy factors', 'Value 3 (+)'],
-          color: 'Joy factors',
-          label: ['Country', 'Value 2 (+)']
-        },
-        title: 'Marimekko Chart',
-        align: 'stretch',
-        orientation: 'horizontal'
-      },
-      style: {
-        plot: {
-          marker: {
-            label: {
-              format: 'dimensionsFirst',
-              fontSize: '0.7em'
-            }
-          }
-        }
-      }
-    })
+		chart.animate({
+			data: data_4,
+			config: {
+				channels: {
+					x: ['Country', 'Value 2 (+)'],
+					y: ['Joy factors', 'Value 3 (+)'],
+					color: 'Joy factors',
+					label: ['Country', 'Value 2 (+)']
+				},
+				title: 'Marimekko Chart',
+				align: 'stretch',
+				orientation: 'horizontal'
+			},
+			style: {
+				plot: {
+					marker: {
+						label: {
+							format: 'dimensionsFirst',
+							fontSize: '0.7em'
+						}
+					}
+				}
+			}
+		})
       ]
     }
   ]);

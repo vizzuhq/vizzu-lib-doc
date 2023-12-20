@@ -11,14 +11,14 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: chart.constructor.presets.treemap({
-        size: 'Value 2 (+)',
-        color: 'Country_code',
-        title: 'Treemap'
-      })
-    })
+		chart.animate({
+			data,
+			config: chart.constructor.presets.treemap({
+				size: 'Value 2 (+)',
+				color: 'Country_code',
+				title: 'Treemap'
+			})
+		})
       ]
     }
   ]);

@@ -11,30 +11,30 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_8,
+		chart.animate({
+			data: data_8,
 
-      config: {
-        channels: {
-          x: 'Country',
-          y: 'Value 2 (+)',
-          label: 'Value 2 (+)'
-        }
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          x: 'Value 2 (+)',
-          y: null
-        },
+			config: {
+				channels: {
+					x: 'Country',
+					y: 'Value 2 (+)',
+					label: 'Value 2 (+)'
+				}
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					x: 'Value 2 (+)',
+					y: null
+				},
 
-        orientation: 'vertical'
-      }
-    }),(chart) => {
-    chart.feature('tooltip', true)
-    return chart
-  }
+				orientation: 'vertical'
+			}
+		}),(chart) => {
+		chart.feature('tooltip', true)
+		return chart
+	}
       ]
     }
   ]);

@@ -11,15 +11,15 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_6,
-      config: chart.constructor.presets.percentageBar({
-        x: 'Value 2 (+)',
-        y: 'Country',
-        stackedBy: 'Joy factors',
-        title: 'Percentage Bar Chart'
-      })
-    })
+		chart.animate({
+			data: data_6,
+			config: chart.constructor.presets.percentageBar({
+				x: 'Value 2 (+)',
+				y: 'Country',
+				stackedBy: 'Joy factors',
+				title: 'Percentage Bar Chart'
+			})
+		})
       ]
     }
   ]);

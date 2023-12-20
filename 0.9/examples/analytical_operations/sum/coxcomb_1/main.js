@@ -11,38 +11,38 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_8,
+		chart.animate({
+			data: data_8,
 
-      config: {
-        channels: {
-          x: 'Country',
-          y: ['Value 2 (+)', 'Joy factors'],
-          color: 'Joy factors'
-        },
+			config: {
+				channels: {
+					x: 'Country',
+					y: ['Value 2 (+)', 'Joy factors'],
+					color: 'Joy factors'
+				},
 
-        coordSystem: 'polar'
-      },
-      style: {
-        plot: {
-          marker: {
-            rectangleSpacing: '0.1em'
-          }
-        }
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          y: 'Value 2 (+)',
-          color: null,
-          label: 'Value 2 (+)'
-        }
-      }
-    }),(chart) => {
-    chart.feature('tooltip', true)
-    return chart
-  }
+				coordSystem: 'polar'
+			},
+			style: {
+				plot: {
+					marker: {
+						rectangleSpacing: '0.1em'
+					}
+				}
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					y: 'Value 2 (+)',
+					color: null,
+					label: 'Value 2 (+)'
+				}
+			}
+		}),(chart) => {
+		chart.feature('tooltip', true)
+		return chart
+	}
       ]
     }
   ]);

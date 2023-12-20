@@ -11,24 +11,24 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: {
-        channels: {
-          x: 'Value 2 (+)',
-          y: {
-            set: ['Joy factors'],
-            /* Setting the radius of the empty circle
+		chart.animate({
+			data,
+			config: {
+				channels: {
+					x: 'Value 2 (+)',
+					y: {
+						set: ['Joy factors'],
+						/* Setting the radius of the empty circle
                     in the centre. */
-            range: { min: '-30%' }
-          },
-          color: 'Joy factors',
-          label: 'Value 2 (+)'
-        },
-        title: 'Radial Bar Chart',
-        coordSystem: 'polar'
-      }
-    })
+						range: { min: '-30%' }
+					},
+					color: 'Joy factors',
+					label: 'Value 2 (+)'
+				},
+				title: 'Radial Bar Chart',
+				coordSystem: 'polar'
+			}
+		})
       ]
     }
   ]);

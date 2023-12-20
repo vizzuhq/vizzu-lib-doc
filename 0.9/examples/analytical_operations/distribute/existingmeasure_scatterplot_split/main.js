@@ -11,34 +11,34 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_6,
+		chart.animate({
+			data: data_6,
 
-      config: {
-        channels: {
-          x: ['Value 1 (+)', 'Country'],
-          y: 'Value 3 (+)',
-          noop: 'Year',
-          color: 'Country'
-        },
+			config: {
+				channels: {
+					x: ['Value 1 (+)', 'Country'],
+					y: 'Value 3 (+)',
+					noop: 'Year',
+					color: 'Country'
+				},
 
-        geometry: 'circle',
-        split: true,
-        orientation: 'vertical'
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          x: 'Value 1 (+)'
-        },
+				geometry: 'circle',
+				split: true,
+				orientation: 'vertical'
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					x: 'Value 1 (+)'
+				},
 
-        split: false
-      }
-    }),(chart) => {
-    chart.feature('tooltip', true)
-    return chart
-  }
+				split: false
+			}
+		}),(chart) => {
+		chart.feature('tooltip', true)
+		return chart
+	}
       ]
     }
   ]);

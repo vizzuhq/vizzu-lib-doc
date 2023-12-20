@@ -11,22 +11,22 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_6,
-      config: chart.constructor.presets.heatmap({
-        x: 'Year',
-        y: 'Country_code',
-        lightness: 'Value 3 (+)',
-        title: 'Heatmap'
-      }),
-      style: {
-        plot: {
-          marker: {
-            rectangleSpacing: 0
-          }
-        }
-      }
-    })
+		chart.animate({
+			data: data_6,
+			config: chart.constructor.presets.heatmap({
+				x: 'Year',
+				y: 'Country_code',
+				lightness: 'Value 3 (+)',
+				title: 'Heatmap'
+			}),
+			style: {
+				plot: {
+					marker: {
+						rectangleSpacing: 0
+					}
+				}
+			}
+		})
       ]
     }
   ]);

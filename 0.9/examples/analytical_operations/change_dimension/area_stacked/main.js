@@ -11,34 +11,34 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_6,
+		chart.animate({
+			data: data_6,
 
-      config: {
-        channels: {
-          x: 'Year',
-          y: ['Country', 'Value 2 (+)'],
-          color: 'Country'
-        },
+			config: {
+				channels: {
+					x: 'Year',
+					y: ['Country', 'Value 2 (+)'],
+					color: 'Country'
+				},
 
-        geometry: 'area'
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          y: ['Joy factors', 'Value 3 (+)'],
-          color: 'Joy factors'
-        }
-      },
-      style: {
-        plot: {
-          marker: {
-            colorPalette: '#ef675aFF #6d8cccFF #e6cf99FF #9c50abFF'
-          }
-        }
-      }
-    })
+				geometry: 'area'
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					y: ['Joy factors', 'Value 3 (+)'],
+					color: 'Joy factors'
+				}
+			},
+			style: {
+				plot: {
+					marker: {
+						colorPalette: '#ef675aFF #6d8cccFF #e6cf99FF #9c50abFF'
+					}
+				}
+			}
+		})
       ]
     }
   ]);

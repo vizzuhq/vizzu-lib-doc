@@ -11,26 +11,31 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: Object.assign(data, {
-        filter: (record) => record.Country === 'Belgium'
-      }),
-      config: chart.constructor.presets.waterfall({
-        x: 'Year',
-        y: 'Value 5 (+/-)',
-        title: 'Waterfall Chart'
-      }),
-      style: {
-        plot: {
-          marker: {
-            colorGradient: ['#ff001b 0', '#ff001b 0.5', '#7e79e8 0.5', '#7e79e8 1'].join(),
-            label: {
-              position: 'top'
-            }
-          }
-        }
-      }
-    })
+		chart.animate({
+			data: Object.assign(data, {
+				filter: (record) => record.Country === 'Belgium'
+			}),
+			config: chart.constructor.presets.waterfall({
+				x: 'Year',
+				y: 'Value 5 (+/-)',
+				title: 'Waterfall Chart'
+			}),
+			style: {
+				plot: {
+					marker: {
+						colorGradient: [
+							'#ff001b 0',
+							'#ff001b 0.5',
+							'#7e79e8 0.5',
+							'#7e79e8 1'
+						].join(),
+						label: {
+							position: 'top'
+						}
+					}
+				}
+			}
+		})
       ]
     }
   ]);

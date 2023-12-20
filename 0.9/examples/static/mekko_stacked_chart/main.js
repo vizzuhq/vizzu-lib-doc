@@ -11,22 +11,22 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_4,
-      config: {
-        channels: {
-          x: ['Country', 'Value 2 (+)'],
-          y: {
-            set: ['Joy factors', 'Value 3 (+)'],
-            range: { max: '110%' }
-          },
-          color: 'Joy factors',
-          label: ['Value 2 (+)', 'Country']
-        },
-        title: 'Stacked Mekko Chart',
-        orientation: 'horizontal'
-      }
-    })
+		chart.animate({
+			data: data_4,
+			config: {
+				channels: {
+					x: ['Country', 'Value 2 (+)'],
+					y: {
+						set: ['Joy factors', 'Value 3 (+)'],
+						range: { max: '110%' }
+					},
+					color: 'Joy factors',
+					label: ['Value 2 (+)', 'Country']
+				},
+				title: 'Stacked Mekko Chart',
+				orientation: 'horizontal'
+			}
+		})
       ]
     }
   ]);

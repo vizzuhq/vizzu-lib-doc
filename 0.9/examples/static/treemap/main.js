@@ -11,16 +11,16 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: {
-        channels: {
-          label: 'Country_code',
-          size: 'Value 2 (+)'
-        },
-        title: 'Treemap'
-      }
-    })
+		chart.animate({
+			data,
+			config: {
+				channels: {
+					label: 'Country_code',
+					size: 'Value 2 (+)'
+				},
+				title: 'Treemap'
+			}
+		})
       ]
     }
   ]);

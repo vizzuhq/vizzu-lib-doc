@@ -11,14 +11,14 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: chart.constructor.presets.polarColumn({
-        angle: 'Joy factors',
-        radius: 'Value 2 (+)',
-        title: 'Polar Column Chart'
-      })
-    })
+		chart.animate({
+			data,
+			config: chart.constructor.presets.polarColumn({
+				angle: 'Joy factors',
+				radius: 'Value 2 (+)',
+				title: 'Polar Column Chart'
+			})
+		})
       ]
     }
   ]);

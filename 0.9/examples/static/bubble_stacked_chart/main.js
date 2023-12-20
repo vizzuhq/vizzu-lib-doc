@@ -11,18 +11,18 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: {
-        channels: {
-          color: 'Joy factors',
-          size: ['Country_code', 'Value 2 (+)'],
-          label: 'Country_code'
-        },
-        title: 'Stacked Bubble Chart',
-        geometry: 'circle'
-      }
-    })
+		chart.animate({
+			data,
+			config: {
+				channels: {
+					color: 'Joy factors',
+					size: ['Country_code', 'Value 2 (+)'],
+					label: 'Country_code'
+				},
+				title: 'Stacked Bubble Chart',
+				geometry: 'circle'
+			}
+		})
       ]
     }
   ]);

@@ -11,21 +11,21 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: chart.constructor.presets.verticalViolin({
-        x: 'Revenue',
-        y: 'Year',
-        splittedBy: 'Format',
-        title: 'Vertical Violin Graph'
-      }),
-      style: {
-        plot: {
-          xAxis: { interlacing: { color: '#ffffff00' } },
-          yAxis: { label: { numberScale: 'K, M, B, T' } }
-        }
-      }
-    })
+		chart.animate({
+			data,
+			config: chart.constructor.presets.verticalViolin({
+				x: 'Revenue',
+				y: 'Year',
+				splittedBy: 'Format',
+				title: 'Vertical Violin Graph'
+			}),
+			style: {
+				plot: {
+					xAxis: { interlacing: { color: '#ffffff00' } },
+					yAxis: { label: { numberScale: 'K, M, B, T' } }
+				}
+			}
+		})
       ]
     }
   ]);

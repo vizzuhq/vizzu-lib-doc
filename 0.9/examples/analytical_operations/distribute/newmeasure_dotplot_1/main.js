@@ -11,31 +11,31 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_1974_1990,
-      config: {
-        channels: {
-          x: 'Year',
-          y: { set: 'Index', range: { max: '105%' } }
-        },
+		chart.animate({
+			data: data_1974_1990,
+			config: {
+				channels: {
+					x: 'Year',
+					y: { set: 'Index', range: { max: '105%' } }
+				},
 
-        geometry: 'circle'
-      }
-    }),(chart) =>
-    chart.animate({
-      config: {
-        channels: {
-          y: { set: 'IMDb Rating', range: { max: '105%' } },
-          noop: 'Index'
-        },
+				geometry: 'circle'
+			}
+		}),(chart) =>
+		chart.animate({
+			config: {
+				channels: {
+					y: { set: 'IMDb Rating', range: { max: '105%' } },
+					noop: 'Index'
+				},
 
-        orientation: 'vertical',
-        split: true
-      }
-    }),(chart) => {
-    chart.feature('tooltip', true)
-    return chart
-  }
+				orientation: 'vertical',
+				split: true
+			}
+		}),(chart) => {
+		chart.feature('tooltip', true)
+		return chart
+	}
       ]
     }
   ]);

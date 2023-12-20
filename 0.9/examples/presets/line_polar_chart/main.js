@@ -11,15 +11,15 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data: data_6,
-      config: chart.constructor.presets.polarLine({
-        angle: 'Year',
-        radius: 'Value 2 (+)',
-        dividedBy: 'Country',
-        title: 'Polar Line Chart'
-      })
-    })
+		chart.animate({
+			data: data_6,
+			config: chart.constructor.presets.polarLine({
+				angle: 'Year',
+				radius: 'Value 2 (+)',
+				dividedBy: 'Country',
+				title: 'Polar Line Chart'
+			})
+		})
       ]
     }
   ]);

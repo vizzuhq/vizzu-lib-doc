@@ -11,14 +11,14 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
     {
       anims: [
         (chart) =>
-    chart.animate({
-      data,
-      config: chart.constructor.presets.column({
-        x: 'Joy factors',
-        y: 'Value 2 (+)',
-        title: 'Column Chart'
-      })
-    })
+		chart.animate({
+			data,
+			config: chart.constructor.presets.column({
+				x: 'Joy factors',
+				y: 'Value 2 (+)',
+				title: 'Column Chart'
+			})
+		})
       ]
     }
   ]);
