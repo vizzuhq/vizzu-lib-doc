@@ -18,15 +18,15 @@ jobs:
           repository: 'vizzuhq/vizzu-lib'
           ref: 'main'
 
-      - name: Cache dev-js environment
-        id: cache_dev_js_ubuntu22
+      - name: Cache node modules
+        id: node_modules_ubuntu22
         uses: actions/cache@v3
         with:
           path: node_modules
-          key: cache_dev_js_ubuntu22_${{ hashFiles('package-lock.json') }}
+          key: node_modules_ubuntu22_${{ hashFiles('package-lock.json') }}
 
-      - name: Init dev-js environment
-        if: steps.cache_dev_js_ubuntu22.outputs.cache-hit != 'true'
+      - name: Set up node modules
+        if: steps.node_modules_ubuntu22.outputs.cache-hit != 'true'
         run: |
           npm install
 
@@ -40,8 +40,8 @@ jobs:
 
       - name: Format
         run: |
-          npx prettier --config .prettierrc -c vizzu-lib-doc/docs vizzu-lib-doc/.github
+          npx prettier -c vizzu-lib-doc/docs vizzu-lib-doc/.github
 
       - name: Lint
         run: |
-          npx eslint --ext .js,.cjs,.mjs --config .eslintrc.cjs vizzu-lib-doc/docs
+          npx eslint vizzu-lib-doc/docs
