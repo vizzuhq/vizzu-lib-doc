@@ -44,4 +44,4 @@ jobs:
 
             - name: Lint
               run: |
-                    npm run lint-showcases
+                  npm run lint-showcases
