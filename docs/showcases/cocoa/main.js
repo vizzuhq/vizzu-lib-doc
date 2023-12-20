@@ -328,7 +328,7 @@ chart.initializing
             },
             label: { detach: ['Parties-End'] }
           },
-          rotate: (6.6 / 100 / 2) * 360
+          angle: ((6.6 / 100) * Math.PI),
         }
       },
       {

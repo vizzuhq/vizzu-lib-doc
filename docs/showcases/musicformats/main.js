@@ -227,7 +227,7 @@ anim = anim.then((chart) =>
       config: {
         channels: {
           x: { set: ['Year'] },
-          y: { set: ['Revenue', 'Format'], range: { min: null, max: null } },
+          y: { set: ['Revenue', 'Format'], range: { min: 'auto', max: 'auto' } },
           color: { set: ['Format'] }
         },
         title: 'Music Revenue by Format in the USA 1973 - 2020',

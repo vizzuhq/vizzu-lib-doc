@@ -161,7 +161,7 @@ function initSlide() {
       title: '',
       sort: 'byValue',
       reverse: true,
-      rotate: -90
+      angle: (-90 * Math.PI) / 180.0,
     },
     style
   })
