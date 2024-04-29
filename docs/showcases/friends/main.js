@@ -146,7 +146,7 @@ function text(dc, rect, txt) {
 		dc.globalAlpha = alpha
 		const tr = rect.transform
 		dc.transform(tr[0][0], tr[1][0], tr[0][1], tr[1][1], tr[0][2], tr[1][2])
-		dc.drawImage(img, rect.size.x - 14 - 48, rect.size.y - 48-5, 48, 48)
+		dc.drawImage(img, rect.size.x - 14 - 48, rect.size.y - 48 - 5, 48, 48)
 		dc.globalAlpha = 1
 		dc.restore()
 		return true
