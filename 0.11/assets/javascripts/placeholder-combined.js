@@ -1,6 +1,6 @@
 ///// No custom extra JS code exists /////
 ///// Plugin data /////
-window.PlaceholderPluginConfigJson = {"placeholder_list": [{"name": "LIB_MINOR_VERSION", "description": "", "read_only": false, "allow_inner_html": false, "allow_nested": false, "type": "textbox", "validators": [], "default_value": "0.11"}, {"name": "LIB_PATCH_VERSION", "description": "", "read_only": false, "allow_inner_html": false, "allow_nested": false, "type": "textbox", "validators": [], "default_value": "0.11.3"}], "settings": {"apply_change_on_focus_change": true, "debug": false, "delay_millis": 0, "dynamic_prefix": "d", "dynamic_suffix": "d", "expand_auto_tables": true, "html_prefix": "i", "html_suffix": "i", "normal_prefix": "x", "normal_suffix": "x", "static_prefix": "s", "static_suffix": "s"}, "validators": []};
+window.PlaceholderPluginConfigJson = {"placeholder_list": [{"name": "LIB_MINOR_VERSION", "description": "", "read_only": false, "allow_inner_html": false, "allow_nested": false, "type": "textbox", "validators": [], "default_value": "0.11"}, {"name": "LIB_PATCH_VERSION", "description": "", "read_only": false, "allow_inner_html": false, "allow_nested": false, "type": "textbox", "validators": [], "default_value": "0.11.4"}], "settings": {"apply_change_on_focus_change": true, "debug": false, "delay_millis": 0, "dynamic_prefix": "d", "dynamic_suffix": "d", "expand_auto_tables": true, "html_prefix": "i", "html_suffix": "i", "normal_prefix": "x", "normal_suffix": "x", "static_prefix": "s", "static_suffix": "s"}, "validators": []};
 
 
 ///// Normal plugin code /////

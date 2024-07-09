@@ -18,14 +18,7 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
 				y: 'Country_code',
 				lightness: 'Value 3 (+)',
 				title: 'Heatmap'
-			}),
-			style: {
-				plot: {
-					marker: {
-						rectangleSpacing: 0
-					}
-				}
-			}
+			})
 		})
       ]
     }

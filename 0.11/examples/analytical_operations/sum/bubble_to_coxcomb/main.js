@@ -40,13 +40,6 @@ Promise.all([dataLoaded, mdChartLoaded]).then((results) => {
 
 				geometry: 'rectangle',
 				coordSystem: 'polar'
-			},
-			style: {
-				plot: {
-					marker: {
-						rectangleSpacing: '0em'
-					}
-				}
 			}
 		}),(chart) =>
 		chart.animate({
