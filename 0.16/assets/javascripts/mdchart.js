@@ -8,7 +8,8 @@ class MdChart {
 	}
 
 	async create(snippets) {
-		const animations = await loadAnimations(snippets)
+		const isTutorial = window.location.href.includes('tutorial')
+    	const animations = isTutorial ? await loadAnimations(snippets) : snippets
 		let chart = Promise.resolve()
 		for (let i = 0; i < animations.length; i++) {
 			const number = i + 1
