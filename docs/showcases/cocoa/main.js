@@ -93,7 +93,10 @@ function stage(chart, i) {
 					channels: {
 						y: { detach: i === firstStage ? [] : [prev2] },
 						x: { attach: [act] },
-						label: { detach: i === firstStage ? [] : [prev2], attach: i === firstStage ? [] : [prev] }
+						label: {
+							detach: i === firstStage ? [] : [prev2],
+							attach: i === firstStage ? [] : [prev]
+						}
 					}
 				}
 			},
