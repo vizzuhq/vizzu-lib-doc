@@ -78,6 +78,8 @@ const style = {
 	}
 }
 
+const firstStage = 6
+
 function stage(chart, i) {
 	const palette = colors.slice(i - 1 > 0 ? i - 1 : 0, 8).join(' ')
 	const prev2 = `Parties-${i + 2}`
@@ -89,9 +91,9 @@ function stage(chart, i) {
 			{
 				config: {
 					channels: {
-						y: { detach: [prev2] },
+						y: { detach: i === firstStage ? [] : [prev2] },
 						x: { attach: [act] },
-						label: { detach: [prev2], attach: [prev] }
+						label: { detach: i === firstStage ? [] : [prev2], attach: i === firstStage ? [] : [prev] }
 					}
 				}
 			},
@@ -261,21 +263,20 @@ chart.initializing
 			}
 		)
 	)
-	.then((chart) => stage(chart, 6))
-	.then((chart) => stage(chart, 5))
-	.then((chart) => stage(chart, 4))
-	.then((chart) => stage(chart, 3))
-	.then((chart) => stage(chart, 2))
-	.then((chart) => stage(chart, 1))
-	.then((chart) => stage(chart, 0))
+	.then((chart) => stage(chart, firstStage))
+	.then((chart) => stage(chart, firstStage - 1))
+	.then((chart) => stage(chart, firstStage - 2))
+	.then((chart) => stage(chart, firstStage - 3))
+	.then((chart) => stage(chart, firstStage - 4))
+	.then((chart) => stage(chart, firstStage - 5))
+	.then((chart) => stage(chart, firstStage - 6))
 	.then((chart) =>
 		chart.animate({
 			config: {
 				channels: {
-					y: { detach: ['Parties-2', 'Parties-1'] },
-					color: { detach: ['Parties-1'] },
+					y: { detach: ['Parties-1'] },
 					label: {
-						detach: ['Parties-2', 'Parties-1'],
+						detach: ['Parties-1'],
 						attach: ['Parties-0']
 					}
 				}
