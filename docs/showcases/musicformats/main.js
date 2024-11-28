@@ -30,7 +30,7 @@ for (let year = 1973; year <= 2020; year++) {
 						y: { set: ['Format'] },
 						x: { set: ['Revenue'] },
 						label: { set: ['Revenue'] },
-						color: { attach: ['Format'] }
+						color: { set: ['Format'] }
 					},
 					title: 'Music Revenue by Format - Year by Year',
 					sort: 'byValue'
