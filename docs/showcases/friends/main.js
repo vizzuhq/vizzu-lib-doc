@@ -182,20 +182,20 @@ function slide(seid, actFilter) {
 			config: {
 				channels: {
 					x: {
-						attach: ['name'],
+						set: ['name'],
 						range: {
 							min: 0,
 							max: '102%'
 						}
 					},
 					y: {
-						attach: ['Lines', 'season'],
+						set: ['Lines', 'season'],
 						range: {
 							min: 0,
 							max: 9.99999
 						}
 					},
-					color: { attach: ['season'] }
+					color: { set: ['season'] }
 				},
 				title: seid
 			},
